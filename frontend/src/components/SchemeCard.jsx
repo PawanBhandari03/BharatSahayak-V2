@@ -96,7 +96,7 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
   return (
     <motion.div
       whileHover={{ y: -6, scale: 1.01 }}
-      className="relative rounded-2xl border overflow-hidden group transition-all duration-300 flex flex-col"
+      className="relative rounded-2xl border overflow-hidden group transition-all duration-300 flex flex-col h-full"
       style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       {/* Category top bar */}
@@ -110,23 +110,20 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
 
       <div className="p-5 flex flex-col flex-1">
         {/* Header row */}
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex-1 min-w-0">
-            {scheme.isMatched && (
-              <span className="badge bg-secondary/15 text-secondary text-xs mb-2 block w-fit">
-                <CheckCircle size={9} /> {scheme.eligibleLevel === 'maybe' ? t('Possible — check details') : t('Fits your answers')}
-              </span>
-            )}
-            <h3 className="text-ink font-bold text-base leading-snug">{scheme.name}</h3>
-            <p className="text-ink/60 text-xs mt-0.5 line-clamp-1">{translateDepartment(language, scheme.department)}</p>
-          </div>
-          {/* Benefit */}
-          <div className="text-right flex-shrink-0 max-w-[48%]">
-            <div className="font-black text-lg leading-tight rupee break-words" style={{ color: "#138808" }}>
-              {scheme.benefitLabel}
-            </div>
-            <div className="text-ink/50 text-xs">{t(scheme.benefitType)}</div>
-          </div>
+        <div className="mb-3">
+          {scheme.isMatched && (
+            <span className="badge bg-secondary/15 text-secondary text-xs mb-2 block w-fit">
+              <CheckCircle size={9} /> {scheme.eligibleLevel === 'maybe' ? t('Possible — check details') : t('Fits your answers')}
+            </span>
+          )}
+          <h3 className="text-ink font-bold text-base leading-snug line-clamp-2 min-h-[2.75rem]">{scheme.name}</h3>
+          <p className="text-ink/60 text-xs mt-0.5 line-clamp-1">{translateDepartment(language, scheme.department)}</p>
+        </div>
+
+        {/* Benefit: a calm, fixed-height panel so every card lines up */}
+        <div className="mb-3 rounded-lg border px-3 py-2 min-h-[3.5rem] flex flex-col justify-center" style={{ background: '#F2F8F0', borderColor: '#D3E5CF' }}>
+          <div className="text-sm font-semibold leading-snug line-clamp-2" style={{ color: '#14532D' }}>{scheme.benefitLabel}</div>
+          {scheme.benefitType && <div className="text-xs mt-0.5" style={{ color: '#4B6B49' }}>{t(scheme.benefitType)}</div>}
         </div>
 
         {!compact && (
@@ -135,7 +132,7 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
             <p className="text-ink/55 text-xs italic mb-2 line-clamp-1">{scheme.fullName}</p>
 
             {/* Description */}
-            <p className="text-ink/70 text-xs leading-relaxed mb-3 line-clamp-3">{scheme.description}</p>
+            <p className="text-ink/70 text-xs leading-relaxed mb-3 line-clamp-3 min-h-[3.7rem]">{scheme.description}</p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 mb-3">
