@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "bharatsahayak/scheme.schema.json",
   "title": "BharatSahayak scheme record",
-  "description": "Single source of truth for one government scheme. null means 'no limit' / 'unknown' (see NEEDS_REVIEW.md). Languages: en, hi, mr.",
+  "description": "Single source of truth for one government scheme. null means 'no limit' / 'unknown'. Languages: en, hi, mr.",
   "type": "object",
   "additionalProperties": false,
   "required": [

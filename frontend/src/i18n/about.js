@@ -12,7 +12,7 @@ const D = {
   'Full-Stack + Cloud (AWS)': ['फ़ुल-स्टैक + क्लाउड (AWS)', 'फुल-स्टॅक + क्लाउड (AWS)'],
   'Backend + Messaging': ['बैकएंड + मैसेजिंग', 'बॅकएंड + मेसेजिंग'],
   'Built the React frontend and the Node.js backend, set up the Supabase database, and deployed the project on AWS.': ['React फ़्रंटएंड और Node.js बैकएंड बनाया, Supabase डेटाबेस सेट किया और प्रोजेक्ट को AWS पर डिप्लॉय किया।', 'React फ्रंटएंड आणि Node.js बॅकएंड तयार केले, Supabase डेटाबेस सेट केला आणि प्रोजेक्ट AWS वर डिप्लॉय केला.'],
-  'Built the Twilio WhatsApp integration and the scheme data and verification tools, and helped with the backend and frontend.': ['Twilio WhatsApp इंटीग्रेशन और योजना डेटा व सत्यापन टूल बनाए, तथा बैकएंड और फ़्रंटएंड में मदद की।', 'Twilio WhatsApp इंटिग्रेशन आणि योजना डेटा व पडताळणी साधने तयार केली, तसेच बॅकएंड आणि फ्रंटएंडमध्ये मदत केली.'],
+  'Built the Twilio WhatsApp integration and the scheme data pipeline, and helped with the backend and frontend.': ['Twilio WhatsApp इंटीग्रेशन और योजना डेटा पाइपलाइन बनाई, तथा बैकएंड और फ़्रंटएंड में मदद की।', 'Twilio WhatsApp इंटिग्रेशन आणि योजना डेटा पाइपलाइन तयार केली, तसेच बॅकएंड आणि फ्रंटएंडमध्ये मदत केली.'],
   'Data pipeline': ['डेटा पाइपलाइन', 'डेटा पाइपलाइन'],
   Deployment: ['डिप्लॉयमेंट', 'डिप्लॉयमेंट'],
   WhatsApp: ['WhatsApp', 'WhatsApp'],

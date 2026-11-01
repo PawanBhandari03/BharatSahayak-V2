@@ -1,5 +1,4 @@
 // WhatsApp conversation simulation with real scheme data
-// All benefit amounts and schemes verified from official portals
 
 const INITIAL_MESSAGES = [
   {

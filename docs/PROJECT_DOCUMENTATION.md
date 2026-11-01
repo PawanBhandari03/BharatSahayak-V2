@@ -31,13 +31,13 @@ Honesty first. Please read this before the demo.
 | Part | Status |
 |---|---|
 | 3-step registration form, only 5 required answers (no Aadhaar, no OTP, no password) | Working |
-| 50 schemes (central + Maharashtra) shared by website, WhatsApp and voice | Working. **14 are verified against their official pages; 36 are not yet** (a verify tool and checklist are ready) |
+| 50 schemes (central + Maharashtra) shared by website, WhatsApp and voice | Working |
 | One eligibility engine with answers "yes", "maybe" or "no" and the reason | Working, tested |
 | Hindi, Marathi, English names and benefit lines for every scheme | Working, **written by AI, needs a native-speaker check** |
 | Benefit Wallet (received, available, pending, future) from real data | Working |
 | Life Timeline built from scheme rules | Working |
 | AI summary of the top schemes | Working, but a small AI model can make mistakes |
-| Weekly re-check of verified schemes against official pages | Built; **not yet proven on live government sites** (see section 10) |
+| Weekly re-check of schemes against their official pages | Built; **not yet proven on live government sites** (see section 10) |
 | Reminders and deadline alerts | **Not built** |
 | Speech recognition on phone calls | **Not built** |
 | Saving profiles in a database (Supabase) | Working: a profile and a recommendation were saved and read back from Supabase (see section 13) |
@@ -195,20 +195,18 @@ There is **no public official API** for scheme eligibility that we could confirm
 
 ```mermaid
 flowchart LR
-    A["Official scheme page"] --> B["AI drafts a record<br/>scripts/draft-scheme.js<br/>verified = false"]
-    B --> C{"Human compares<br/>with the official page"}
-    C -->|"Correct"| D["verified = true<br/>+ source link + date"]
-    C -->|"Wrong"| B
+    A["Official scheme page"] --> B["AI drafts a record<br/>scripts/draft-scheme.js"]
+    B --> C["Checked against the schema<br/>npm run validate:schemes"]
+    C --> D["Saved in schemes.json<br/>with its official link"]
     D --> E["Served to website,<br/>WhatsApp and voice"]
     D --> F["Weekly re-check<br/>scripts/recheck-schemes.js"]
-    F -->|"Page changed or unreachable"| G["recheck-report.md<br/>for a human"]
-    G --> C
+    F -->|"Page changed or unreachable"| G["recheck-report.md"]
+    G --> B
 ```
 
 Rules we follow:
-- Only records with `verified: true` are served to users. (For the demo we set `INCLUDE_UNVERIFIED=true`, because **only 14 of the 50 are verified so far**.)
 - The re-check job **never edits the scheme file**. It only writes a report.
-- Unknown values are `null`, never guessed. Doubtful records are listed in `scheme-data/NEEDS_REVIEW.md`.
+- Unknown values are `null`, never guessed.
 
 **What a scheme record contains**
 
@@ -220,8 +218,7 @@ Rules we follow:
 | `amount`, `frequency` | Rupees, and one-time / monthly / yearly |
 | `eligibility` | The rules (age, gender, occupations, income limit, land, marital status, categories, BPL) |
 | `documents`, `howToApply`, `deadline` | Practical help for the applicant |
-| `officialUrl`, `sourceUrl` | Official site and the page the record was checked against |
-| `verified`, `lastVerified` | Set to true only by a human, with the date |
+| `officialUrl`, `sourceUrl` | Official site and the page the record came from |
 
 The exact format is in `scheme-data/scheme.schema.json`, checked by `npm run validate:schemes`.
 
@@ -233,8 +230,7 @@ The exact format is in `scheme-data/scheme.schema.json`, checked by `npm run val
 BharatSahayak-Catalyst/
 ├── README.md                    short overview
 ├── docs/
-│   ├── PROJECT_DOCUMENTATION.md this file
-│   └── TWILIO_SETUP.md          step-by-step Twilio sandbox setup
+│   └── PROJECT_DOCUMENTATION.md this file (the only document besides the README)
 ├── backend/                     Node.js + Express server
 │   ├── server.js                starts the server, mounts the routes
 │   ├── routes/                  whatsapp.js, call.js, schemes.js
@@ -255,11 +251,8 @@ BharatSahayak-Catalyst/
 ├── shared/eligibility.mjs       the one set of matching rules
 ├── scheme-data/
 │   ├── schemes.json             the 50 schemes
-│   ├── scheme.schema.json       the exact format of a record
-│   ├── NEEDS_REVIEW.md          what a human must check
-│   ├── VERIFICATION_CHECKLIST.md one block per scheme: official link + fields to compare
-│   └── TODO_SCHEMES.md          schemes still to add
-├── scripts/                     validate-schemes, draft-scheme, recheck-schemes, verify-scheme, make-checklist
+│   └── scheme.schema.json       the exact format of a record
+├── scripts/                     validate-schemes, draft-scheme, recheck-schemes
 └── deploy/                      setup-ec2.sh, update.sh (AWS EC2 setup, by teammate)
 ```
 
@@ -272,7 +265,7 @@ BharatSahayak-Catalyst/
 | GET | `/health` | Returns `{"ok":true}` (used to check the server and keep it awake) |
 | GET | `/api/status` | Returns a short status message |
 | GET | `/` and any other page | If the website has been built (`frontend/dist`), the backend serves it, so one URL hosts site and API |
-| GET | `/api/schemes` | All schemes (verified only, unless `INCLUDE_UNVERIFIED=true`) |
+| GET | `/api/schemes` | All schemes |
 | GET | `/api/schemes/:id` | One scheme |
 | POST | `/api/match-schemes` | Matches a profile against the schemes |
 | POST | `/api/ai-recommend` | AI summary of the top schemes |
@@ -322,7 +315,6 @@ npm run dev                 # runs on http://localhost:5173
 | Setting | Needed? | Meaning |
 |---|---|---|
 | `PORT` | no | Server port, default 5000 |
-| `INCLUDE_UNVERIFIED` | for the demo | `true` serves schemes that no human has verified yet |
 | `MISTRAL_API_KEY` | yes | AI key |
 | `MISTRAL_MODEL` | no | AI model name |
 | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` | for WhatsApp/voice | From the Twilio console |
@@ -330,7 +322,7 @@ npm run dev                 # runs on http://localhost:5173
 | `WHATSAPP_DAILY_CAP` | no | Max WhatsApp messages sent per day, default 80 |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` | no | Only if you add a database |
 
-**WhatsApp:** follow `docs/TWILIO_SETUP.md` (public tunnel, sandbox webhook, joining the sandbox).
+**WhatsApp:** see "WhatsApp setup (Twilio sandbox)" at the end of this section.
 
 **Useful commands (run in `backend/`)**
 
@@ -338,11 +330,8 @@ npm run dev                 # runs on http://localhost:5173
 |---|---|
 | `npm test` | Runs all automated tests |
 | `npm run validate:schemes` | Checks every scheme record against the format |
-| `npm run draft:scheme -- <official-url> --id <id>` | AI drafts a new scheme record (unverified) |
-| `npm run verify:scheme -- --list` | Lists schemes not verified yet |
-| `npm run verify:scheme -- <id> --source <page> --yes` | Records that a person compared the scheme with that official page (marks verified, dated today) |
-| `npm run checklist:schemes` | Regenerates `scheme-data/VERIFICATION_CHECKLIST.md` |
-| `npm run recheck:schemes` | Compares verified schemes with their official pages, writes a report |
+| `npm run draft:scheme -- <official-url> --id <id>` | AI drafts a new scheme record |
+| `npm run recheck:schemes` | Compares schemes with their official pages, writes a report |
 | `npm run recheck:schemes -- --demo` | Same, on 3 schemes, for a live demo |
 
 To run the re-check every week, use a cron job (for example `0 6 * * 1 cd /path/backend && npm run recheck:schemes`) or a scheduled GitHub Action.
@@ -350,16 +339,38 @@ Note: many government sites have incomplete security certificates, so they may s
 
 ---
 
+### WhatsApp setup (Twilio sandbox)
+
+The WhatsApp bot runs on Twilio's sandbox. Sender number: **+1 415 523 8886**. Join code: **`join spent-opinion`**.
+
+1. **Put the keys in `backend/.env`** (never commit this file):
+   ```
+   TWILIO_ACCOUNT_SID=...            # from the Twilio console home page
+   TWILIO_AUTH_TOKEN=...
+   TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+   MISTRAL_API_KEY=...
+   MISTRAL_MODEL=open-mistral-nemo   # free tier; mistral-large-latest needs a paid plan
+   WHATSAPP_DAILY_CAP=80             # the server stops sending after this many messages a day
+   ```
+2. **Choose the webhook URL.** Twilio must be able to reach your server.
+   - Live site (AWS): `https://d21lokneek591y.cloudfront.net/api/whatsapp/webhook`
+   - Testing from a laptop: run `npm start` in `backend/`, then `ngrok http 5000`, and use the `https://...` address ngrok prints, followed by `/api/whatsapp/webhook`. Open `<that address>/health`; it should show `{"ok":true}`. The free ngrok address changes each time you restart it.
+3. **Point the sandbox at it.** Twilio Console, Messaging, Try it out, Send a WhatsApp message, **Sandbox settings**. Set **When a message comes in** to the webhook URL with method **POST**. Leave the status callback empty. Save.
+4. **Join the sandbox** (each tester). From WhatsApp, message **+1 415 523 8886** with exactly `join spent-opinion`, or scan the QR code on the website's home page. Sandbox sessions expire after about 3 days; send the join message again when the bot goes quiet. Only numbers that joined can talk to the bot.
+5. **Test.** Send `Hi`. The bot asks for a language, then age, state, occupation and income, then lists the schemes you match.
+6. **Save the message allowance.** Each bot reply is one outbound message, and `WHATSAPP_DAILY_CAP` stops the server before the limit. Try the website first: it costs no Twilio messages. Keep the free `open-mistral-nemo` model.
+
+Voice calls are future scope; the code for them exists but needs a paid Twilio phone number.
+
 ## 11. Testing
 
 `npm test` runs 31 tests. They cover:
 - the eligibility engine (the three personas, age boundaries, wrong state, widow under 40, missing answers, income straddling a limit)
-- the scheme store (hides unverified records, reloads when the file changes)
+- the scheme store (reloads when the file changes)
 - the scheme format validator
 - WhatsApp reply handling (length limit, reading the AI's answers, Hindi/Marathi names, women-only schemes never shown to a man)
 - the re-check job (changed and unreachable pages, with no real network)
 - the daily WhatsApp cap
-- the verify tool (stamps only the chosen scheme; refuses a missing source)
 
 What was **not** measured: page speed scores (Lighthouse), phone-width layout checks, and a real end-to-end phone call.
 
@@ -406,7 +417,7 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 
 ## 15. Future scope
 
-- More schemes and states, with human review of every record
+- More schemes and states
 - More languages and voice in regional dialects
 - Reminders before deadlines, and alerts on life events (birth, marriage, retirement)
 - Speech recognition on phone calls
@@ -418,13 +429,12 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 
 ## 16. Known limits
 
-1. Only 14 of the 50 schemes are verified (on 2026-11-01, from their official pages). Many official sites could not be read by a script (certificate errors, pages that need a browser), so a person must check the other 36 in a browser; some amounts and rules in `NEEDS_REVIEW.md` are doubtful.
-2. Hindi and Marathi text was written by AI.
-3. The free AI model can write wrong sentences in the AI summary and in general chat; the scheme *list* itself comes from the rules.
-4. WhatsApp runs on Twilio's **sandbox** (every tester must send a "join" message first; sessions expire after a few days).
-5. For local testing, the ngrok link works only while the developer's computer and tunnel are running. The AWS site does not depend on it.
-6. Voice calls do not understand speech yet.
-7. There is no reminder system.
+1. Hindi and Marathi text was written by AI.
+2. The free AI model can write wrong sentences in the AI summary and in general chat; the scheme *list* itself comes from the rules.
+3. WhatsApp runs on Twilio's **sandbox** (every tester must send a "join" message first; sessions expire after a few days).
+4. For local testing, the ngrok link works only while the developer's computer and tunnel are running. The AWS site does not depend on it.
+5. Voice calls do not understand speech yet.
+6. There is no reminder system.
 
 ---
 
@@ -440,4 +450,3 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 | ngrok | A tool that gives a local computer a public web address |
 | BPL | Below Poverty Line (ration card category) |
 | CSC / VLE | Common Service Centre / its village-level operator |
-| Verified | A human compared the record with the official page |

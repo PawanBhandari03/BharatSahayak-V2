@@ -18,7 +18,7 @@ const STATS = [
     value: 14,
     suffix: "",
     label: 'Schemes',
-    sublabel: 'In this prototype, growing with each verified record',
+    sublabel: 'In this prototype, growing with every update',
     color: '#1B1740',
     icon: '📋',
   },

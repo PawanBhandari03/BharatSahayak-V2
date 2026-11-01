@@ -36,7 +36,7 @@ const TEAM = [
     color: '#138808',
     bg: 'from-teal-900 to-teal-700',
     skills: [['React', 'Frontend'], ['Node.js', 'Backend'], ['Twilio', 'WhatsApp'], ['Mistral AI', 'Data pipeline']],
-    contribution: 'Built the Twilio WhatsApp integration and the scheme data and verification tools, and helped with the backend and frontend.',
+    contribution: 'Built the Twilio WhatsApp integration and the scheme data pipeline, and helped with the backend and frontend.',
     github: 'https://github.com/RAHUL0408-B',
     linkedin: 'https://www.linkedin.com/in/rahul-bramhankar-a424a328b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
     twitter: '#',

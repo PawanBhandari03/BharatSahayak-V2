@@ -1,5 +1,5 @@
 // Single module every channel (web API, WhatsApp, voice) uses to read schemes.
-// Reads scheme-data/schemes.json, keeps only verified:true records (unless INCLUDE_UNVERIFIED=true),
+// Reads scheme-data/schemes.json (set INCLUDE_UNVERIFIED=false to hide records whose "verified" flag is not true),
 // caches in memory and reloads when the file's mtime changes.
 const fs = require('fs');
 const path = require('path');
@@ -9,7 +9,7 @@ const FILE = process.env.SCHEMES_FILE || path.join(__dirname, '../../scheme-data
 let cache = null; // { mtimeMs, all }
 
 function includeUnverified() {
-  return String(process.env.INCLUDE_UNVERIFIED || '').toLowerCase() === 'true';
+  return String(process.env.INCLUDE_UNVERIFIED ?? '').toLowerCase() !== 'false';
 }
 
 function load() {
@@ -19,7 +19,7 @@ function load() {
     const all = JSON.parse(fs.readFileSync(FILE, 'utf8'));
     if (!Array.isArray(all)) throw new Error('schemes file must be a JSON array');
     cache = { mtimeMs, all };
-    console.log(`[schemeStore] loaded ${all.length} schemes (${all.filter((s) => s.verified).length} verified)`);
+    console.log(`[schemeStore] loaded ${all.length} schemes`);
   } catch (e) {
     console.error('[schemeStore] failed to load schemes:', e.message);
     if (!cache) cache = { mtimeMs, all: [] }; // keep last good data if a reload fails

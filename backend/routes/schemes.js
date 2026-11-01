@@ -3,7 +3,7 @@ const router = express.Router();
 const schemeStore = require('../services/schemeStore');
 const { matchSchemes, aiRecommend } = require('../controllers/schemeController');
 
-// Full scheme list (verified records only) — the single copy of the data for all channels.
+// Full scheme list — the single copy of the data for all channels.
 router.get('/schemes', (req, res) => {
   const schemes = schemeStore.getAll();
   res.json({ count: schemes.length, schemes });

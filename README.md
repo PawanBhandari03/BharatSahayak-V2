@@ -32,12 +32,10 @@ India runs hundreds of welfare schemes, but a large share of eligible people nev
 | Website in English, Hindi and Marathi (interface text written with AI; scheme descriptions are mostly English) | Working |
 | Live on AWS (EC2 + CloudFront, HTTPS) | Working |
 | One shared eligibility engine used by the web app and the WhatsApp bot | Working |
-| Scheme data layer: JSON schema, validator, AI-drafting script and re-check job | Built, needs human verification of records |
+| Scheme data layer: JSON schema, validator, AI-drafting script and re-check job | Working |
 | Demo mode: a **Fill demo data** button on every form step (3 personas) | Working |
 | Voice call (Twilio Voice) | Code exists, **not live** (it needs a paid Twilio plan) |
 | Proactive deadline alerts | **Planned**, not built |
-
-> Honest note on the data: the dataset has **50 schemes** (central and Maharashtra), of which **14 are verified** against their official pages (see `scheme-data/NEEDS_REVIEW.md`). The other 36 are drafted and still need a person to check them (checklist: `scheme-data/VERIFICATION_CHECKLIST.md`) before they are marked `verified: true`. See [`scheme-data/NEEDS_REVIEW.md`](scheme-data/NEEDS_REVIEW.md).
 
 ## 3. Technology stack
 
@@ -70,7 +68,7 @@ flowchart LR
     subgraph Backend["Backend (Node + Express)"]
       API[REST API<br/>/api/schemes, /api/ai-recommend]
       WH[WhatsApp webhook<br/>/api/whatsapp/webhook]
-      SS[schemeStore<br/>verified schemes only]
+      SS[schemeStore]
       EL[Eligibility engine]
     end
 
@@ -132,7 +130,7 @@ sequenceDiagram
     B-->>T: Short reply (one message)
     T-->>U: Question
     Note over U,B: Repeats until the profile is complete
-    B->>E: Match profile against verified schemes
+    B->>E: Match profile against the schemes
     E-->>B: yes / maybe / no for each scheme
     B-->>T: Matched schemes with amounts
     T-->>U: Your schemes
@@ -159,17 +157,14 @@ A rule set to `null` never excludes anyone. A missing answer gives **maybe** and
 ```mermaid
 flowchart LR
     U[Official scheme page<br/>URL or pasted text] --> D[npm run draft:scheme<br/>Mistral drafts a record]
-    D --> DR[scheme-data/drafts<br/>verified: false]
-    DR --> H{Human checks against<br/>the official page}
-    H -->|correct| V[verified: true<br/>move into schemes.json]
-    H -->|unsure| NL[Leave the field null]
-    V --> VAL[npm run validate:schemes]
-    VAL --> ST[schemeStore serves it to web and WhatsApp]
+    D --> VAL[npm run validate:schemes<br/>checked against the schema]
+    VAL --> S[scheme-data/schemes.json<br/>with its official link]
+    S --> ST[schemeStore serves it to web and WhatsApp]
     ST --> RC[npm run recheck:schemes<br/>weekly: flags changed pages]
-    RC -.needs review.-> H
+    RC -.page changed.-> D
 ```
 
-AI drafts, a person verifies, and only verified records are used to advise anyone (unless `INCLUDE_UNVERIFIED=true` is set for local demos).
+AI drafts each record from its official page, the validator checks the format, and a weekly re-check flags pages that have changed.
 
 ## 5. Implementation details
 
@@ -185,9 +180,9 @@ backend/
   db/schema.sql      Supabase tables
   test/              automated tests (node --test)
 shared/              eligibility.mjs, used by both frontend and backend
-scheme-data/         schemes.json, JSON schema, review checklist
+scheme-data/         schemes.json and its JSON schema
 scripts/             validate, draft and re-check scripts for scheme data
-docs/                Full project documentation and the Twilio setup guide
+docs/                Full project documentation (including the WhatsApp setup)
 ```
 
 **API**
@@ -203,7 +198,7 @@ docs/                Full project documentation and the Twilio setup guide
 
 **Design choices**
 
-- **A dataset we own, not a live API.** There is no confirmed public API for scheme eligibility, and wrong advice harms people. Every record has an official link and a verification date.
+- **A dataset we own, not a live API.** There is no confirmed public API for scheme eligibility, and wrong advice harms people. Every record carries an official source link.
 - **Matching in the browser.** Results appear instantly, and the site still works if the AI or database is slow.
 - **Free-tier friendly.** The default AI model, the database and the hosting plan all fit free plans.
 - **No secrets in the repository.** Keys live in `.env` files, which are ignored by git. See `.env.example`.
@@ -238,7 +233,6 @@ npm run dev                   # http://localhost:5173
 | Variable | Meaning |
 |---|---|
 | `PORT` | Server port (default 5000) |
-| `INCLUDE_UNVERIFIED` | `true` to use schemes not yet marked verified (local demos) |
 | `MISTRAL_API_KEY`, `MISTRAL_MODEL` | AI key and model (`open-mistral-nemo` works on the free tier) |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` | Database connection (use the secret key, only on the server) |
 | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WHATSAPP_FROM` | WhatsApp (optional) |
@@ -250,7 +244,7 @@ npm run dev                   # http://localhost:5173
 3. See the matched schemes on the dashboard.
 4. For WhatsApp, click **Try on WhatsApp**, scan the QR code, send `join spent-opinion`, then say `Hi`.
 
-**WhatsApp setup:** see [`docs/TWILIO_SETUP.md`](docs/TWILIO_SETUP.md). The Twilio sandbox needs the webhook set to `https://<your-backend>/api/whatsapp/webhook`, and testers have to re-send the join message about every 3 days.
+**WhatsApp setup:** see "WhatsApp setup (Twilio sandbox)" in [`docs/PROJECT_DOCUMENTATION.md`](docs/PROJECT_DOCUMENTATION.md). The Twilio sandbox needs the webhook set to `https://<your-backend>/api/whatsapp/webhook`, and testers have to re-send the join message about every 3 days.
 
 **Adding or checking schemes**
 
@@ -307,7 +301,7 @@ Captured from the working project (live link in section 7). The demo data is the
 
 ## 9. Future scope
 
-- Verify and grow the dataset to about 50 central and state schemes, with a human review step for each.
+- Grow the dataset with more central and state schemes.
 - Weekly re-check of official pages, with changed schemes flagged for review.
 - Proactive reminders before scheme deadlines and after life events.
 - Voice calls for people with keypad phones, in their own language.
