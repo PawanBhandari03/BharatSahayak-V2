@@ -190,12 +190,12 @@
     "category": "energy",
     "level": "central",
     "state": "all",
-    "amount": 1200,
-    "frequency": "yearly",
+    "amount": null,
+    "frequency": null,
     "benefitSummary": {
-      "en": "Free LPG + ₹300/cylinder subsidy (4/year)",
-      "hi": "मुफ्त एलपीजी कनेक्शन + ₹300 प्रति सिलेंडर सब्सिडी (वर्ष में 4)",
-      "mr": "मोफत एलपीजी जोडणी + ₹300 प्रति सिलेंडर अनुदान (वर्षाला 4)"
+      "en": "Free LPG connection (no security deposit), with the first refill and a stove free, for women from poor households",
+      "hi": "गरीब परिवारों की महिलाओं को मुफ्त एलपीजी कनेक्शन (सुरक्षा जमा नहीं), पहला रिफिल और चूल्हा मुफ्त",
+      "mr": "गरीब कुटुंबांतील महिलांना मोफत एलपीजी जोडणी (सुरक्षा अनामत नाही), पहिले रिफिल व शेगडी मोफत"
     },
     "eligibility": {
       "minAge": 18,
@@ -204,7 +204,7 @@
       "occupations": [
         "any"
       ],
-      "maxAnnualIncome": 200000,
+      "maxAnnualIncome": null,
       "requiresLand": null,
       "maritalStatus": "any",
       "categories": [
@@ -213,17 +213,19 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar Card",
-      "Ration Card",
-      "Aadhaar-linked Bank Passbook",
-      "14-point Deprivation Declaration form"
+      "KYC application form",
+      "Aadhaar of the applicant",
+      "Ration card or other state document showing family members",
+      "Aadhaar of the adult family members listed",
+      "Bank account details (passbook copy or cancelled cheque)",
+      "Deprivation declaration (prescribed format)"
     ],
     "deadline": null,
-    "howToApply": "Visit nearest LPG distributor (HP/BP/Indane) with documents OR apply online at pmuy.gov.in.",
-    "officialUrl": "https://pmuy.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "howToApply": "Apply online through the PMUY portal (Indian Oil, Bharat Gas or HP Gas links) or at the nearest LPG distributor; a Common Service Centre can help for a ₹20 charge",
+    "officialUrl": "https://www.pmuy.gov.in",
+    "sourceUrl": "https://www.pmuy.gov.in/ujjwala2.html",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "pmay-g",
@@ -604,9 +606,9 @@
     "amount": 5000,
     "frequency": "monthly",
     "benefitSummary": {
-      "en": "₹1K–₹5K/month guaranteed pension",
-      "hi": "₹1,000–₹5,000 प्रति माह की निश्चित पेंशन",
-      "mr": "दरमहा ₹1,000–₹5,000 निश्चित निवृत्तीवेतन"
+      "en": "₹1,000–₹5,000/month guaranteed pension after age 60 (not open to income-tax payers)",
+      "hi": "60 वर्ष के बाद ₹1,000–₹5,000 प्रति माह की निश्चित पेंशन (आयकर दाताओं के लिए नहीं)",
+      "mr": "60 वर्षांनंतर दरमहा ₹1,000–₹5,000 निश्चित निवृत्तीवेतन (आयकर भरणाऱ्यांसाठी नाही)"
     },
     "eligibility": {
       "minAge": 18,
@@ -615,7 +617,7 @@
       "occupations": [
         "any"
       ],
-      "maxAnnualIncome": 500000,
+      "maxAnnualIncome": null,
       "requiresLand": null,
       "maritalStatus": "any",
       "categories": [
@@ -624,16 +626,14 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar Card",
-      "Active Mobile number",
-      "Savings Bank account with auto-debit consent"
+      "Savings bank account in a bank or the Department of Posts"
     ],
     "deadline": null,
-    "howToApply": "Visit your bank / post office branch or apply via net banking → Fill APY form → Choose pension amount → Start monthly auto-debit.",
-    "officialUrl": "https://npscra.nsdl.co.in/scheme-apy.php",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "howToApply": "Join through the bank or Post Office where you hold a savings account",
+    "officialUrl": "https://www.pfrda.org.in/schemes/atal-pension-yojana-apy",
+    "sourceUrl": "https://www.pfrda.org.in/schemes/atal-pension-yojana-apy",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "sukanya-samriddhi",
@@ -733,15 +733,15 @@
     "category": "entrepreneurship",
     "level": "central",
     "state": "all",
-    "amount": 10000,
+    "amount": 15000,
     "frequency": "one-time",
     "benefitSummary": {
-      "en": "Collateral-free working-capital loan of ₹10,000 for street vendors",
-      "hi": "रेहड़ी-पटरी वालों के लिए ₹10,000 का बिना गारंटी कार्यशील पूंजी ऋण",
-      "mr": "पथविक्रेत्यांसाठी ₹10,000 चे तारणाशिवाय खेळते भांडवल कर्ज"
+      "en": "Working-capital loans for street vendors in three stages: ₹15,000, then ₹25,000, then ₹50,000",
+      "hi": "रेहड़ी-पटरी वालों के लिए तीन चरणों में कार्यशील पूंजी ऋण: ₹15,000, फिर ₹25,000, फिर ₹50,000",
+      "mr": "पथविक्रेत्यांसाठी तीन टप्प्यांत खेळते भांडवल कर्ज: ₹15,000, नंतर ₹25,000, नंतर ₹50,000"
     },
     "eligibility": {
-      "minAge": 18,
+      "minAge": null,
       "maxAge": null,
       "gender": "any",
       "occupations": [
@@ -756,16 +756,16 @@
       "requiresBPL": null
     },
     "documents": [
-      "Certificate of Vending or letter of recommendation",
-      "Aadhaar",
-      "Bank account"
+      "Mobile number linked to Aadhaar",
+      "Certificate of Vending / ID card or Letter of Recommendation (as applicable)",
+      "Survey Reference Number (for surveyed vendors)"
     ],
     "deadline": null,
-    "howToApply": "Apply on the PM SVANidhi portal or at a bank / CSC",
+    "howToApply": "Follow the 3 steps on the portal's Pre-Application page, then apply yourself or through a Common Service Centre",
     "officialUrl": "https://pmsvanidhi.mohua.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://pmsvanidhi.mohua.gov.in/Home/PreApplication",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "pm-vishwakarma",
@@ -780,9 +780,9 @@
     "amount": 15000,
     "frequency": "one-time",
     "benefitSummary": {
-      "en": "Toolkit support, skill training and loans for traditional artisans",
-      "hi": "पारंपरिक कारीगरों के लिए औज़ार सहायता, प्रशिक्षण और ऋण",
-      "mr": "पारंपरिक कारागिरांसाठी अवजारे मदत, प्रशिक्षण आणि कर्ज"
+      "en": "₹15,000 toolkit grant, ₹500 a day training stipend, and loans of ₹1 lakh then ₹2 lakh at 5% interest for traditional artisans",
+      "hi": "पारंपरिक कारीगरों के लिए ₹15,000 औज़ार अनुदान, प्रशिक्षण के दौरान ₹500 प्रतिदिन भत्ता और 5% ब्याज पर ₹1 लाख, फिर ₹2 लाख का ऋण",
+      "mr": "पारंपरिक कारागिरांसाठी ₹15,000 अवजारे अनुदान, प्रशिक्षणादरम्यान दररोज ₹500 भत्ता आणि 5% व्याजाने ₹1 लाख, नंतर ₹2 लाख कर्ज"
     },
     "eligibility": {
       "minAge": 18,
@@ -801,15 +801,16 @@
     },
     "documents": [
       "Aadhaar",
-      "Mobile number linked to Aadhaar",
-      "Bank account"
+      "Mobile number",
+      "Bank details",
+      "Ration card (or Aadhaar of all family members)"
     ],
     "deadline": null,
-    "howToApply": "Register at a Common Service Centre",
+    "howToApply": "Register on pmvishwakarma.gov.in or at a Common Service Centre, MSME-DFO or District Industry Centre",
     "officialUrl": "https://pmvishwakarma.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://pmvishwakarma.gov.in/Home/FAQ",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "pmjdy",
@@ -824,12 +825,12 @@
     "amount": null,
     "frequency": null,
     "benefitSummary": {
-      "en": "Zero-balance bank account with RuPay card and accident insurance",
-      "hi": "रुपे कार्ड और दुर्घटना बीमा के साथ ज़ीरो-बैलेंस बैंक खाता",
-      "mr": "रुपे कार्ड व अपघात विम्यासह शून्य शिल्लक बँक खाते"
+      "en": "Bank account with no minimum balance, RuPay debit card and accident insurance (₹2 lakh for accounts opened after 28 Aug 2018)",
+      "hi": "न्यूनतम शेष राशि की शर्त के बिना बैंक खाता, रुपे डेबिट कार्ड और दुर्घटना बीमा (28 अगस्त 2018 के बाद खुले खातों के लिए ₹2 लाख)",
+      "mr": "किमान शिल्लकेची अट नसलेले बँक खाते, रुपे डेबिट कार्ड आणि अपघात विमा (28 ऑगस्ट 2018 नंतर उघडलेल्या खात्यांसाठी ₹2 लाख)"
     },
     "eligibility": {
-      "minAge": 10,
+      "minAge": null,
       "maxAge": null,
       "gender": "any",
       "occupations": [
@@ -844,15 +845,14 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar or other ID",
-      "Passport-size photo"
+      "Account opening form (from the bank or pmjdy.gov.in)"
     ],
     "deadline": null,
-    "howToApply": "Open an account at any bank branch or via a bank correspondent",
+    "howToApply": "Open a basic savings account at any bank branch or Business Correspondent (Bank Mitra) outlet. You must not already have another account",
     "officialUrl": "https://pmjdy.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://pmjdy.gov.in/scheme",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "ignoaps",
@@ -1093,9 +1093,9 @@
     "amount": null,
     "frequency": null,
     "benefitSummary": {
-      "en": "Up to 100 days of paid unskilled work a year for rural households",
-      "hi": "ग्रामीण परिवारों को साल में 100 दिन तक वेतन सहित अकुशल काम",
-      "mr": "ग्रामीण कुटुंबांना वर्षातून 100 दिवसांपर्यंत मजुरीसह अकुशल काम"
+      "en": "100 days of guaranteed wage work a year for rural households whose adult members volunteer for unskilled manual work",
+      "hi": "ग्रामीण परिवारों को साल में 100 दिन के गारंटीशुदा मजदूरी वाले काम का अधिकार, जिनके वयस्क सदस्य अकुशल शारीरिक श्रम करने को तैयार हों",
+      "mr": "ज्यांचे प्रौढ सदस्य अकुशल शारीरिक काम करण्यास तयार आहेत अशा ग्रामीण कुटुंबांना वर्षातून 100 दिवसांच्या हमी मजुरीच्या कामाचा हक्क"
     },
     "eligibility": {
       "minAge": 18,
@@ -1112,17 +1112,13 @@
       ],
       "requiresBPL": null
     },
-    "documents": [
-      "Job card application",
-      "Aadhaar",
-      "Bank account"
-    ],
+    "documents": [],
     "deadline": null,
-    "howToApply": "Apply to the Gram Panchayat for a job card",
-    "officialUrl": "https://nrega.nic.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "howToApply": null,
+    "officialUrl": "https://nrega.dord.gov.in",
+    "sourceUrl": "https://nrega.dord.gov.in/",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "post-matric-sc",
@@ -1585,9 +1581,9 @@
     "amount": null,
     "frequency": "monthly",
     "benefitSummary": {
-      "en": "Subsidised or free foodgrain every month through the ration shop for eligible households",
-      "hi": "पात्र परिवारों को राशन दुकान से हर महीने सस्ता या मुफ्त अनाज",
-      "mr": "पात्र कुटुंबांना रेशन दुकानातून दरमहा स्वस्त किंवा मोफत धान्य"
+      "en": "Highly subsidised foodgrain through the ration shop: 5 kg per person a month for priority households, 35 kg a family a month for Antyodaya households",
+      "hi": "राशन दुकान से अत्यधिक सब्सिडी वाला अनाज: प्राथमिकता वाले परिवारों को 5 किलो प्रति व्यक्ति प्रति माह, अंत्योदय परिवारों को 35 किलो प्रति परिवार प्रति माह",
+      "mr": "रेशन दुकानातून अत्यंत अनुदानित धान्य: प्राधान्य कुटुंबांना दरमहा प्रति व्यक्ती 5 किलो, अंत्योदय कुटुंबांना दरमहा प्रति कुटुंब 35 किलो"
     },
     "eligibility": {
       "minAge": null,
@@ -1604,13 +1600,9 @@
       ],
       "requiresBPL": null
     },
-    "documents": [
-      "Aadhaar of all family members",
-      "Address proof",
-      "Income proof"
-    ],
+    "documents": [],
     "deadline": null,
-    "howToApply": "Apply for a ration card at your state food and civil supplies office or portal",
+    "howToApply": "Ration card details are on your state food portal (links on nfsa.gov.in)",
     "officialUrl": "https://nfsa.gov.in",
     "sourceUrl": null,
     "verified": false,
@@ -2167,19 +2159,19 @@
       "hi": "ई-श्रम पंजीकरण (असंगठित श्रमिक)",
       "mr": "ई-श्रम नोंदणी (असंघटित कामगार)"
     },
-    "category": "insurance",
+    "category": "social-welfare",
     "level": "central",
     "state": "all",
     "amount": null,
     "frequency": null,
     "benefitSummary": {
-      "en": "Free registration card for unorganised workers, with accident insurance cover",
-      "hi": "असंगठित श्रमिकों के लिए निःशुल्क पंजीकरण कार्ड और दुर्घटना बीमा कवर",
-      "mr": "असंघटित कामगारांसाठी मोफत नोंदणी कार्ड व अपघात विमा संरक्षण"
+      "en": "Free registration and a unique worker ID (UAN) for unorganised workers, to access social security schemes",
+      "hi": "असंगठित श्रमिकों के लिए निःशुल्क पंजीकरण और विशिष्ट श्रमिक पहचान संख्या (यूएएन), जिससे सामाजिक सुरक्षा योजनाओं का लाभ मिल सके",
+      "mr": "असंघटित कामगारांसाठी मोफत नोंदणी आणि विशिष्ट कामगार ओळख क्रमांक (यूएएन), ज्यामुळे सामाजिक सुरक्षा योजनांचा लाभ मिळू शकतो"
     },
     "eligibility": {
       "minAge": 16,
-      "maxAge": 59,
+      "maxAge": null,
       "gender": "any",
       "occupations": [
         "Daily Wage Worker",
@@ -2188,7 +2180,8 @@
         "Street Vendor / Small Trader",
         "Agricultural Labourer",
         "Artisan / Craftsperson",
-        "Fisherman"
+        "Fisherman",
+        "Self-Employed (Small Business)"
       ],
       "maxAnnualIncome": null,
       "requiresLand": null,
@@ -2199,16 +2192,15 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar",
-      "Mobile number linked to Aadhaar",
-      "Bank account"
+      "Aadhaar number",
+      "Mobile number linked to Aadhaar (or visit a Common Service Centre for biometric registration)"
     ],
     "deadline": null,
-    "howToApply": "Register on the e-Shram portal or at a Common Service Centre",
+    "howToApply": "Register for free on the eShram portal or at the nearest Common Service Centre",
     "officialUrl": "https://eshram.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://eshram.gov.in/faqs",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "vayoshri",

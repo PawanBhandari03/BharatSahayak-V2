@@ -74,3 +74,24 @@ Written from general knowledge, not from official pages (the official scheme por
 | adip | Income limit 360000 (₹30,000/month) and disability percentage rule to confirm. |
 | e-shram | Excludes EPFO/ESIC members and income-tax payers (not modelled). Insurance cover is under PMSBY. |
 | vayoshri | ₹3,000 one-time, age 65+, income limit 200000 from memory; scheme may be closed or changed. |
+
+## Verified on 2026-11-01 (7 of 50)
+Checked against the scheme's own official page (read by a fetch tool, not in a browser). "Verified" here means the eligibility rules and benefit shown to citizens match that page. Where a page did not say something, the field was set to empty instead of guessed. Known limits are listed so nobody over-trusts them.
+
+| id | page read | what the page confirmed | limits to know |
+|---|---|---|---|
+| atal-pension | pfrda.org.in/schemes/atal-pension-yojana-apy | Age 18-40, ₹1,000-5,000/month pension after 60, savings account needed | Income-tax payers are NOT eligible (since 1 Oct 2022); our rules cannot model that, so they are told in the benefit text only. Our old ₹5 lakh income cap was wrong and was removed. |
+| pmuy | pmuy.gov.in/ujjwala2.html, faq.html | Woman 18+, poor household by declaration, free connection, first refill and stove free, documents | No income limit is stated. The per-cylinder ₹300 subsidy is not on the site and was removed. The site shows two different cash-assistance totals (₹1,600 and ₹2,050), which we do not quote. |
+| pmjdy | pmjdy.gov.in/scheme | No minimum balance, RuPay card, accident cover ₹1 lakh (₹2 lakh for accounts opened after 28 Aug 2018) | No minimum age is stated (old value 10 removed). Rule "no other account" is not modelled. Document list is only the account opening form. |
+| mgnrega | nrega.dord.gov.in | 100 days a year, adult members of rural households who volunteer for unskilled manual work | Minimum age 18 is taken from the word "adult". How to get a job card and documents were not on the pages read, so those fields are empty. |
+| e-shram | eshram.gov.in/faqs | Age 16 and above (no upper limit), unorganised workers, not EPFO/ESIC members, no income test, free, Aadhaar + Aadhaar-linked mobile | Old maximum age 59 was wrong and removed. EPFO/ESIC exclusion is not modelled. Insurance amount is not stated, so the benefit is described as registration and a worker ID. |
+| pm-vishwakarma | pmvishwakarma.gov.in (home, FAQ) | Age 18+, 18 listed traditional trades, ₹15,000 toolkit grant, ₹500/day stipend, loans ₹1 lakh then ₹2 lakh at 5%, documents | Only "Artisan / Craftsperson" is matched; some trades (barber, washerman, tailor, garland maker) have no matching form option. Exclusions (government job, earlier PMEGP/Mudra/SVANidhi loan, one member per family) are not modelled. |
+| pm-svanidhi | pmsvanidhi.mohua.gov.in (home, Pre-Application) | Street vendors with certificate of vending / ID / letter of recommendation, three loan stages | The ₹15,000 / ₹25,000 / ₹50,000 amounts come from the portal's "Apply For 15k/25k/50k" buttons, not a sentence. Only states that notified the vending rules take part (not modelled). Cut-off date and the FAQ PDF were not read. |
+
+## Tried but could not be verified (still unverified)
+The pages could not be read from this environment, so nothing was confirmed. A person should check them in a browser.
+- **Certificate errors:** pmkisan.gov.in, jansuraksha.gov.in (PMJJBY, PMSBY), mudra.org.in, nsiindia.gov.in (Sukanya, SCSS)
+- **Not reachable:** pmjay.gov.in (connection refused), pmayg.nic.in and npscra.nsdl.co.in (DNS)
+- **Page content loads only in a browser:** myscheme.gov.in, pmsuryaghar.gov.in, pmfby.gov.in
+- **Wrong site / no rules:** maandhan.in is the PM-SYM site (its home page states age 18-40, income up to ₹15,000 a month and a ₹3,000 pension, but exclusions and documents were not read, so pm-sym is not verified; PM Kisan Maandhan is not on it).
+- **Unreadable PDFs / no scheme details:** scholarships.gov.in (the guideline PDFs could not be read), nfsa.gov.in. For NFSA only the benefit wording is confirmed and updated: eligibility is decided by each state, and our rules would show it to everyone, so it stays unverified.
