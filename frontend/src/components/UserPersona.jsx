@@ -75,7 +75,7 @@ function PersonaCard({ persona, index }) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.7 }}
       whileHover={{ y: -8 }}
-      className="relative rounded-2xl border overflow-hidden group cursor-default"
+      className="relative rounded-2xl border overflow-hidden group cursor-default h-full flex flex-col"
       style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       {/* Top gradient bar */}
@@ -87,9 +87,9 @@ function PersonaCard({ persona, index }) {
         style={{ boxShadow: `inset 0 0 60px ${persona.color}10` }}
       />
 
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         {/* Header */}
-        <div className="flex items-start gap-4 mb-5">
+        <div className="flex items-start gap-4 mb-5 min-h-[5.5rem]">
           {/* Avatar */}
           <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${persona.avatarBg} flex items-center justify-center text-3xl flex-shrink-0 shadow-lg`}>
             {persona.emoji}
@@ -111,7 +111,7 @@ function PersonaCard({ persona, index }) {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 gap-3 mb-5">
+        <div className="grid grid-cols-2 auto-rows-fr gap-3 mb-5">
           <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
             <div className="text-xs text-ink/60 mb-0.5">{t('Schemes Eligible')}</div>
             <div className="font-bold text-ink" style={{ color: persona.color }}>{persona.schemes}</div>
@@ -140,7 +140,7 @@ function PersonaCard({ persona, index }) {
         </div>
 
         {/* Challenge + Solution */}
-        <div className="space-y-2 mb-5">
+        <div className="space-y-2 mb-5 flex-1">
           <div className="flex gap-2">
             <span className="text-accent text-xs mt-0.5">⚠</span>
             <p className="text-ink/65 text-xs leading-relaxed">{t(persona.challenge)}</p>
@@ -154,7 +154,7 @@ function PersonaCard({ persona, index }) {
         {/* CTA */}
         <Link
           to="/dashboard"
-          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border group/btn"
+          className="w-full mt-auto flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border group/btn"
           style={{ borderColor: `${persona.color}40`, color: persona.accentColor }}
           onMouseEnter={e => { e.currentTarget.style.background = `${persona.color}18`; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
