@@ -47,10 +47,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
-                style={{ background: 'linear-gradient(135deg, #1B1740, #6A5FB0)' }}>
-                🇮🇳
-              </div>
+              <img src="/logo.svg" alt="BharatSahayak logo" className="w-10 h-10 rounded-xl" />
               <span className="text-ink font-bold text-xl">
                 Bharat<span style={{ color: '#1B1740' }}>Sahayak</span>
               </span>

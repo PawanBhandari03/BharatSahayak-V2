@@ -56,10 +56,7 @@ export default function Navbar({ language, setLanguage }) {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg transition-transform group-hover:scale-110"
-                style={{ background: 'linear-gradient(135deg, #1B1740, #6A5FB0)' }}>
-                🇮🇳
-              </div>
+              <img src="/logo.svg" alt="BharatSahayak logo" className="w-10 h-10 rounded-lg shadow-sm transition-transform group-hover:scale-110" />
               <div className="leading-tight">
                 <span className="text-ink font-bold text-lg">Bharat</span>
                 <span className="font-bold text-lg" style={{ color: '#1B1740' }}>Sahayak</span>

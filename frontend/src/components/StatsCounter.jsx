@@ -28,7 +28,7 @@ const STATS = [
     label: 'Citizens',
     sublabel: 'Deserving direct welfare support',
     color: '#138808',
-    icon: '🇮🇳',
+    icon: '👥',
   },
   {
     value: 5,

@@ -13,11 +13,10 @@ export default function Loader() {
           {/* Logo circle */}
           <motion.div
             className="relative w-24 h-24 rounded-2xl flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #1B1740, #2A2562)' }}
             animate={{ scale: [1, 1.08, 1], rotate: [0, 5, -5, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <span className="text-4xl">🇮🇳</span>
+            <img src="/logo.svg" alt="" className="w-24 h-24 rounded-2xl" />
           </motion.div>
         </div>
 

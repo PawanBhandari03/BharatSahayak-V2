@@ -20,10 +20,7 @@ function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl animate-pulse-glow"
-          style={{ background: 'linear-gradient(135deg, #1B1740, #2A2562)' }}>
-          🇮🇳
-        </div>
+        <img src="/logo.svg" alt="" className="w-10 h-10 rounded-xl animate-pulse-glow" />
         <div className="w-32 h-1 bg-dark-border rounded-full overflow-hidden">
           <div className="h-full rounded-full animate-shimmer bg-gradient-to-r from-primary via-secondary to-primary background-size-300%" />
         </div>
