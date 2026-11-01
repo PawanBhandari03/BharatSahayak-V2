@@ -49,6 +49,13 @@ const EMPTY = {
 };
 const DRAFT_KEY = 'bs_form_draft_v2';
 
+// Which form fields belong to each step (used by the "Fill demo data" button).
+const STEP_FIELDS = [
+  ['age', 'gender', 'state', 'district', 'name', 'mobile'],
+  ['occupation', 'hasLand', 'income', 'category'],
+  ['maritalStatus', 'children', 'hasBPL', 'hasSmartphone'],
+];
+
 const STEPS = [
   { title: 'About you', hint: 'Just the basics' },
   { title: 'Work and income', hint: 'This decides most schemes' },
@@ -234,6 +241,15 @@ export default function Register() {
 
   const set = (patch) => { setForm((p) => ({ ...p, ...patch })); setErrors({}); };
 
+  // Fills only the fields on the current step from the chosen demo persona, so a presenter can click once per page.
+  const [personaKey, setPersonaKey] = useState(PERSONAS[0].key);
+  const fillStep = () => {
+    const p = PERSONAS.find((x) => x.key === personaKey) || PERSONAS[0];
+    const patch = {};
+    STEP_FIELDS[step].forEach((k) => { patch[k] = p.profile[k]; });
+    set(patch);
+  };
+
   const validate = (s = step) => {
     const e = {};
     if (s === 0) {
@@ -269,7 +285,7 @@ export default function Register() {
     saveUser(profile, all, null);
     try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
-    const API_URL = (import.meta.env.VITE_API_URL || 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
+    const API_URL = (import.meta.env.VITE_API_URL ?? 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
     axios
       .post(`${API_URL}/api/ai-recommend`, { profile, matchedSchemes: all.filter((s) => s.isMatched) }, { timeout: 25000 })
       .then((res) => saveUser(profile, all, res.data))
@@ -322,7 +338,23 @@ export default function Register() {
             <div className="h-1.5 rounded-full bg-paper-line overflow-hidden" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)}>
               <div className="h-full bg-saffron transition-all duration-300" style={{ width: `${progress}%` }} />
             </div>
-            <h2 className="font-display text-[28px] font-semibold mt-5 mb-7">{STEPS[step].title}</h2>
+            <h2 className="font-display text-[28px] font-semibold mt-5 mb-4">{STEPS[step].title}</h2>
+
+            <div className="mb-7 flex flex-wrap items-center gap-2 rounded-lg border border-dashed border-saffron-deep/60 bg-saffron/10 px-3 py-2">
+              <button type="button" onClick={fillStep}
+                className="min-h-[40px] px-4 rounded-lg bg-ink text-white text-sm font-semibold hover:bg-ink/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron">
+                Fill demo data
+              </button>
+              <span className="text-xs text-ink/60">as</span>
+              {PERSONAS.map((p) => (
+                <button key={p.key} type="button" title={p.blurb} onClick={() => setPersonaKey(p.key)}
+                  aria-pressed={personaKey === p.key}
+                  className={`min-h-[32px] px-3 rounded-full text-xs font-medium border focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron
+                    ${personaKey === p.key ? 'bg-saffron border-saffron text-ink' : 'bg-white border-paper-line text-ink/70 hover:border-ink/40'}`}>
+                  {p.label}
+                </button>
+              ))}
+            </div>
 
             {step === 0 && <StepAbout f={form} set={set} errors={errors} />}
             {step === 1 && <StepWork f={form} set={set} errors={errors} />}

@@ -10,12 +10,16 @@ export function SchemesProvider({ language = 'en', children }) {
 
   useEffect(() => {
     let live = true;
-    fetchSchemeRecords().then(({ schemes, source, error }) => {
+    let timer;
+    // If the backend is asleep or not up yet, keep retrying instead of staying empty until a manual reload.
+    const load = (attempt) => fetchSchemeRecords().then(({ schemes, source, error }) => {
       if (!live) return;
       if (schemes.length) setRecords(schemes);
       setState({ loading: false, source, error: error || null });
+      if (source !== 'api' && attempt < 10) timer = setTimeout(() => load(attempt + 1), 3000);
     });
-    return () => { live = false; };
+    load(0);
+    return () => { live = false; clearTimeout(timer); };
   }, []);
 
   const schemes = useMemo(() => records.map((r) => toCard(r, language)), [records, language]);

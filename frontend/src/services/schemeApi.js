@@ -1,6 +1,6 @@
 // The website reads schemes from the backend (GET /api/schemes): there is no second copy of the data.
 // The last good response is cached in localStorage so the site still works if the backend is asleep or offline.
-export const API_URL = (import.meta.env.VITE_API_URL || 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
+export const API_URL = (import.meta.env.VITE_API_URL ?? 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
 const CACHE_KEY = 'bs_schemes_cache_v1';
 
 export async function fetchSchemeRecords() {
