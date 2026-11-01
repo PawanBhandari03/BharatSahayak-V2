@@ -88,7 +88,7 @@ export default function App() {
         <AnimatePresence mode="wait">
           <Suspense fallback={<PageLoader />}>
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home language={language} />} />
               <Route path="/register" element={<Register />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/schemes" element={<Schemes />} />

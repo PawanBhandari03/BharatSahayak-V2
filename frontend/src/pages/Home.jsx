@@ -59,7 +59,7 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 },
 };
 
-export default function Home() {
+export default function Home({ language = 'en' }) {
   return (
     <motion.div
       variants={pageVariants}
@@ -69,7 +69,7 @@ export default function Home() {
       transition={{ duration: 0.4 }}
     >
       {/* Hero */}
-      <Hero />
+      <Hero language={language} />
 
       {/* Stats */}
       <StatsCounter />

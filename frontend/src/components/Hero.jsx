@@ -118,9 +118,42 @@ function FloatingBadge({ icon, title, amount, className, delay = 0, duration = 5
   );
 }
 
-const WORDS_HEADLINE = ['₹2.6', 'Lakh', 'Crore', 'Goes', 'Unclaimed', 'Every', 'Year.'];
+// Each word is [text, role]. role picks the colour: 'amount' = big rupee figure, 'primary' = gradient
+// highlight, 'accent' = closing word, 'ink' = plain. Kept per-language since word order differs.
+const HEADLINE = {
+  en: [['₹2.6', 'amount'], ['Lakh', 'ink'], ['Crore', 'ink'], ['Goes', 'ink'], ['Unclaimed', 'primary'], ['Every', 'ink'], ['Year.', 'accent']],
+  hi: [['हर', 'ink'], ['साल', 'ink'], ['₹2.6', 'amount'], ['लाख', 'ink'], ['करोड़', 'ink'], ['का', 'ink'], ['दावा', 'primary'], ['नहीं', 'ink'], ['होता।', 'accent']],
+  mr: [['दरवर्षी', 'ink'], ['₹2.6', 'amount'], ['लाख', 'ink'], ['कोटी', 'ink'], ['रुपयांचा', 'ink'], ['दावा', 'primary'], ['केला', 'ink'], ['जात नाही.', 'accent']],
+};
+const ROLE_CLASS = {
+  amount: 'gradient-text-secondary rupee text-5xl sm:text-6xl md:text-7xl lg:text-8xl',
+  primary: 'gradient-text-primary',
+  accent: 'text-accent',
+  ink: 'text-ink',
+};
 
-export default function Hero() {
+const T = {
+  subheadLead: { en: 'BharatSahayak makes sure', hi: 'भारतसहायक सुनिश्चित करता है कि', mr: 'भारतसहाय्यक खात्री करतो की' },
+  subheadBold: { en: 'yours reaches you.', hi: 'आपका हक़ आप तक पहुंचे.', mr: 'तुमचा हक्क तुमच्यापर्यंत पोहोचेल.' },
+  tagline: {
+    en: 'AI that brings government schemes to your doorstep — no internet, no hassle',
+    hi: 'AI जो सरकारी योजनाएं आपके दरवाज़े तक पहुंचाए — बिना इंटरनेट, बिना झंझट',
+    mr: 'AI जो सरकारी योजना तुमच्या दारापर्यंत आणतो — इंटरनेटशिवाय, त्रासाशिवाय',
+  },
+  ctaPrimary: { en: 'Check My Benefits', hi: 'अपने लाभ जांचें', mr: 'माझे फायदे तपासा' },
+  ctaSecondary: { en: 'See How It Works', hi: 'यह कैसे काम करता है देखें', mr: 'हे कसे कार्य करते ते पहा' },
+  statLabels: {
+    en: ['Schemes in prototype', 'Eligible Indians', 'Avg Unclaimed/Person', 'Current Awareness'],
+    hi: ['प्रोटोटाइप में योजनाएं', 'पात्र भारतीय', 'औसत अनक्लेम्ड/व्यक्ति', 'वर्तमान जागरूकता'],
+    mr: ['प्रोटोटाइपमधील योजना', 'पात्र भारतीय', 'सरासरी दावा न केलेले/व्यक्ती', 'सध्याची जागरूकता'],
+  },
+  explore: { en: 'Explore', hi: 'अन्वेषण करें', mr: 'एक्सप्लोर करा' },
+};
+
+export default function Hero({ language = 'en' }) {
+  const lang = T.subheadLead[language] ? language : 'en';
+  const words = HEADLINE[lang];
+  const statValues = ['14', '80 Cr', '₹43,000', '<5%'];
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16">
       {/* Animated background */}
@@ -229,14 +262,10 @@ export default function Hero() {
 
             {/* Word-by-word headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-balance">
-              {WORDS_HEADLINE.map((word, i) => (
+              {words.map(([word, role], i) => (
                 <motion.span
-                  key={i}
-                  className={`inline-block mr-2.5 sm:mr-3 mb-1.5 sm:mb-2 ${
-                    word === '₹2.6' ? 'gradient-text-secondary rupee text-5xl sm:text-6xl md:text-7xl lg:text-8xl' :
-                    word === 'Unclaimed' ? 'gradient-text-primary' :
-                    word === 'Year.' ? 'text-accent' : 'text-ink'
-                  }`}
+                  key={`${lang}-${i}`}
+                  className={`inline-block mr-2.5 sm:mr-3 mb-1.5 sm:mb-2 ${ROLE_CLASS[role]}`}
                   initial={{ opacity: 0, y: 40, rotateX: -40 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: 'easeOut' }}
@@ -253,18 +282,18 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
             >
-              BharatSahayak makes sure{' '}
-              <span className="text-ink font-semibold">yours reaches you.</span>
+              {T.subheadLead[lang]}{' '}
+              <span className="text-ink font-semibold">{T.subheadBold[lang]}</span>
             </motion.p>
 
-            {/* Hindi subtitle */}
+            {/* Tagline, in the chosen language */}
             <motion.p
               className="hindi text-base sm:text-lg text-ink/62 max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3 }}
             >
-              AI जो सरकारी योजनाएं आपके दरवाज़े तक पहुंचाए — बिना इंटरनेट, बिना झंझट
+              {T.tagline[lang]}
             </motion.p>
 
             {/* CTAs */}
@@ -275,12 +304,12 @@ export default function Hero() {
               transition={{ delay: 1.5 }}
             >
               <Link to="/register" className="btn-secondary text-base px-8 py-4 shadow-glow-secondary justify-center text-center">
-                <span>Check My Benefits</span>
+                <span>{T.ctaPrimary[lang]}</span>
                 <ArrowRight size={18} />
               </Link>
               <Link to="/journey" className="btn-ghost text-base px-8 py-4 justify-center text-center">
                 <Play size={16} className="fill-current" />
-                <span>See How It Works</span>
+                <span>{T.ctaSecondary[lang]}</span>
               </Link>
             </motion.div>
 
@@ -291,13 +320,8 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.8 }}
             >
-              {[
-                { value: '14', label: 'Schemes in prototype' },
-                { value: '80 Cr', label: 'Eligible Indians' },
-                { value: '₹43,000', label: 'Avg Unclaimed/Person' },
-                { value: '<5%', label: 'Current Awareness' },
-              ].map(({ value, label }) => (
-                <div key={label} className="flex flex-col">
+              {statValues.map((value, i) => ({ value, label: T.statLabels[lang][i] })).map(({ value, label }) => (
+                <div key={value} className="flex flex-col">
                   <span className="text-ink font-black text-lg">{value}</span>
                   <span className="text-xs">{label}</span>
                 </div>
@@ -330,7 +354,7 @@ export default function Hero() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >
-        <span className="text-[10px] uppercase tracking-widest">Explore</span>
+        <span className="text-[10px] uppercase tracking-widest">{T.explore[lang]}</span>
         <ChevronDown size={14} />
       </motion.div>
     </section>
