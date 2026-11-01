@@ -31,7 +31,7 @@ Honesty first. Please read this before the demo.
 | Part | Status |
 |---|---|
 | 3-step registration form, only 5 required answers (no Aadhaar, no OTP, no password) | Working |
-| 30 schemes (central + Maharashtra) shared by website, WhatsApp and voice | Working, but **not yet checked by a human against official pages** |
+| 50 schemes (central + Maharashtra) shared by website, WhatsApp and voice | Working, but **none is checked by a human against official pages yet** (a verify tool and checklist are ready) |
 | One eligibility engine with answers "yes", "maybe" or "no" and the reason | Working, tested |
 | Hindi, Marathi, English names and benefit lines for every scheme | Working, **written by AI, needs a native-speaker check** |
 | Benefit Wallet (received, available, pending, future) from real data | Working |
@@ -40,7 +40,7 @@ Honesty first. Please read this before the demo.
 | Weekly re-check of verified schemes against official pages | Built; **not yet proven on live government sites** (see section 10) |
 | Reminders and deadline alerts | **Not built** |
 | Speech recognition on phone calls | **Not built** |
-| A database that saves users | **Not built** (optional, see section 13) |
+| Saving profiles in a database (Supabase) | Code and table schema exist; only active when keys are set; **not tested end to end by us** (see section 13) |
 
 ---
 
@@ -202,7 +202,7 @@ flowchart LR
 ```
 
 Rules we follow:
-- Only records with `verified: true` are served to users. (For the demo we set `INCLUDE_UNVERIFIED=true`, because **none of the 30 are verified yet**.)
+- Only records with `verified: true` are served to users. (For the demo we set `INCLUDE_UNVERIFIED=true`, because **none of the 50 are verified yet**.)
 - The re-check job **never edits the scheme file**. It only writes a report.
 - Unknown values are `null`, never guessed. Doubtful records are listed in `scheme-data/NEEDS_REVIEW.md`.
 
@@ -239,6 +239,7 @@ BharatSahayak-Catalyst/
 │   ├── services/                schemeStore, eligibility, replyFormat, twilioService
 │   ├── prompts/systemPrompt.js  instructions given to the AI
 │   ├── config/supabase.js       optional database connection
+│   ├── db/schema.sql            Supabase table definitions
 │   └── test/                    automated tests
 ├── frontend/                    React website (Vite + Tailwind)
 │   └── src/
@@ -250,11 +251,13 @@ BharatSahayak-Catalyst/
 │       └── demo/personas.js     Savitribai, Aarav, Rahul for the demo
 ├── shared/eligibility.mjs       the one set of matching rules
 ├── scheme-data/
-│   ├── schemes.json             the 30 schemes
+│   ├── schemes.json             the 50 schemes
 │   ├── scheme.schema.json       the exact format of a record
 │   ├── NEEDS_REVIEW.md          what a human must check
+│   ├── VERIFICATION_CHECKLIST.md one block per scheme: official link + fields to compare
 │   └── TODO_SCHEMES.md          schemes still to add
-└── scripts/                     validate-schemes, draft-scheme, recheck-schemes
+├── scripts/                     validate-schemes, draft-scheme, recheck-schemes, verify-scheme, make-checklist
+└── deploy/                      setup-ec2.sh, update.sh (AWS EC2 setup, by teammate)
 ```
 
 ---
@@ -264,6 +267,8 @@ BharatSahayak-Catalyst/
 | Method | Path | What it does |
 |---|---|---|
 | GET | `/health` | Returns `{"ok":true}` (used to check the server and keep it awake) |
+| GET | `/api/status` | Returns a short status message |
+| GET | `/` and any other page | If the website has been built (`frontend/dist`), the backend serves it, so one URL hosts site and API |
 | GET | `/api/schemes` | All schemes (verified only, unless `INCLUDE_UNVERIFIED=true`) |
 | GET | `/api/schemes/:id` | One scheme |
 | POST | `/api/match-schemes` | Matches a profile against the schemes |
@@ -281,7 +286,7 @@ Website pages: `/` Home · `/register` form · `/dashboard` results · `/schemes
 | Part | Technology |
 |---|---|
 | Website | React 18, Vite, Tailwind CSS, Framer Motion, Recharts |
-| Backend | Node.js 22 or newer, Express 5 |
+| Backend | Node.js 22 (20.19 or newer also works), Express 5 |
 | AI | Mistral AI (free tier model `open-mistral-nemo`; a paid plan can use `mistral-large-latest`) |
 | WhatsApp and voice | Twilio (WhatsApp sandbox, voice) |
 | Public link to a local server | ngrok |
@@ -292,7 +297,7 @@ Website pages: `/` Home · `/register` form · `/dashboard` results · `/schemes
 
 ## 10. How to run it
 
-**You need:** Node.js 22 or newer, a Mistral API key, and (for WhatsApp) a Twilio account.
+**You need:** Node.js 22 (the shared engine is loaded with `require()` of an ES module, which needs Node 20.19+ or 22.12+), a Mistral API key, and (for WhatsApp) a Twilio account.
 
 ```bash
 # 1. Backend
@@ -330,6 +335,9 @@ npm run dev                 # runs on http://localhost:5173
 | `npm test` | Runs all automated tests |
 | `npm run validate:schemes` | Checks every scheme record against the format |
 | `npm run draft:scheme -- <official-url> --id <id>` | AI drafts a new scheme record (unverified) |
+| `npm run verify:scheme -- --list` | Lists schemes not verified yet |
+| `npm run verify:scheme -- <id> --source <page> --yes` | Records that a person compared the scheme with that official page (marks verified, dated today) |
+| `npm run checklist:schemes` | Regenerates `scheme-data/VERIFICATION_CHECKLIST.md` |
 | `npm run recheck:schemes` | Compares verified schemes with their official pages, writes a report |
 | `npm run recheck:schemes -- --demo` | Same, on 3 schemes, for a live demo |
 
@@ -340,13 +348,14 @@ Note: many government sites have incomplete security certificates, so they may s
 
 ## 11. Testing
 
-`npm test` runs 29 tests. They cover:
+`npm test` runs 31 tests. They cover:
 - the eligibility engine (the three personas, age boundaries, wrong state, widow under 40, missing answers, income straddling a limit)
 - the scheme store (hides unverified records, reloads when the file changes)
 - the scheme format validator
 - WhatsApp reply handling (length limit, reading the AI's answers, Hindi/Marathi names, women-only schemes never shown to a man)
 - the re-check job (changed and unreachable pages, with no real network)
 - the daily WhatsApp cap
+- the verify tool (stamps only the chosen scheme; refuses a missing source)
 
 What was **not** measured: page speed scores (Lighthouse), phone-width layout checks, and a real end-to-end phone call.
 
@@ -364,11 +373,13 @@ What was **not** measured: page speed scores (Lighthouse), phone-width layout ch
 
 ## 13. Optional database (Supabase)
 
-Not needed for the demo. It would be needed to:
+Not needed for the demo. A database is needed to:
 - send **reminders** (we must remember the person's number and schemes), or
 - let a person see the same results on another device.
 
-Storing phone numbers and incomes requires clear consent. The code is ready to save to two tables (`profiles`, `user_recommendations`) when Supabase keys are present, but the repository does not yet include the SQL to create those tables.
+What exists: `backend/db/schema.sql` creates two tables (`profiles`, `user_recommendations`), and the backend saves to them **only when** `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` are set. We have not tested this end to end here.
+Cleanup still to do: the `profiles` table keeps two old columns (`aadhaar_last_4`, `pin_hash`) from the removed PIN flow. We no longer ask for Aadhaar or a PIN, so those columns should be dropped.
+Storing phone numbers and incomes requires clear consent.
 
 ---
 
@@ -403,7 +414,7 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 
 ## 16. Known limits
 
-1. None of the 30 schemes is verified by a human yet; some amounts and rules in `NEEDS_REVIEW.md` are doubtful.
+1. None of the 50 schemes is verified by a human yet (the official scheme portal cannot be read by scripts, so a person must check each page in a browser); some amounts and rules in `NEEDS_REVIEW.md` are doubtful.
 2. Hindi and Marathi text was written by AI.
 3. The free AI model can write wrong sentences in the AI summary and in general chat; the scheme *list* itself comes from the rules.
 4. WhatsApp runs on Twilio's **sandbox** (every tester must send a "join" message first; sessions expire after a few days).

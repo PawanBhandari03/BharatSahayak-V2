@@ -28,8 +28,8 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 **[1:00-2:00: Live demo, web]**
 **P:** **[SHOW]** This is our form. Only five answers are required: age, gender, state, work, income. No Aadhaar, no OTP, no password.
 **R:** **[SHOW]** For the demo we click Savitribai. *(click the "Savitribai" button at the bottom.)*
-**P:** **[SHOW: dashboard]** In under a second: 16 schemes fit her answers. Each card says why it fits, lists the documents, and links to the official portal. Our own dataset puts three of them at about thirty thousand rupees a year in cash: PM-KISAN, Namo Shetkari and the Niradhar pension. *(Check this arithmetic against the cards before you say it, and say "according to our data".)*
-**R:** **[SHOW: Schemes page]** All thirty schemes are here. **[SHOW]** I switch to Hindi, and the names and benefits change. If someone's answers are incomplete we say "possible", not "yes".
+**P:** **[SHOW: dashboard]** In under a second: 23 of our 50 schemes may fit her answers. Each card says why it fits, lists the documents, and links to the official portal. Our own dataset puts three of them at about thirty thousand rupees a year in cash: PM-KISAN, Namo Shetkari and the Niradhar pension. *(Check this arithmetic against the cards before you say it, and say "according to our data".)*
+**R:** **[SHOW: Schemes page]** All fifty schemes are here. **[SHOW]** I switch to Hindi, and the names and benefits change. If someone's answers are incomplete we say "possible", not "yes".
 
 **[2:00-3:00: Live demo, WhatsApp]**
 **R:** **[SHOW phone]** Most people we want to reach live on WhatsApp. I message the bot.
@@ -37,8 +37,8 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 *(If WhatsApp is slow, say: "It takes a few seconds on a free plan", then show the backup screenshot.)*
 
 **[3:00-3:40: How it is built and kept honest]**
-**R:** One shared scheme dataset and one eligibility engine feed the website, WhatsApp and the phone line. Thirty schemes today, each with an official link.
-**P:** To be clear: these thirty are **not yet human-verified**. We built the process for it: an AI drafts each record from the official page, a person approves it, and a weekly re-check job flags any change. It never edits the data by itself.
+**R:** One shared scheme dataset and one eligibility engine feed the website, WhatsApp and the phone line. Fifty schemes today, each with an official link.
+**P:** To be clear: these fifty are **not yet human-verified**. We built the process for it: an AI drafts each record from the official page, a person approves it, and a weekly re-check job flags any change. It never edits the data by itself.
 
 **[3:40-4:15: What is next, and the ask]**
 **R:** Next: reminders before deadlines, speech recognition on the phone line, and reviewed scheme data for more states.
@@ -54,7 +54,7 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 | "Deadline alerts and reminders" | "Reminders are our next step." (not built) |
 | "Voice PIN / Aadhaar login" | Nothing: removed on purpose; no Aadhaar or OTP is collected |
 | "Our AI call bot understands speech" | "The phone line greets and answers from our scheme list; speech recognition is next." (not tested end to end) |
-| "Verified schemes" | "Thirty schemes with official links, human verification in progress" |
+| "Verified schemes" | "Fifty schemes with official links, human verification in progress (a verify tool and checklist are ready)" |
 | "We found the user 1.37 lakh rupees" | Use the dashboard numbers, and say they are the schemes' stated benefits |
 | "We use the myScheme API" | "A curated dataset with official links. We would apply for data access to scale." |
 | "Works offline / zero internet" | "Works on basic WhatsApp; no app to install" (voice needs a call, which is not demoed) |
@@ -73,3 +73,7 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 ## Timing
 
 About 4:15 spoken, so there is about 45 seconds of slack for a slow WhatsApp reply. Cut the "How it is built" part first if you are running long.
+
+## One more thing to say carefully
+
+The count "23 may fit" includes broad schemes whose real condition our rules cannot check yet (for example schemes for pregnant women, or for urban housing). Say **"may qualify"**, never "qualifies for 23 schemes". If a judge asks, explain that this is exactly why we mark every scheme as unverified until a person has compared it with the official page.
