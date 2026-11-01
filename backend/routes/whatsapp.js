@@ -3,6 +3,9 @@ const router = express.Router();
 const twilio = require('twilio');
 const { sendWhatsAppTemplate, sendWhatsAppText } = require('../services/twilioService');
 const { buildSystemPrompt } = require('../prompts/systemPrompt');
+const { fitWhatsApp, extractProfile, formatMatches } = require('../services/replyFormat');
+const schemeStore = require('../services/schemeStore');
+const { matchSchemes } = require('../services/eligibility');
 
 // ─── MISTRAL AI SETUP ─────────────────────────────────────────────────────────
 const { Mistral } = require('@mistralai/mistralai');
@@ -102,10 +105,19 @@ router.post('/webhook', async (req, res) => {
             content: buildSystemPrompt()
           },
           ...session.messages
-        ]
+        ],
+        maxTokens: 700,
       });
 
-      const aiReply = response.choices[0].message.content;
+      let aiReply = response.choices[0].message.content;
+
+      // The AI only collects answers; our rules engine picks the schemes from the scheme store.
+      const profile = extractProfile(aiReply);
+      if (profile) {
+        const matches = matchSchemes(profile, schemeStore.getAll());
+        console.log(`[Match] ${matches.length} schemes for`, JSON.stringify(profile));
+        aiReply = formatMatches(matches, profile.language, schemeStore.t);
+      }
       console.log(`[AI Reply] ${aiReply}`);
 
       session.messages.push({
@@ -114,10 +126,10 @@ router.post('/webhook', async (req, res) => {
       });
 
       const recipientNumber = from.replace('whatsapp:', '').trim().replace(/\s+/g, '+');
-      await sendWhatsAppText(recipientNumber, aiReply);
+      await sendWhatsAppText(recipientNumber, fitWhatsApp(aiReply));
 
     } catch (error) {
-      console.error('[Mistral Error]', error.message);
+      console.error('[WhatsApp reply failed]', error.message);
       try {
         const recipientNumber = from.replace('whatsapp:', '').trim().replace(/\s+/g, '+');
         await sendWhatsAppText(recipientNumber, 'Maafi chahte hain. Thodi der baad try karein. 🙏\n\nReply HELLO to start again.');
