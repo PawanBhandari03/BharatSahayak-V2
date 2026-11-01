@@ -76,9 +76,6 @@ export default function Home({ language = 'en' }) {
       {/* Stats */}
       <StatsCounter />
 
-      {/* Personas */}
-      <UserPersona />
-
       {/* Features */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
@@ -105,6 +102,9 @@ export default function Home({ language = 'en' }) {
           </div>
         </div>
       </section>
+
+      {/* How it works — Timeline */}
+      <Timeline />
 
       {/* WhatsApp Demo Section */}
       <section className="py-24 px-4 relative overflow-hidden">
@@ -179,103 +179,6 @@ export default function Home({ language = 'en' }) {
             >
               <WhatsAppDemo interactive={false} />
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* No Smartphone Section */}
-      <section className="py-24 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl"
-            style={{ background: 'radial-gradient(circle, #1B1740, transparent)' }} />
-        </div>
-
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left: 4-step process */}
-            <div className="lg:col-span-7 space-y-6">
-              <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                {t('100% Offline Access')}
-              </motion.p>
-              <motion.h2
-                className="text-3xl md:text-5xl font-black text-ink leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                {t('No Smartphone?')} <span className="text-accent">{t('No Problem.')}</span>
-              </motion.h2>
-              <motion.p
-                className="text-ink/65 text-lg leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                {t("We believe that public welfare shouldn't require expensive technology. You can access all AI capabilities of BharatSahayak by dialing a toll-free number from any basic keypad phone.")}
-              </motion.p>
-
-              {/* 4-step process timeline */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                {[
-                  { step: '1', title: 'Dial Toll-Free', desc: 'The helpline number will be shown here once voice calls go live.' },
-                  { step: '2', title: 'Choose Language', desc: 'Listen & interact in Hindi or Marathi.' },
-                  { step: '3', title: 'Speak to AI', desc: 'Answer simple profile questions.' },
-                  { step: '4', title: 'Get SMS Alerts', desc: 'Receive schemes checklist via SMS.' }
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="p-5 rounded-2xl border flex items-start gap-4"
-                    style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.08 }}
-                  >
-                    <div className="w-8 h-8 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold flex-shrink-0">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h4 className="text-ink font-bold text-sm mb-1">{t(item.title)}</h4>
-                      <p className="text-ink/60 text-xs leading-relaxed">{t(item.desc)}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Phone & Success Story */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="p-8 rounded-3xl border w-full max-w-[360px] text-center space-y-6 shadow-glow-accent/5"
-                style={{ background: 'transparent', borderColor: '#E8DFCF' }}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto text-accent shadow-glow-accent/25">
-                  <Phone size={28} />
-                </div>
-                
-                <div>
-                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">{t('Voice Helpline')}</p>
-                  <span className="text-2xl sm:text-3xl font-black text-ink">
-                    {t('Coming soon')}
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl text-left bg-dark/30 border border-dark-border/50 text-xs space-y-2">
-                  <span className="text-yellow-400 font-bold">⭐ {t('ILLUSTRATIVE EXAMPLE')}</span>
-                  <p className="text-ink/80 leading-relaxed italic">
-                    {t('"Ramdas Patil, 68, from a remote village in Maharashtra recovered ₹28,000 in unclaimed agricultural subsidies using just his basic Nokia keypad phone."')}
-                  </p>
-                </div>
-
-                <div className="btn-primary w-full justify-center opacity-60 cursor-not-allowed" style={{ background: 'linear-gradient(135deg, #C2610A, #FF9933)' }} aria-disabled="true">
-                  <Phone size={15} />
-                  {t('Voice calls coming soon')}
-                </div>
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>
@@ -390,8 +293,105 @@ export default function Home({ language = 'en' }) {
         </div>
       </section>
 
-      {/* How it works — Timeline */}
-      <Timeline />
+      {/* Personas */}
+      <UserPersona />
+
+      {/* No Smartphone Section */}
+      <section className="py-24 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl"
+            style={{ background: 'radial-gradient(circle, #1B1740, transparent)' }} />
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left: 4-step process */}
+            <div className="lg:col-span-7 space-y-6">
+              <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+                {t('100% Offline Access')}
+              </motion.p>
+              <motion.h2
+                className="text-3xl md:text-5xl font-black text-ink leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                {t('No Smartphone?')} <span className="text-accent">{t('No Problem.')}</span>
+              </motion.h2>
+              <motion.p
+                className="text-ink/65 text-lg leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                {t("We believe that public welfare shouldn't require expensive technology. You can access all AI capabilities of BharatSahayak by dialing a toll-free number from any basic keypad phone.")}
+              </motion.p>
+
+              {/* 4-step process timeline */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                {[
+                  { step: '1', title: 'Dial Toll-Free', desc: 'The helpline number will be shown here once voice calls go live.' },
+                  { step: '2', title: 'Choose Language', desc: 'Listen & interact in Hindi or Marathi.' },
+                  { step: '3', title: 'Speak to AI', desc: 'Answer simple profile questions.' },
+                  { step: '4', title: 'Get SMS Alerts', desc: 'Receive schemes checklist via SMS.' }
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="p-5 rounded-2xl border flex items-start gap-4"
+                    style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.08 }}
+                  >
+                    <div className="w-8 h-8 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold flex-shrink-0">
+                      {item.step}
+                    </div>
+                    <div>
+                      <h4 className="text-ink font-bold text-sm mb-1">{t(item.title)}</h4>
+                      <p className="text-ink/60 text-xs leading-relaxed">{t(item.desc)}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Phone & Success Story */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-3xl border w-full max-w-[360px] text-center space-y-6 shadow-glow-accent/5"
+                style={{ background: 'transparent', borderColor: '#E8DFCF' }}
+              >
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto text-accent shadow-glow-accent/25">
+                  <Phone size={28} />
+                </div>
+                
+                <div>
+                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">{t('Voice Helpline')}</p>
+                  <span className="text-2xl sm:text-3xl font-black text-ink">
+                    {t('Coming soon')}
+                  </span>
+                </div>
+
+                <div className="p-4 rounded-xl text-left bg-dark/30 border border-dark-border/50 text-xs space-y-2">
+                  <span className="text-yellow-400 font-bold">⭐ {t('ILLUSTRATIVE EXAMPLE')}</span>
+                  <p className="text-ink/80 leading-relaxed italic">
+                    {t('"Ramdas Patil, 68, from a remote village in Maharashtra recovered ₹28,000 in unclaimed agricultural subsidies using just his basic Nokia keypad phone."')}
+                  </p>
+                </div>
+
+                <div className="btn-primary w-full justify-center opacity-60 cursor-not-allowed" style={{ background: 'linear-gradient(135deg, #C2610A, #FF9933)' }} aria-disabled="true">
+                  <Phone size={15} />
+                  {t('Voice calls coming soon')}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Team banner */}
       <section className="py-20 px-4">
