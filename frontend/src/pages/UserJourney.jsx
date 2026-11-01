@@ -23,6 +23,16 @@ const SPEECH_LANG = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' };
 
 const toastStyle = { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' };
 
+// Browsers load their voice list late, so wait for it (up to 1.5 s) before choosing a voice.
+const loadVoices = () => new Promise((resolve) => {
+  const synth = window.speechSynthesis;
+  const now = synth.getVoices();
+  if (now.length) { resolve(now); return; }
+  const done = () => resolve(synth.getVoices());
+  synth.addEventListener('voiceschanged', done, { once: true });
+  setTimeout(done, 1500);
+});
+
 function VoiceCallSimulator() {
   const { language } = useSchemes();
   const t = (x) => translate(language, x);
@@ -32,6 +42,8 @@ function VoiceCallSimulator() {
   const [done, setDone] = useState(false);
   const [progress, setProgress] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [notice, setNotice] = useState('');
+  const [voiceName, setVoiceName] = useState('');
   const run = useRef(0); // bumps on every start/stop so stale speech callbacks are ignored
   const timer = useRef(null);
 
@@ -45,8 +57,7 @@ function VoiceCallSimulator() {
   // Stop speaking if the page is left or the language is switched mid-call.
   useEffect(() => stop, [language]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const pickVoice = (code) => {
-    const voices = window.speechSynthesis.getVoices();
+  const pickVoice = (voices, code) => {
     const base = code.slice(0, 2);
     // Marathi voices are rare; a Hindi voice reads Devanagari well enough.
     return voices.find((v) => v.lang.replace('_', '-').startsWith(code))
@@ -54,44 +65,59 @@ function VoiceCallSimulator() {
       || (base === 'mr' ? voices.find((v) => v.lang.startsWith('hi')) : null);
   };
 
-  const startCall = () => {
+  const startCall = async () => {
     stop();
     const id = run.current;
     setDone(false);
     setProgress(0);
     setSeconds(0);
+    setNotice('');
+    setVoiceName('');
     setPlaying(true);
     toast.success(t('📞 Starting the voice demo...'), { style: toastStyle });
 
     timer.current = setInterval(() => setSeconds((s) => s + 1), 1000);
 
     if (!('speechSynthesis' in window)) {
-      toast(t('Your browser cannot speak, so only the text is shown.'), { duration: 4000 });
+      setNotice(t('No voice for this language was found on this device. Open this page in Microsoft Edge or Chrome to hear it.'));
       return;
+    }
+
+    const voices = await loadVoices();
+    if (id !== run.current) return;
+    const code = SPEECH_LANG[language] || 'en-IN';
+    const voice = pickVoice(voices, code);
+    if (voice) setVoiceName(voice.name);
+    else if (language !== 'en') {
+      setNotice(t('No voice for this language was found on this device. Open this page in Microsoft Edge or Chrome to hear it.'));
     }
 
     // Long utterances get cut off in some browsers, so speak one sentence at a time.
     const sentences = script.match(/[^।.?!]+[।.?!]?/g).map((x) => x.trim()).filter(Boolean);
     const total = sentences.reduce((n, x) => n + x.length, 0);
-    const voice = pickVoice(SPEECH_LANG[language] || 'en-IN');
     let spoken = 0;
+
+    const finish = () => {
+      clearInterval(timer.current);
+      setPlaying(false);
+      setDone(true);
+      setProgress(100);
+    };
 
     const next = (i) => {
       if (id !== run.current) return;
-      if (i >= sentences.length) {
-        clearInterval(timer.current);
-        setPlaying(false);
-        setDone(true);
-        setProgress(100);
-        toast.success(t('✅ Simulation finished.'), { style: toastStyle });
-        return;
-      }
+      if (i >= sentences.length) { finish(); toast.success(t('✅ Simulation finished.'), { style: toastStyle }); return; }
       const u = new SpeechSynthesisUtterance(sentences[i]);
-      u.lang = SPEECH_LANG[language] || 'en-IN';
+      u.lang = code;
       if (voice) u.voice = voice;
       u.rate = 0.95;
       u.onend = () => { spoken += sentences[i].length; setProgress(Math.round((spoken / total) * 100)); next(i + 1); };
-      u.onerror = () => { if (id === run.current) next(i + 1); };
+      u.onerror = (e) => {
+        if (id !== run.current || e.error === 'interrupted' || e.error === 'canceled') return;
+        // The device cannot speak this language: stop and say so instead of pretending the call finished.
+        setNotice(t('No voice for this language was found on this device. Open this page in Microsoft Edge or Chrome to hear it.'));
+        stop();
+      };
       window.speechSynthesis.speak(u);
     };
     next(0);
@@ -176,6 +202,13 @@ function VoiceCallSimulator() {
             <Volume2 size={20} />
             {t('Play voice demo')}
           </button>
+        )}
+
+        {voiceName && !notice && <p className="text-ink/45 text-xs mt-3 text-center">{voiceName}</p>}
+        {notice && (
+          <p className="mt-3 rounded-lg px-3 py-2 text-xs leading-relaxed" style={{ background: 'rgba(194, 97, 10, 0.08)', color: '#7A3E06', border: '1px solid rgba(194, 97, 10, 0.3)' }}>
+            {notice}
+          </p>
         )}
       </div>
     </div>

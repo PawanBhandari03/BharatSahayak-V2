@@ -21,6 +21,7 @@ const D = {
   '📞 Simulating AI voice call in Hindi...': ['📞 हिंदी में AI वॉइस कॉल का सिमुलेशन...', '📞 हिंदीत AI व्हॉइस कॉलचे सिम्युलेशन...'],
   '📞 Starting the voice demo...': ['📞 वॉइस डेमो शुरू हो रहा है...', '📞 व्हॉइस डेमो सुरू होत आहे...'],
   'Your browser cannot speak, so only the text is shown.': ['आपका ब्राउज़र बोल नहीं सकता, इसलिए केवल टेक्स्ट दिख रहा है।', 'तुमचा ब्राउझर बोलू शकत नाही, म्हणून फक्त मजकूर दाखवला आहे.'],
+  'No voice for this language was found on this device. Open this page in Microsoft Edge or Chrome to hear it.': ['इस डिवाइस पर इस भाषा की आवाज़ नहीं मिली। सुनने के लिए इस पेज को Microsoft Edge या Chrome में खोलें।', 'या डिव्हाइसवर या भाषेचा आवाज सापडला नाही. ऐकण्यासाठी हे पेज Microsoft Edge किंवा Chrome मध्ये उघडा.'],
   Stop: ['रोकें', 'थांबवा'],
   'Play voice demo': ['वॉइस डेमो चलाएं', 'व्हॉइस डेमो वाजवा'],
   '✅ Simulation finished.': ['✅ सिमुलेशन पूरा हुआ।', '✅ सिम्युलेशन पूर्ण झाले.'],
