@@ -82,7 +82,7 @@ export default function BenefitWallet({ wallet }) {
         </div>
         {hasData && (
           <div className="text-right">
-            <div className="text-ink/60 text-xs">Total Eligible</div>
+            <div className="text-ink/60 text-xs">Still to claim</div>
             <div className="text-2xl font-black text-secondary rupee">
               ₹{inView
                 ? <CountUp end={w.total} duration={2.2} separator="," />
@@ -134,7 +134,7 @@ export default function BenefitWallet({ wallet }) {
             {/* Metric cards */}
             <div className="grid grid-cols-2 gap-3">
               <MetricCard label="Received"  value={w.received}  color="#138808" delay={0.1} />
-              <MetricCard label="Available" value={w.available} color="#1B1740" delay={0.2} />
+              <MetricCard label="Available" value={w.available + (w.possible || 0)} color="#1B1740" delay={0.2} />
               <MetricCard label="Pending"   value={w.pending}   color="#C2610A" delay={0.3} />
               <MetricCard label="Future"    value={w.future}    color="#2196F3" delay={0.4} />
             </div>

@@ -18,7 +18,7 @@ function DeadlineBadge({ daysLeft, deadline }) {
   if (!deadline) {
     return (
       <span className="badge bg-secondary/10 text-secondary text-xs">
-        <CheckCircle size={10} /> No Deadline
+        <CheckCircle size={10} /> Check portal for dates
       </span>
     );
   }
@@ -50,15 +50,17 @@ function DeadlineBadge({ daysLeft, deadline }) {
   );
 }
 
-export default function SchemeCard({ scheme, compact = false }) {
+export default function SchemeCard({ scheme, compact = false, status, onTrack }) {
   // One accent for every category so the whole site reads as a single palette.
   const categoryColor = '#1B1740';
 
   const handleEligibility = (e) => {
     e.preventDefault();
-    if (scheme.isMatched) {
+    if (scheme.eligibleLevel === 'maybe') {
+      toast(`Possibly eligible. Tell us: ${(scheme.missing || []).join(', ')}.`, { duration: 5000 });
+    } else if (scheme.isMatched) {
       toast.success(
-        `✅ Eligible! Match: ${scheme.matchScore}% — ${scheme.documents.length} documents needed.`,
+        `✅ ${(scheme.reasons || []).slice(0, 2).join(' · ') || 'You fit the rules'} — ${scheme.documents.length} documents needed.`,
         {
           duration: 4000,
           style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' },
@@ -66,7 +68,7 @@ export default function SchemeCard({ scheme, compact = false }) {
       );
     } else {
       toast.error(
-        `You need: ${scheme.documents[0]}. Score: ${scheme.matchScore}%`,
+        scheme.ineligibleReason || 'Not eligible with the details you entered.',
         {
           duration: 4000,
           style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #C2610A' },
@@ -108,7 +110,7 @@ export default function SchemeCard({ scheme, compact = false }) {
           <div className="flex-1 min-w-0">
             {scheme.isMatched && (
               <span className="badge bg-secondary/15 text-secondary text-xs mb-2 block w-fit">
-                <CheckCircle size={9} /> {scheme.matchScore}% Match
+                <CheckCircle size={9} /> {scheme.eligibleLevel === 'maybe' ? 'Possible — check details' : 'Fits your answers'}
               </span>
             )}
             <h3 className="text-ink font-bold text-base leading-snug">{scheme.name}</h3>
@@ -182,6 +184,18 @@ export default function SchemeCard({ scheme, compact = false }) {
           </div>
         )}
 
+        {onTrack && (
+          <div className="flex items-center gap-2 mb-3 text-xs">
+            <span className="text-ink/55">Status:</span>
+            {[['applied', 'Applied'], ['received', 'Receiving']].map(([key, label]) => (
+              <button key={key} type="button" onClick={() => onTrack(scheme.id, status === key ? null : key)}
+                className={`px-2.5 py-1 rounded-full border ${status === key ? 'bg-ink text-white border-ink' : 'border-paper-line text-ink/70 hover:border-ink/50'}`}>
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Action buttons */}
         <div className="flex gap-2 mt-auto">
           <button
@@ -189,7 +203,7 @@ export default function SchemeCard({ scheme, compact = false }) {
             className="flex-1 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border hover:scale-[1.02]"
             style={{ borderColor: `${categoryColor}40`, color: categoryColor, background: `${categoryColor}10` }}
           >
-            Check Eligibility
+            Why / why not
           </button>
           <button
             onClick={handleApply}

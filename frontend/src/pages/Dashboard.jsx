@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -9,7 +9,8 @@ import BenefitWallet from '../components/BenefitWallet';
 import SchemeCard from '../components/SchemeCard';
 import { LifeTimeline } from '../components/Timeline';
 import { useUser } from '../context/UserContext';
-import { computeWallet, generateTimeline, getAvatar } from '../utils/schemeMatcher';
+import { useSchemes } from '../context/SchemesContext';
+import { computeWallet, generateTimeline, getAvatar, matchSchemesForUser, readTracking, writeTracking } from '../utils/schemeMatcher';
 import CountUp from 'react-countup';
 import toast from 'react-hot-toast';
 
@@ -138,14 +139,9 @@ function DeadlineCard({ item, index }) {
   );
 }
 
-function VoiceCallCard({ user }) {
-  const handleSchedule = () => {
-    toast.success(`📞 Voice call scheduled for your registered number +91-${user.mobile}!`, {
-      duration: 4000,
-      style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
-    });
-  };
+const WHATSAPP_JOIN = 'https://wa.me/14155238886?text=join%20spent-opinion';
 
+function VoiceCallCard({ user }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
@@ -158,33 +154,30 @@ function VoiceCallCard({ user }) {
           <PhoneCall size={22} className="text-secondary" />
         </div>
         <div>
-          <h3 className="text-ink font-bold">Voice Call Alert</h3>
-          <p className="text-ink/60 text-xs">AI will call your number in Hindi</p>
+          <h3 className="text-ink font-bold">Ask on WhatsApp or call</h3>
+          <p className="text-ink/60 text-xs">Same schemes, in Hindi, Marathi or English</p>
         </div>
       </div>
 
       <div className="space-y-2 mb-4 text-sm">
         <div className="flex justify-between">
-          <span className="text-ink/65">Mobile</span>
-          <span className="text-ink font-medium">+91-{user.mobile || 'Not set'}</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-ink/65">State</span>
+          <span className="text-ink/65">Your state</span>
           <span className="text-ink font-medium">{user.state}</span>
         </div>
-        <div className="flex justify-between">
-          <span className="text-ink/65">WhatsApp</span>
-          <span className={user.whatsappOptIn !== false ? 'text-secondary font-medium' : 'text-ink/60'}>
-            {user.whatsappOptIn !== false ? '✅ Activated' : 'Not activated'}
-          </span>
-        </div>
+        {user.mobile && (
+          <div className="flex justify-between">
+            <span className="text-ink/65">Mobile saved</span>
+            <span className="text-ink font-medium">+91-{user.mobile}</span>
+          </div>
+        )}
+        <p className="text-ink/55 text-xs pt-1">Reminders are not switched on yet. This site does not call or message you by itself.</p>
       </div>
 
-      <button onClick={handleSchedule}
+      <a href={WHATSAPP_JOIN} target="_blank" rel="noopener noreferrer"
         className="w-full btn-secondary py-3 text-sm justify-center">
         <Calendar size={15} />
-        Schedule AI Call Now
-      </button>
+        Open the WhatsApp bot
+      </a>
     </motion.div>
   );
 }
@@ -212,15 +205,29 @@ function useDeadlines(matchedSchemes) {
 // Main Dashboard
 // ─────────────────────────────
 export default function Dashboard() {
-  const { user, matchedSchemes, aiRecommendations, clearUser } = useUser();
+  const { user, aiRecommendations, clearUser } = useUser();
+  const { schemes } = useSchemes();
   const navigate = useNavigate();
+  const [tracking, setTracking] = useState(readTracking);
+
+  // Matching runs live on the shared scheme list, so the dashboard always reflects the current data
+  const matchedSchemes = useMemo(() => (user ? matchSchemesForUser(user, schemes) : []), [user, schemes]);
+  const deadlines = useDeadlines(matchedSchemes);
+
+  const track = (id, status) => {
+    setTracking((prev) => {
+      const next = { ...prev };
+      if (status) next[id] = status; else delete next[id];
+      writeTracking(next);
+      return next;
+    });
+  };
 
   // If no user registered, show prompt
   if (!user) return <NotRegistered />;
 
   const eligibleSchemes = matchedSchemes.filter(s => s.isMatched);
-  const wallet = computeWallet(matchedSchemes);
-  const deadlines = useDeadlines(matchedSchemes);
+  const wallet = computeWallet(matchedSchemes, tracking, user);
   const timeline = generateTimeline(user, matchedSchemes);
 
   const handleLogout = () => {
@@ -269,10 +276,10 @@ export default function Dashboard() {
             <div className="flex items-center gap-3">
               <span className="text-xl shrink-0">🔔</span>
               <div className="text-sm">
-                <span className="text-ink font-bold">Unclaimed benefits detected!</span>{' '}
-                <span className="text-ink/75">Based on your profile, you have up to </span>
+                <span className="text-ink font-bold">{wallet.confirmed} scheme{wallet.confirmed !== 1 ? 's' : ''} fit you{wallet.maybeCount ? `, ${wallet.maybeCount} more may` : ''}.</span>{' '}
+                <span className="text-ink/75">Their stated benefits add up to </span>
                 <span className="text-accent font-extrabold rupee">₹{wallet.total?.toLocaleString('en-IN')}</span>{' '}
-                <span className="text-ink/75">unclaimed in eligible schemes. Arrange your documents soon.</span>
+                <span className="text-ink/75">(only schemes with a fixed amount are counted{wallet.unknownAmount ? `; ${wallet.unknownAmount} have no fixed amount` : ''}). Confirm each one on its official portal.</span>
               </div>
             </div>
             <Link to="/schemes" className="hidden sm:inline-flex text-xs font-bold text-accent hover:underline shrink-0">
@@ -332,6 +339,7 @@ export default function Dashboard() {
                   AI Recommendations
                 </h3>
                 
+                <p className="text-ink/55 text-xs mb-3">AI-written summary. It can make mistakes, so check the official portal before applying.</p>
                 <p className="text-ink/88 italic mb-6 border-l-2 border-primary/50 pl-3 text-sm leading-relaxed">
                   "{aiRecommendations.personalizedMessage}"
                 </p>
@@ -405,8 +413,8 @@ export default function Dashboard() {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {eligibleSchemes.slice(0, 6).map(scheme => (
-                    <SchemeCard key={scheme.id} scheme={scheme} />
+                  {eligibleSchemes.slice(0, 8).map(scheme => (
+                    <SchemeCard key={scheme.id} scheme={scheme} status={tracking[scheme.id]} onTrack={track} />
                   ))}
                 </div>
               )}
