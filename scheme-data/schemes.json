@@ -856,12 +856,12 @@
     "category": "pension",
     "level": "central",
     "state": "all",
-    "amount": null,
-    "frequency": "monthly",
+    "amount": 2400,
+    "frequency": "yearly",
     "benefitSummary": {
-      "en": "Monthly pension for elderly people from BPL households",
-      "hi": "बीपीएल परिवारों के बुज़ुर्गों के लिए मासिक पेंशन",
-      "mr": "बीपीएल कुटुंबातील ज्येष्ठांसाठी मासिक निवृत्तीवेतन"
+      "en": "Central pension of ₹200 a month (₹500 from age 80) for people aged 60+ from BPL households; states may add more",
+      "hi": "60 वर्ष और उससे अधिक आयु के बीपीएल परिवारों के लोगों के लिए केंद्र की ₹200 प्रति माह पेंशन (80 वर्ष से ₹500); राज्य और जोड़ सकते हैं",
+      "mr": "60 वर्षे व त्यावरील बीपीएल कुटुंबांतील व्यक्तींसाठी केंद्राचे दरमहा ₹200 निवृत्तीवेतन (80 वर्षांपासून ₹500); राज्ये अधिक भर घालू शकतात"
     },
     "eligibility": {
       "minAge": 60,
@@ -878,18 +878,13 @@
       ],
       "requiresBPL": true
     },
-    "documents": [
-      "Aadhaar",
-      "Age proof",
-      "BPL certificate or ration card",
-      "Bank passbook"
-    ],
+    "documents": [],
     "deadline": null,
-    "howToApply": "Apply at the Gram Panchayat / municipal office",
+    "howToApply": "Approach the concerned department of your State government for the pension",
     "officialUrl": "https://nsap.nic.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://nsap.dord.gov.in/circular.do?method=faq",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "igndps",
@@ -1884,9 +1879,9 @@
     "amount": null,
     "frequency": "one-time",
     "benefitSummary": {
-      "en": "Housing help for Scheduled Caste and neo-Buddhist families in rural Maharashtra",
-      "hi": "ग्रामीण महाराष्ट्र में अनुसूचित जाति और नवबौद्ध परिवारों के लिए आवास सहायता",
-      "mr": "ग्रामीण महाराष्ट्रातील अनुसूचित जाती व नवबौद्ध कुटुंबांसाठी घरकुल मदत"
+      "en": "Housing help for Scheduled Caste and neo-Buddhist families: ₹1.32 lakh in rural areas (₹1.42 lakh in hilly areas), ₹2.5 lakh in urban areas",
+      "hi": "अनुसूचित जाति और नवबौद्ध परिवारों के लिए आवास सहायता: ग्रामीण क्षेत्र में ₹1.32 लाख (पहाड़ी क्षेत्र में ₹1.42 लाख), शहरी क्षेत्र में ₹2.5 लाख",
+      "mr": "अनुसूचित जाती व नवबौद्ध कुटुंबांसाठी घरकुल मदत: ग्रामीण भागात ₹1.32 लाख (डोंगराळ भागात ₹1.42 लाख), शहरी भागात ₹2.5 लाख"
     },
     "eligibility": {
       "minAge": null,
@@ -1895,7 +1890,7 @@
       "occupations": [
         "any"
       ],
-      "maxAnnualIncome": null,
+      "maxAnnualIncome": 300000,
       "requiresLand": null,
       "maritalStatus": "any",
       "categories": [
@@ -1906,15 +1901,16 @@
     "documents": [
       "Caste certificate",
       "Income certificate",
-      "Land / plot document",
-      "Aadhaar"
+      "7/12 extract or property registration document",
+      "Ration card or voter ID",
+      "House tax, water tax or electricity bill"
     ],
     "deadline": null,
-    "howToApply": "Apply at the Gram Panchayat / Panchayat Samiti",
+    "howToApply": "Beneficiaries are selected through the Gram Sabha (rural) or the House Construction Committee (urban); contact your Gram Panchayat or local body",
     "officialUrl": "https://sjsa.maharashtra.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://sjsa.maharashtra.gov.in/scheme/ramai-awas-yojana-rural-urban/",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "shabari-awas",
@@ -2201,15 +2197,15 @@
       "hi": "मुख्यमंत्री वयोश्री योजना",
       "mr": "मुख्यमंत्री वयोश्री योजना"
     },
-    "category": "pension",
+    "category": "social-welfare",
     "level": "state",
     "state": "maharashtra",
     "amount": 3000,
     "frequency": "one-time",
     "benefitSummary": {
-      "en": "One-time ₹3,000 for senior citizens in Maharashtra to buy aids like walking sticks and hearing aids",
-      "hi": "महाराष्ट्र के वरिष्ठ नागरिकों को छड़ी, श्रवण यंत्र जैसे उपकरण खरीदने के लिए एकमुश्त ₹3,000",
-      "mr": "महाराष्ट्रातील ज्येष्ठ नागरिकांना काठी, श्रवणयंत्र अशी उपकरणे घेण्यासाठी एकरकमी ₹3,000"
+      "en": "One-time ₹3,000 (direct bank transfer) for senior citizens aged 65+ to buy medical equipment or attend mental-health or yoga training",
+      "hi": "65 वर्ष और उससे अधिक आयु के वरिष्ठ नागरिकों को चिकित्सा उपकरण खरीदने या मानसिक स्वास्थ्य/योग प्रशिक्षण के लिए एकमुश्त ₹3,000 (सीधे बैंक खाते में)",
+      "mr": "65 वर्षे व त्यावरील ज्येष्ठ नागरिकांना वैद्यकीय उपकरणे घेण्यासाठी किंवा मानसिक आरोग्य/योग प्रशिक्षणासाठी एकरकमी ₹3,000 (थेट बँक खात्यात)"
     },
     "eligibility": {
       "minAge": 65,
@@ -2227,16 +2223,14 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar",
-      "Age proof",
-      "Income proof",
-      "Bank account"
+      "Aadhaar card",
+      "Self-declaration that annual family income is not above ₹2 lakh"
     ],
     "deadline": null,
-    "howToApply": "Apply at the district Social Welfare office",
+    "howToApply": "Apply offline at the Assistant Commissioner, Social Welfare of your district, or on the Vayoshri portal (cmvayoshree.mahait.org)",
     "officialUrl": "https://sjsa.maharashtra.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://sjsa.maharashtra.gov.in/scheme/chief-minister-vayoshree-scheme/",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   }
 ]
