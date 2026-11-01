@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/sections';
 
 // ──────────────── Website-first journey ────────────────
 const JOURNEY_STEPS = [
   {
     step: 1,
     title: 'Open BharatSahayak Website',
-    description: 'Visit bharatsahayak.in on any browser — mobile or desktop. No app download needed. Works even on slow 2G connections.',
+    description: 'Open the BharatSahayak website on any browser — mobile or desktop. No app download needed. Works even on slow connections.',
     icon: '🌐',
     color: '#1B1740',
     detail: 'Fully responsive · Works on any phone browser',
@@ -15,7 +17,7 @@ const JOURNEY_STEPS = [
   {
     step: 2,
     title: 'Click "Check My Benefits"',
-    description: 'Tap the green button on the homepage. Redirected to a simple 2-minute registration form. No prior account needed.',
+    description: 'Tap the Check My Benefits button on the homepage. You go to a simple 2-minute form. No account needed.',
     icon: '👆',
     color: '#2A2562',
     detail: '2-minute setup · No documents needed upfront',
@@ -32,26 +34,28 @@ const JOURNEY_STEPS = [
   },
   {
     step: 4,
-    title: 'AI Finds Your Schemes + Sends WhatsApp',
-    description: 'Our rules engine matches your answers against the scheme list instantly, then AI explains your top picks. Reminders can follow on WhatsApp in your language (Hindi/Marathi/English).',
+    title: 'AI Finds Your Schemes',
+    description: 'Our rules engine matches your answers against the scheme list instantly, then AI explains your top picks. You can also chat with our WhatsApp bot in Hindi, Marathi or English.',
     icon: '🤖',
     color: '#C2610A',
-    detail: 'Instant matching · AI explanation · WhatsApp reminders',
+    detail: 'Instant matching · AI explanation · WhatsApp bot',
     tech: 'Mistral AI + Twilio WhatsApp',
   },
   {
     step: 5,
     title: 'Track Benefits in Wallet Dashboard',
-    description: 'Open your Benefit Wallet. See received, pending, and available benefits. Get deadline reminders. Apply for schemes with one click — direct link to official portals.',
+    description: 'Open your Benefit Wallet. See received, pending, and available benefits. See upcoming deadlines. Apply for schemes with one click — direct link to official portals.',
     icon: '💰',
     color: '#138808',
-    detail: 'Real-time dashboard · Deadline alerts · Direct apply links',
+    detail: 'Live dashboard · Deadlines · Direct apply links',
     tech: 'React',
   },
 ];
 
 // ──────────────── Vertical Timeline (Journey page) ────────────────
 export function VerticalTimeline({ activeStep = -1 }) {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <div className="relative">
       {/* Vertical line */}
@@ -99,7 +103,7 @@ export function VerticalTimeline({ activeStep = -1 }) {
               <div className="flex-1 pb-2">
                 <div className="flex items-start justify-between gap-2 mb-1">
                   <h3 className={`font-bold text-base transition-colors duration-300 ${isActive ? 'text-ink' : 'text-ink/65'}`}>
-                    {step.title}
+                    {t(step.title)}
                   </h3>
                   {step.tech && (
                     <span className="badge text-xs px-2 py-0.5 flex-shrink-0"
@@ -109,11 +113,11 @@ export function VerticalTimeline({ activeStep = -1 }) {
                   )}
                 </div>
                 <p className={`text-sm leading-relaxed mb-2 transition-colors duration-300 ${isActive ? 'text-ink/65' : 'text-ink/50'}`}>
-                  {step.description}
+                  {t(step.description)}
                 </p>
                 <span className="text-xs px-2.5 py-1 rounded-lg"
                   style={{ background: `${step.color}12`, color: step.color }}>
-                  💡 {step.detail}
+                  💡 {t(step.detail)}
                 </span>
               </div>
             </motion.div>
@@ -126,12 +130,14 @@ export function VerticalTimeline({ activeStep = -1 }) {
 
 // ──────────────── Horizontal Steps (Home page) ────────────────
 export default function Timeline() {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <section className="py-24 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            How It Works
+            {t('How It Works')}
           </motion.p>
           <motion.h2
             className="text-4xl md:text-5xl font-black text-ink mb-4"
@@ -139,8 +145,8 @@ export default function Timeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Website → Benefits{' '}
-            <span className="gradient-text-secondary">in 5 Steps</span>
+            {t('Website → Benefits')}{' '}
+            <span className="gradient-text-secondary">{t('in 5 Steps')}</span>
           </motion.h2>
           <motion.p
             className="text-ink/65 text-lg max-w-xl mx-auto"
@@ -149,8 +155,7 @@ export default function Timeline() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Open the website, fill a 2-minute form, verify your mobile — done.
-            AI does the rest while you sleep.
+            {t('Open the website, fill a 2-minute form — done. AI does the rest.')}
           </motion.p>
         </div>
 
@@ -178,8 +183,8 @@ export default function Timeline() {
                   <span className="text-2xl mb-0.5">{step.icon}</span>
                   <span className="text-xs font-bold" style={{ color: step.color }}>0{step.step}</span>
                 </motion.div>
-                <h4 className="text-ink font-semibold text-xs md:text-sm leading-tight mb-1">{step.title}</h4>
-                <p className="text-ink/50 text-xs leading-relaxed hidden md:block">{step.description.slice(0, 48)}...</p>
+                <h4 className="text-ink font-semibold text-xs md:text-sm leading-tight mb-1">{t(step.title)}</h4>
+                <p className="text-ink/50 text-xs leading-relaxed hidden md:block">{t(step.description).slice(0, 48)}...</p>
               </motion.div>
             ))}
           </div>
@@ -194,10 +199,10 @@ export default function Timeline() {
           className="text-center mt-12"
         >
           <Link to="/register" className="btn-secondary inline-flex text-base px-8 py-4">
-            Start Now — It's Free
+            {t("Start Now — It's Free")}
             <span className="ml-2">→</span>
           </Link>
-          <p className="text-ink/45 text-xs mt-3">No app download · Works on any phone · 2 minutes</p>
+          <p className="text-ink/45 text-xs mt-3">{t('No app download · Works on any phone · 2 minutes')}</p>
         </motion.div>
       </div>
     </section>
@@ -206,6 +211,8 @@ export default function Timeline() {
 
 // ──────────────── Life Timeline (Dashboard, horizontal scroll) ────────────────
 export function LifeTimeline({ milestones }) {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <div className="overflow-x-auto scrollbar-hide">
       <div className="flex gap-4 pb-4 min-w-max px-1">
@@ -223,14 +230,14 @@ export function LifeTimeline({ milestones }) {
           >
             <div className="flex items-center justify-between mb-2">
               <span className="font-black text-lg" style={{ color: m.color }}>{m.year}</span>
-              <span className="text-xs text-ink/50">Age {m.age}</span>
+              <span className="text-xs text-ink/50">{t('Age')} {m.age}</span>
             </div>
             <span className={`badge text-xs mb-2 ${
               m.type === 'current' ? 'bg-secondary/15 text-secondary' :
               m.type === 'upcoming' ? 'bg-blue-500/15 text-blue-400' :
               'bg-ink/5 text-ink/50'
             }`}>
-              {m.type === 'current' ? '🟢 Active' : m.type === 'upcoming' ? '🔵 Upcoming' : '🔮 Future'}
+              {m.type === 'current' ? `🟢 ${t('Active')}` : m.type === 'upcoming' ? `🔵 ${t('Upcoming')}` : `🔮 ${t('Future')}`}
             </span>
             <p className="text-ink/88 text-sm font-medium leading-snug">{m.event}</p>
             {m.source && (

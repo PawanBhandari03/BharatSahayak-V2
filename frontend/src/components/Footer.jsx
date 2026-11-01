@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin, Heart, ExternalLink, Code2, Database, MessageSquare, ShieldCheck, Cpu } from 'lucide-react';
+import { useSchemes } from '../context/SchemesContext';
+import { translate, footerTagline } from '../i18n/sections';
 
 const FOOTER_LINKS = {
   Product: [
@@ -31,6 +33,8 @@ const TECH_STACK = [
 ];
 
 export default function Footer() {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <footer className="relative border-t border-dark-border mt-auto" style={{ background: '#F5EFE3' }}>
       {/* Top gradient */}
@@ -53,18 +57,17 @@ export default function Footer() {
             </Link>
 
             <p className="text-ink/65 text-sm leading-relaxed mb-6 max-w-xs italic">
-              "AI that finds what the government owes you —<br/>
-              before you even know to ask."
+              "{t('AI that finds what the government owes you — before you even know to ask.')}"
             </p>
 
             {/* Hindi tagline */}
             <p className="hindi text-ink/50 text-sm mb-8">
-              "सरकारी योजनाओं का फायदा, बिना झंझट के।"
+              {footerTagline(language)}
             </p>
 
             {/* Tech stack chips */}
             <div className="space-y-2">
-              <p className="text-xs text-ink/50 uppercase tracking-wider font-semibold">Built with</p>
+              <p className="text-xs text-ink/50 uppercase tracking-wider font-semibold">{t('Built with')}</p>
               <div className="flex flex-wrap gap-2">
                 {TECH_STACK.map(({ icon: Icon, label }) => (
                   <span key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-ink/65 border border-dark-border">
@@ -79,7 +82,7 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(FOOTER_LINKS).map(([section, links]) => (
             <div key={section}>
-              <h4 className="text-ink font-semibold text-sm mb-4">{section}</h4>
+              <h4 className="text-ink font-semibold text-sm mb-4">{t(section)}</h4>
               <ul className="space-y-3">
                 {links.map(link => (
                   <li key={link.label}>
@@ -87,7 +90,7 @@ export default function Footer() {
                       to={link.path}
                       className="text-sm text-ink/60 hover:text-ink/88 transition-colors duration-200"
                     >
-                      {link.label}
+                      {t(link.label)}
                     </Link>
                   </li>
                 ))}
@@ -104,7 +107,7 @@ export default function Footer() {
           {/* Team credit */}
           <div className="flex flex-col sm:flex-row items-center gap-3 text-sm text-ink/60">
             <div className="flex items-center gap-1.5">
-              Made with <Heart size={12} className="text-accent fill-accent" /> by
+              {t('Made with')} <Heart size={12} className="text-accent fill-accent" /> {t('by')}
               <span className="text-ink/80 font-semibold ml-1">Binary Builders</span>
             </div>
             <span className="hidden sm:block text-ink/20">·</span>
@@ -132,7 +135,7 @@ export default function Footer() {
           </motion.div>
 
           <div className="text-xs text-ink/45">
-            © 2026 BharatSahayak. All rights reserved.
+            {t('© 2026 BharatSahayak. All rights reserved.')}
           </div>
         </div>
       </div>

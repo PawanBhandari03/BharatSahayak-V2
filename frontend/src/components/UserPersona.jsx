@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Smartphone, Wifi, WifiOff, IndianRupee } from 'lucide-react';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/sections';
 
 const PERSONAS = [
   {
@@ -63,6 +65,9 @@ const PERSONAS = [
 ];
 
 function PersonaCard({ persona, index }) {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
+  const first = persona.name.split(' ')[0];
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -91,9 +96,9 @@ function PersonaCard({ persona, index }) {
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="text-ink font-bold text-lg leading-tight">{persona.name}</h3>
-            <p className="text-sm font-medium" style={{ color: persona.color }}>{persona.role}</p>
+            <p className="text-sm font-medium" style={{ color: persona.color }}>{t(persona.role)}</p>
             <p className="text-ink/60 text-xs mt-0.5 flex items-center gap-1">
-              📍 {persona.location}
+              📍 {t(persona.location)}
             </p>
           </div>
           {/* Internet status */}
@@ -101,27 +106,27 @@ function PersonaCard({ persona, index }) {
             persona.internet ? 'bg-secondary/10 text-secondary' : 'bg-accent/10 text-accent'
           }`}>
             {persona.internet ? <Wifi size={11} /> : <WifiOff size={11} />}
-            {persona.internet ? 'Online' : 'Offline'}
+            {persona.internet ? t('Online') : t('Offline')}
           </div>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3 mb-5">
           <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
-            <div className="text-xs text-ink/60 mb-0.5">Schemes Eligible</div>
+            <div className="text-xs text-ink/60 mb-0.5">{t('Schemes Eligible')}</div>
             <div className="font-bold text-ink" style={{ color: persona.color }}>{persona.schemes}</div>
           </div>
           <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
-            <div className="text-xs text-ink/60 mb-0.5">Total Benefit</div>
+            <div className="text-xs text-ink/60 mb-0.5">{t('Total Benefit')}</div>
             <div className="font-bold text-secondary rupee text-sm">{persona.totalBenefit}</div>
           </div>
           <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
-            <div className="text-xs text-ink/60 mb-0.5">Annual Income</div>
-            <div className="font-bold text-ink text-sm">{persona.income}</div>
+            <div className="text-xs text-ink/60 mb-0.5">{t('Annual Income')}</div>
+            <div className="font-bold text-ink text-sm">{t(persona.income)}</div>
           </div>
           <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
-            <div className="text-xs text-ink/60 mb-0.5 flex items-center gap-1"><Smartphone size={9} /> Phone</div>
-            <div className="font-bold text-ink text-xs leading-tight">{persona.phone}</div>
+            <div className="text-xs text-ink/60 mb-0.5 flex items-center gap-1"><Smartphone size={9} /> {t('Phone')}</div>
+            <div className="font-bold text-ink text-xs leading-tight">{t(persona.phone)}</div>
           </div>
         </div>
 
@@ -129,7 +134,7 @@ function PersonaCard({ persona, index }) {
         <div className="flex flex-wrap gap-1.5 mb-5">
           {persona.tags.map(tag => (
             <span key={tag} className="badge text-xs px-2.5 py-1" style={{ background: `${persona.color}18`, color: persona.accentColor }}>
-              {tag}
+              {t(tag)}
             </span>
           ))}
         </div>
@@ -138,11 +143,11 @@ function PersonaCard({ persona, index }) {
         <div className="space-y-2 mb-5">
           <div className="flex gap-2">
             <span className="text-accent text-xs mt-0.5">⚠</span>
-            <p className="text-ink/65 text-xs leading-relaxed">{persona.challenge}</p>
+            <p className="text-ink/65 text-xs leading-relaxed">{t(persona.challenge)}</p>
           </div>
           <div className="flex gap-2">
             <span className="text-secondary text-xs mt-0.5">✓</span>
-            <p className="text-ink/80 text-xs leading-relaxed">{persona.solution}</p>
+            <p className="text-ink/80 text-xs leading-relaxed">{t(persona.solution)}</p>
           </div>
         </div>
 
@@ -154,7 +159,7 @@ function PersonaCard({ persona, index }) {
           onMouseEnter={e => { e.currentTarget.style.background = `${persona.color}18`; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
         >
-          View {persona.name.split(' ')[0]}'s Wallet
+          {language === 'hi' ? `${first} का वॉलेट देखें` : language === 'mr' ? `${first} यांचे वॉलेट पहा` : `View ${first}'s Wallet`}
           <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
         </Link>
       </div>
@@ -163,12 +168,14 @@ function PersonaCard({ persona, index }) {
 }
 
 export default function UserPersona() {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <section className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            Who We Serve
+            {t('Who We Serve')}
           </motion.p>
           <motion.h2
             className="text-4xl md:text-5xl font-black text-ink mb-4"
@@ -176,8 +183,8 @@ export default function UserPersona() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Real People.{' '}
-            <span className="gradient-text-secondary">Real Benefits.</span>
+            {t('People Like These.')}{' '}
+            <span className="gradient-text-secondary">{t('Real Benefits.')}</span>
           </motion.h2>
           <motion.p
             className="text-ink/65 text-lg max-w-xl mx-auto"
@@ -186,8 +193,9 @@ export default function UserPersona() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            From widowed farmers in Osmanabad to students in Meerut — BharatSahayak reaches everyone.
+            {t('From widowed farmers in Osmanabad to students in Meerut — BharatSahayak reaches everyone.')}
           </motion.p>
+          <p className="text-ink/45 text-xs mt-3">{t('Example profiles, shown for illustration.')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
