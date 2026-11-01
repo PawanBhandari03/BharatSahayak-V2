@@ -549,9 +549,9 @@
     },
     "category": "education",
     "level": "central",
-    "state": "all",
-    "amount": 150000,
-    "frequency": null,
+    "state": "jammu & kashmir",
+    "amount": 30000,
+    "frequency": "yearly",
     "benefitSummary": {
       "en": "₹30,000/year + maintenance",
       "hi": "₹30,000 प्रति वर्ष + रखरखाव भत्ता",
