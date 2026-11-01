@@ -8,7 +8,9 @@
     "test": "node --test \"test/*.test.js\"",
     "validate:schemes": "node ../scripts/validate-schemes.js",
     "draft:scheme": "node ../scripts/draft-scheme.js",
-    "recheck:schemes": "node ../scripts/recheck-schemes.js"
+    "recheck:schemes": "node ../scripts/recheck-schemes.js",
+    "verify:scheme": "node ../scripts/verify-scheme.js",
+    "checklist:schemes": "node ../scripts/make-checklist.js"
   },
   "dependencies": {
     "@mistralai/mistralai": "^2.3.0",
