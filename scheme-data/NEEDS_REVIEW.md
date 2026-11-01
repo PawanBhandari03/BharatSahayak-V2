@@ -50,3 +50,27 @@ Only constraints I was fairly sure of are filled in; the rest are null. Check ea
 
 ## Hindi and Marathi text
 All 30 schemes now have `name` and `benefitSummary` in Hindi and Marathi. They were written by Claude (an AI), not by a native speaker or the departments. Official scheme names in each language, and the wording of the benefit lines, need a native-speaker check before the demo is called "verified". `documents` and `howToApply` are still English only.
+
+## Added to reach 50 (20 schemes, all `verified: false`)
+Written from general knowledge, not from official pages (the official scheme portal could not be read automatically). Hindi and Marathi text is AI-written. `documents` and `howToApply` are typical, not confirmed. Check each item below against the official page before verifying.
+
+| id | what to check |
+|---|---|
+| pmay-u | Income bands (EWS/LIG/MIG), central assistance amount, and the "urban area only" rule are NOT modelled; left open to adults. |
+| jsy | Amount depends on state category and rural/urban; left null. Age 19+ is from memory. |
+| pm-kmy | Age 18-40, ₹3,000/month at 60 (stored as 36000/yr), small/marginal land holding limit (about 2 hectares) not modelled. |
+| pm-kusum | Several components; benefit amount varies by state; left null. |
+| kcc | Official page link is the PM-KISAN portal (a guess); check the correct source. Fishers and livestock keepers can also get KCC; not modelled. |
+| nfsa | Eligibility is by state-issued ration card category (priority households / AAY), not by income; left open. Quantity per person to confirm. |
+| nfbs | ₹20,000 and BPL rule from memory; age of the deceased earner (18-59) not modelled. |
+| csss | Income limit 450000 and ₹12,000/year from memory; top-percentile merit rule not modelled. |
+| pre-matric-sc, post-matric-st | Income limit 250000 from memory; amounts vary by course; left null. |
+| lek-ladki | Staged payments totalling ₹1,01,000 and eligibility (ration card colour, birth date cut-off) to confirm; `maxAge` 18 is the girl's age. |
+| rajarshi-shahu | Income limit 800000 and covered categories (OBC / EWS / SEBC) to confirm; SEBC is not a form option. |
+| ramai-awas, shabari-awas | Rural-only and amount to confirm; left null. |
+| pm-surya-ghar | Up to ₹78,000 and the "own a house with a roof" rule from memory. |
+| scss | Interest rate changes each quarter; no rupee amount. Early-retirement exceptions (age 55+) not modelled. |
+| pmegp | Subsidy percentage and project limits vary; left null. Education and area rules not modelled. |
+| adip | Income limit 360000 (₹30,000/month) and disability percentage rule to confirm. |
+| e-shram | Excludes EPFO/ESIC members and income-tax payers (not modelled). Insurance cover is under PMSBY. |
+| vayoshri | ₹3,000 one-time, age 65+, income limit 200000 from memory; scheme may be closed or changed. |

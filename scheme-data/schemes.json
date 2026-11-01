@@ -1348,5 +1348,911 @@
     "sourceUrl": null,
     "verified": false,
     "lastVerified": null
+  },
+  {
+    "id": "pmay-u",
+    "name": {
+      "en": "PM Awas Yojana (Urban)",
+      "hi": "प्रधानमंत्री आवास योजना – शहरी",
+      "mr": "प्रधानमंत्री आवास योजना – शहरी"
+    },
+    "category": "housing",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Central help to buy or build a first home in an urban area",
+      "hi": "शहरी क्षेत्र में पहला घर खरीदने या बनाने के लिए केंद्रीय सहायता",
+      "mr": "शहरी भागात पहिले घर खरेदी किंवा बांधण्यासाठी केंद्राची मदत"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Income proof",
+      "Proof that the family owns no pucca house",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the PMAY-Urban portal or through a bank / urban local body",
+    "officialUrl": "https://pmaymis.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "jsy",
+    "name": {
+      "en": "Janani Suraksha Yojana",
+      "hi": "जननी सुरक्षा योजना",
+      "mr": "जननी सुरक्षा योजना"
+    },
+    "category": "women-child",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Cash support for pregnant women who deliver in a health facility",
+      "hi": "स्वास्थ्य केंद्र में प्रसव कराने वाली गर्भवती महिलाओं को नकद सहायता",
+      "mr": "आरोग्य केंद्रात प्रसूती करणाऱ्या गर्भवती महिलांना रोख मदत"
+    },
+    "eligibility": {
+      "minAge": 19,
+      "maxAge": null,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Mother and Child Protection (MCP) card",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Register with your ASHA worker or at the nearest health centre",
+    "officialUrl": "https://nhm.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-kmy",
+    "name": {
+      "en": "PM Kisan Maandhan Yojana",
+      "hi": "पीएम किसान मान-धन योजना",
+      "mr": "पीएम किसान मान-धन योजना"
+    },
+    "category": "pension",
+    "level": "central",
+    "state": "all",
+    "amount": 36000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Monthly pension of ₹3,000 after age 60 for small and marginal farmers",
+      "hi": "छोटे और सीमांत किसानों के लिए 60 वर्ष के बाद ₹3,000 मासिक पेंशन",
+      "mr": "लहान व सीमांत शेतकऱ्यांसाठी 60 वर्षांनंतर दरमहा ₹3,000 निवृत्तीवेतन"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "gender": "any",
+      "occupations": [
+        "Farmer / Kisan"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": true,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Land record",
+      "Bank account / IFSC",
+      "Mobile number"
+    ],
+    "deadline": null,
+    "howToApply": "Enrol at a Common Service Centre",
+    "officialUrl": "https://maandhan.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-kusum",
+    "name": {
+      "en": "PM-KUSUM (solar pumps for farmers)",
+      "hi": "पीएम-कुसुम (किसानों के लिए सौर पंप)",
+      "mr": "पीएम-कुसुम (शेतकऱ्यांसाठी सौर पंप)"
+    },
+    "category": "energy",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Subsidy to install solar pumps and solar power on farms",
+      "hi": "खेतों में सौर पंप और सौर ऊर्जा लगाने के लिए सब्सिडी",
+      "mr": "शेतात सौर पंप व सौर ऊर्जा बसवण्यासाठी अनुदान"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Farmer / Kisan"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": true,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Land record",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply through your state nodal agency / the PM-KUSUM portal",
+    "officialUrl": "https://pmkusum.mnre.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "kcc",
+    "name": {
+      "en": "Kisan Credit Card",
+      "hi": "किसान क्रेडिट कार्ड",
+      "mr": "किसान क्रेडिट कार्ड"
+    },
+    "category": "agriculture",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Low-interest crop loans for farmers",
+      "hi": "किसानों के लिए कम ब्याज पर फसल ऋण",
+      "mr": "शेतकऱ्यांसाठी कमी व्याजदराचे पीक कर्ज"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Farmer / Kisan"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Land record or lease",
+      "Passport photo",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at your bank branch or cooperative bank",
+    "officialUrl": "https://pmkisan.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "nfsa",
+    "name": {
+      "en": "National Food Security Act ration (subsidised grain)",
+      "hi": "राष्ट्रीय खाद्य सुरक्षा अधिनियम राशन (सब्सिडी वाला अनाज)",
+      "mr": "राष्ट्रीय अन्न सुरक्षा कायदा रेशन (अनुदानित धान्य)"
+    },
+    "category": "social-welfare",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "Subsidised or free foodgrain every month through the ration shop for eligible households",
+      "hi": "पात्र परिवारों को राशन दुकान से हर महीने सस्ता या मुफ्त अनाज",
+      "mr": "पात्र कुटुंबांना रेशन दुकानातून दरमहा स्वस्त किंवा मोफत धान्य"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar of all family members",
+      "Address proof",
+      "Income proof"
+    ],
+    "deadline": null,
+    "howToApply": "Apply for a ration card at your state food and civil supplies office or portal",
+    "officialUrl": "https://nfsa.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "nfbs",
+    "name": {
+      "en": "National Family Benefit Scheme",
+      "hi": "राष्ट्रीय परिवार लाभ योजना",
+      "mr": "राष्ट्रीय कुटुंब लाभ योजना"
+    },
+    "category": "social-welfare",
+    "level": "central",
+    "state": "all",
+    "amount": 20000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "One-time ₹20,000 to a BPL family when the main earning member dies",
+      "hi": "मुख्य कमाने वाले सदस्य की मृत्यु पर बीपीएल परिवार को एकमुश्त ₹20,000",
+      "mr": "मुख्य कमावत्या सदस्याच्या मृत्यूनंतर बीपीएल कुटुंबाला एकरकमी ₹20,000"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": true
+    },
+    "documents": [
+      "Death certificate",
+      "BPL certificate or ration card",
+      "Aadhaar",
+      "Bank passbook"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the Gram Panchayat / municipal office",
+    "officialUrl": "https://nsap.nic.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "csss",
+    "name": {
+      "en": "Central Sector Scholarship for college students",
+      "hi": "कॉलेज छात्रों के लिए केंद्रीय क्षेत्र छात्रवृत्ति",
+      "mr": "महाविद्यालयीन विद्यार्थ्यांसाठी केंद्रीय क्षेत्र शिष्यवृत्ती"
+    },
+    "category": "education",
+    "level": "central",
+    "state": "all",
+    "amount": 12000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Yearly scholarship for meritorious college students from families with limited income",
+      "hi": "सीमित आय वाले परिवारों के मेधावी कॉलेज छात्रों के लिए वार्षिक छात्रवृत्ति",
+      "mr": "मर्यादित उत्पन्न असलेल्या कुटुंबांतील गुणवंत महाविद्यालयीन विद्यार्थ्यांसाठी वार्षिक शिष्यवृत्ती"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Student"
+      ],
+      "maxAnnualIncome": 450000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Class 12 marksheet",
+      "Income certificate",
+      "Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the National Scholarship Portal",
+    "officialUrl": "https://scholarships.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pre-matric-sc",
+    "name": {
+      "en": "Pre-Matric Scholarship for SC students (Class 9-10)",
+      "hi": "अनुसूचित जाति छात्रों के लिए प्री-मैट्रिक छात्रवृत्ति (कक्षा 9–10)",
+      "mr": "अनुसूचित जाती विद्यार्थ्यांसाठी पूर्व-माध्यमिक शिष्यवृत्ती (इयत्ता 9–10)"
+    },
+    "category": "education",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Scholarship for Scheduled Caste students in Classes 9 and 10",
+      "hi": "कक्षा 9 और 10 के अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति",
+      "mr": "इयत्ता 9 व 10 मधील अनुसूचित जातीच्या विद्यार्थ्यांसाठी शिष्यवृत्ती"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Student"
+      ],
+      "maxAnnualIncome": 250000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "SC"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Caste certificate",
+      "Income certificate",
+      "School bonafide certificate",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the National Scholarship Portal",
+    "officialUrl": "https://scholarships.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "post-matric-st",
+    "name": {
+      "en": "Post-Matric Scholarship for ST students",
+      "hi": "अनुसूचित जनजाति छात्रों के लिए दसवीं के बाद की छात्रवृत्ति",
+      "mr": "अनुसूचित जमाती विद्यार्थ्यांसाठी दहावीनंतरची शिष्यवृत्ती"
+    },
+    "category": "education",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Scholarship for Scheduled Tribe students studying after Class 10",
+      "hi": "दसवीं के बाद पढ़ रहे अनुसूचित जनजाति के छात्रों के लिए छात्रवृत्ति",
+      "mr": "दहावीनंतर शिकणाऱ्या अनुसूचित जमातीच्या विद्यार्थ्यांसाठी शिष्यवृत्ती"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Student"
+      ],
+      "maxAnnualIncome": 250000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "ST"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Tribe certificate",
+      "Income certificate",
+      "Marksheets",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the National Scholarship Portal",
+    "officialUrl": "https://scholarships.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "lek-ladki",
+    "name": {
+      "en": "Lek Ladki Yojana",
+      "hi": "लेक लाडकी योजना",
+      "mr": "लेक लाडकी योजना"
+    },
+    "category": "women-child",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": 101000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Staged cash support for a girl child in Maharashtra, up to about ₹1 lakh",
+      "hi": "महाराष्ट्र में बेटी के लिए चरणबद्ध नकद सहायता, लगभग ₹1 लाख तक",
+      "mr": "महाराष्ट्रातील मुलीसाठी टप्प्याटप्प्याने रोख मदत, सुमारे ₹1 लाखांपर्यंत"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": 18,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Girl's birth certificate",
+      "Ration card",
+      "Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply through your Anganwadi worker",
+    "officialUrl": "https://www.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "rajarshi-shahu",
+    "name": {
+      "en": "Rajarshi Shahu Maharaj Fee Reimbursement",
+      "hi": "राजर्षि शाहू महाराज शुल्क प्रतिपूर्ति योजना",
+      "mr": "राजर्षी शाहू महाराज शिक्षण शुल्क प्रतिपूर्ती योजना"
+    },
+    "category": "education",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": null,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Tuition fee reimbursement for eligible students in Maharashtra",
+      "hi": "महाराष्ट्र के पात्र छात्रों के लिए शिक्षण शुल्क की प्रतिपूर्ति",
+      "mr": "महाराष्ट्रातील पात्र विद्यार्थ्यांसाठी शिक्षण शुल्काची प्रतिपूर्ती"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Student"
+      ],
+      "maxAnnualIncome": 800000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "OBC",
+        "EWS"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Caste or EWS certificate",
+      "Income certificate",
+      "Admission receipt",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the MahaDBT portal",
+    "officialUrl": "https://mahadbt.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "ramai-awas",
+    "name": {
+      "en": "Ramai Awas Yojana",
+      "hi": "रमाई आवास योजना",
+      "mr": "रमाई आवास योजना"
+    },
+    "category": "housing",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Housing help for Scheduled Caste and neo-Buddhist families in rural Maharashtra",
+      "hi": "ग्रामीण महाराष्ट्र में अनुसूचित जाति और नवबौद्ध परिवारों के लिए आवास सहायता",
+      "mr": "ग्रामीण महाराष्ट्रातील अनुसूचित जाती व नवबौद्ध कुटुंबांसाठी घरकुल मदत"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "SC"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Caste certificate",
+      "Income certificate",
+      "Land / plot document",
+      "Aadhaar"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the Gram Panchayat / Panchayat Samiti",
+    "officialUrl": "https://sjsa.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "shabari-awas",
+    "name": {
+      "en": "Shabari Adivasi Gharkul Yojana",
+      "hi": "शबरी आदिवासी घरकुल योजना",
+      "mr": "शबरी आदिवासी घरकुल योजना"
+    },
+    "category": "housing",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Housing help for Scheduled Tribe families in Maharashtra",
+      "hi": "महाराष्ट्र में अनुसूचित जनजाति परिवारों के लिए आवास सहायता",
+      "mr": "महाराष्ट्रातील अनुसूचित जमातीच्या कुटुंबांसाठी घरकुल मदत"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "ST"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Tribe certificate",
+      "Land / plot document",
+      "Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the Tribal Development office / Gram Panchayat",
+    "officialUrl": "https://tribal.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-surya-ghar",
+    "name": {
+      "en": "PM Surya Ghar (rooftop solar)",
+      "hi": "पीएम सूर्य घर (छत पर सौर ऊर्जा)",
+      "mr": "पीएम सूर्य घर (छतावरील सौर ऊर्जा)"
+    },
+    "category": "energy",
+    "level": "central",
+    "state": "all",
+    "amount": 78000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Subsidy of up to ₹78,000 to put solar panels on your home roof",
+      "hi": "घर की छत पर सौर पैनल लगाने के लिए ₹78,000 तक की सब्सिडी",
+      "mr": "घराच्या छतावर सौर पॅनेल बसवण्यासाठी ₹78,000 पर्यंत अनुदान"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Electricity bill",
+      "Aadhaar",
+      "Bank account",
+      "Proof of house roof ownership"
+    ],
+    "deadline": null,
+    "howToApply": "Register on the PM Surya Ghar portal and choose a vendor",
+    "officialUrl": "https://pmsuryaghar.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "scss",
+    "name": {
+      "en": "Senior Citizen Savings Scheme",
+      "hi": "वरिष्ठ नागरिक बचत योजना",
+      "mr": "ज्येष्ठ नागरिक बचत योजना"
+    },
+    "category": "pension",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Savings scheme with a higher interest rate for people aged 60 and above",
+      "hi": "60 वर्ष और उससे अधिक आयु के लोगों के लिए ऊँची ब्याज दर वाली बचत योजना",
+      "mr": "60 वर्षे व त्यावरील व्यक्तींसाठी जास्त व्याजदराची बचत योजना"
+    },
+    "eligibility": {
+      "minAge": 60,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "PAN",
+      "Age proof",
+      "Passport photo"
+    ],
+    "deadline": null,
+    "howToApply": "Open an account at a post office or authorised bank",
+    "officialUrl": "https://www.nsiindia.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pmegp",
+    "name": {
+      "en": "PM Employment Generation Programme (PMEGP)",
+      "hi": "प्रधानमंत्री रोज़गार सृजन कार्यक्रम (पीएमईजीपी)",
+      "mr": "पंतप्रधान रोजगार निर्मिती कार्यक्रम (पीएमईजीपी)"
+    },
+    "category": "entrepreneurship",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Subsidy on a bank loan to start a new small business",
+      "hi": "नया छोटा व्यवसाय शुरू करने के लिए बैंक ऋण पर सब्सिडी",
+      "mr": "नवीन लहान व्यवसाय सुरू करण्यासाठी बँक कर्जावर अनुदान"
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Self-Employed (Small Business)",
+        "Artisan / Craftsperson",
+        "Street Vendor / Small Trader",
+        "Other"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Project report",
+      "Education / skill certificate",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the PMEGP e-portal",
+    "officialUrl": "https://www.kviconline.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "adip",
+    "name": {
+      "en": "ADIP (aids and assistive devices)",
+      "hi": "एडीआईपी (सहायक उपकरण योजना)",
+      "mr": "एडीआयपी (सहाय्यक उपकरणे योजना)"
+    },
+    "category": "social-welfare",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Free or subsidised aids such as wheelchairs and hearing aids for persons with disability",
+      "hi": "दिव्यांगजनों के लिए व्हीलचेयर, श्रवण यंत्र जैसे उपकरण मुफ्त या रियायती दर पर",
+      "mr": "दिव्यांगांसाठी व्हीलचेअर, श्रवणयंत्र अशी उपकरणे मोफत किंवा सवलतीत"
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Person with Disability"
+      ],
+      "maxAnnualIncome": 360000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Disability certificate",
+      "Aadhaar",
+      "Income certificate",
+      "Passport photo"
+    ],
+    "deadline": null,
+    "howToApply": "Apply through the district disability office or an implementing agency camp",
+    "officialUrl": "https://disabilityaffairs.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "e-shram",
+    "name": {
+      "en": "e-Shram registration for unorganised workers",
+      "hi": "ई-श्रम पंजीकरण (असंगठित श्रमिक)",
+      "mr": "ई-श्रम नोंदणी (असंघटित कामगार)"
+    },
+    "category": "insurance",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Free registration card for unorganised workers, with accident insurance cover",
+      "hi": "असंगठित श्रमिकों के लिए निःशुल्क पंजीकरण कार्ड और दुर्घटना बीमा कवर",
+      "mr": "असंघटित कामगारांसाठी मोफत नोंदणी कार्ड व अपघात विमा संरक्षण"
+    },
+    "eligibility": {
+      "minAge": 16,
+      "maxAge": 59,
+      "gender": "any",
+      "occupations": [
+        "Daily Wage Worker",
+        "Domestic Worker",
+        "Construction Worker",
+        "Street Vendor / Small Trader",
+        "Agricultural Labourer",
+        "Artisan / Craftsperson",
+        "Fisherman"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Mobile number linked to Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Register on the e-Shram portal or at a Common Service Centre",
+    "officialUrl": "https://eshram.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "vayoshri",
+    "name": {
+      "en": "Mukhyamantri Vayoshri Yojana",
+      "hi": "मुख्यमंत्री वयोश्री योजना",
+      "mr": "मुख्यमंत्री वयोश्री योजना"
+    },
+    "category": "pension",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": 3000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "One-time ₹3,000 for senior citizens in Maharashtra to buy aids like walking sticks and hearing aids",
+      "hi": "महाराष्ट्र के वरिष्ठ नागरिकों को छड़ी, श्रवण यंत्र जैसे उपकरण खरीदने के लिए एकमुश्त ₹3,000",
+      "mr": "महाराष्ट्रातील ज्येष्ठ नागरिकांना काठी, श्रवणयंत्र अशी उपकरणे घेण्यासाठी एकरकमी ₹3,000"
+    },
+    "eligibility": {
+      "minAge": 65,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": 200000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Age proof",
+      "Income proof",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the district Social Welfare office",
+    "officialUrl": "https://sjsa.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   }
 ]
