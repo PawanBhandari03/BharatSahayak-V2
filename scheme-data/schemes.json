@@ -24,7 +24,7 @@
         "farmer / kisan",
         "agricultural labourer"
       ],
-      "maxAnnualIncome": 500000,
+      "maxAnnualIncome": null,
       "requiresLand": true,
       "maritalStatus": "any",
       "categories": [

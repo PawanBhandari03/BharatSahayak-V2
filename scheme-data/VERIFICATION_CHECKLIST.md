@@ -20,7 +20,7 @@ Only mark a scheme verified if you really compared it. Verified schemes are the 
 - Age: 18 to no maximum
 - Gender: any · State: all · Marital status: any
 - Work: farmer / kisan, agricultural labourer · Category: any
-- Income limit: 500000 · Needs land: true · Needs BPL card: not stated
+- Income limit: none · Needs land: true · Needs BPL card: not stated
 - Benefit: ₹6,000 (yearly) — ₹6,000/year
 - Documents: Aadhaar Card; Land ownership records (7/12 or Khatauni); Aadhaar-linked bank account passbook; Mobile number
 - Then run: `npm run verify:scheme -- pm-kisan --source <page you checked> --yes`
@@ -106,10 +106,10 @@ Only mark a scheme verified if you really compared it. Verified schemes are the 
 
 - [ ] Official page: https://www.aicte-india.org/bureaus/jk
 - Age: 17 to 25
-- Gender: any · State: all · Marital status: any
+- Gender: any · State: jammu & kashmir · Marital status: any
 - Work: student · Category: any
 - Income limit: 800000 · Needs land: not stated · Needs BPL card: not stated
-- Benefit: ₹1,50,000 (n/a) — ₹30,000/year + maintenance
+- Benefit: ₹30,000 (yearly) — ₹30,000/year + maintenance
 - Documents: Aadhaar Card; Domicile Certificate of J&K / Ladakh; Class 10th & 12th Marksheet; Income Certificate (family income ≤ ₹8 Lakh/year)
 - Then run: `npm run verify:scheme -- pmsss --source <page you checked> --yes`
 
