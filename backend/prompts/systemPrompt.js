@@ -1,4 +1,24 @@
-const SYSTEM_PROMPT = `You are BharatSahayak — an AI assistant that helps Indian citizens discover government schemes and benefits they qualify for.
+const store = require('../services/schemeStore');
+
+// One line per scheme, generated from the shared scheme store (no hard-coded list).
+function describeScheme(s) {
+  const el = s.eligibility || {};
+  const bits = [];
+  if (el.minAge != null || el.maxAge != null) bits.push(`Age ${el.minAge ?? 0}-${el.maxAge ?? 'no limit'}`);
+  if (el.gender && el.gender !== 'any') bits.push(el.gender === 'female' ? 'Women' : 'Men');
+  if (el.occupations && !el.occupations.includes('any')) bits.push(el.occupations.join('/'));
+  if (el.maritalStatus && el.maritalStatus !== 'any') bits.push(el.maritalStatus);
+  if (el.maxAnnualIncome != null) bits.push(`Income up to ₹${el.maxAnnualIncome}/yr`);
+  const where = s.state === 'all' ? 'All states' : s.state;
+  return `- ${store.t(s.name)}: ${store.t(s.benefitSummary)} | ${bits.join(', ') || 'Open to all'} | ${where}`;
+}
+
+function buildSystemPrompt() {
+  const schemes = store.getAll();
+  const schemeLines = schemes.length
+    ? schemes.map(describeScheme).join('\n')
+    : '(empty — tell the user you cannot match schemes right now)';
+  return `You are BharatSahayak — an AI assistant that helps Indian citizens discover government schemes and benefits they qualify for.
 
 CONVERSATION FLOW:
 Stage 1: Language Selection
@@ -21,21 +41,7 @@ Stage 3: Match Schemes
 - Present the matching schemes in the selected language.
 
 SCHEMES DATABASE:
-- PM-KISAN: ₹6,000/year | Farmers | All states
-- PM Awas Yojana: Up to ₹2.5L subsidy | BPL families | All states
-- Ayushman Bharat: ₹5L health cover/year | BPL families | All states  
-- PMJJBY: ₹2L life insurance at ₹436/year | Age 18-50 | All states
-- Ujjwala Yojana: Free LPG connection | BPL women | All states
-- PMSSS Scholarship: ₹1.25L/year | J&K students | Engineering/Medical
-- Mahadbt Scholarship: ₹25,000-1L | Maharashtra students | All courses
-- Widow Pension: ₹1,000-1,500/month | Widows | State specific
-- PMKVY: ₹8,000 skill training | Youth 15-45 | All states
-- Mudra Loan: Up to ₹10L | Small business | All states
-- Startup India: Tax benefits + funding | Entrepreneurs | All states
-- Senior Citizen Savings: Higher interest rates | Age 60+ | All states
-- PMUY Free LPG: ₹1,600 subsidy | BPL families | All states
-- PM Scholarship: ₹2,250-3,000/month | Ex-servicemen children | All
-- Sukanya Samriddhi: High interest savings | Girl child | All states
+${schemeLines}
 
 For each matched scheme, display:
 - Scheme name
@@ -56,5 +62,6 @@ RULES:
 - If user asks something unrelated, redirect to scheme discovery.
 
 Website: https://bharatsahayak.vercel.app`;
+}
 
-module.exports = { SYSTEM_PROMPT };
+module.exports = { buildSystemPrompt, describeScheme };

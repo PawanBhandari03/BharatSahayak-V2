@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const twilio = require('twilio');
 const { sendWhatsAppTemplate, sendWhatsAppText } = require('../services/twilioService');
-const { SYSTEM_PROMPT } = require('../prompts/systemPrompt');
+const { buildSystemPrompt } = require('../prompts/systemPrompt');
 
 // ─── MISTRAL AI SETUP ─────────────────────────────────────────────────────────
 const { Mistral } = require('@mistralai/mistralai');
@@ -95,11 +95,11 @@ router.post('/webhook', async (req, res) => {
 
     try {
       const response = await mistral.chat.complete({
-        model: 'mistral-large-latest',
+        model: process.env.MISTRAL_MODEL || 'mistral-large-latest',
         messages: [
           {
             role: 'system',
-            content: SYSTEM_PROMPT
+            content: buildSystemPrompt()
           },
           ...session.messages
         ]

@@ -1,11 +1,9 @@
-const fs = require('fs');
-const path = require('path');
 const { Mistral } = require('@mistralai/mistralai');
 const supabase = require('../config/supabase');
 const { randomUUID } = require('crypto');
 
-// Path to schemes.json
-const schemesFilePath = path.join(__dirname, '../../scheme-data/schemes.json');
+const schemeStore = require('../services/schemeStore');
+const { matchSchemes: filterEligible } = require('../services/eligibility');
 
 const mapProfileToDb = (p) => {
   // Convert empty strings to null for numeric columns
@@ -156,50 +154,7 @@ const saveToSupabase = async (profile, matchedSchemes, aiResponse) => {
 const matchSchemes = async (req, res) => {
   try {
     const profile = req.body;
-    const { age, gender, category, occupation, annualIncome, maritalStatus, state } = profile;
-
-    const userAge = age !== undefined ? Number(age) : null;
-    const userIncome = annualIncome !== undefined ? Number(annualIncome) : 0;
-
-    const schemesData = fs.readFileSync(schemesFilePath, 'utf8');
-    const schemes = JSON.parse(schemesData);
-
-    const matchedSchemes = schemes.filter(scheme => {
-      const el = scheme.eligibility;
-      if (!el) return true;
-
-      // Check age
-      if (userAge !== null) {
-        if (el.minAge !== null && userAge < el.minAge) return false;
-        if (el.maxAge !== null && userAge > el.maxAge) return false;
-      }
-
-      // Check gender
-      if (gender && el.gender && el.gender !== 'any' && el.gender.toLowerCase() !== gender.toLowerCase()) return false;
-
-      // Check category
-      if (category && el.category && !el.category.includes('any')) {
-        const userCategory = category.toLowerCase();
-        if (!el.category.map(c => c.toLowerCase()).includes(userCategory)) return false;
-      }
-
-      // Check occupation
-      if (occupation && el.occupation && !el.occupation.includes('any')) {
-        const userOccupation = occupation.toLowerCase();
-        if (!el.occupation.map(o => o.toLowerCase()).includes(userOccupation)) return false;
-      }
-
-      // Check income
-      if (el.maxAnnualIncome !== null && userIncome > el.maxAnnualIncome) return false;
-
-      // Check state
-      if (state && el.state && el.state.toLowerCase() !== 'all' && el.state.toLowerCase() !== state.toLowerCase()) return false;
-
-      // Check marital status
-      if (maritalStatus && el.maritalStatus && el.maritalStatus !== 'any' && el.maritalStatus.toLowerCase() !== maritalStatus.toLowerCase()) return false;
-
-      return true;
-    });
+    const matchedSchemes = filterEligible(profile, schemeStore.getAll());
 
     // ── Save to Supabase when /api/match-schemes is called ──
     saveToSupabase(profile, matchedSchemes, null).catch((e) =>
@@ -249,10 +204,10 @@ You must respond ONLY with a valid JSON object in the following exact format wit
 
     const mistral = new Mistral({ apiKey: process.env.MISTRAL_API_KEY });
 
-    const userMessage = `User Profile:\n${JSON.stringify(profile, null, 2)}\n\nEligible Schemes:\n${JSON.stringify(matchedSchemes.map(s => ({ id: s.id, name: s.name, amount: s.amount, docs: s.documentsRequired })), null, 2)}`;
+    const userMessage = `User Profile:\n${JSON.stringify(profile, null, 2)}\n\nEligible Schemes:\n${JSON.stringify(matchedSchemes.map(s => ({ id: s.id, name: schemeStore.t(s.name), amount: s.amount, docs: s.documents })), null, 2)}`;
 
     const response = await mistral.chat.complete({
-      model: 'mistral-large-latest',
+      model: process.env.MISTRAL_MODEL || 'mistral-large-latest',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userMessage },
@@ -289,13 +244,13 @@ const buildFallback = (matchedSchemes) => {
   return {
     topSchemes: top.map((s) => ({
       id: s.id,
-      name: s.name,
+      name: schemeStore.t(s.name),
       reason: 'Recommended based on your profile eligibility.',
     })),
     personalizedMessage:
       'Aapke profile ke aadhar par yeh yojanayen aapke liye sabse upyogi hain. In yojanaon ka labh zaroor uthayein! (Based on your profile, these schemes are most beneficial for you. Do avail them!)',
     documentsToArrange: [
-      ...new Set(top.flatMap((s) => s.documentsRequired || [])),
+      ...new Set(top.flatMap((s) => s.documents || [])),
     ].slice(0, 8),
   };
 };

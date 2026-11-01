@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const twilio = require('twilio');
 const { Mistral } = require('@mistralai/mistralai');
+const schemeStore = require('../services/schemeStore');
+const { describeScheme } = require('../prompts/systemPrompt');
 
 const mistral = new Mistral({
     apiKey: process.env.MISTRAL_API_KEY
@@ -46,12 +48,13 @@ router.post('/process', async (req, res) => {
         );
 
         const response = await mistral.chat.complete({
-            model: 'mistral-large-latest',
+            model: process.env.MISTRAL_MODEL || 'mistral-large-latest',
             messages: [
                 {
                     role: 'system',
                     content: `You are BharatSahayak voice AI.
-          Find top 3 Indian government schemes.
+          Find top 3 Indian government schemes ONLY from this list (never invent schemes or amounts):
+          ${schemeStore.getAll().map(describeScheme).join('\n')}
           Reply ONLY in simple Hindi.
           Under 80 words for voice.
           Say scheme name and amount clearly.
