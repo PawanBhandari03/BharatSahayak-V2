@@ -65,7 +65,7 @@ export default function OnboardingForm({ onMatch }) {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-white mb-2">
+        <h2 className="text-2xl font-bold text-ink mb-2">
           {step === 1 && "Let's get started"}
           {step === 2 && "Tell us about yourself"}
           {step === 3 && "Final details"}
@@ -84,7 +84,7 @@ export default function OnboardingForm({ onMatch }) {
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
                 <input type="text" name="name" value={formData.name} onChange={handleChange} required
-                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all placeholder-purple-500" placeholder="Ramesh Kumar" />
+                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all placeholder-purple-500" placeholder="Ramesh Kumar" />
               </div>
             </div>
             <div>
@@ -92,7 +92,7 @@ export default function OnboardingForm({ onMatch }) {
               <div className="relative">
                 <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
                 <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required
-                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all placeholder-purple-500" placeholder="+91 98765 43210" />
+                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all placeholder-purple-500" placeholder="+91 98765 43210" />
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function OnboardingForm({ onMatch }) {
                 <div className="relative">
                   <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
                   <input type="number" name="age" value={formData.age} onChange={handleChange} min="1" max="100" required
-                    className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 outline-none" />
+                    className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 outline-none" />
                 </div>
               </div>
               <div>
@@ -114,7 +114,7 @@ export default function OnboardingForm({ onMatch }) {
                 <div className="relative">
                   <UserRound className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
                   <select name="gender" value={formData.gender} onChange={handleChange}
-                    className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
+                    className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -127,7 +127,7 @@ export default function OnboardingForm({ onMatch }) {
               <div className="relative">
                 <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
                 <select name="state" value={formData.state} onChange={handleChange} required
-                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
+                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
                   <option value="">Select your state...</option>
                   {STATES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
@@ -142,7 +142,7 @@ export default function OnboardingForm({ onMatch }) {
               <div>
                 <label className="block text-sm font-medium text-purple-200 mb-2">Category</label>
                 <select name="category" value={formData.category} onChange={handleChange}
-                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 px-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
+                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 px-4 text-ink focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
                   <option value="general">General</option>
                   <option value="obc">OBC</option>
                   <option value="sc">SC</option>
@@ -154,7 +154,7 @@ export default function OnboardingForm({ onMatch }) {
                 <div className="relative">
                   <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400 pointer-events-none" />
                   <select name="occupation" value={formData.occupation} onChange={handleChange}
-                    className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
+                    className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
                     <option value="student">Student</option>
                     <option value="farmer">Farmer</option>
                     <option value="professional">Professional</option>
@@ -182,7 +182,7 @@ export default function OnboardingForm({ onMatch }) {
               <div className="relative">
                 <Heart className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400 pointer-events-none" />
                 <select name="maritalStatus" value={formData.maritalStatus} onChange={handleChange}
-                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
+                  className="w-full bg-purple-950/50 border border-purple-800 rounded-xl py-3 pl-12 pr-4 text-ink focus:ring-2 focus:ring-purple-500 outline-none appearance-none">
                   <option value="single">Single</option>
                   <option value="married">Married</option>
                   <option value="widow">Widowed</option>
@@ -194,13 +194,13 @@ export default function OnboardingForm({ onMatch }) {
 
         <div className="flex justify-between mt-10 pt-6 border-t border-purple-800/50">
           {step > 1 ? (
-            <button type="button" onClick={prevStep} className="flex items-center gap-2 px-6 py-3 rounded-xl text-purple-300 hover:text-white hover:bg-purple-800/30 transition-all font-medium">
+            <button type="button" onClick={prevStep} className="flex items-center gap-2 px-6 py-3 rounded-xl text-purple-300 hover:text-ink hover:bg-purple-800/30 transition-all font-medium">
               <ChevronLeft className="w-5 h-5" /> Back
             </button>
           ) : <div></div>}
 
           {step < 3 ? (
-            <button type="button" onClick={nextStep} className="flex items-center gap-2 px-8 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all font-medium shadow-lg shadow-purple-600/30">
+            <button type="button" onClick={nextStep} className="flex items-center gap-2 px-8 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-ink transition-all font-medium shadow-lg shadow-purple-600/30">
               Continue <ChevronRight className="w-5 h-5" />
             </button>
           ) : (

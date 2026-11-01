@@ -14,14 +14,14 @@ const FEATURES = [
     title: 'Life Timeline AI',
     description: 'Predicts future eligibility milestones. Know at age 58 you become eligible for ₹3,000/month senior pension — plan ahead.',
     badge: 'Predictive',
-    color: '#7C3AED',
+    color: '#1B1740',
   },
   {
     icon: '🔍',
     title: 'Lost Benefit Detector',
     description: 'AI scans your entire life history and detects benefits you missed in the past 5 years. Retroactively recovers your money.',
     badge: 'AI Powered',
-    color: '#E65100',
+    color: '#C2610A',
   },
   {
     icon: '📞',
@@ -33,20 +33,20 @@ const FEATURES = [
   {
     icon: '💬',
     title: 'WhatsApp Sync',
-    description: 'Your data, secured with a 4-digit PIN only you know. WhatsApp verified. Aadhaar authenticated. No middlemen.',
+    description: 'No Aadhaar number, no OTP, no password. Your answers stay on your device. No middlemen.',
     badge: 'Seamless Sync',
-    color: '#1D9E75',
+    color: '#138808',
   },
   {
     icon: '💰',
     title: 'Benefit Wallet',
     description: 'A single dashboard showing all schemes received, pending, and available. Like a bank account for your government benefits.',
     badge: 'Real-time Updates',
-    color: '#1D9E75',
+    color: '#138808',
   },
 ];
 
-const REDROB_STATS = [
+const IMPACT_STATS = [
   { value: '₹2.6L Cr', label: 'Annual unclaimed benefits' },
   { value: '800M+', label: 'Eligible citizens' },
   { value: '30 min', label: 'Setup time at CSC' },
@@ -85,7 +85,7 @@ export default function Home() {
               Key Features
             </motion.p>
             <motion.h2
-              className="text-4xl md:text-5xl font-black text-white mb-4"
+              className="text-4xl md:text-5xl font-black text-ink mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -111,7 +111,7 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-10 blur-3xl"
             style={{ background: 'radial-gradient(circle, #25D366, transparent)' }} />
           <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl"
-            style={{ background: 'radial-gradient(circle, #6B3FA0, transparent)' }} />
+            style={{ background: 'radial-gradient(circle, #1B1740, transparent)' }} />
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -122,7 +122,7 @@ export default function Home() {
                 WhatsApp Bot Demo
               </motion.p>
               <motion.h2
-                className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight"
+                className="text-4xl md:text-5xl font-black text-ink mb-6 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -132,7 +132,7 @@ export default function Home() {
                 in 2 Minutes
               </motion.h2>
               <motion.p
-                className="text-white/55 text-lg leading-relaxed mb-8"
+                className="text-ink/70 text-lg leading-relaxed mb-8"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -157,7 +157,7 @@ export default function Home() {
                     className="flex items-center gap-3"
                   >
                     <span className="text-xl w-8">{item.icon}</span>
-                    <span className="text-white/70 text-sm">{item.text}</span>
+                    <span className="text-ink/80 text-sm">{item.text}</span>
                     <span className="text-secondary ml-auto text-xs font-bold">✓</span>
                   </motion.div>
                 ))}
@@ -186,7 +186,7 @@ export default function Home() {
       <section className="py-24 px-4 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl"
-            style={{ background: 'radial-gradient(circle, #7C3AED, transparent)' }} />
+            style={{ background: 'radial-gradient(circle, #1B1740, transparent)' }} />
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -197,7 +197,7 @@ export default function Home() {
                 100% Offline Access
               </motion.p>
               <motion.h2
-                className="text-3xl md:text-5xl font-black text-white leading-tight"
+                className="text-3xl md:text-5xl font-black text-ink leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -205,7 +205,7 @@ export default function Home() {
                 No Smartphone? <span className="text-accent">No Problem.</span>
               </motion.h2>
               <motion.p
-                className="text-white/65 text-lg leading-relaxed"
+                className="text-ink/65 text-lg leading-relaxed"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -224,7 +224,7 @@ export default function Home() {
                   <motion.div
                     key={idx}
                     className="p-5 rounded-2xl border flex items-start gap-4"
-                    style={{ background: '#221E3D', borderColor: '#2E2856' }}
+                    style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -234,8 +234,8 @@ export default function Home() {
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
-                      <p className="text-white/40 text-xs leading-relaxed">{item.desc}</p>
+                      <h4 className="text-ink font-bold text-sm mb-1">{item.title}</h4>
+                      <p className="text-ink/60 text-xs leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -249,27 +249,27 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 className="p-8 rounded-3xl border w-full max-w-[360px] text-center space-y-6 shadow-glow-accent/5"
-                style={{ background: 'transparent', borderColor: '#2E2856' }}
+                style={{ background: 'transparent', borderColor: '#E8DFCF' }}
               >
                 <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto text-accent shadow-glow-accent/25">
                   <Phone size={28} />
                 </div>
                 
                 <div>
-                  <p className="text-white/40 text-xs uppercase tracking-wider mb-1">Toll-Free Helpline</p>
-                  <a href="tel:+14244965091" className="text-2xl sm:text-3xl font-black text-white hover:text-accent transition-colors">
+                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">Toll-Free Helpline</p>
+                  <a href="tel:+14244965091" className="text-2xl sm:text-3xl font-black text-ink hover:text-accent transition-colors">
                     +1 424 496 5091
                   </a>
                 </div>
 
                 <div className="p-4 rounded-xl text-left bg-dark/30 border border-dark-border/50 text-xs space-y-2">
                   <span className="text-yellow-400 font-bold">⭐ SUCCESS STORY</span>
-                  <p className="text-white/70 leading-relaxed italic">
+                  <p className="text-ink/80 leading-relaxed italic">
                     "Ramdas Patil, 68, from a remote village in Maharashtra recovered ₹28,000 in unclaimed agricultural subsidies using just his basic Nokia keypad phone."
                   </p>
                 </div>
 
-                <a href="tel:+14244965091" className="btn-primary w-full justify-center" style={{ background: 'linear-gradient(135deg, #E65100, #F7841E)', boxShadow: '0 4px 16px rgba(230, 81, 0, 0.35)' }}>
+                <a href="tel:+14244965091" className="btn-primary w-full justify-center" style={{ background: 'linear-gradient(135deg, #C2610A, #FF9933)', boxShadow: '0 4px 16px rgba(194, 97, 10, 0.35)' }}>
                   <Phone size={15} />
                   Call Helpline Now
                 </a>
@@ -290,7 +290,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="p-6 sm:p-8 rounded-3xl border text-center space-y-5 w-full max-w-[360px] shadow-glow-secondary/10"
-                style={{ background: '#221E3D', borderColor: '#2E2856' }}
+                style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
               >
                 {/* Real Twilio QR Scanner Code */}
                 <div className="p-3 bg-white rounded-2xl inline-block mx-auto shadow-2xl relative group">
@@ -302,26 +302,26 @@ export default function Home() {
                     />
                     
                     {/* Center WhatsApp Logo Badge */}
-                    <div className="absolute w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg border-2 border-white text-white">
+                    <div className="absolute w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg border-2 border-white text-ink">
                       <MessageSquare size={20} className="fill-white stroke-none" />
                     </div>
                   </div>
                 </div>
 
                 {/* Twilio Sandbox Info Details */}
-                <div className="p-3.5 rounded-2xl bg-black/40 border border-white/10 text-xs space-y-2 text-left">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                    <span className="text-white/50 font-semibold text-[11px]">Twilio WhatsApp Sandbox</span>
+                <div className="p-3.5 rounded-2xl bg-black/40 border border-ink/10 text-xs space-y-2 text-left">
+                  <div className="flex items-center justify-between border-b border-ink/10 pb-2">
+                    <span className="text-ink/65 font-semibold text-[11px]">Twilio WhatsApp Sandbox</span>
                     <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live Bot
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-white font-mono bg-white/5 px-3 py-1.5 rounded-xl border border-white/5">
-                    <span className="text-white/50 text-[11px]">Number:</span>
+                  <div className="flex items-center justify-between text-ink font-mono bg-ink/5 px-3 py-1.5 rounded-xl border border-ink/5">
+                    <span className="text-ink/65 text-[11px]">Number:</span>
                     <span className="text-emerald-400 font-bold text-xs">+1 415 523 8886</span>
                   </div>
-                  <div className="flex items-center justify-between text-white font-mono bg-white/5 px-3 py-1.5 rounded-xl border border-white/5">
-                    <span className="text-white/50 text-[11px]">Send code:</span>
+                  <div className="flex items-center justify-between text-ink font-mono bg-ink/5 px-3 py-1.5 rounded-xl border border-ink/5">
+                    <span className="text-ink/65 text-[11px]">Send code:</span>
                     <span className="text-amber-300 font-bold text-xs">join spent-opinion</span>
                   </div>
                 </div>
@@ -344,7 +344,7 @@ export default function Home() {
                 WhatsApp Sync
               </motion.p>
               <motion.h2
-                className="text-3xl md:text-5xl font-black text-white leading-tight"
+                className="text-3xl md:text-5xl font-black text-ink leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -352,7 +352,7 @@ export default function Home() {
                 Get Schemes Directly on <span className="gradient-text-secondary">WhatsApp</span>
               </motion.h2>
               <motion.p
-                className="text-white/60 text-lg leading-relaxed"
+                className="text-ink/75 text-lg leading-relaxed"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -368,7 +368,7 @@ export default function Home() {
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex items-start gap-4 p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-secondary/30 transition-colors"
+                    className="flex items-start gap-4 p-3.5 rounded-2xl bg-white/[0.02] border border-ink/5 hover:border-secondary/30 transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -378,8 +378,8 @@ export default function Home() {
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-sm mb-0.5">{item.title}</h4>
-                      <p className="text-white/60 text-xs leading-relaxed">{item.text}</p>
+                      <h4 className="text-ink font-bold text-sm mb-0.5">{item.title}</h4>
+                      <p className="text-ink/75 text-xs leading-relaxed">{item.text}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -392,7 +392,7 @@ export default function Home() {
       {/* How it works — Timeline */}
       <Timeline />
 
-      {/* Redrob banner */}
+      {/* Team banner */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -400,30 +400,30 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative rounded-3xl p-10 text-center overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(29, 158, 117, 0.1))', border: '1px solid rgba(124, 58, 237, 0.3)' }}
+            style={{ background: 'linear-gradient(135deg, rgba(27, 23, 64, 0.15), rgba(19, 136, 8, 0.1))', border: '1px solid rgba(27, 23, 64, 0.3)' }}
           >
             {/* Background shimmer */}
             <div className="absolute inset-0 rounded-3xl"
-              style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(107, 63, 160, 0.05) 100%)' }} />
+              style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(27, 23, 64, 0.05) 100%)' }} />
 
             <div className="relative z-10">
               <div className="text-5xl mb-4">🏆</div>
               <div className="badge bg-accent/15 text-accent mb-4 text-sm px-4 py-1.5">
-                <Star size={12} className="fill-accent" /> Redrob Ideathon 2026
+                <Star size={12} className="fill-accent" /> Catalyst Hack 2026
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-                Built for Track 3:{' '}
-                <span className="gradient-text-secondary">AI for Social Impact</span>
+              <h2 className="text-3xl md:text-4xl font-black text-ink mb-3">
+                Built to close the{' '}
+                <span className="gradient-text-secondary">benefits gap</span>
               </h2>
-              <p className="text-white/55 text-lg mb-8 max-w-xl mx-auto">
+              <p className="text-ink/70 text-lg mb-8 max-w-xl mx-auto">
                 Team Binary Builders — PawanSingh Bhandari & Rahul Bramhankar — solving one of India's biggest public welfare gaps.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-                {REDROB_STATS.map(stat => (
+                {IMPACT_STATS.map(stat => (
                   <div key={stat.label} className="text-center">
                     <div className="font-black text-xl gradient-text-primary">{stat.value}</div>
-                    <div className="text-white/40 text-xs mt-1">{stat.label}</div>
+                    <div className="text-ink/60 text-xs mt-1">{stat.label}</div>
                   </div>
                 ))}
               </div>

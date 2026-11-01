@@ -10,7 +10,7 @@ export default function Dashboard({ schemes, profile }) {
       <div className="glass rounded-3xl p-8 mb-10 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
         <div className="absolute -right-20 -top-20 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl"></div>
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">Hi {profile.name}, we found {schemes.length} schemes for you!</h2>
+          <h2 className="text-2xl font-bold text-ink mb-2">Hi {profile.name}, we found {schemes.length} schemes for you!</h2>
           <p className="text-purple-300">Based on your profile, you are eligible for the following government benefits.</p>
         </div>
         <div className="bg-purple-950/50 border border-purple-800 rounded-2xl p-6 text-center min-w-[200px]">
@@ -42,12 +42,12 @@ export default function Dashboard({ schemes, profile }) {
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">{scheme.name}</h3>
+              <h3 className="text-xl font-bold text-ink mb-2 group-hover:text-purple-300 transition-colors">{scheme.name}</h3>
               <p className="text-purple-200/70 text-sm mb-6 flex-grow line-clamp-3">{scheme.description}</p>
               
               <div className="bg-purple-950/40 rounded-xl p-4 mb-6">
                 <div className="text-xs text-purple-400 mb-1 font-semibold uppercase">Benefit Amount</div>
-                <div className="text-2xl font-bold text-white flex items-center gap-1">
+                <div className="text-2xl font-bold text-ink flex items-center gap-1">
                   {scheme.amount > 0 ? (
                     <>
                       <IndianRupee className="w-5 h-5 text-purple-300" />

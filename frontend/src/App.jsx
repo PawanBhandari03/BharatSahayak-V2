@@ -19,7 +19,7 @@ function PageLoader() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl animate-pulse-glow"
-          style={{ background: 'linear-gradient(135deg, #6B3FA0, #9353D3)' }}>
+          style={{ background: 'linear-gradient(135deg, #1B1740, #2A2562)' }}>
           🇮🇳
         </div>
         <div className="w-32 h-1 bg-dark-border rounded-full overflow-hidden">
@@ -54,7 +54,7 @@ export default function App() {
   if (loading) return <Loader />;
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-bg text-white">
+    <div className="min-h-screen flex flex-col bg-dark-bg text-ink">
       <ScrollToTop />
       {/* Toast notifications */}
       <Toaster
@@ -62,9 +62,9 @@ export default function App() {
         toastOptions={{
           duration: 3500,
           style: {
-            background: '#1A1A26',
-            color: '#F5F4F0',
-            border: '1px solid #2A2A3E',
+            background: '#F5EFE3',
+            color: '#1B1740',
+            border: '1px solid #E8DFCF',
             borderRadius: '12px',
             fontSize: '14px',
           },
@@ -92,8 +92,8 @@ export default function App() {
               <Route path="*" element={
                 <div className="min-h-screen flex flex-col items-center justify-center gap-6 text-center px-4 pt-20">
                   <div className="text-6xl">🔍</div>
-                  <h1 className="text-3xl font-black text-white">Page Not Found</h1>
-                  <p className="text-white/40">The page you're looking for doesn't exist.</p>
+                  <h1 className="text-3xl font-black text-ink">Page Not Found</h1>
+                  <p className="text-ink/60">The page you're looking for doesn't exist.</p>
                   <a href="/" className="btn-primary">Go Home</a>
                 </div>
               } />

@@ -31,7 +31,7 @@ function VoiceCallSimulator() {
   const startCall = () => {
     setCallActive(true);
     toast.success('📞 Simulating AI voice call in Hindi...', {
-      style: { background: '#221E3D', color: '#F5F4F0', border: '1px solid #1D9E75' }
+      style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
     });
     setPlaying(true);
 
@@ -45,35 +45,35 @@ function VoiceCallSimulator() {
         setPlaying(false);
         setProgress(0);
         toast.success('✅ Call completed! Summary sent on WhatsApp.', {
-          style: { background: '#221E3D', color: '#F5F4F0', border: '1px solid #1D9E75' }
+          style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
         });
       }
     }, 1000);
   };
 
   return (
-    <div className="rounded-2xl border overflow-hidden" style={{ background: '#221E3D', borderColor: '#2E2856' }}>
+    <div className="rounded-2xl border overflow-hidden" style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}>
       {/* Header */}
-      <div className="px-6 py-4 border-b border-dark-border" style={{ background: '#1A1633' }}>
-        <h3 className="text-white font-bold flex items-center gap-2">
+      <div className="px-6 py-4 border-b border-dark-border" style={{ background: '#F5EFE3' }}>
+        <h3 className="text-ink font-bold flex items-center gap-2">
           <Phone size={18} className="text-secondary" />
           Voice Call Simulator
         </h3>
-        <p className="text-white/40 text-xs mt-0.5">AI calls in Hindi/Marathi to deliver scheme info</p>
+        <p className="text-ink/60 text-xs mt-0.5">AI calls in Hindi/Marathi to deliver scheme info</p>
       </div>
 
       {/* Phone mockup */}
       <div className="p-6">
         <div
           className="rounded-2xl p-6 text-center mb-6"
-          style={{ background: callActive ? 'rgba(29, 158, 117, 0.1)' : '#0A0A0F', border: '1px solid ' + (callActive ? 'rgba(29, 158, 117, 0.3)' : '#2A2A3E') }}
+          style={{ background: callActive ? 'rgba(19, 136, 8, 0.1)' : '#FBF7F0', border: '1px solid ' + (callActive ? 'rgba(19, 136, 8, 0.3)' : '#E8DFCF') }}
         >
           {/* Avatar */}
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-secondary/30 to-primary/30 flex items-center justify-center text-3xl mx-auto mb-3">
             🤖
           </div>
-          <div className="text-white font-bold mb-0.5">BharatSahayak AI</div>
-          <div className={`text-sm ${callActive ? 'text-secondary' : 'text-white/40'}`}>
+          <div className="text-ink font-bold mb-0.5">BharatSahayak AI</div>
+          <div className={`text-sm ${callActive ? 'text-secondary' : 'text-ink/60'}`}>
             {callActive ? (playing ? '● Calling Savitribai...' : '✓ Call Ended') : 'AI Voice Bot — Hindi/Marathi'}
           </div>
 
@@ -83,11 +83,11 @@ function VoiceCallSimulator() {
               <div className="w-full h-1 bg-dark-border rounded-full overflow-hidden">
                 <motion.div
                   className="h-full rounded-full"
-                  style={{ background: '#1D9E75', width: `${progress}%` }}
+                  style={{ background: '#138808', width: `${progress}%` }}
                   transition={{ duration: 0.5 }}
                 />
               </div>
-              <div className="flex justify-between text-xs text-white/30 mt-1">
+              <div className="flex justify-between text-xs text-ink/50 mt-1">
                 <span>{Math.floor(progress * 180 / 100 / 60)}:{String(Math.floor(progress * 180 / 100 % 60)).padStart(2, '0')}</span>
                 <span>3:00</span>
               </div>
@@ -101,7 +101,7 @@ function VoiceCallSimulator() {
                 <motion.div
                   key={i}
                   className="w-1 rounded-full"
-                  style={{ background: '#1D9E75' }}
+                  style={{ background: '#138808' }}
                   animate={{ height: [4, 16, 4] }}
                   transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.08 }}
                 />
@@ -112,8 +112,8 @@ function VoiceCallSimulator() {
 
         {/* Hindi script preview */}
         <div
-          className="rounded-xl p-4 mb-5 text-xs leading-relaxed hindi text-white/60 max-h-32 overflow-y-auto scrollbar-hide"
-          style={{ background: '#12121A', border: '1px solid #2A2A3E' }}
+          className="rounded-xl p-4 mb-5 text-xs leading-relaxed hindi text-ink/75 max-h-32 overflow-y-auto scrollbar-hide"
+          style={{ background: '#FFFFFF', border: '1px solid #E8DFCF' }}
         >
           {AUDIO_SCRIPT_HINDI}
         </div>
@@ -125,7 +125,7 @@ function VoiceCallSimulator() {
           className={`w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-3 transition-all ${
             playing ? 'opacity-60 cursor-not-allowed' : 'hover:scale-[1.02]'
           }`}
-          style={{ background: playing ? '#2A2A3E' : 'linear-gradient(135deg, #1D9E75, #2FB089)' }}
+          style={{ background: playing ? '#E8DFCF' : 'linear-gradient(135deg, #138808, #1E9E12)' }}
         >
           {playing ? (
             <>
@@ -167,7 +167,7 @@ export default function UserJourney() {
             Self-Serve — No CSC Needed
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-5xl font-black text-white mb-4"
+            className="text-4xl md:text-5xl font-black text-ink mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -176,7 +176,7 @@ export default function UserJourney() {
             <span className="gradient-text-secondary">₹1,37,000</span> in Benefits
           </motion.h1>
           <motion.p
-            className="text-white/50 text-lg max-w-xl mx-auto"
+            className="text-ink/65 text-lg max-w-xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -189,25 +189,25 @@ export default function UserJourney() {
         <div className="flex justify-center gap-2 mb-10 flex-wrap">
           <button
             onClick={() => setActiveStep(-1)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${activeStep === -1 ? 'border-white/30 text-white bg-white/10' : 'border-dark-border text-white/40 hover:text-white'}`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${activeStep === -1 ? 'border-ink/30 text-ink bg-ink/10' : 'border-dark-border text-ink/60 hover:text-ink'}`}
           >
             Reset
           </button>
-          {[1,2,3,4,5,6,7].map(i => (
+          {[1,2,3,4,5].map(i => (
             <button
               key={i}
               onClick={() => setActiveStep(i - 1)}
               className={`w-10 h-10 rounded-lg text-sm font-bold transition-all border ${
                 activeStep >= i - 1
-                  ? 'border-primary bg-primary/20 text-white'
-                  : 'border-dark-border text-white/40 hover:text-white'
+                  ? 'border-primary bg-primary/20 text-ink'
+                  : 'border-dark-border text-ink/60 hover:text-ink'
               }`}
             >
               {i}
             </button>
           ))}
           <button
-            onClick={() => setActiveStep(6)}
+            onClick={() => setActiveStep(4)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all border border-secondary/40 text-secondary bg-secondary/10 hover:bg-secondary/20"
           >
             Complete Journey
@@ -225,12 +225,12 @@ export default function UserJourney() {
           <div className="space-y-8 lg:sticky lg:top-28">
             {/* WhatsApp simulator */}
             <div>
-              <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+              <h3 className="text-ink font-bold text-lg mb-4 flex items-center gap-2">
                 💬 WhatsApp Chat Simulator
                 <span className="badge bg-secondary/15 text-secondary text-xs">Interactive</span>
               </h3>
               <WhatsAppDemo interactive={true} />
-              <p className="text-white/30 text-xs mt-2 text-center">
+              <p className="text-ink/50 text-xs mt-2 text-center">
                 Try typing: "kisan", "pension", "help", "schemes", or your own query
               </p>
             </div>

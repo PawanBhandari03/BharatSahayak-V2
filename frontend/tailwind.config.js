@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+// One theme for the whole site: cream paper, deep indigo ink, saffron, India green.
+// The legacy token names (primary / secondary / accent / dark / light) are kept so existing pages
+// pick up the new palette without per-file edits.
 export default {
   content: [
     "./index.html",
@@ -8,62 +11,48 @@ export default {
   theme: {
     extend: {
       colors: {
+        ink: '#1B1740',
+        saffron: { DEFAULT: '#FF9933', deep: '#C2610A' },
+        india: '#138808',
+        paper: { DEFAULT: '#FBF7F0', line: '#E8DFCF' },
+
+        // primary = indigo
         primary: {
-          DEFAULT: '#7C3AED',
-          50: '#F5F3FF',
-          100: '#EDE9FE',
-          200: '#DDD6FE',
-          300: '#C4B5FD',
-          400: '#A78BFA',
-          500: '#7C3AED',
-          600: '#6D28D9',
-          700: '#5B21B6',
-          800: '#4C1D95',
-          900: '#2E1065',
+          DEFAULT: '#1B1740',
+          50: '#F3F1FF', 100: '#E4E0F7', 200: '#C9C2EA', 300: '#9F95D4',
+          400: '#6A5FB0', 500: '#1B1740', 600: '#17133A', 700: '#120F30', 800: '#0E0B26', 900: '#0A081C',
         },
+        // secondary = India green
         secondary: {
-          DEFAULT: '#1D9E75',
-          50: '#E8F7F2',
-          100: '#C5EBE0',
-          200: '#8DD7C1',
-          300: '#56C3A2',
-          400: '#2FB089',
-          500: '#1D9E75',
-          600: '#178560',
-          700: '#126C4D',
-          800: '#0C5239',
-          900: '#073926',
+          DEFAULT: '#138808',
+          50: '#E9F6E7', 100: '#CDEBC9', 200: '#9CD697', 300: '#6AC063',
+          400: '#2E9E22', 500: '#138808', 600: '#0F6F06', 700: '#0B5605', 800: '#083D03', 900: '#052702',
         },
+        // accent = deep saffron (legible as text on paper)
         accent: {
-          DEFAULT: '#E65100',
-          50: '#FEF0E6',
-          100: '#FDD5B4',
-          200: '#FBBA82',
-          300: '#F99F50',
-          400: '#F7841E',
-          500: '#E65100',
-          600: '#C24500',
-          700: '#9D3800',
-          800: '#792C00',
-          900: '#541F00',
+          DEFAULT: '#C2610A',
+          50: '#FFF3E6', 100: '#FFE0BF', 200: '#FFC88C', 300: '#FFAE57',
+          400: '#FF9933', 500: '#C2610A', 600: '#9E4F08', 700: '#7A3D06', 800: '#562B05', 900: '#331A03',
         },
+        // "dark" tokens now resolve to paper surfaces
         dark: {
-          bg: '#0D0B1F',
-          surface: '#1A1633',
-          card: '#221E3D',
-          border: '#2E2856',
-          muted: '#4D477C',
+          bg: '#FBF7F0',
+          surface: '#F5EFE3',
+          card: '#FFFFFF',
+          border: '#E8DFCF',
+          muted: '#9A917F',
         },
         light: {
           bg: '#FFFFFF',
-          surface: '#F8F7FF',
-          card: '#F0EDF9',
-          border: '#E2DDF0',
-          muted: '#8B87A0',
+          surface: '#F5EFE3',
+          card: '#FFFFFF',
+          border: '#E8DFCF',
+          muted: '#6B6480',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
         devanagari: ['Noto Sans Devanagari', 'sans-serif'],
       },
       animation: {
@@ -98,11 +87,11 @@ export default {
         xs: '2px',
       },
       boxShadow: {
-        'glow-primary': '0 0 30px rgba(124, 58, 237, 0.4)',
-        'glow-secondary': '0 0 30px rgba(29, 158, 117, 0.4)',
-        'glow-accent': '0 0 30px rgba(230, 81, 0, 0.4)',
-        'card-dark': '0 4px 24px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 12px 40px rgba(124, 58, 237, 0.3)',
+        'glow-primary': '0 1px 2px rgba(27, 23, 64, 0.08)',
+        'glow-secondary': '0 1px 2px rgba(19, 136, 8, 0.12)',
+        'glow-accent': '0 1px 2px rgba(194, 97, 10, 0.12)',
+        'card-dark': '0 1px 3px rgba(27, 23, 64, 0.08), 0 8px 24px rgba(27, 23, 64, 0.05)',
+        'card-hover': '0 2px 4px rgba(27, 23, 64, 0.08), 0 14px 32px rgba(27, 23, 64, 0.10)',
       },
     },
   },

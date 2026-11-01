@@ -17,9 +17,9 @@ const TEAM = [
     username: 'PawanBhandari03',
     avatar: 'P',
     emoji: '👨‍💻',
-    color: '#7C3AED',
-    bg: 'from-purple-900 to-purple-700',
-    skills: ['React', 'Node.js', 'Claude API', 'MongoDB'],
+    color: '#1B1740',
+    bg: 'from-primary-700 to-primary-500',
+    skills: ['React', 'Node.js', 'Mistral AI', 'Supabase'],
     contribution: 'Built the AI scheme matching engine, WhatsApp integration, and Benefit Wallet.',
     github: 'https://github.com/PawanBhandari03',
     linkedin: 'https://www.linkedin.com/in/pawan-singh-bhandari-5817ab307',
@@ -31,10 +31,10 @@ const TEAM = [
     username: 'Rahul_Dev',
     avatar: 'R',
     emoji: '⚙️',
-    color: '#1D9E75',
+    color: '#138808',
     bg: 'from-teal-900 to-teal-700',
-    skills: ['Node.js', 'Twilio', 'Aadhaar API', 'DevOps'],
-    contribution: 'Built the voice call system, Aadhaar PIN authentication, and CSC integration layer.',
+    skills: ['Node.js', 'Twilio', 'Supabase', 'DevOps'],
+    contribution: 'Built the voice call system, the WhatsApp backend, and the CSC integration layer.',
     github: 'https://github.com/RAHUL0408-B',
     linkedin: 'https://www.linkedin.com/in/rahul-bramhankar-a424a328b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
     twitter: '#',
@@ -44,17 +44,17 @@ const TEAM = [
 const TECH_STACK = [
   { icon: Code2, label: 'React 18 + Vite', category: 'Frontend', color: '#61DAFB' },
   { icon: Database, label: 'Node.js + Express', category: 'Backend', color: '#68A063' },
-  { icon: Database, label: 'MongoDB Atlas', category: 'Database', color: '#47A248' },
+  { icon: Database, label: 'Supabase (PostgreSQL)', category: 'Database', color: '#47A248' },
   { icon: MessageSquare, label: 'Twilio WhatsApp API', category: 'Messaging', color: '#F22F46' },
-  { icon: Cpu, label: 'Claude API (Anthropic)', category: 'AI Engine', color: '#CC785C' },
-  { icon: ShieldCheck, label: 'Aadhaar PIN System', category: 'Auth', color: '#FF6B35' },
+  { icon: Cpu, label: 'Mistral AI', category: 'AI Engine', color: '#CC785C' },
+  { icon: ShieldCheck, label: 'Twilio Voice', category: 'Voice', color: '#FF9933' },
 ];
 
 const PROBLEM_STATS = [
-  { value: 2.6, suffix: 'L Cr', label: 'Unclaimed annually', color: '#E65100' },
-  { value: 800, suffix: 'M+', label: 'Eligible Indians', color: '#7C3AED' },
+  { value: 2.6, suffix: 'L Cr', label: 'Unclaimed annually', color: '#C2610A' },
+  { value: 800, suffix: 'M+', label: 'Eligible Indians', color: '#1B1740' },
   { value: 5, prefix: '<', suffix: '%', label: 'Awareness rate', color: '#2196F3' },
-  { value: 43000, prefix: '₹', label: 'Avg per person', color: '#1D9E75' },
+  { value: 43000, prefix: '₹', label: 'Avg per person', color: '#138808' },
 ];
 
 function TeamCard({ member, index }) {
@@ -66,23 +66,23 @@ function TeamCard({ member, index }) {
       transition={{ delay: index * 0.2, duration: 0.7 }}
       whileHover={{ y: -6 }}
       className="rounded-2xl border p-6 group flex flex-col justify-between"
-      style={{ background: '#221E3D', borderColor: '#2E2856' }}
+      style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       <div>
         {/* Top Header Row with Avatar & Emoji */}
         <div className="flex items-center justify-between mb-5">
           <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-black text-white shadow-lg"
+            className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-black text-ink shadow-lg"
             style={{ background: member.color }}
           >
             {member.avatar}
           </div>
-          <span className="text-3xl p-2 rounded-2xl bg-white/5 border border-white/10">{member.emoji}</span>
+          <span className="text-3xl p-2 rounded-2xl bg-ink/5 border border-ink/10">{member.emoji}</span>
         </div>
 
-        <h3 className="text-white font-bold text-xl mb-0.5">{member.name}</h3>
+        <h3 className="text-ink font-bold text-xl mb-0.5">{member.name}</h3>
         <p className="font-medium text-sm mb-1" style={{ color: member.color }}>{member.role}</p>
-        <p className="text-white/30 text-xs mb-4">@{member.username}</p>
+        <p className="text-ink/50 text-xs mb-4">@{member.username}</p>
 
         {/* Skills */}
         <div className="flex flex-wrap gap-1.5 mb-4">
@@ -93,16 +93,16 @@ function TeamCard({ member, index }) {
           ))}
         </div>
 
-        <p className="text-white/55 text-sm leading-relaxed mb-5">{member.contribution}</p>
+        <p className="text-ink/70 text-sm leading-relaxed mb-5">{member.contribution}</p>
 
         {/* Social links */}
         <div className="flex gap-2">
           <a href={member.github} target="_blank" rel="noreferrer"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white border border-dark-border hover:border-primary/40 transition-all">
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs text-ink/65 hover:text-ink border border-dark-border hover:border-primary/40 transition-all">
             <Github size={13} /> GitHub
           </a>
           <a href={member.linkedin} target="_blank" rel="noreferrer"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs text-white/50 hover:text-white border border-dark-border hover:border-primary/40 transition-all">
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs text-ink/65 hover:text-ink border border-dark-border hover:border-primary/40 transition-all">
             <Linkedin size={13} /> LinkedIn
           </a>
         </div>
@@ -131,7 +131,7 @@ function ProblemStat({ stat, index }) {
         ) : '0'}
         {stat.suffix && <span>{stat.suffix}</span>}
       </div>
-      <div className="text-white/60 text-sm">{stat.label}</div>
+      <div className="text-ink/75 text-sm">{stat.label}</div>
     </motion.div>
   );
 }
@@ -160,7 +160,7 @@ export default function About() {
             Team Binary Builders
           </motion.p>
           <motion.h1
-            className="text-4xl md:text-6xl font-black text-white mb-6"
+            className="text-4xl md:text-6xl font-black text-ink mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -169,7 +169,7 @@ export default function About() {
             <span className="gradient-text-secondary">Bharat's Bottom Billion</span>
           </motion.h1>
           <motion.p
-            className="text-white/55 text-xl max-w-2xl mx-auto leading-relaxed"
+            className="text-ink/70 text-xl max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -178,31 +178,31 @@ export default function About() {
             not just for those with smartphones, but for every Indian citizen.
           </motion.p>
 
-          {/* Redrob badge */}
+          {/* Hackathon badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="inline-flex items-center gap-3 px-6 py-3 rounded-full border mt-8"
-            style={{ background: 'rgba(230, 81, 0, 0.1)', borderColor: 'rgba(230, 81, 0, 0.4)' }}
+            style={{ background: 'rgba(194, 97, 10, 0.1)', borderColor: 'rgba(194, 97, 10, 0.4)' }}
           >
             <Star size={16} className="text-accent fill-accent" />
-            <span className="text-white font-semibold">Redrob Ideathon 2026</span>
-            <span className="text-accent font-bold">Track 3: AI for Social Impact</span>
+            <span className="text-ink font-semibold">Catalyst Hack 2026</span>
+            <span className="text-accent font-bold">Team Binary Builders</span>
           </motion.div>
         </div>
 
         {/* Team */}
         <section className="mb-20">
           <motion.h2
-            className="text-3xl font-black text-white mb-2 text-center"
+            className="text-3xl font-black text-ink mb-2 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             Meet the Team
           </motion.h2>
-          <p className="text-white/40 text-center mb-10">Two builders. One mission. Zero compromises.</p>
+          <p className="text-ink/60 text-center mb-10">Two builders. One mission. Zero compromises.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {TEAM.map((member, i) => (
               <TeamCard key={member.name} member={member} index={i} />
@@ -212,7 +212,7 @@ export default function About() {
 
         {/* Problem statement */}
         <section className="mb-20">
-          <div className="rounded-3xl p-8 md:p-12 border" style={{ background: '#12121A', borderColor: '#2A2A3E' }}>
+          <div className="rounded-3xl p-8 md:p-12 border" style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -220,11 +220,11 @@ export default function About() {
               className="text-center mb-10"
             >
               <p className="section-label">The Problem</p>
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">
                 India's Biggest{' '}
                 <span className="gradient-text-primary">Welfare Failure</span>
               </h2>
-              <p className="text-white/55 text-lg max-w-2xl mx-auto">
+              <p className="text-ink/70 text-lg max-w-2xl mx-auto">
                 The Indian government spends ₹15+ lakh crore annually on welfare. Yet, less than 5% of eligible citizens know about all the schemes they qualify for.
               </p>
             </motion.div>
@@ -245,11 +245,11 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className="p-5 rounded-xl border"
-                  style={{ background: '#221E3D', borderColor: '#2E2856' }}
+                  style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
                 >
                   <div className="text-3xl mb-3">{item.icon}</div>
-                  <h4 className="text-white font-bold mb-2">{item.title}</h4>
-                  <p className="text-white/50 text-sm leading-relaxed">{item.text}</p>
+                  <h4 className="text-ink font-bold mb-2">{item.title}</h4>
+                  <p className="text-ink/65 text-sm leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -259,7 +259,7 @@ export default function About() {
         {/* Tech stack */}
         <section className="mb-20">
           <motion.h2
-            className="text-3xl font-black text-white mb-8 text-center"
+            className="text-3xl font-black text-ink mb-8 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -278,14 +278,14 @@ export default function About() {
                   transition={{ delay: i * 0.08 }}
                   whileHover={{ scale: 1.03 }}
                   className="flex items-center gap-3 p-4 rounded-xl border"
-                  style={{ background: '#221E3D', borderColor: '#2E2856' }}
+                  style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
                 >
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${tech.color}18` }}>
                     <Icon size={20} style={{ color: tech.color }} />
                   </div>
                   <div>
-                    <div className="text-white font-semibold text-sm">{tech.label}</div>
-                    <div className="text-white/35 text-xs">{tech.category}</div>
+                    <div className="text-ink font-semibold text-sm">{tech.label}</div>
+                    <div className="text-ink/55 text-xs">{tech.category}</div>
                   </div>
                 </motion.div>
               );
@@ -300,15 +300,15 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center rounded-3xl p-10 border relative overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, rgba(107, 63, 160, 0.12), rgba(29, 158, 117, 0.08))', borderColor: 'rgba(107, 63, 160, 0.3)' }}
+            style={{ background: 'linear-gradient(135deg, rgba(27, 23, 64, 0.12), rgba(19, 136, 8, 0.08))', borderColor: 'rgba(27, 23, 64, 0.3)' }}
           >
             <div className="text-5xl mb-4">🎯</div>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Our Mission</h2>
-            <blockquote className="text-xl text-white/70 italic max-w-2xl mx-auto leading-relaxed mb-6">
+            <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">Our Mission</h2>
+            <blockquote className="text-xl text-ink/80 italic max-w-2xl mx-auto leading-relaxed mb-6">
               "AI that finds what the government owes you —<br/>
               before you even know to ask."
             </blockquote>
-            <p className="text-white/45 text-sm mb-8 max-w-xl mx-auto">
+            <p className="text-ink/62 text-sm mb-8 max-w-xl mx-auto">
               We believe every Indian citizen deserves to access every benefit they're entitled to —
               regardless of education, language, or internet access. BharatSahayak is our answer.
             </p>

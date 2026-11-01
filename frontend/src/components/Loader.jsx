@@ -13,7 +13,7 @@ export default function Loader() {
           {/* Logo circle */}
           <motion.div
             className="relative w-24 h-24 rounded-2xl flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #6B3FA0, #9353D3)' }}
+            style={{ background: 'linear-gradient(135deg, #1B1740, #2A2562)' }}
             animate={{ scale: [1, 1.08, 1], rotate: [0, 5, -5, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           >
@@ -24,7 +24,7 @@ export default function Loader() {
         {/* Name */}
         <div className="text-center">
           <motion.h1
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-bold text-ink"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -32,7 +32,7 @@ export default function Loader() {
             Bharat<span className="gradient-text-primary">Sahayak</span>
           </motion.h1>
           <motion.p
-            className="text-sm text-white/40 mt-1 hindi"
+            className="text-sm text-ink/60 mt-1 hindi"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -45,7 +45,7 @@ export default function Loader() {
         <div className="w-48 h-1 bg-dark-border rounded-full overflow-hidden">
           <motion.div
             className="h-full rounded-full"
-            style={{ background: 'linear-gradient(90deg, #6B3FA0, #1D9E75)' }}
+            style={{ background: 'linear-gradient(90deg, #1B1740, #138808)' }}
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 1.8, ease: 'easeInOut' }}
@@ -53,7 +53,7 @@ export default function Loader() {
         </div>
 
         <motion.p
-          className="text-xs text-white/30"
+          className="text-xs text-ink/50"
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >

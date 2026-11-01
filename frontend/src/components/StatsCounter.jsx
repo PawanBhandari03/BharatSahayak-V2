@@ -9,15 +9,15 @@ const STATS = [
     suffix: 'L Cr',
     label: 'Benefits Unclaimed',
     sublabel: 'Going unclaimed every year',
-    color: '#E65100',
+    color: '#C2610A',
     icon: '💸',
   },
   {
-    value: 1000,
-    suffix: '+',
+    value: 14,
+    suffix: "",
     label: 'Schemes',
-    sublabel: 'Across Central & State Governments',
-    color: '#7C3AED',
+    sublabel: 'In this prototype, growing with each verified record',
+    color: '#1B1740',
     icon: '📋',
   },
   {
@@ -25,7 +25,7 @@ const STATS = [
     suffix: 'M',
     label: 'Citizens',
     sublabel: 'Deserving direct welfare support',
-    color: '#1D9E75',
+    color: '#138808',
     icon: '🇮🇳',
   },
   {
@@ -50,7 +50,7 @@ function StatCard({ stat, index }) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.6 }}
       className="relative p-8 rounded-2xl border text-center group hover:scale-105 transition-transform duration-300"
-      style={{ background: '#221E3D', borderColor: '#2E2856' }}
+      style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       {/* Glow on hover */}
       <div
@@ -78,8 +78,8 @@ function StatCard({ stat, index }) {
         {stat.suffix && <span>{stat.suffix}</span>}
       </div>
 
-      <div className="text-white font-semibold text-lg mb-1">{stat.label}</div>
-      <div className="text-white/40 text-sm">{stat.sublabel}</div>
+      <div className="text-ink font-semibold text-lg mb-1">{stat.label}</div>
+      <div className="text-ink/60 text-sm">{stat.sublabel}</div>
 
       {/* Bottom accent */}
       <div
@@ -105,7 +105,7 @@ export default function StatsCounter() {
             The Problem We Solve
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-5xl font-black text-white mb-4"
+            className="text-4xl md:text-5xl font-black text-ink mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -114,7 +114,7 @@ export default function StatsCounter() {
             <span className="gradient-text-primary">Staggering</span>
           </motion.h2>
           <motion.p
-            className="text-white/50 text-lg max-w-2xl mx-auto"
+            className="text-ink/65 text-lg max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -139,13 +139,13 @@ export default function StatsCounter() {
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
           className="mt-12 p-8 rounded-2xl text-center border"
-          style={{ background: 'rgba(230, 81, 0, 0.06)', borderColor: 'rgba(230, 81, 0, 0.3)' }}
+          style={{ background: 'rgba(194, 97, 10, 0.06)', borderColor: 'rgba(194, 97, 10, 0.3)' }}
         >
-          <p className="text-white/60 text-sm uppercase tracking-wider mb-3">Total unclaimed benefits annually</p>
+          <p className="text-ink/75 text-sm uppercase tracking-wider mb-3">Total unclaimed benefits annually</p>
           <div className="text-5xl md:text-7xl font-black rupee gradient-text-secondary mb-2">
             ₹2,60,000 Crore
           </div>
-          <p className="text-white/40 text-sm">That's India's entire health budget — going to waste.</p>
+          <p className="text-ink/60 text-sm">That's India's entire health budget — going to waste.</p>
         </motion.div>
       </div>
     </section>

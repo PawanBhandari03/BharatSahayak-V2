@@ -3,12 +3,12 @@ import { Clock, FileText, CheckCircle, ExternalLink, Users, Phone, Globe } from 
 import toast from 'react-hot-toast';
 
 const CATEGORY_COLORS = {
-  Agriculture: '#1D9E75',
-  'Social Welfare': '#7C3AED',
-  Housing: '#E65100',
+  Agriculture: '#138808',
+  'Social Welfare': '#1B1740',
+  Housing: '#C2610A',
   Health: '#2196F3',
   Insurance: '#9C27B0',
-  Energy: '#FF9800',
+  Energy: '#FF9933',
   Entrepreneurship: '#00BCD4',
   'Skill Development': '#607D8B',
   Education: '#3F51B5',
@@ -29,7 +29,7 @@ function DeadlineBadge({ daysLeft, deadline }) {
 
   if (isPast) {
     return (
-      <span className="badge bg-white/5 text-white/30 text-xs line-through">
+      <span className="badge bg-ink/5 text-ink/50 text-xs line-through">
         <Clock size={10} /> Enrollment window closed
       </span>
     );
@@ -40,7 +40,7 @@ function DeadlineBadge({ daysLeft, deadline }) {
       className={`badge text-xs ${
         isVeryUrgent ? 'bg-red-500/15 text-red-400' :
         isUrgent ? 'bg-accent/15 text-accent' :
-        'bg-white/5 text-white/50'
+        'bg-ink/5 text-ink/65'
       }`}
     >
       <Clock size={10} />
@@ -51,7 +51,8 @@ function DeadlineBadge({ daysLeft, deadline }) {
 }
 
 export default function SchemeCard({ scheme, compact = false }) {
-  const categoryColor = CATEGORY_COLORS[scheme.category] || '#7C3AED';
+  // One accent for every category so the whole site reads as a single palette.
+  const categoryColor = '#1B1740';
 
   const handleEligibility = (e) => {
     e.preventDefault();
@@ -60,7 +61,7 @@ export default function SchemeCard({ scheme, compact = false }) {
         `✅ Eligible! Match: ${scheme.matchScore}% — ${scheme.documents.length} documents needed.`,
         {
           duration: 4000,
-          style: { background: '#221E3D', color: '#F5F4F0', border: '1px solid #1D9E75' },
+          style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' },
         }
       );
     } else {
@@ -68,7 +69,7 @@ export default function SchemeCard({ scheme, compact = false }) {
         `You need: ${scheme.documents[0]}. Score: ${scheme.matchScore}%`,
         {
           duration: 4000,
-          style: { background: '#221E3D', color: '#F5F4F0', border: '1px solid #E65100' },
+          style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #C2610A' },
         }
       );
     }
@@ -80,7 +81,7 @@ export default function SchemeCard({ scheme, compact = false }) {
       toast.success(`📋 Opening official portal: ${scheme.officialPortal}`, {
         duration: 3000,
         icon: '🏛️',
-        style: { background: '#221E3D', color: '#F5F4F0', border: '1px solid #7C3AED' },
+        style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #1B1740' },
       });
       setTimeout(() => window.open(scheme.officialPortal, '_blank'), 1200);
     }
@@ -90,7 +91,7 @@ export default function SchemeCard({ scheme, compact = false }) {
     <motion.div
       whileHover={{ y: -6, scale: 1.01 }}
       className="relative rounded-2xl border overflow-hidden group transition-all duration-300 flex flex-col"
-      style={{ background: '#221E3D', borderColor: '#2E2856' }}
+      style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       {/* Category top bar */}
       <div className="h-1 w-full flex-shrink-0" style={{ background: `linear-gradient(90deg, ${categoryColor}, ${categoryColor}60)` }} />
@@ -110,25 +111,25 @@ export default function SchemeCard({ scheme, compact = false }) {
                 <CheckCircle size={9} /> {scheme.matchScore}% Match
               </span>
             )}
-            <h3 className="text-white font-bold text-base leading-snug">{scheme.name}</h3>
-            <p className="text-white/40 text-xs mt-0.5 line-clamp-1">{scheme.department}</p>
+            <h3 className="text-ink font-bold text-base leading-snug">{scheme.name}</h3>
+            <p className="text-ink/60 text-xs mt-0.5 line-clamp-1">{scheme.department}</p>
           </div>
           {/* Benefit */}
-          <div className="text-right flex-shrink-0">
-            <div className="font-black text-xl rupee" style={{ color: '#1D9E75' }}>
+          <div className="text-right flex-shrink-0 max-w-[48%]">
+            <div className="font-black text-lg leading-tight rupee break-words" style={{ color: "#138808" }}>
               {scheme.benefitLabel}
             </div>
-            <div className="text-white/30 text-xs">{scheme.benefitType}</div>
+            <div className="text-ink/50 text-xs">{scheme.benefitType}</div>
           </div>
         </div>
 
         {!compact && (
           <>
             {/* Full scheme name */}
-            <p className="text-white/35 text-xs italic mb-2 line-clamp-1">{scheme.fullName}</p>
+            <p className="text-ink/55 text-xs italic mb-2 line-clamp-1">{scheme.fullName}</p>
 
             {/* Description */}
-            <p className="text-white/55 text-xs leading-relaxed mb-3 line-clamp-3">{scheme.description}</p>
+            <p className="text-ink/70 text-xs leading-relaxed mb-3 line-clamp-3">{scheme.description}</p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 mb-3">
@@ -136,7 +137,7 @@ export default function SchemeCard({ scheme, compact = false }) {
                 {scheme.category}
               </span>
               {scheme.tags.slice(0, 3).map(tag => (
-                <span key={tag} className="badge bg-white/5 text-white/45 text-xs px-2.5 py-1">
+                <span key={tag} className="badge bg-ink/5 text-ink/62 text-xs px-2.5 py-1">
                   {tag}
                 </span>
               ))}
@@ -147,7 +148,7 @@ export default function SchemeCard({ scheme, compact = false }) {
         {/* Real data row — deadline + docs + beneficiaries */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           <DeadlineBadge daysLeft={scheme.deadlineDaysLeft} deadline={scheme.deadline} />
-          <span className="badge bg-white/5 text-white/40 text-xs">
+          <span className="badge bg-ink/5 text-ink/60 text-xs">
             <FileText size={10} /> {scheme.documentsNeeded} docs
           </span>
           {scheme.beneficiariesCrore && (
@@ -159,9 +160,9 @@ export default function SchemeCard({ scheme, compact = false }) {
 
         {/* Helpline (real) */}
         {scheme.helpline && !compact && (
-          <div className="flex items-center gap-1.5 mb-3 text-xs text-white/30">
+          <div className="flex items-center gap-1.5 mb-3 text-xs text-ink/50">
             <Phone size={10} className="text-primary/60" />
-            <span>Helpline: <span className="text-white/50">{scheme.helpline}</span></span>
+            <span>Helpline: <span className="text-ink/65">{scheme.helpline}</span></span>
           </div>
         )}
 

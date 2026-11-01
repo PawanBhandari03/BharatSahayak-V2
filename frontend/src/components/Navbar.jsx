@@ -48,7 +48,7 @@ export default function Navbar({ language, setLanguage }) {
             : 'py-5'
         }`}
         style={{
-          background: scrolled ? 'rgba(13, 11, 31, 0.85)' : 'transparent',
+          background: scrolled ? 'rgba(251, 247, 240, 0.94)' : 'transparent',
         }}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
@@ -59,12 +59,12 @@ export default function Navbar({ language, setLanguage }) {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
               <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg transition-transform group-hover:scale-110"
-                style={{ background: 'linear-gradient(135deg, #7C3AED, #A78BFA)' }}>
+                style={{ background: 'linear-gradient(135deg, #1B1740, #6A5FB0)' }}>
                 🇮🇳
               </div>
               <div className="leading-tight">
-                <span className="text-white font-bold text-lg">Bharat</span>
-                <span className="font-bold text-lg" style={{ color: '#7C3AED' }}>Sahayak</span>
+                <span className="text-ink font-bold text-lg">Bharat</span>
+                <span className="font-bold text-lg" style={{ color: '#1B1740' }}>Sahayak</span>
               </div>
             </Link>
 
@@ -76,15 +76,15 @@ export default function Navbar({ language, setLanguage }) {
                   to={link.path}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     location.pathname === link.path
-                      ? 'text-white'
-                      : 'text-white/60 hover:text-white hover:bg-white/5'
+                      ? 'text-ink'
+                      : 'text-ink/75 hover:text-ink hover:bg-ink/5'
                   }`}
                 >
                   {location.pathname === link.path && (
                     <motion.span
                       layoutId="navActive"
                       className="absolute inset-0 rounded-lg"
-                      style={{ background: 'rgba(124, 58, 237, 0.15)', border: '1px solid rgba(124, 58, 237, 0.3)' }}
+                      style={{ background: 'rgba(27, 23, 64, 0.15)', border: '1px solid rgba(27, 23, 64, 0.3)' }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -101,7 +101,7 @@ export default function Navbar({ language, setLanguage }) {
               <div className="relative">
                 <button
                   onClick={() => setLangOpen(!langOpen)}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-ink/75 hover:text-ink hover:bg-ink/5 transition-all"
                 >
                   <Globe size={14} />
                   <span className="hindi">{LANGUAGES.find(l => l.code === language)?.label}</span>
@@ -114,18 +114,18 @@ export default function Navbar({ language, setLanguage }) {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -8, scale: 0.95 }}
                       className="absolute right-0 top-full mt-2 w-32 rounded-xl border border-dark-border overflow-hidden z-50"
-                      style={{ background: '#221E3D' }}
+                      style={{ background: '#FFFFFF' }}
                     >
                       {LANGUAGES.map((lang) => (
                         <button
                           key={lang.code}
                           onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
                           className={`w-full px-4 py-2.5 text-left text-sm transition-colors flex items-center gap-2 ${
-                            language === lang.code ? 'text-white bg-primary/20' : 'text-white/60 hover:text-white hover:bg-white/5'
+                            language === lang.code ? 'text-ink bg-primary/20' : 'text-ink/75 hover:text-ink hover:bg-ink/5'
                           }`}
                         >
                           <span className="hindi font-semibold w-6">{lang.label}</span>
-                          <span className="text-xs text-white/40">{lang.full}</span>
+                          <span className="text-xs text-ink/60">{lang.full}</span>
                         </button>
                       ))}
                     </motion.div>
@@ -144,7 +144,7 @@ export default function Navbar({ language, setLanguage }) {
             {/* Mobile hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center text-white/70 hover:text-white hover:bg-white/5 transition-all"
+              className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center text-ink/80 hover:text-ink hover:bg-ink/5 transition-all"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -169,7 +169,7 @@ export default function Navbar({ language, setLanguage }) {
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="fixed right-0 top-0 bottom-0 z-40 w-72 md:hidden border-l border-dark-border"
-              style={{ background: '#1A1633' }}
+              style={{ background: '#F5EFE3' }}
             >
               <div className="flex flex-col h-full pt-20 pb-8 px-6">
                 <div className="flex flex-col gap-1">
@@ -184,8 +184,8 @@ export default function Navbar({ language, setLanguage }) {
                         to={link.path}
                         className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-medium transition-all ${
                           location.pathname === link.path
-                            ? 'text-white bg-primary/20 border border-primary/30'
-                            : 'text-white/60 hover:text-white hover:bg-white/5'
+                            ? 'text-ink bg-primary/20 border border-primary/30'
+                            : 'text-ink/75 hover:text-ink hover:bg-ink/5'
                         }`}
                       >
                         <span className={language !== 'en' ? 'hindi' : ''}>{getLabel(link)}</span>
@@ -202,7 +202,7 @@ export default function Navbar({ language, setLanguage }) {
                         key={lang.code}
                         onClick={() => setLanguage(lang.code)}
                         className={`flex-1 py-2 rounded-lg text-xs font-semibold hindi transition-all ${
-                          language === lang.code ? 'bg-primary text-white' : 'bg-dark-card text-white/50 hover:text-white'
+                          language === lang.code ? 'bg-primary text-white' : 'bg-dark-card text-ink/65 hover:text-ink'
                         }`}
                       >
                         {lang.label}

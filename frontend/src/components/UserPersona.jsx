@@ -17,9 +17,9 @@ const PERSONAS = [
     phone: 'Basic Jio keypad',
     challenge: 'No smartphone, no internet, no awareness of widow benefits.',
     solution: 'WhatsApp Bot on feature phone + Voice Call in Marathi.',
-    color: '#6B3FA0',
-    accentColor: '#C9A9E9',
-    avatarBg: 'from-purple-800 to-purple-600',
+    color: '#1B1740',
+    accentColor: '#6A5FB0',
+    avatarBg: 'from-primary-700 to-primary-400',
     tags: ['Farmer', 'Widow', 'No Internet'],
   },
   {
@@ -55,7 +55,7 @@ const PERSONAS = [
     phone: 'Android smartphone',
     challenge: 'MUDRA loan rejected twice due to wrong documents.',
     solution: 'AI document guide + Loan eligibility checker.',
-    color: '#1D9E75',
+    color: '#138808',
     accentColor: '#80CBC4',
     avatarBg: 'from-teal-800 to-teal-600',
     tags: ['Urban', 'Business', 'Loan Eligible'],
@@ -71,7 +71,7 @@ function PersonaCard({ persona, index }) {
       transition={{ delay: index * 0.15, duration: 0.7 }}
       whileHover={{ y: -8 }}
       className="relative rounded-2xl border overflow-hidden group cursor-default"
-      style={{ background: '#221E3D', borderColor: '#2E2856' }}
+      style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       {/* Top gradient bar */}
       <div className="h-1.5 w-full" style={{ background: `linear-gradient(90deg, ${persona.color}, ${persona.accentColor})` }} />
@@ -90,9 +90,9 @@ function PersonaCard({ persona, index }) {
             {persona.emoji}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-white font-bold text-lg leading-tight">{persona.name}</h3>
+            <h3 className="text-ink font-bold text-lg leading-tight">{persona.name}</h3>
             <p className="text-sm font-medium" style={{ color: persona.color }}>{persona.role}</p>
-            <p className="text-white/40 text-xs mt-0.5 flex items-center gap-1">
+            <p className="text-ink/60 text-xs mt-0.5 flex items-center gap-1">
               📍 {persona.location}
             </p>
           </div>
@@ -107,21 +107,21 @@ function PersonaCard({ persona, index }) {
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3 mb-5">
-          <div className="p-3 rounded-xl" style={{ background: 'rgba(26, 26, 38, 0.8)', border: '1px solid #2A2A3E' }}>
-            <div className="text-xs text-white/40 mb-0.5">Schemes Eligible</div>
-            <div className="font-bold text-white" style={{ color: persona.color }}>{persona.schemes}</div>
+          <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
+            <div className="text-xs text-ink/60 mb-0.5">Schemes Eligible</div>
+            <div className="font-bold text-ink" style={{ color: persona.color }}>{persona.schemes}</div>
           </div>
-          <div className="p-3 rounded-xl" style={{ background: 'rgba(26, 26, 38, 0.8)', border: '1px solid #2A2A3E' }}>
-            <div className="text-xs text-white/40 mb-0.5">Total Benefit</div>
+          <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
+            <div className="text-xs text-ink/60 mb-0.5">Total Benefit</div>
             <div className="font-bold text-secondary rupee text-sm">{persona.totalBenefit}</div>
           </div>
-          <div className="p-3 rounded-xl" style={{ background: 'rgba(26, 26, 38, 0.8)', border: '1px solid #2A2A3E' }}>
-            <div className="text-xs text-white/40 mb-0.5">Annual Income</div>
-            <div className="font-bold text-white text-sm">{persona.income}</div>
+          <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
+            <div className="text-xs text-ink/60 mb-0.5">Annual Income</div>
+            <div className="font-bold text-ink text-sm">{persona.income}</div>
           </div>
-          <div className="p-3 rounded-xl" style={{ background: 'rgba(26, 26, 38, 0.8)', border: '1px solid #2A2A3E' }}>
-            <div className="text-xs text-white/40 mb-0.5 flex items-center gap-1"><Smartphone size={9} /> Phone</div>
-            <div className="font-bold text-white text-xs leading-tight">{persona.phone}</div>
+          <div className="p-3 rounded-xl" style={{ background: 'rgba(255, 255, 255, 0.92)', border: '1px solid #E8DFCF' }}>
+            <div className="text-xs text-ink/60 mb-0.5 flex items-center gap-1"><Smartphone size={9} /> Phone</div>
+            <div className="font-bold text-ink text-xs leading-tight">{persona.phone}</div>
           </div>
         </div>
 
@@ -138,11 +138,11 @@ function PersonaCard({ persona, index }) {
         <div className="space-y-2 mb-5">
           <div className="flex gap-2">
             <span className="text-accent text-xs mt-0.5">⚠</span>
-            <p className="text-white/50 text-xs leading-relaxed">{persona.challenge}</p>
+            <p className="text-ink/65 text-xs leading-relaxed">{persona.challenge}</p>
           </div>
           <div className="flex gap-2">
             <span className="text-secondary text-xs mt-0.5">✓</span>
-            <p className="text-white/70 text-xs leading-relaxed">{persona.solution}</p>
+            <p className="text-ink/80 text-xs leading-relaxed">{persona.solution}</p>
           </div>
         </div>
 
@@ -171,7 +171,7 @@ export default function UserPersona() {
             Who We Serve
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-5xl font-black text-white mb-4"
+            className="text-4xl md:text-5xl font-black text-ink mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -180,7 +180,7 @@ export default function UserPersona() {
             <span className="gradient-text-secondary">Real Benefits.</span>
           </motion.h2>
           <motion.p
-            className="text-white/50 text-lg max-w-xl mx-auto"
+            className="text-ink/65 text-lg max-w-xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

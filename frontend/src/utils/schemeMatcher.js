@@ -203,9 +203,9 @@ export function computeWallet(matchedSchemes) {
     future,
     count: eligible.length,
     chartData: [
-      { name: 'Received',  value: received,  color: '#1D9E75' },
-      { name: 'Available', value: available, color: '#7C3AED' },
-      { name: 'Pending',   value: pending,   color: '#E65100' },
+      { name: 'Received',  value: received,  color: '#138808' },
+      { name: 'Available', value: available, color: '#1B1740' },
+      { name: 'Pending',   value: pending,   color: '#C2610A' },
       { name: 'Future',    value: future,    color: '#2196F3' },
     ],
   };
@@ -245,7 +245,7 @@ export function generateTimeline(profile, matchedSchemes) {
       age,
       event: `${s.name} — ${s.benefitLabel}`,
       type: 'current',
-      color: s.categoryColor || '#7C3AED',
+      color: s.categoryColor || '#1B1740',
       source: s.officialPortal?.replace('https://', '') || '',
     });
   });
@@ -267,7 +267,7 @@ export function generateTimeline(profile, matchedSchemes) {
       age: 50,
       event: 'PMJJBY last enrollment age — ₹2 lakh life cover @ ₹436/year',
       type: 'upcoming',
-      color: '#FF9800',
+      color: '#FF9933',
       source: 'jansuraksha.gov.in',
     });
   }

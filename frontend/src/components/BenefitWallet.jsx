@@ -6,9 +6,9 @@ import {
 } from 'recharts';
 
 const DEFAULT_CHART = [
-  { name: 'Received',  value: 0, color: '#1D9E75' },
-  { name: 'Available', value: 0, color: '#7C3AED' },
-  { name: 'Pending',   value: 0, color: '#E65100' },
+  { name: 'Received',  value: 0, color: '#138808' },
+  { name: 'Available', value: 0, color: '#1B1740' },
+  { name: 'Pending',   value: 0, color: '#C2610A' },
   { name: 'Future',    value: 0, color: '#2196F3' },
 ];
 
@@ -24,7 +24,7 @@ function MetricCard({ label, value, color, delay }) {
       className="p-4 rounded-xl border"
       style={{ background: `${color}0D`, borderColor: `${color}30` }}
     >
-      <div className="text-xs text-white/40 mb-1">{label}</div>
+      <div className="text-xs text-ink/60 mb-1">{label}</div>
       <div className="text-xl font-black rupee" style={{ color }}>
         ₹{inView && value > 0
           ? <CountUp end={value} duration={1.8} separator="," />
@@ -40,9 +40,9 @@ function CustomTooltip({ active, payload }) {
     const d = payload[0];
     return (
       <div className="px-4 py-3 rounded-xl border text-sm"
-        style={{ background: '#221E3D', borderColor: '#2E2856' }}>
+        style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}>
         <div className="font-bold" style={{ color: d.payload.color }}>{d.name}</div>
-        <div className="text-white">₹{d.value.toLocaleString('en-IN')}</div>
+        <div className="text-ink">₹{d.value.toLocaleString('en-IN')}</div>
       </div>
     );
   }
@@ -67,14 +67,14 @@ export default function BenefitWallet({ wallet }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="rounded-2xl border overflow-hidden"
-      style={{ background: '#221E3D', borderColor: '#2E2856' }}
+      style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       {/* Header */}
       <div className="px-6 py-4 border-b border-dark-border flex items-center justify-between"
-        style={{ background: '#1A1633' }}>
+        style={{ background: '#F5EFE3' }}>
         <div>
-          <h3 className="text-white font-bold text-lg">💰 Benefit Wallet</h3>
-          <p className="text-white/40 text-xs">
+          <h3 className="text-ink font-bold text-lg">💰 Benefit Wallet</h3>
+          <p className="text-ink/60 text-xs">
             {hasData
               ? `${w.count} scheme${w.count !== 1 ? 's' : ''} matched for your profile`
               : 'Register to see your matched schemes'}
@@ -82,7 +82,7 @@ export default function BenefitWallet({ wallet }) {
         </div>
         {hasData && (
           <div className="text-right">
-            <div className="text-white/40 text-xs">Total Eligible</div>
+            <div className="text-ink/60 text-xs">Total Eligible</div>
             <div className="text-2xl font-black text-secondary rupee">
               ₹{inView
                 ? <CountUp end={w.total} duration={2.2} separator="," />
@@ -95,7 +95,7 @@ export default function BenefitWallet({ wallet }) {
 
       <div className="p-6">
         {!hasData ? (
-          <div className="text-center py-10 text-white/30">
+          <div className="text-center py-10 text-ink/50">
             <div className="text-4xl mb-3">🔍</div>
             <p className="text-sm">No schemes matched yet.</p>
             <p className="text-xs mt-1">Register with your details to see your benefit wallet.</p>
@@ -133,9 +133,9 @@ export default function BenefitWallet({ wallet }) {
 
             {/* Metric cards */}
             <div className="grid grid-cols-2 gap-3">
-              <MetricCard label="Received"  value={w.received}  color="#1D9E75" delay={0.1} />
-              <MetricCard label="Available" value={w.available} color="#7C3AED" delay={0.2} />
-              <MetricCard label="Pending"   value={w.pending}   color="#E65100" delay={0.3} />
+              <MetricCard label="Received"  value={w.received}  color="#138808" delay={0.1} />
+              <MetricCard label="Available" value={w.available} color="#1B1740" delay={0.2} />
+              <MetricCard label="Pending"   value={w.pending}   color="#C2610A" delay={0.3} />
               <MetricCard label="Future"    value={w.future}    color="#2196F3" delay={0.4} />
             </div>
           </div>

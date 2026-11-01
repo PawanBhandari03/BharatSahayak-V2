@@ -26,8 +26,8 @@ function FilterChip({ label, active, onClick }) {
       onClick={onClick}
       className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap border ${
         active
-          ? 'text-white border-primary bg-primary/20'
-          : 'text-white/50 border-dark-border hover:text-white hover:border-primary/40'
+          ? 'text-ink border-primary bg-primary/20'
+          : 'text-ink/65 border-dark-border hover:text-ink hover:border-primary/40'
       }`}
     >
       {label}
@@ -44,9 +44,9 @@ function FilterDropdown({ label, options, value, onChange }) {
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border transition-all"
         style={{
-          background: value && value !== options[0] ? 'rgba(124, 58, 237, 0.15)' : '#221E3D',
-          borderColor: value && value !== options[0] ? 'rgba(124, 58, 237, 0.5)' : '#2E2856',
-          color: value && value !== options[0] ? '#DDD6FE' : 'rgba(255,255,255,0.5)'
+          background: value && value !== options[0] ? 'rgba(27, 23, 64, 0.15)' : '#FFFFFF',
+          borderColor: value && value !== options[0] ? 'rgba(27, 23, 64, 0.5)' : '#E8DFCF',
+          color: value && value !== options[0] ? '#1B1740' : 'rgba(255,255,255,0.5)'
         }}
       >
         {label}: <span className="font-medium">{value || options[0]}</span>
@@ -59,14 +59,14 @@ function FilterDropdown({ label, options, value, onChange }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.95 }}
             className="absolute top-full left-0 mt-2 w-44 rounded-xl border border-dark-border z-20 py-1 overflow-hidden shadow-xl"
-            style={{ background: '#221E3D', borderColor: '#2E2856' }}
+            style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
           >
             {options.map(opt => (
               <button
                 key={opt}
                 onClick={() => { onChange(opt); setOpen(false); }}
                 className={`w-full px-4 py-2.5 text-left text-sm transition-colors ${
-                  value === opt ? 'text-white bg-primary/20' : 'text-white/60 hover:text-white hover:bg-white/5'
+                  value === opt ? 'text-ink bg-primary/20' : 'text-ink/75 hover:text-ink hover:bg-ink/5'
                 }`}
               >
                 {opt}
@@ -87,8 +87,8 @@ function EmptyState({ query }) {
       className="col-span-full text-center py-20"
     >
       <div className="text-6xl mb-4">🔍</div>
-      <h3 className="text-white font-bold text-xl mb-2">No schemes found</h3>
-      <p className="text-white/40 text-sm">
+      <h3 className="text-ink font-bold text-xl mb-2">No schemes found</h3>
+      <p className="text-ink/60 text-sm">
         No results for "{query}". Try different keywords or remove filters.
       </p>
     </motion.div>
@@ -97,7 +97,7 @@ function EmptyState({ query }) {
 
 function SchemeCardSkeleton() {
   return (
-    <div className="rounded-2xl border border-dark-border p-5 space-y-3 animate-pulse" style={{ background: '#221E3D', borderColor: '#2E2856' }}>
+    <div className="rounded-2xl border border-dark-border p-5 space-y-3 animate-pulse" style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}>
       <div className="h-4 bg-dark-border rounded w-3/4" />
       <div className="h-3 bg-dark-border rounded w-1/2" />
       <div className="h-8 bg-dark-border rounded" />
@@ -158,7 +158,7 @@ export default function Schemes() {
 
   const handleVoiceSearch = () => {
     toast.success('🎙 Voice search coming soon! Type your query in Hindi or English.', {
-      style: { background: '#1A1A26', color: '#F5F4F0', border: '1px solid #6B3FA0' }
+      style: { background: '#F5EFE3', color: '#1B1740', border: '1px solid #1B1740' }
     });
   };
 
@@ -186,10 +186,10 @@ export default function Schemes() {
         {/* Header */}
         <div className="mb-8">
           <motion.p className="section-label" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            1000+ Schemes
+            14 Schemes
           </motion.p>
           <motion.h1
-            className="text-3xl md:text-4xl font-black text-white mb-2"
+            className="text-3xl md:text-4xl font-black text-ink mb-2"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -197,7 +197,7 @@ export default function Schemes() {
             Explore Government <span className="gradient-text-primary">Schemes</span>
           </motion.h1>
           <motion.p
-            className="text-white/40 text-sm"
+            className="text-ink/60 text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -214,14 +214,14 @@ export default function Schemes() {
           className="relative mb-6"
         >
           <div className="relative flex items-center">
-            <Search size={18} className="absolute left-5 text-white/30 pointer-events-none" />
+            <Search size={18} className="absolute left-5 text-ink/50 pointer-events-none" />
             <input
               type="text"
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Search schemes by name, category... (e.g. 'kisan', 'widow', 'health')"
-              className="w-full pl-12 pr-24 py-4 rounded-2xl text-white placeholder-white/25 border outline-none focus:border-primary/60 transition-colors text-sm"
-              style={{ background: '#1A1A26', borderColor: '#2A2A3E' }}
+              className="w-full pl-12 pr-24 py-4 rounded-2xl text-ink placeholder-white/25 border outline-none focus:border-primary/60 transition-colors text-sm"
+              style={{ background: '#F5EFE3', borderColor: '#E8DFCF' }}
             />
             <div className="absolute right-3 flex gap-2">
               <button
@@ -233,7 +233,7 @@ export default function Schemes() {
               </button>
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className={`p-2.5 rounded-xl transition-all ${showFilters ? 'bg-primary/20 text-primary' : 'hover:bg-white/5 text-white/40'}`}
+                className={`p-2.5 rounded-xl transition-all ${showFilters ? 'bg-primary/20 text-primary' : 'hover:bg-ink/5 text-ink/60'}`}
               >
                 <SlidersHorizontal size={16} />
               </button>
@@ -250,7 +250,7 @@ export default function Schemes() {
               exit={{ opacity: 0, height: 0 }}
               className="mb-6 overflow-hidden"
             >
-              <div className="flex flex-wrap gap-3 p-4 rounded-2xl border border-dark-border" style={{ background: '#12121A' }}>
+              <div className="flex flex-wrap gap-3 p-4 rounded-2xl border border-dark-border" style={{ background: '#FFFFFF' }}>
                 <FilterDropdown label="State" options={STATES_FILTER} value={state} onChange={setState} />
                 <FilterDropdown label="Age Group" options={AGE_GROUPS} value={age} onChange={setAge} />
                 <FilterDropdown label="Income" options={INCOME_GROUPS} value={income} onChange={setIncome} />
@@ -273,7 +273,7 @@ export default function Schemes() {
                 key={tab}
                 onClick={() => {
                   if (tab === FILTER_TABS[1] && !user) {
-                    toast.error('Please register first to see personalized schemes!', { style: { background: '#1A1A26', color: '#F5F4F0', border: '1px solid #E65100' }});
+                    toast.error('Please register first to see personalized schemes!', { style: { background: '#F5EFE3', color: '#1B1740', border: '1px solid #C2610A' }});
                     return;
                   }
                   setActiveTab(tab);
@@ -281,7 +281,7 @@ export default function Schemes() {
                 className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all border ${
                   activeTab === tab
                     ? 'bg-secondary/20 text-secondary border-secondary'
-                    : 'bg-[#1A1A26] text-white/50 border-dark-border hover:text-white'
+                    : 'bg-[#F5EFE3] text-ink/65 border-dark-border hover:text-ink'
                 }`}
               >
                 {tab === FILTER_TABS[1] && user ? `For You (${matchedSchemes.filter(s => s.isMatched).length}) ✨` : tab}
@@ -303,7 +303,7 @@ export default function Schemes() {
 
         {/* Results count */}
         <div className="flex items-center justify-between mb-5">
-          <p className="text-white/40 text-sm">
+          <p className="text-ink/60 text-sm">
             {loading ? 'Loading...' : `${filtered.length} scheme${filtered.length !== 1 ? 's' : ''} found`}
           </p>
           {hasFilters && (

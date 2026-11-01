@@ -18,12 +18,12 @@ function IndiaMapSVG() {
         />
         <defs>
           <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6B3FA0" />
-            <stop offset="100%" stopColor="#1D9E75" />
+            <stop offset="0%" stopColor="#1B1740" />
+            <stop offset="100%" stopColor="#138808" />
           </linearGradient>
           <linearGradient id="mapFill" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6B3FA0" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#1D9E75" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#1B1740" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#138808" stopOpacity="0.05" />
           </linearGradient>
         </defs>
 
@@ -42,7 +42,7 @@ function IndiaMapSVG() {
               cx={node.cx}
               cy={node.cy}
               r="12"
-              fill="#6B3FA0"
+              fill="#1B1740"
               opacity="0.1"
               style={{ animation: `pingRing ${1.5 + i * 0.3}s ease-out infinite`, animationDelay: `${i * 0.4}s` }}
             />
@@ -50,14 +50,14 @@ function IndiaMapSVG() {
               cx={node.cx}
               cy={node.cy}
               r="4"
-              fill="#9353D3"
+              fill="#2A2562"
               opacity="0.8"
             />
             <circle
               cx={node.cx}
               cy={node.cy}
               r="2"
-              fill="#C9A9E9"
+              fill="#6A5FB0"
             />
           </g>
         ))}
@@ -74,7 +74,7 @@ function IndiaMapSVG() {
           <line
             key={i}
             x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke="#6B3FA0"
+            stroke="#1B1740"
             strokeWidth="0.5"
             strokeDasharray="4 4"
             opacity="0.3"
@@ -86,7 +86,7 @@ function IndiaMapSVG() {
 }
 
 // Floating scheme badge with vibrant design and continuous floating motion
-function FloatingBadge({ icon, title, amount, className, delay = 0, duration = 5, floatY = 14, borderGlow = 'rgba(124, 58, 237, 0.3)', badgeBg = 'rgba(26, 20, 51, 0.88)' }) {
+function FloatingBadge({ icon, title, amount, className, delay = 0, duration = 5, floatY = 14, borderGlow = 'rgba(27, 23, 64, 0.3)', badgeBg = 'rgba(255, 255, 255, 0.94)' }) {
   return (
     <motion.div
       className={`absolute flex items-center gap-3 px-4 py-2.5 rounded-2xl border backdrop-blur-md shadow-2xl pointer-events-none select-none ${className}`}
@@ -111,8 +111,8 @@ function FloatingBadge({ icon, title, amount, className, delay = 0, duration = 5
     >
       <span className="text-xl sm:text-2xl flex items-center justify-center shrink-0">{icon}</span>
       <div className="flex flex-col text-left">
-        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-white/70 leading-tight">{title}</span>
-        <span className="text-xs sm:text-sm font-black text-white tracking-tight leading-tight">{amount}</span>
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-ink/80 leading-tight">{title}</span>
+        <span className="text-xs sm:text-sm font-black text-ink tracking-tight leading-tight">{amount}</span>
       </div>
     </motion.div>
   );
@@ -129,7 +129,7 @@ export default function Hero() {
       {/* Radial glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
-          style={{ background: 'radial-gradient(ellipse, rgba(124, 58, 237, 0.15) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse, rgba(27, 23, 64, 0.15) 0%, transparent 70%)' }} />
       </div>
 
       {/* India map background */}
@@ -146,7 +146,7 @@ export default function Hero() {
           delay={0.4} 
           duration={5.5}
           floatY={14}
-          borderGlow="rgba(29, 158, 117, 0.45)"
+          borderGlow="rgba(19, 136, 8, 0.45)"
         />
         
         {/* Top Right: Ayushman Bharat */}
@@ -178,7 +178,7 @@ export default function Hero() {
           icon="💰" 
           title="MahaDBT Grant" 
           amount="₹25,000 Benefit" 
-          className="hidden xl:flex top-1/2 left-[56%] -translate-y-1/2 text-purple-300" 
+          className="hidden xl:flex top-1/2 left-[56%] -translate-y-1/2 text-primary-300" 
           delay={1.5} 
           duration={6.5}
           floatY={18}
@@ -194,7 +194,7 @@ export default function Hero() {
           delay={1.8} 
           duration={5.2}
           floatY={15}
-          borderGlow="rgba(230, 81, 0, 0.45)"
+          borderGlow="rgba(194, 97, 10, 0.45)"
         />
 
         {/* Bottom Center / Right: Widow Pension */}
@@ -215,16 +215,16 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Text & Actions */}
           <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
-            {/* Ideathon Badge */}
+            {/* Event badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border"
-              style={{ background: 'rgba(124, 58, 237, 0.12)', borderColor: 'rgba(124, 58, 237, 0.3)', color: '#DDD6FE' }}
+              style={{ background: 'rgba(27, 23, 64, 0.12)', borderColor: 'rgba(27, 23, 64, 0.3)', color: '#1B1740' }}
             >
               <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              🏆 Redrob Ideathon 2026 — Track 3: AI for Social Impact
+              Catalyst Hack 2026 · Team Binary Builders
             </motion.div>
 
             {/* Word-by-word headline */}
@@ -235,7 +235,7 @@ export default function Hero() {
                   className={`inline-block mr-2.5 sm:mr-3 mb-1.5 sm:mb-2 ${
                     word === '₹2.6' ? 'gradient-text-secondary rupee text-5xl sm:text-6xl md:text-7xl lg:text-8xl' :
                     word === 'Unclaimed' ? 'gradient-text-primary' :
-                    word === 'Year.' ? 'text-accent' : 'text-white'
+                    word === 'Year.' ? 'text-accent' : 'text-ink'
                   }`}
                   initial={{ opacity: 0, y: 40, rotateX: -40 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -248,18 +248,18 @@ export default function Hero() {
 
             {/* Subheading */}
             <motion.p
-              className="text-lg sm:text-xl md:text-2xl text-white/70 leading-relaxed max-w-xl"
+              className="text-lg sm:text-xl md:text-2xl text-ink/80 leading-relaxed max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
             >
               BharatSahayak makes sure{' '}
-              <span className="text-white font-semibold">yours reaches you.</span>
+              <span className="text-ink font-semibold">yours reaches you.</span>
             </motion.p>
 
             {/* Hindi subtitle */}
             <motion.p
-              className="hindi text-base sm:text-lg text-white/45 max-w-xl"
+              className="hindi text-base sm:text-lg text-ink/62 max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3 }}
@@ -286,19 +286,19 @@ export default function Hero() {
 
             {/* Trust stat strip */}
             <motion.div
-              className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-6 text-sm text-white/40 border-t border-white/5 w-full"
+              className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-6 text-sm text-ink/60 border-t border-ink/5 w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.8 }}
             >
               {[
-                { value: '1000+', label: 'Schemes Mapped' },
+                { value: '14', label: 'Schemes in prototype' },
                 { value: '80 Cr', label: 'Eligible Indians' },
                 { value: '₹43,000', label: 'Avg Unclaimed/Person' },
                 { value: '<5%', label: 'Current Awareness' },
               ].map(({ value, label }) => (
                 <div key={label} className="flex flex-col">
-                  <span className="text-white font-black text-lg">{value}</span>
+                  <span className="text-ink font-black text-lg">{value}</span>
                   <span className="text-xs">{label}</span>
                 </div>
               ))}
@@ -316,7 +316,7 @@ export default function Hero() {
               {/* Outer decorative phone shell glow */}
               <div className="absolute inset-0 rounded-[36px] bg-primary/20 blur-xl -z-10" />
               
-              <div className="rounded-[36px] border border-white/10 p-2.5 bg-black shadow-glow-primary/20">
+              <div className="rounded-[36px] border border-ink/10 p-2.5 bg-black shadow-glow-primary/20">
                 <WhatsAppDemo interactive={false} />
               </div>
             </motion.div>
@@ -326,7 +326,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-ink/50"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >

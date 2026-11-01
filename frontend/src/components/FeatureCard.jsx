@@ -24,8 +24,8 @@ export default function FeatureCard({ icon, title, description, badge, color, in
       whileHover={{ y: -8, scale: 1.02 }}
       className={`relative group rounded-2xl p-6 border transition-all duration-300 cursor-default flex flex-col justify-between ${className}`}
       style={{
-        background: '#221E3D',
-        borderColor: '#2E2856',
+        background: '#FFFFFF',
+        borderColor: '#E8DFCF',
       }}
     >
       {/* Hover glow effect */}
@@ -59,8 +59,8 @@ export default function FeatureCard({ icon, title, description, badge, color, in
       )}
 
       {/* Content */}
-      <h3 className="text-white font-bold text-lg mb-2 leading-snug">{title}</h3>
-      <p className="text-white/50 text-sm leading-relaxed">{description}</p>
+      <h3 className="text-ink font-bold text-lg mb-2 leading-snug">{title}</h3>
+      <p className="text-ink/65 text-sm leading-relaxed">{description}</p>
 
       {/* Arrow indicator */}
       <div
