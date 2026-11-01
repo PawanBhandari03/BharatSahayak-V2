@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Clock, FileText, CheckCircle, ExternalLink, Users, Phone, Globe } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/cards';
 
 const CATEGORY_COLORS = {
   Agriculture: '#138808',
@@ -14,11 +16,11 @@ const CATEGORY_COLORS = {
   Education: '#3F51B5',
 };
 
-function DeadlineBadge({ daysLeft, deadline }) {
+function DeadlineBadge({ daysLeft, deadline, t }) {
   if (!deadline) {
     return (
       <span className="badge bg-secondary/10 text-secondary text-xs">
-        <CheckCircle size={10} /> Check portal for dates
+        <CheckCircle size={10} /> {t('Check portal for dates')}
       </span>
     );
   }
@@ -30,7 +32,7 @@ function DeadlineBadge({ daysLeft, deadline }) {
   if (isPast) {
     return (
       <span className="badge bg-ink/5 text-ink/50 text-xs line-through">
-        <Clock size={10} /> Enrollment window closed
+        <Clock size={10} /> {t('Enrollment window closed')}
       </span>
     );
   }
@@ -45,22 +47,24 @@ function DeadlineBadge({ daysLeft, deadline }) {
     >
       <Clock size={10} />
       {isVeryUrgent ? '🚨 ' : isUrgent ? '⚠️ ' : ''}
-      {daysLeft !== null ? `${daysLeft} days left` : deadline}
+      {daysLeft !== null ? `${daysLeft} ${t('days left')}` : deadline}
     </span>
   );
 }
 
 export default function SchemeCard({ scheme, compact = false, status, onTrack }) {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   // One accent for every category so the whole site reads as a single palette.
   const categoryColor = '#1B1740';
 
   const handleEligibility = (e) => {
     e.preventDefault();
     if (scheme.eligibleLevel === 'maybe') {
-      toast(`Possibly eligible. Tell us: ${(scheme.missing || []).join(', ')}.`, { duration: 5000 });
+      toast(`${t('Possibly eligible. Tell us:')} ${(scheme.missing || []).join(', ')}.`, { duration: 5000 });
     } else if (scheme.isMatched) {
       toast.success(
-        `✅ ${(scheme.reasons || []).slice(0, 2).join(' · ') || 'You fit the rules'} — ${scheme.documents.length} documents needed.`,
+        `✅ ${(scheme.reasons || []).slice(0, 2).join(' · ') || t('You fit the rules')} — ${scheme.documents.length} ${t('documents needed')}.`,
         {
           duration: 4000,
           style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' },
@@ -68,7 +72,7 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
       );
     } else {
       toast.error(
-        scheme.ineligibleReason || 'Not eligible with the details you entered.',
+        scheme.ineligibleReason || t('Not eligible with the details you entered.'),
         {
           duration: 4000,
           style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #C2610A' },
@@ -80,7 +84,7 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
   const handleApply = (e) => {
     e.preventDefault();
     if (scheme.officialPortal) {
-      toast.success(`📋 Opening official portal: ${scheme.officialPortal}`, {
+      toast.success(`📋 ${t('Opening official portal:')} ${scheme.officialPortal}`, {
         duration: 3000,
         icon: '🏛️',
         style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #1B1740' },
@@ -110,7 +114,7 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
           <div className="flex-1 min-w-0">
             {scheme.isMatched && (
               <span className="badge bg-secondary/15 text-secondary text-xs mb-2 block w-fit">
-                <CheckCircle size={9} /> {scheme.eligibleLevel === 'maybe' ? 'Possible — check details' : 'Fits your answers'}
+                <CheckCircle size={9} /> {scheme.eligibleLevel === 'maybe' ? t('Possible — check details') : t('Fits your answers')}
               </span>
             )}
             <h3 className="text-ink font-bold text-base leading-snug">{scheme.name}</h3>
@@ -149,13 +153,13 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
 
         {/* Real data row — deadline + docs + beneficiaries */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <DeadlineBadge daysLeft={scheme.deadlineDaysLeft} deadline={scheme.deadline} />
+          <DeadlineBadge daysLeft={scheme.deadlineDaysLeft} deadline={scheme.deadline} t={t} />
           <span className="badge bg-ink/5 text-ink/60 text-xs">
-            <FileText size={10} /> {scheme.documentsNeeded} docs
+            <FileText size={10} /> {scheme.documentsNeeded} {t('docs')}
           </span>
           {scheme.beneficiariesCrore && (
             <span className="badge bg-secondary/8 text-secondary/60 text-xs">
-              <Users size={10} /> {scheme.beneficiariesCrore}Cr beneficiaries
+              <Users size={10} /> {scheme.beneficiariesCrore} {t('Cr beneficiaries')}
             </span>
           )}
         </div>
@@ -164,7 +168,7 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
         {scheme.helpline && !compact && (
           <div className="flex items-center gap-1.5 mb-3 text-xs text-ink/50">
             <Phone size={10} className="text-primary/60" />
-            <span>Helpline: <span className="text-ink/65">{scheme.helpline}</span></span>
+            <span>{t('Helpline:')} <span className="text-ink/65">{scheme.helpline}</span></span>
           </div>
         )}
 
@@ -186,11 +190,11 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
 
         {onTrack && (
           <div className="flex items-center gap-2 mb-3 text-xs">
-            <span className="text-ink/55">Status:</span>
+            <span className="text-ink/55">{t('Status:')}</span>
             {[['applied', 'Applied'], ['received', 'Receiving']].map(([key, label]) => (
               <button key={key} type="button" onClick={() => onTrack(scheme.id, status === key ? null : key)}
                 className={`px-2.5 py-1 rounded-full border ${status === key ? 'bg-ink text-white border-ink' : 'border-paper-line text-ink/70 hover:border-ink/50'}`}>
-                {label}
+                {t(label)}
               </button>
             ))}
           </div>
@@ -203,14 +207,14 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
             className="flex-1 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border hover:scale-[1.02]"
             style={{ borderColor: `${categoryColor}40`, color: categoryColor, background: `${categoryColor}10` }}
           >
-            Why / why not
+            {t('Why / why not')}
           </button>
           <button
             onClick={handleApply}
             className="flex-1 py-2.5 rounded-xl text-xs font-semibold text-white transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-1"
             style={{ background: `linear-gradient(135deg, ${categoryColor}, ${categoryColor}CC)` }}
           >
-            Apply Now <ExternalLink size={10} />
+            {t('Apply Now')} <ExternalLink size={10} />
           </button>
         </div>
       </div>

@@ -4,6 +4,8 @@ import CountUp from 'react-countup';
 import {
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/cards';
 
 const DEFAULT_CHART = [
   { name: 'Received',  value: 0, color: '#138808' },
@@ -14,6 +16,7 @@ const DEFAULT_CHART = [
 
 function MetricCard({ label, value, color, delay }) {
   const { ref, inView } = useInView({ triggerOnce: true });
+  const { language } = useSchemes();
 
   return (
     <motion.div
@@ -24,7 +27,7 @@ function MetricCard({ label, value, color, delay }) {
       className="p-4 rounded-xl border"
       style={{ background: `${color}0D`, borderColor: `${color}30` }}
     >
-      <div className="text-xs text-ink/60 mb-1">{label}</div>
+      <div className="text-xs text-ink/60 mb-1">{translate(language, label)}</div>
       <div className="text-xl font-black rupee" style={{ color }}>
         ₹{inView && value > 0
           ? <CountUp end={value} duration={1.8} separator="," />
@@ -36,12 +39,13 @@ function MetricCard({ label, value, color, delay }) {
 }
 
 function CustomTooltip({ active, payload }) {
+  const { language } = useSchemes();
   if (active && payload?.length) {
     const d = payload[0];
     return (
       <div className="px-4 py-3 rounded-xl border text-sm"
         style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}>
-        <div className="font-bold" style={{ color: d.payload.color }}>{d.name}</div>
+        <div className="font-bold" style={{ color: d.payload.color }}>{translate(language, d.name)}</div>
         <div className="text-ink">₹{d.value.toLocaleString('en-IN')}</div>
       </div>
     );
@@ -52,6 +56,8 @@ function CustomTooltip({ active, payload }) {
 // wallet prop is passed from Dashboard (computed dynamically)
 // Falls back to zeros if not provided
 export default function BenefitWallet({ wallet }) {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   const w = wallet || {
     total: 0, received: 0, available: 0, pending: 0, future: 0, count: 0,
     chartData: DEFAULT_CHART,
@@ -73,16 +79,16 @@ export default function BenefitWallet({ wallet }) {
       <div className="px-6 py-4 border-b border-dark-border flex items-center justify-between"
         style={{ background: '#F5EFE3' }}>
         <div>
-          <h3 className="text-ink font-bold text-lg">💰 Benefit Wallet</h3>
+          <h3 className="text-ink font-bold text-lg">💰 {t('Benefit Wallet')}</h3>
           <p className="text-ink/60 text-xs">
             {hasData
-              ? `${w.count} scheme${w.count !== 1 ? 's' : ''} matched for your profile`
-              : 'Register to see your matched schemes'}
+              ? `${w.count} ${language === 'en' ? `scheme${w.count !== 1 ? 's' : ''}` : t('scheme')} ${t('matched for your profile')}`
+              : t('Register to see your matched schemes')}
           </p>
         </div>
         {hasData && (
           <div className="text-right">
-            <div className="text-ink/60 text-xs">Still to claim</div>
+            <div className="text-ink/60 text-xs">{t('Still to claim')}</div>
             <div className="text-2xl font-black text-secondary rupee">
               ₹{inView
                 ? <CountUp end={w.total} duration={2.2} separator="," />
@@ -97,8 +103,8 @@ export default function BenefitWallet({ wallet }) {
         {!hasData ? (
           <div className="text-center py-10 text-ink/50">
             <div className="text-4xl mb-3">🔍</div>
-            <p className="text-sm">No schemes matched yet.</p>
-            <p className="text-xs mt-1">Register with your details to see your benefit wallet.</p>
+            <p className="text-sm">{t('No schemes matched yet.')}</p>
+            <p className="text-xs mt-1">{t('Register with your details to see your benefit wallet.')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
@@ -124,7 +130,7 @@ export default function BenefitWallet({ wallet }) {
                   <Tooltip content={<CustomTooltip />} />
                   <Legend
                     formatter={val => (
-                      <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: 12 }}>{val}</span>
+                      <span style={{ color: 'rgba(27,23,64,0.7)', fontSize: 12 }}>{t(val)}</span>
                     )}
                   />
                 </PieChart>
