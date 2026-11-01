@@ -4,6 +4,8 @@ import { Phone, Volume2, VolumeX, Play, Pause } from 'lucide-react';
 import WhatsAppDemo from '../components/WhatsAppDemo';
 import { VerticalTimeline } from '../components/Timeline';
 import toast from 'react-hot-toast';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/journey';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -24,13 +26,15 @@ Teesri yojana — MahaDBT Shetkari Grant. Maharashtra ke kisanon ko paanch hazar
 Kya aapko documents ki puri list WhatsApp par bhejun? Reply karo 1 for Haan.`;
 
 function VoiceCallSimulator() {
+  const { language } = useSchemes();
+  const t = (x) => translate(language, x);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [callActive, setCallActive] = useState(false);
 
   const startCall = () => {
     setCallActive(true);
-    toast.success('📞 Simulating AI voice call in Hindi...', {
+    toast.success(t('📞 Simulating AI voice call in Hindi...'), {
       style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
     });
     setPlaying(true);
@@ -44,7 +48,7 @@ function VoiceCallSimulator() {
         clearInterval(interval);
         setPlaying(false);
         setProgress(0);
-        toast.success('✅ Call completed! Summary sent on WhatsApp.', {
+        toast.success(t('✅ Simulation finished.'), {
           style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
         });
       }
@@ -57,9 +61,9 @@ function VoiceCallSimulator() {
       <div className="px-6 py-4 border-b border-dark-border" style={{ background: '#F5EFE3' }}>
         <h3 className="text-ink font-bold flex items-center gap-2">
           <Phone size={18} className="text-secondary" />
-          Voice Call Simulator
+          {t('Voice Call Simulator')}
         </h3>
-        <p className="text-ink/60 text-xs mt-0.5">AI calls in Hindi/Marathi to deliver scheme info</p>
+        <p className="text-ink/60 text-xs mt-0.5">{t('A demo of how an AI voice call would sound (simulation only)')}</p>
       </div>
 
       {/* Phone mockup */}
@@ -74,7 +78,7 @@ function VoiceCallSimulator() {
           </div>
           <div className="text-ink font-bold mb-0.5">BharatSahayak AI</div>
           <div className={`text-sm ${callActive ? 'text-secondary' : 'text-ink/60'}`}>
-            {callActive ? (playing ? '● Calling Savitribai...' : '✓ Call Ended') : 'AI Voice Bot — Hindi/Marathi'}
+            {callActive ? (playing ? t('● Calling Savitribai...') : t('✓ Call Ended')) : t('AI Voice Bot — Hindi/Marathi')}
           </div>
 
           {/* Progress bar */}
@@ -130,12 +134,12 @@ function VoiceCallSimulator() {
           {playing ? (
             <>
               <Volume2 size={20} className="animate-pulse" />
-              Playing AI Voice Call...
+              {t('Playing AI Voice Call...')}
             </>
           ) : (
             <>
               <Play size={20} />
-              Simulate AI Voice Call (Hindi)
+              {t('Simulate AI Voice Call (Hindi)')}
             </>
           )}
         </button>
@@ -146,6 +150,8 @@ function VoiceCallSimulator() {
 
 export default function UserJourney() {
   const [activeStep, setActiveStep] = useState(-1);
+  const { language } = useSchemes();
+  const t = (x) => translate(language, x);
 
   const handleStepActivate = (step) => {
     setActiveStep(step);
@@ -164,7 +170,7 @@ export default function UserJourney() {
         {/* Header */}
         <div className="text-center mb-16">
           <motion.p className="section-label" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            Self-Serve — No CSC Needed
+            {t('Self-Serve — No CSC Needed')}
           </motion.p>
           <motion.h1
             className="text-4xl md:text-5xl font-black text-ink mb-4"
@@ -172,8 +178,12 @@ export default function UserJourney() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            From <span className="gradient-text-primary">Website</span> to{' '}
-            <span className="gradient-text-secondary">₹1,37,000</span> in Benefits
+            {language === 'hi' ? (<><span className="gradient-text-primary">वेबसाइट</span> से{' '}
+            <span className="gradient-text-secondary">₹1,37,000</span> के लाभ तक</>)
+              : language === 'mr' ? (<><span className="gradient-text-primary">वेबसाइट</span> पासून{' '}
+            <span className="gradient-text-secondary">₹1,37,000</span> च्या लाभांपर्यंत</>)
+              : (<>From <span className="gradient-text-primary">Website</span> to{' '}
+            <span className="gradient-text-secondary">₹1,37,000</span> in Benefits</>)}
           </motion.h1>
           <motion.p
             className="text-ink/65 text-lg max-w-xl mx-auto"
@@ -181,7 +191,7 @@ export default function UserJourney() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            No CSC visit. No middleman. Open the website → fill a 2-minute form → AI finds all your government benefits and alerts you via WhatsApp + Voice Call.
+            {t('No CSC visit. No middleman. Open the website → fill a 2-minute form → AI finds all your government benefits, and you can keep chatting on WhatsApp.')}
           </motion.p>
         </div>
 
@@ -191,7 +201,7 @@ export default function UserJourney() {
             onClick={() => setActiveStep(-1)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${activeStep === -1 ? 'border-ink/30 text-ink bg-ink/10' : 'border-dark-border text-ink/60 hover:text-ink'}`}
           >
-            Reset
+            {t('Reset')}
           </button>
           {[1,2,3,4,5].map(i => (
             <button
@@ -210,7 +220,7 @@ export default function UserJourney() {
             onClick={() => setActiveStep(4)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all border border-secondary/40 text-secondary bg-secondary/10 hover:bg-secondary/20"
           >
-            Complete Journey
+            {t('Complete Journey')}
           </button>
         </div>
 
@@ -226,12 +236,12 @@ export default function UserJourney() {
             {/* WhatsApp simulator */}
             <div>
               <h3 className="text-ink font-bold text-lg mb-4 flex items-center gap-2">
-                💬 WhatsApp Chat Simulator
-                <span className="badge bg-secondary/15 text-secondary text-xs">Interactive</span>
+                💬 {t('WhatsApp Chat Simulator')}
+                <span className="badge bg-secondary/15 text-secondary text-xs">{t('Interactive')}</span>
               </h3>
               <WhatsAppDemo interactive={true} />
               <p className="text-ink/50 text-xs mt-2 text-center">
-                Try typing: "kisan", "pension", "help", "schemes", or your own query
+                {t('Try typing: "kisan", "pension", "help", "schemes", or your own query')}
               </p>
             </div>
 
