@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Clock, FileText, CheckCircle, ExternalLink, Users, Phone, Globe } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useSchemes } from '../context/SchemesContext';
-import { translate } from '../i18n/cards';
+import { translate, translateDepartment } from '../i18n/cards';
 
 const CATEGORY_COLORS = {
   Agriculture: '#138808',
@@ -118,14 +118,14 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
               </span>
             )}
             <h3 className="text-ink font-bold text-base leading-snug">{scheme.name}</h3>
-            <p className="text-ink/60 text-xs mt-0.5 line-clamp-1">{scheme.department}</p>
+            <p className="text-ink/60 text-xs mt-0.5 line-clamp-1">{translateDepartment(language, scheme.department)}</p>
           </div>
           {/* Benefit */}
           <div className="text-right flex-shrink-0 max-w-[48%]">
             <div className="font-black text-lg leading-tight rupee break-words" style={{ color: "#138808" }}>
               {scheme.benefitLabel}
             </div>
-            <div className="text-ink/50 text-xs">{scheme.benefitType}</div>
+            <div className="text-ink/50 text-xs">{t(scheme.benefitType)}</div>
           </div>
         </div>
 
@@ -140,11 +140,11 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 mb-3">
               <span className="badge text-xs px-2.5 py-1" style={{ background: `${categoryColor}18`, color: categoryColor }}>
-                {scheme.category}
+                {t(scheme.category)}
               </span>
               {scheme.tags.slice(0, 3).map(tag => (
                 <span key={tag} className="badge bg-ink/5 text-ink/62 text-xs px-2.5 py-1">
-                  {tag}
+                  {t(tag)}
                 </span>
               ))}
             </div>

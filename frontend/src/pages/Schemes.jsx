@@ -6,6 +6,7 @@ import { useSchemes } from '../context/SchemesContext';
 import toast from 'react-hot-toast';
 import { useUser } from '../context/UserContext';
 import { matchSchemesForUser } from '../utils/schemeMatcher';
+import { translate, schemesFound, forYouLabel } from '../i18n/schemes';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -20,6 +21,7 @@ const INCOME_GROUPS = ['Any Income', 'Up to ₹1L', '₹1L-₹2L', '₹2L-₹5L'
 const OCCUPATIONS = ['Any', 'Farmer', 'Student', 'Business', 'Labor', 'Widow', 'Senior Citizen'];
 
 function FilterChip({ label, active, onClick }) {
+  const { language } = useSchemes();
   return (
     <button
       onClick={onClick}
@@ -29,13 +31,15 @@ function FilterChip({ label, active, onClick }) {
           : 'text-ink/65 border-dark-border hover:text-ink hover:border-primary/40'
       }`}
     >
-      {label}
+      {translate(language, label)}
     </button>
   );
 }
 
 function FilterDropdown({ label, options, value, onChange }) {
   const [open, setOpen] = useState(false);
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
 
   return (
     <div className="relative">
@@ -45,10 +49,10 @@ function FilterDropdown({ label, options, value, onChange }) {
         style={{
           background: value && value !== options[0] ? 'rgba(27, 23, 64, 0.15)' : '#FFFFFF',
           borderColor: value && value !== options[0] ? 'rgba(27, 23, 64, 0.5)' : '#E8DFCF',
-          color: value && value !== options[0] ? '#1B1740' : 'rgba(255,255,255,0.5)'
+          color: value && value !== options[0] ? '#1B1740' : 'rgba(27,23,64,0.7)'
         }}
       >
-        {label}: <span className="font-medium">{value || options[0]}</span>
+        {t(label)}: <span className="font-medium">{t(value || options[0])}</span>
         <ChevronDown size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       <AnimatePresence>
@@ -68,7 +72,7 @@ function FilterDropdown({ label, options, value, onChange }) {
                   value === opt ? 'text-ink bg-primary/20' : 'text-ink/75 hover:text-ink hover:bg-ink/5'
                 }`}
               >
-                {opt}
+                {t(opt)}
               </button>
             ))}
           </motion.div>
@@ -79,6 +83,8 @@ function FilterDropdown({ label, options, value, onChange }) {
 }
 
 function EmptyState({ query }) {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -86,9 +92,9 @@ function EmptyState({ query }) {
       className="col-span-full text-center py-20"
     >
       <div className="text-6xl mb-4">🔍</div>
-      <h3 className="text-ink font-bold text-xl mb-2">No schemes found</h3>
+      <h3 className="text-ink font-bold text-xl mb-2">{t('No schemes found')}</h3>
       <p className="text-ink/60 text-sm">
-        No results for "{query}". Try different keywords or remove filters.
+        {t('No results for')} "{query}". {t('Try different keywords or remove filters.')}
       </p>
     </motion.div>
   );
@@ -114,7 +120,8 @@ function SchemeCardSkeleton() {
 
 export default function Schemes() {
   const { user } = useUser();
-  const { schemes: allSchemes, loading: schemesLoading, error: schemesError } = useSchemes();
+  const { schemes: allSchemes, loading: schemesLoading, error: schemesError, language } = useSchemes();
+  const t = (s) => translate(language, s);
   const forYouCount = useMemo(() => (user ? matchSchemesForUser(user, allSchemes).filter((s) => s.isMatched).length : 0), [user, allSchemes]);
   const categories = useMemo(() => ['All', ...new Set(allSchemes.map((s) => s.category))], [allSchemes]);
   const [schemes, setSchemes] = useState([]);
@@ -178,7 +185,7 @@ export default function Schemes() {
   }, [search, activeCategory, state, age, income, occupation, schemes]);
 
   const handleVoiceSearch = () => {
-    toast.success('🎙 Voice search coming soon! Type your query in Hindi or English.', {
+    toast.success(t('🎙 Voice search coming soon! Type your query in Hindi or English.'), {
       style: { background: '#F5EFE3', color: '#1B1740', border: '1px solid #1B1740' }
     });
   };
@@ -207,7 +214,7 @@ export default function Schemes() {
         {/* Header */}
         <div className="mb-8">
           <motion.p className="section-label" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            {allSchemes.length} Schemes
+            {allSchemes.length} {t('Schemes')}
           </motion.p>
           <motion.h1
             className="text-3xl md:text-4xl font-black text-ink mb-2"
@@ -215,7 +222,7 @@ export default function Schemes() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Explore Government <span className="gradient-text-primary">Schemes</span>
+            {t('Explore Government')} <span className="gradient-text-primary">{language === 'en' ? 'Schemes' : t('Schemes (heading)')}</span>
           </motion.h1>
           <motion.p
             className="text-ink/60 text-sm"
@@ -223,7 +230,7 @@ export default function Schemes() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Find the schemes you qualify for — search by keyword, category, state, age, or income.
+            {t('Find the schemes you qualify for — search by keyword, category, state, age, or income.')}
           </motion.p>
         </div>
 
@@ -240,7 +247,7 @@ export default function Schemes() {
               type="text"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search schemes by name, category... (e.g. 'kisan', 'widow', 'health')"
+              placeholder={t("Search schemes by name, category... (e.g. 'kisan', 'widow', 'health')")}
               className="w-full pl-12 pr-24 py-4 rounded-2xl text-ink placeholder-white/25 border outline-none focus:border-primary/60 transition-colors text-sm"
               style={{ background: '#F5EFE3', borderColor: '#E8DFCF' }}
             />
@@ -248,7 +255,7 @@ export default function Schemes() {
               <button
                 onClick={handleVoiceSearch}
                 className="p-2.5 rounded-xl transition-all hover:bg-primary/20"
-                title="Voice search"
+                title={t('Voice search')}
               >
                 <Mic size={16} className="text-primary" />
               </button>
@@ -278,7 +285,7 @@ export default function Schemes() {
                 <FilterDropdown label="Occupation" options={OCCUPATIONS} value={occupation} onChange={setOccupation} />
                 {hasFilters && (
                   <button onClick={clearFilters} className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm text-accent border border-accent/30 hover:bg-accent/10 transition-all">
-                    <X size={13} /> Clear Filters
+                    <X size={13} /> {t('Clear Filters')}
                   </button>
                 )}
               </div>
@@ -294,7 +301,7 @@ export default function Schemes() {
                 key={tab}
                 onClick={() => {
                   if (tab === FILTER_TABS[1] && !user) {
-                    toast.error('Please register first to see personalized schemes!', { style: { background: '#F5EFE3', color: '#1B1740', border: '1px solid #C2610A' }});
+                    toast.error(t('Please register first to see personalized schemes!'), { style: { background: '#F5EFE3', color: '#1B1740', border: '1px solid #C2610A' }});
                     return;
                   }
                   setActiveTab(tab);
@@ -305,7 +312,7 @@ export default function Schemes() {
                     : 'bg-[#F5EFE3] text-ink/65 border-dark-border hover:text-ink'
                 }`}
               >
-                {tab === FILTER_TABS[1] && user ? `For You (${forYouCount}) ✨` : tab}
+                {tab === FILTER_TABS[1] && user ? forYouLabel(language, forYouCount) : t(tab)}
               </button>
             ))}
           </div>
@@ -325,11 +332,11 @@ export default function Schemes() {
         {/* Results count */}
         <div className="flex items-center justify-between mb-5">
           <p className="text-ink/60 text-sm">
-            {loading ? 'Loading...' : `${filtered.length} scheme${filtered.length !== 1 ? 's' : ''} found`}
+            {loading ? t('Loading...') : schemesFound(language, filtered.length)}
           </p>
           {hasFilters && (
             <button onClick={clearFilters} className="text-xs text-accent hover:underline">
-              Clear all filters
+              {t('Clear all filters')}
             </button>
           )}
         </div>

@@ -1,5 +1,27 @@
 // Display translations for the scheme card and the benefit wallet. Anything missing falls back to English.
+import { translate as translateForm } from './register';
+
 const D = {
+  // categories and benefit types shown on cards and in the Schemes filters
+  All: ['सभी', 'सर्व'],
+  Agriculture: ['कृषि', 'शेती'],
+  Health: ['स्वास्थ्य', 'आरोग्य'],
+  Energy: ['ऊर्जा', 'ऊर्जा'],
+  Housing: ['आवास', 'गृहनिर्माण'],
+  Insurance: ['बीमा', 'विमा'],
+  Pension: ['पेंशन', 'निवृत्तीवेतन'],
+  'Social Welfare': ['सामाजिक कल्याण', 'सामाजिक कल्याण'],
+  Entrepreneurship: ['उद्यमिता', 'उद्योजकता'],
+  'Skill Development': ['कौशल विकास', 'कौशल्य विकास'],
+  Education: ['शिक्षा', 'शिक्षण'],
+  'Women & Child': ['महिला एवं बाल', 'महिला व बाल'],
+  'One-time': ['एक बार', 'एकदा'],
+  'Per month': ['प्रति माह', 'दरमहा'],
+  'Per year': ['प्रति वर्ष', 'दरवर्षी'],
+  'Per cylinder': ['प्रति सिलेंडर', 'प्रति सिलिंडर'],
+  Central: ['केंद्रीय', 'केंद्रीय'],
+  'Government of India': ['भारत सरकार', 'भारत सरकार'],
+
   // scheme card
   'Check portal for dates': ['तारीख़ों के लिए पोर्टल देखें', 'तारखांसाठी पोर्टल पहा'],
   'Enrollment window closed': ['नामांकन की अवधि समाप्त', 'नोंदणीची मुदत संपली'],
@@ -35,8 +57,16 @@ const D = {
 
 export function translate(lang, text) {
   const row = D[text];
-  if (!row) return text;
+  if (!row) return translateForm(lang, text);
   if (lang === 'hi') return row[0];
   if (lang === 'mr') return row[1];
   return text;
+}
+
+// "Government of Maharashtra" -> "महाराष्ट्र सरकार" / "Government of India" is in the dictionary.
+export function translateDepartment(lang, dept) {
+  if (!dept || lang === 'en') return dept;
+  const m = /^Government of (.+)$/.exec(dept);
+  if (!m || m[1] === 'India') return translate(lang, dept);
+  return `${translateForm(lang, m[1])} सरकार`;
 }
