@@ -90,8 +90,18 @@ Checked against the scheme's own official page (read by a fetch tool, not in a b
 
 ## Tried but could not be verified (still unverified)
 The pages could not be read from this environment, so nothing was confirmed. A person should check them in a browser.
-- **Certificate errors:** pmkisan.gov.in, jansuraksha.gov.in (PMJJBY, PMSBY), mudra.org.in, nsiindia.gov.in (Sukanya, SCSS)
+- **Certificate errors:** pmkisan.gov.in, nsiindia.gov.in (Sukanya, SCSS). (jansuraksha.gov.in and mudra.org.in also fail, but PMJJBY, PMSBY and Mudra were verified through the Finance Ministry pages, see below.)
 - **Not reachable:** pmjay.gov.in (connection refused), pmayg.nic.in and npscra.nsdl.co.in (DNS)
 - **Page content loads only in a browser:** myscheme.gov.in, pmsuryaghar.gov.in, pmfby.gov.in
-- **Wrong site / no rules:** maandhan.in is the PM-SYM site (its home page states age 18-40, income up to ₹15,000 a month and a ₹3,000 pension, but exclusions and documents were not read, so pm-sym is not verified; PM Kisan Maandhan is not on it).
+- **Wrong site:** maandhan.in is the PM-SYM site and was used to verify pm-sym (below). PM Kisan Maandhan (pm-kmy) is not on it and stays unverified.
 - **Unreadable PDFs / no scheme details:** scholarships.gov.in (the guideline PDFs could not be read), nfsa.gov.in. For NFSA only the benefit wording is confirmed and updated: eligibility is decided by each state, and our rules would show it to everyone, so it stays unverified.
+
+## Verified later on 2026-11-01 (4 more, 11 of 50 in total)
+| id | page read | what the page confirmed | limits to know |
+|---|---|---|---|
+| pm-sym | maandhan.in (scheme page, FAQs, contribution chart) | Age 18-40, income ₹15,000 a month or below, ₹3,000 pension after 60, you pay ₹55-200 a month matched by the Government, documents | Excludes EPFO/NPS/ESIC members and income-tax payers (not modelled; said in the benefit text). The site words the income limit two ways ("or below" / "less than"); we use up to ₹15,000. Enrolment steps beyond the Common Service Centre were not stated. |
+| pmjjby | financialservices.gov.in (Finance Ministry) | ₹2 lakh for death due to any reason, ₹436 a year, age 18-50 with a bank account, auto-debit | The page does not say whether 18 and 50 are inclusive. The age at which cover stops is not stated. |
+| pmsby | financialservices.gov.in | ₹2 lakh for death or total disability, ₹1 lakh partial disability, ₹20 a year, age 18-70 with a bank account and auto-debit consent | Same inclusive-age and cover-end notes as PMJJBY. |
+| mudra-loan | financialservices.gov.in | Collateral not required; Shishu up to ₹50,000, Kishore ₹50,000-₹5 lakh, Tarun ₹5-10 lakh, Tarun Plus ₹10-20 lakh; non-agricultural micro enterprises | The page names no occupations or minimum age, so minimum age was removed and the occupation list is our reading of "non-agricultural". How to apply and documents were not on the page, so those fields are empty. The old fixed ₹1 lakh amount was removed. |
+
+Startup India: only the general description of the Seed Fund Scheme was confirmed (support for proof of concept, prototype, trials, market entry and commercialisation). The old "₹20 lakh" claim could not be confirmed and was removed; eligibility and how to apply were not on the readable pages, so it stays unverified.

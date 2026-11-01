@@ -286,9 +286,9 @@
     "amount": 200000,
     "frequency": null,
     "benefitSummary": {
-      "en": "₹2 Lakh life cover @ ₹436/year",
-      "hi": "₹2 लाख का जीवन बीमा, ₹436 प्रति वर्ष",
-      "mr": "₹2 लाखांचे जीवन विमा कवच, वार्षिक ₹436"
+      "en": "₹2 lakh life cover for death due to any reason, at ₹436 a year (age 18-50, one-year renewable cover)",
+      "hi": "किसी भी कारण से मृत्यु पर ₹2 लाख का जीवन बीमा, ₹436 प्रति वर्ष (आयु 18-50, हर साल नवीनीकरण योग्य)",
+      "mr": "कोणत्याही कारणाने मृत्यू झाल्यास ₹2 लाखांचे जीवन विमा संरक्षण, वार्षिक ₹436 (वय 18-50, दरवर्षी नूतनीकरणक्षम)"
     },
     "eligibility": {
       "minAge": 18,
@@ -306,16 +306,15 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar Card",
-      "Bank Passbook",
-      "Consent form for Auto-Debit"
+      "Savings bank account",
+      "Consent for auto-debit of the yearly premium"
     ],
     "deadline": null,
-    "howToApply": "Contact your bank branch OR apply via net banking / mobile banking app → Search PMJJBY → Give auto-debit consent.",
+    "howToApply": "Enrol through your bank (bank-account-linked enrolment, premium paid by auto-debit)",
     "officialUrl": "https://jansuraksha.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://financialservices.gov.in/pradhan-mantri-jeevan-jyoti-bima-yojana-pmjjby",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "pmsby",
@@ -330,9 +329,9 @@
     "amount": 200000,
     "frequency": null,
     "benefitSummary": {
-      "en": "₹2 Lakh accident cover @ ₹20/year",
-      "hi": "₹2 लाख का दुर्घटना बीमा, ₹20 प्रति वर्ष",
-      "mr": "₹2 लाखांचे अपघात विमा कवच, वार्षिक ₹20"
+      "en": "₹2 lakh accident cover for death or total disability (₹1 lakh for partial disability), at ₹20 a year (age 18-70)",
+      "hi": "दुर्घटना में मृत्यु या पूर्ण विकलांगता पर ₹2 लाख (आंशिक विकलांगता पर ₹1 लाख) का बीमा, ₹20 प्रति वर्ष (आयु 18-70)",
+      "mr": "अपघातात मृत्यू किंवा पूर्ण अपंगत्वासाठी ₹2 लाख (अंशतः अपंगत्वासाठी ₹1 लाख) विमा संरक्षण, वार्षिक ₹20 (वय 18-70)"
     },
     "eligibility": {
       "minAge": 18,
@@ -350,16 +349,15 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar Card",
-      "Bank Passbook",
-      "Consent form for Auto-Debit"
+      "Savings bank account",
+      "Consent for auto-debit of the yearly premium"
     ],
     "deadline": null,
-    "howToApply": "Contact your bank branch OR apply via net banking → Search PMSBY → Give auto-debit consent.",
+    "howToApply": "Enrol through your bank (bank-account-linked enrolment, premium paid by auto-debit)",
     "officialUrl": "https://jansuraksha.gov.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://financialservices.gov.in/pradhan-mantri-suraksha-bima-yojana-pmsby",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "mahadbt-shetkari",
@@ -417,23 +415,22 @@
     "category": "entrepreneurship",
     "level": "central",
     "state": "all",
-    "amount": 100000,
+    "amount": null,
     "frequency": null,
     "benefitSummary": {
-      "en": "Up to ₹10 Lakh loan (no collateral)",
-      "hi": "₹10 लाख तक का ऋण (बिना गारंटी)",
-      "mr": "₹10 लाखांपर्यंत कर्ज (तारणाशिवाय)"
+      "en": "Collateral-free loans for non-farm micro businesses: Shishu up to ₹50,000, Kishore up to ₹5 lakh, Tarun up to ₹10 lakh (Tarun Plus up to ₹20 lakh)",
+      "hi": "गैर-कृषि सूक्ष्म उद्यमों के लिए बिना गारंटी ऋण: शिशु ₹50,000 तक, किशोर ₹5 लाख तक, तरुण ₹10 लाख तक (तरुण प्लस ₹20 लाख तक)",
+      "mr": "बिगरशेती सूक्ष्म उद्योगांसाठी तारणाशिवाय कर्ज: शिशू ₹50,000 पर्यंत, किशोर ₹5 लाखांपर्यंत, तरुण ₹10 लाखांपर्यंत (तरुण प्लस ₹20 लाखांपर्यंत)"
     },
     "eligibility": {
-      "minAge": 18,
+      "minAge": null,
       "maxAge": null,
       "gender": "any",
       "occupations": [
-        "farmer / kisan",
-        "street vendor / small trader",
-        "self-employed (small business)",
-        "artisan / craftsperson",
-        "other"
+        "Street Vendor / Small Trader",
+        "Self-Employed (Small Business)",
+        "Artisan / Craftsperson",
+        "Other"
       ],
       "maxAnnualIncome": null,
       "requiresLand": null,
@@ -443,18 +440,13 @@
       ],
       "requiresBPL": null
     },
-    "documents": [
-      "Aadhaar Card",
-      "Identity Proof / Business Address Proof",
-      "Machinery/equipment quotation or business plan",
-      "Passport size photographs"
-    ],
+    "documents": [],
     "deadline": null,
-    "howToApply": "Apply at any bank, NBFC, or MFI branch. Also available on Udyamimitra portal (udyamimitra.in). Select loan category and submit business plan.",
+    "howToApply": null,
     "officialUrl": "https://www.mudra.org.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://financialservices.gov.in/pradhan-mantri-mudra-yojana-pmmy",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "pmkvy",
@@ -512,12 +504,12 @@
     "category": "entrepreneurship",
     "level": "central",
     "state": "all",
-    "amount": 500000,
+    "amount": null,
     "frequency": null,
     "benefitSummary": {
-      "en": "Up to ₹20 Lakh seed fund",
-      "hi": "₹20 लाख तक की सीड फंडिंग",
-      "mr": "₹20 लाखांपर्यंत सीड फंड"
+      "en": "Seed Fund Scheme: financial assistance for startups for proof of concept, prototype development, product trials, market entry and commercialisation",
+      "hi": "सीड फंड योजना: स्टार्टअप को प्रूफ ऑफ कॉन्सेप्ट, प्रोटोटाइप विकास, उत्पाद परीक्षण, बाज़ार में प्रवेश और व्यावसायीकरण के लिए वित्तीय सहायता",
+      "mr": "सीड फंड योजना: स्टार्टअपना संकल्पना सिद्धता, प्रोटोटाइप विकास, उत्पादन चाचण्या, बाजारात प्रवेश व व्यावसायीकरणासाठी आर्थिक मदत"
     },
     "eligibility": {
       "minAge": 18,
@@ -1044,9 +1036,9 @@
     "amount": 36000,
     "frequency": "yearly",
     "benefitSummary": {
-      "en": "Assured monthly pension for unorganised workers after age 60",
-      "hi": "असंगठित क्षेत्र के श्रमिकों के लिए 60 वर्ष के बाद निश्चित मासिक पेंशन",
-      "mr": "असंघटित कामगारांसाठी 60 वर्षांनंतर निश्चित मासिक निवृत्तीवेतन"
+      "en": "Assured pension of ₹3,000 a month after age 60 for unorganised workers aged 18-40 (you pay ₹55-₹200 a month, matched by the Government). Not for EPFO/NPS/ESIC members or income-tax payers",
+      "hi": "18-40 वर्ष के असंगठित श्रमिकों के लिए 60 वर्ष के बाद ₹3,000 प्रति माह की निश्चित पेंशन (आप ₹55-₹200 प्रति माह देते हैं, सरकार उतना ही देती है)। ईपीएफओ/एनपीएस/ईएसआईसी सदस्यों और आयकर दाताओं के लिए नहीं",
+      "mr": "18-40 वयाच्या असंघटित कामगारांसाठी 60 वर्षांनंतर दरमहा ₹3,000 निश्चित निवृत्तीवेतन (तुम्ही दरमहा ₹55-₹200 भरता, सरकार तितकेच भरते). ईपीएफओ/एनपीएस/ईएसआयसी सदस्य व आयकर भरणाऱ्यांसाठी नाही"
     },
     "eligibility": {
       "minAge": 18,
@@ -1069,16 +1061,16 @@
       "requiresBPL": null
     },
     "documents": [
-      "Aadhaar",
-      "Savings bank account / IFSC",
-      "Mobile number"
+      "Aadhaar card",
+      "Savings bank account or Jan Dhan account number with IFSC",
+      "Self-certification form with consent for auto-debit (NACH mandate)"
     ],
     "deadline": null,
-    "howToApply": "Enrol at a Common Service Centre",
+    "howToApply": "Enrol at a Common Service Centre (enrolment is free; the first contribution is paid in cash there)",
     "officialUrl": "https://maandhan.in",
-    "sourceUrl": null,
-    "verified": false,
-    "lastVerified": null
+    "sourceUrl": "https://maandhan.in/show_content.php?lang=1&level=1&ls_id=28&lid=28&page=6",
+    "verified": true,
+    "lastVerified": "2026-11-01"
   },
   {
     "id": "mgnrega",
