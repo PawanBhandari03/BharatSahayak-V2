@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Avatar of Pawan">
+  <defs><clipPath id="c"><circle cx="60" cy="60" r="60"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="120" height="120" fill="#2A2562"/>
+    <circle cx="60" cy="60" r="60" fill="#6A5FB0" opacity="0.35"/>
+    <path d="M10 125c2-26 20-38 50-38s48 12 50 38z" fill="#1B1740"/>
+    <path d="M46 88l14 14 14-14-6-6H52z" fill="#F1F1F6"/>
+    <rect x="52" y="74" width="16" height="14" rx="6" fill="#C98F66"/>
+    <ellipse cx="60" cy="54" rx="21" ry="24" fill="#D9A07A"/>
+    <path d="M38 52c-2-18 8-30 23-30 16 0 24 11 21 30-3-9-8-13-14-14-9 4-19 4-30 14z" fill="#1A1423"/>
+    <ellipse cx="51" cy="56" rx="2.2" ry="2.6" fill="#1A1423"/>
+    <ellipse cx="69" cy="56" rx="2.2" ry="2.6" fill="#1A1423"/>
+    <path d="M52 68c5 5 11 5 16 0" fill="none" stroke="#7A4A33" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -15,28 +15,28 @@ const pageVariants = {
 const TEAM = [
   {
     name: 'PawanSingh Bhandari',
-    role: 'Full-Stack Engineer + AI',
+    role: 'Full-Stack + Cloud (AWS)',
     username: 'PawanBhandari03',
     avatar: 'P',
-    emoji: '👨‍💻',
+    image: '/avatars/pawan.svg',
     color: '#1B1740',
     bg: 'from-primary-700 to-primary-500',
-    skills: ['React', 'Node.js', 'Mistral AI', 'Supabase'],
-    contribution: 'Built the AI scheme matching engine, WhatsApp integration, and Benefit Wallet.',
+    skills: [['React', 'Frontend'], ['Node.js', 'Backend'], ['Supabase', 'Database'], ['AWS', 'Deployment']],
+    contribution: 'Built the React frontend and the Node.js backend, set up the Supabase database, and deployed the project on AWS.',
     github: 'https://github.com/PawanBhandari03',
     linkedin: 'https://www.linkedin.com/in/pawan-singh-bhandari-5817ab307',
     twitter: '#',
   },
   {
     name: 'Rahul Bramhankar',
-    role: 'Backend + Infrastructure',
-    username: 'Rahul_Dev',
+    role: 'Backend + Messaging',
+    username: 'RAHUL0408-B',
     avatar: 'R',
-    emoji: '⚙️',
+    image: '/avatars/rahul.svg',
     color: '#138808',
     bg: 'from-teal-900 to-teal-700',
-    skills: ['Node.js', 'Twilio', 'Supabase', 'DevOps'],
-    contribution: 'Built the voice call system, the WhatsApp backend, and the CSC integration layer.',
+    skills: [['Twilio', 'WhatsApp'], ['Node.js', 'Backend']],
+    contribution: 'Built the Twilio WhatsApp integration and helped with the backend.',
     github: 'https://github.com/RAHUL0408-B',
     linkedin: 'https://www.linkedin.com/in/rahul-bramhankar-a424a328b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
     twitter: '#',
@@ -73,15 +73,16 @@ function TeamCard({ member, index }) {
       style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
     >
       <div>
-        {/* Top Header Row with Avatar & Emoji */}
-        <div className="flex items-center justify-between mb-5">
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-black text-ink shadow-lg"
+        {/* Avatar with a small initial badge */}
+        <div className="relative w-20 h-20 mb-5">
+          <img src={member.image} alt={member.name} className="w-20 h-20 rounded-2xl object-cover shadow-lg" />
+          <span
+            className="absolute -bottom-1.5 -right-1.5 w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white border-2 border-white"
             style={{ background: member.color }}
+            aria-hidden="true"
           >
             {member.avatar}
-          </div>
-          <span className="text-3xl p-2 rounded-2xl bg-ink/5 border border-ink/10">{member.emoji}</span>
+          </span>
         </div>
 
         <h3 className="text-ink font-bold text-xl mb-0.5">{member.name}</h3>
@@ -90,9 +91,9 @@ function TeamCard({ member, index }) {
 
         {/* Skills */}
         <div className="flex flex-wrap gap-1.5 mb-4">
-          {member.skills.map(skill => (
-            <span key={skill} className="badge text-xs px-2.5 py-1" style={{ background: `${member.color}18`, color: member.color }}>
-              {skill}
+          {member.skills.map(([tech, area]) => (
+            <span key={tech} className="badge text-xs px-2.5 py-1" style={{ background: `${member.color}18`, color: member.color }}>
+              {tech} · {t(area)}
             </span>
           ))}
         </div>
