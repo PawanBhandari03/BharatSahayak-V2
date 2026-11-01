@@ -3,8 +3,8 @@
     "id": "pm-kisan",
     "name": {
       "en": "Pradhan Mantri Kisan Samman Nidhi",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री किसान सम्मान निधि",
+      "mr": "प्रधानमंत्री किसान सन्मान निधी"
     },
     "category": "agriculture",
     "level": "central",
@@ -13,8 +13,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "₹6,000/year",
-      "hi": null,
-      "mr": null
+      "hi": "₹6,000 प्रति वर्ष",
+      "mr": "₹6,000 दरवर्षी"
     },
     "eligibility": {
       "minAge": 18,
@@ -49,8 +49,8 @@
     "id": "sanjay-gandhi-niradhar",
     "name": {
       "en": "Sanjay Gandhi Niradhar Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "संजय गांधी निराधार योजना",
+      "mr": "संजय गांधी निराधार योजना"
     },
     "category": "social-welfare",
     "level": "state",
@@ -59,8 +59,8 @@
     "frequency": "monthly",
     "benefitSummary": {
       "en": "₹1,500/month",
-      "hi": null,
-      "mr": null
+      "hi": "₹1,500 प्रति माह",
+      "mr": "₹1,500 दरमहा"
     },
     "eligibility": {
       "minAge": 18,
@@ -95,8 +95,8 @@
     "id": "ignwps",
     "name": {
       "en": "Indira Gandhi National Widow Pension Scheme",
-      "hi": null,
-      "mr": null
+      "hi": "इंदिरा गांधी राष्ट्रीय विधवा पेंशन योजना",
+      "mr": "इंदिरा गांधी राष्ट्रीय विधवा निवृत्तीवेतन योजना"
     },
     "category": "social-welfare",
     "level": "central",
@@ -105,8 +105,8 @@
     "frequency": "monthly",
     "benefitSummary": {
       "en": "₹300–₹500/month + state top-up",
-      "hi": null,
-      "mr": null
+      "hi": "₹300–₹500 प्रति माह + राज्य का अतिरिक्त अंशदान",
+      "mr": "₹300–₹500 दरमहा + राज्याचा अतिरिक्त हिस्सा"
     },
     "eligibility": {
       "minAge": 40,
@@ -140,8 +140,8 @@
     "id": "ayushman-bharat",
     "name": {
       "en": "Ayushman Bharat PM-JAY",
-      "hi": null,
-      "mr": null
+      "hi": "आयुष्मान भारत पीएम-जेएवाई",
+      "mr": "आयुष्मान भारत पीएम-जेएवाई"
     },
     "category": "health",
     "level": "central",
@@ -150,8 +150,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "₹5 Lakh/year Health Cover",
-      "hi": null,
-      "mr": null
+      "hi": "₹5 लाख प्रति वर्ष का स्वास्थ्य बीमा",
+      "mr": "दरवर्षी ₹5 लाखांचे आरोग्य कवच"
     },
     "eligibility": {
       "minAge": 0,
@@ -184,8 +184,8 @@
     "id": "pmuy",
     "name": {
       "en": "PM Ujjwala Yojana 2.0",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री उज्ज्वला योजना 2.0",
+      "mr": "प्रधानमंत्री उज्ज्वला योजना 2.0"
     },
     "category": "energy",
     "level": "central",
@@ -194,8 +194,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "Free LPG + ₹300/cylinder subsidy (4/year)",
-      "hi": null,
-      "mr": null
+      "hi": "मुफ्त एलपीजी कनेक्शन + ₹300 प्रति सिलेंडर सब्सिडी (वर्ष में 4)",
+      "mr": "मोफत एलपीजी जोडणी + ₹300 प्रति सिलेंडर अनुदान (वर्षाला 4)"
     },
     "eligibility": {
       "minAge": 18,
@@ -229,8 +229,8 @@
     "id": "pmay-g",
     "name": {
       "en": "PMAY-Gramin",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री आवास योजना – ग्रामीण",
+      "mr": "प्रधानमंत्री आवास योजना – ग्रामीण"
     },
     "category": "housing",
     "level": "central",
@@ -239,8 +239,8 @@
     "frequency": "one-time",
     "benefitSummary": {
       "en": "₹1.20 Lakh Grant + extras",
-      "hi": null,
-      "mr": null
+      "hi": "₹1.20 लाख का अनुदान + अन्य सहायता",
+      "mr": "₹1.20 लाखांचे अनुदान + इतर मदत"
     },
     "eligibility": {
       "minAge": 18,
@@ -275,8 +275,8 @@
     "id": "pmjjby",
     "name": {
       "en": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री जीवन ज्योति बीमा योजना",
+      "mr": "प्रधानमंत्री जीवन ज्योती विमा योजना"
     },
     "category": "insurance",
     "level": "central",
@@ -285,8 +285,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "₹2 Lakh life cover @ ₹436/year",
-      "hi": null,
-      "mr": null
+      "hi": "₹2 लाख का जीवन बीमा, ₹436 प्रति वर्ष",
+      "mr": "₹2 लाखांचे जीवन विमा कवच, वार्षिक ₹436"
     },
     "eligibility": {
       "minAge": 18,
@@ -319,8 +319,8 @@
     "id": "pmsby",
     "name": {
       "en": "Pradhan Mantri Suraksha Bima Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री सुरक्षा बीमा योजना",
+      "mr": "प्रधानमंत्री सुरक्षा विमा योजना"
     },
     "category": "insurance",
     "level": "central",
@@ -329,8 +329,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "₹2 Lakh accident cover @ ₹20/year",
-      "hi": null,
-      "mr": null
+      "hi": "₹2 लाख का दुर्घटना बीमा, ₹20 प्रति वर्ष",
+      "mr": "₹2 लाखांचे अपघात विमा कवच, वार्षिक ₹20"
     },
     "eligibility": {
       "minAge": 18,
@@ -363,8 +363,8 @@
     "id": "mahadbt-shetkari",
     "name": {
       "en": "MahaDBT Shetkari Schemes",
-      "hi": null,
-      "mr": null
+      "hi": "महाडीबीटी शेतकरी योजनाएँ",
+      "mr": "महाडीबीटी शेतकरी योजना"
     },
     "category": "agriculture",
     "level": "state",
@@ -373,8 +373,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "Up to 50% subsidy (≤₹2.4 Lakh)",
-      "hi": null,
-      "mr": null
+      "hi": "50% तक अनुदान (₹2.4 लाख तक)",
+      "mr": "50% पर्यंत अनुदान (₹2.4 लाखांपर्यंत)"
     },
     "eligibility": {
       "minAge": 18,
@@ -409,8 +409,8 @@
     "id": "mudra-loan",
     "name": {
       "en": "Mudra Loan",
-      "hi": null,
-      "mr": null
+      "hi": "मुद्रा ऋण",
+      "mr": "मुद्रा कर्ज"
     },
     "category": "entrepreneurship",
     "level": "central",
@@ -419,8 +419,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "Up to ₹10 Lakh loan (no collateral)",
-      "hi": null,
-      "mr": null
+      "hi": "₹10 लाख तक का ऋण (बिना गारंटी)",
+      "mr": "₹10 लाखांपर्यंत कर्ज (तारणाशिवाय)"
     },
     "eligibility": {
       "minAge": 18,
@@ -458,8 +458,8 @@
     "id": "pmkvy",
     "name": {
       "en": "Pradhan Mantri Kaushal Vikas Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री कौशल विकास योजना",
+      "mr": "प्रधानमंत्री कौशल्य विकास योजना"
     },
     "category": "skill-development",
     "level": "central",
@@ -468,8 +468,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "₹8,000 avg reward + certification",
-      "hi": null,
-      "mr": null
+      "hi": "औसतन ₹8,000 प्रोत्साहन राशि + प्रमाणपत्र",
+      "mr": "सरासरी ₹8,000 प्रोत्साहन रक्कम + प्रमाणपत्र"
     },
     "eligibility": {
       "minAge": 15,
@@ -504,8 +504,8 @@
     "id": "startup-india",
     "name": {
       "en": "Startup India Initiative",
-      "hi": null,
-      "mr": null
+      "hi": "स्टार्टअप इंडिया पहल",
+      "mr": "स्टार्टअप इंडिया उपक्रम"
     },
     "category": "entrepreneurship",
     "level": "central",
@@ -514,8 +514,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "Up to ₹20 Lakh seed fund",
-      "hi": null,
-      "mr": null
+      "hi": "₹20 लाख तक की सीड फंडिंग",
+      "mr": "₹20 लाखांपर्यंत सीड फंड"
     },
     "eligibility": {
       "minAge": 18,
@@ -550,8 +550,8 @@
     "id": "pmsss",
     "name": {
       "en": "Prime Minister's Special Scholarship Scheme",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री विशेष छात्रवृत्ति योजना",
+      "mr": "प्रधानमंत्री विशेष शिष्यवृत्ती योजना"
     },
     "category": "education",
     "level": "central",
@@ -560,8 +560,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "₹30,000/year + maintenance",
-      "hi": null,
-      "mr": null
+      "hi": "₹30,000 प्रति वर्ष + रखरखाव भत्ता",
+      "mr": "दरवर्षी ₹30,000 + निर्वाह भत्ता"
     },
     "eligibility": {
       "minAge": 17,
@@ -595,8 +595,8 @@
     "id": "atal-pension",
     "name": {
       "en": "Atal Pension Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "अटल पेंशन योजना",
+      "mr": "अटल निवृत्तीवेतन योजना"
     },
     "category": "social-welfare",
     "level": "central",
@@ -605,8 +605,8 @@
     "frequency": "monthly",
     "benefitSummary": {
       "en": "₹1K–₹5K/month guaranteed pension",
-      "hi": null,
-      "mr": null
+      "hi": "₹1,000–₹5,000 प्रति माह की निश्चित पेंशन",
+      "mr": "दरमहा ₹1,000–₹5,000 निश्चित निवृत्तीवेतन"
     },
     "eligibility": {
       "minAge": 18,
@@ -639,8 +639,8 @@
     "id": "sukanya-samriddhi",
     "name": {
       "en": "Sukanya Samriddhi Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "सुकन्या समृद्धि योजना",
+      "mr": "सुकन्या समृद्धी योजना"
     },
     "category": "women-child",
     "level": "central",
@@ -649,8 +649,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "High-interest savings account for a girl child",
-      "hi": null,
-      "mr": null
+      "hi": "बेटी के लिए ऊँची ब्याज दर वाला बचत खाता",
+      "mr": "मुलीसाठी जास्त व्याजदराचे बचत खाते"
     },
     "eligibility": {
       "minAge": null,
@@ -683,8 +683,8 @@
     "id": "pm-matru-vandana",
     "name": {
       "en": "Pradhan Mantri Matru Vandana Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री मातृ वंदना योजना",
+      "mr": "प्रधानमंत्री मातृ वंदना योजना"
     },
     "category": "women-child",
     "level": "central",
@@ -693,8 +693,8 @@
     "frequency": "one-time",
     "benefitSummary": {
       "en": "₹5,000 cash support for a first living child",
-      "hi": null,
-      "mr": null
+      "hi": "पहले जीवित बच्चे के लिए ₹5,000 की नकद सहायता",
+      "mr": "पहिल्या अपत्यासाठी ₹5,000 रोख मदत"
     },
     "eligibility": {
       "minAge": 19,
@@ -727,8 +727,8 @@
     "id": "pm-svanidhi",
     "name": {
       "en": "PM SVANidhi (street vendor loan)",
-      "hi": null,
-      "mr": null
+      "hi": "पीएम स्वनिधि (रेहड़ी-पटरी ऋण)",
+      "mr": "पीएम स्वनिधी (पथविक्रेता कर्ज)"
     },
     "category": "entrepreneurship",
     "level": "central",
@@ -737,8 +737,8 @@
     "frequency": "one-time",
     "benefitSummary": {
       "en": "Collateral-free working-capital loan of ₹10,000 for street vendors",
-      "hi": null,
-      "mr": null
+      "hi": "रेहड़ी-पटरी वालों के लिए ₹10,000 का बिना गारंटी कार्यशील पूंजी ऋण",
+      "mr": "पथविक्रेत्यांसाठी ₹10,000 चे तारणाशिवाय खेळते भांडवल कर्ज"
     },
     "eligibility": {
       "minAge": 18,
@@ -771,8 +771,8 @@
     "id": "pm-vishwakarma",
     "name": {
       "en": "PM Vishwakarma",
-      "hi": null,
-      "mr": null
+      "hi": "पीएम विश्वकर्मा",
+      "mr": "पीएम विश्वकर्मा"
     },
     "category": "skill-development",
     "level": "central",
@@ -781,8 +781,8 @@
     "frequency": "one-time",
     "benefitSummary": {
       "en": "Toolkit support, skill training and loans for traditional artisans",
-      "hi": null,
-      "mr": null
+      "hi": "पारंपरिक कारीगरों के लिए औज़ार सहायता, प्रशिक्षण और ऋण",
+      "mr": "पारंपरिक कारागिरांसाठी अवजारे मदत, प्रशिक्षण आणि कर्ज"
     },
     "eligibility": {
       "minAge": 18,
@@ -815,8 +815,8 @@
     "id": "pmjdy",
     "name": {
       "en": "Pradhan Mantri Jan Dhan Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री जन धन योजना",
+      "mr": "प्रधानमंत्री जन धन योजना"
     },
     "category": "other",
     "level": "central",
@@ -825,8 +825,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "Zero-balance bank account with RuPay card and accident insurance",
-      "hi": null,
-      "mr": null
+      "hi": "रुपे कार्ड और दुर्घटना बीमा के साथ ज़ीरो-बैलेंस बैंक खाता",
+      "mr": "रुपे कार्ड व अपघात विम्यासह शून्य शिल्लक बँक खाते"
     },
     "eligibility": {
       "minAge": 10,
@@ -858,8 +858,8 @@
     "id": "ignoaps",
     "name": {
       "en": "Indira Gandhi National Old Age Pension Scheme",
-      "hi": null,
-      "mr": null
+      "hi": "इंदिरा गांधी राष्ट्रीय वृद्धावस्था पेंशन योजना",
+      "mr": "इंदिरा गांधी राष्ट्रीय वृद्धापकाळ निवृत्तीवेतन योजना"
     },
     "category": "pension",
     "level": "central",
@@ -868,8 +868,8 @@
     "frequency": "monthly",
     "benefitSummary": {
       "en": "Monthly pension for elderly people from BPL households",
-      "hi": null,
-      "mr": null
+      "hi": "बीपीएल परिवारों के बुज़ुर्गों के लिए मासिक पेंशन",
+      "mr": "बीपीएल कुटुंबातील ज्येष्ठांसाठी मासिक निवृत्तीवेतन"
     },
     "eligibility": {
       "minAge": 60,
@@ -903,8 +903,8 @@
     "id": "igndps",
     "name": {
       "en": "Indira Gandhi National Disability Pension Scheme",
-      "hi": null,
-      "mr": null
+      "hi": "इंदिरा गांधी राष्ट्रीय दिव्यांग पेंशन योजना",
+      "mr": "इंदिरा गांधी राष्ट्रीय दिव्यांग निवृत्तीवेतन योजना"
     },
     "category": "pension",
     "level": "central",
@@ -913,8 +913,8 @@
     "frequency": "monthly",
     "benefitSummary": {
       "en": "Monthly pension for persons with severe disability from BPL households",
-      "hi": null,
-      "mr": null
+      "hi": "बीपीएल परिवारों के गंभीर दिव्यांगजनों के लिए मासिक पेंशन",
+      "mr": "बीपीएल कुटुंबातील गंभीर दिव्यांगांसाठी मासिक निवृत्तीवेतन"
     },
     "eligibility": {
       "minAge": 18,
@@ -948,8 +948,8 @@
     "id": "pm-jay-vay-vandana",
     "name": {
       "en": "Ayushman Vay Vandana (PM-JAY, age 70+)",
-      "hi": null,
-      "mr": null
+      "hi": "आयुष्मान वय वंदना (पीएम-जेएवाई, 70+ आयु)",
+      "mr": "आयुष्मान वय वंदना (पीएम-जेएवाई, 70+ वय)"
     },
     "category": "health",
     "level": "central",
@@ -958,8 +958,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "₹5 lakh yearly health cover for citizens aged 70 and above",
-      "hi": null,
-      "mr": null
+      "hi": "70 वर्ष और उससे अधिक आयु के नागरिकों के लिए ₹5 लाख का वार्षिक स्वास्थ्य कवर",
+      "mr": "70 वर्षे व त्यावरील नागरिकांसाठी वार्षिक ₹5 लाखांचे आरोग्य कवच"
     },
     "eligibility": {
       "minAge": 70,
@@ -991,8 +991,8 @@
     "id": "pmfby",
     "name": {
       "en": "Pradhan Mantri Fasal Bima Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "प्रधानमंत्री फसल बीमा योजना",
+      "mr": "प्रधानमंत्री पीक विमा योजना"
     },
     "category": "agriculture",
     "level": "central",
@@ -1001,8 +1001,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "Crop insurance against yield loss from natural calamities, pests and disease",
-      "hi": null,
-      "mr": null
+      "hi": "प्राकृतिक आपदा, कीट और रोग से फसल नुकसान का बीमा",
+      "mr": "नैसर्गिक आपत्ती, कीड व रोगांमुळे पिकाच्या नुकसानीचे विमा संरक्षण"
     },
     "eligibility": {
       "minAge": 18,
@@ -1035,8 +1035,8 @@
     "id": "pm-sym",
     "name": {
       "en": "PM Shram Yogi Maandhan",
-      "hi": null,
-      "mr": null
+      "hi": "पीएम श्रम योगी मान-धन",
+      "mr": "पीएम श्रम योगी मान-धन"
     },
     "category": "pension",
     "level": "central",
@@ -1045,8 +1045,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "Assured monthly pension for unorganised workers after age 60",
-      "hi": null,
-      "mr": null
+      "hi": "असंगठित क्षेत्र के श्रमिकों के लिए 60 वर्ष के बाद निश्चित मासिक पेंशन",
+      "mr": "असंघटित कामगारांसाठी 60 वर्षांनंतर निश्चित मासिक निवृत्तीवेतन"
     },
     "eligibility": {
       "minAge": 18,
@@ -1084,8 +1084,8 @@
     "id": "mgnrega",
     "name": {
       "en": "MGNREGA (rural employment guarantee)",
-      "hi": null,
-      "mr": null
+      "hi": "मनरेगा (ग्रामीण रोज़गार गारंटी)",
+      "mr": "मनरेगा (ग्रामीण रोजगार हमी)"
     },
     "category": "social-welfare",
     "level": "central",
@@ -1094,8 +1094,8 @@
     "frequency": null,
     "benefitSummary": {
       "en": "Up to 100 days of paid unskilled work a year for rural households",
-      "hi": null,
-      "mr": null
+      "hi": "ग्रामीण परिवारों को साल में 100 दिन तक वेतन सहित अकुशल काम",
+      "mr": "ग्रामीण कुटुंबांना वर्षातून 100 दिवसांपर्यंत मजुरीसह अकुशल काम"
     },
     "eligibility": {
       "minAge": 18,
@@ -1128,8 +1128,8 @@
     "id": "post-matric-sc",
     "name": {
       "en": "Post-Matric Scholarship for SC students",
-      "hi": null,
-      "mr": null
+      "hi": "अनुसूचित जाति छात्रों के लिए दसवीं के बाद की छात्रवृत्ति",
+      "mr": "अनुसूचित जाती विद्यार्थ्यांसाठी दहावीनंतरची शिष्यवृत्ती"
     },
     "category": "education",
     "level": "central",
@@ -1138,8 +1138,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "Scholarship for Scheduled Caste students studying after Class 10",
-      "hi": null,
-      "mr": null
+      "hi": "कक्षा 10 के बाद पढ़ रहे अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति",
+      "mr": "दहावीनंतर शिकणाऱ्या अनुसूचित जातीच्या विद्यार्थ्यांसाठी शिष्यवृत्ती"
     },
     "eligibility": {
       "minAge": null,
@@ -1173,8 +1173,8 @@
     "id": "majhi-ladki-bahin",
     "name": {
       "en": "Mukhyamantri Majhi Ladki Bahin Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "मुख्यमंत्री माझी लाडकी बहीण योजना",
+      "mr": "मुख्यमंत्री माझी लाडकी बहीण योजना"
     },
     "category": "women-child",
     "level": "state",
@@ -1183,8 +1183,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "₹1,500 a month for eligible women in Maharashtra",
-      "hi": null,
-      "mr": null
+      "hi": "महाराष्ट्र की पात्र महिलाओं के लिए ₹1,500 प्रति माह",
+      "mr": "महाराष्ट्रातील पात्र महिलांसाठी दरमहा ₹1,500"
     },
     "eligibility": {
       "minAge": 21,
@@ -1218,8 +1218,8 @@
     "id": "shravan-bal",
     "name": {
       "en": "Shravan Bal Seva Rajya Nivrutti Vetan Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "श्रावण बाळ सेवा राज्य निवृत्ति वेतन योजना",
+      "mr": "श्रावण बाळ सेवा राज्य निवृत्तीवेतन योजना"
     },
     "category": "pension",
     "level": "state",
@@ -1228,8 +1228,8 @@
     "frequency": "monthly",
     "benefitSummary": {
       "en": "Monthly pension for senior citizens in Maharashtra from low-income families",
-      "hi": null,
-      "mr": null
+      "hi": "महाराष्ट्र के कम आय वाले परिवारों के वरिष्ठ नागरिकों के लिए मासिक पेंशन",
+      "mr": "महाराष्ट्रातील कमी उत्पन्न कुटुंबांतील ज्येष्ठ नागरिकांसाठी मासिक निवृत्तीवेतन"
     },
     "eligibility": {
       "minAge": 65,
@@ -1264,8 +1264,8 @@
     "id": "namo-shetkari",
     "name": {
       "en": "Namo Shetkari Mahasanman Nidhi",
-      "hi": null,
-      "mr": null
+      "hi": "नमो शेतकरी महासम्मान निधि",
+      "mr": "नमो शेतकरी महासन्मान निधी"
     },
     "category": "agriculture",
     "level": "state",
@@ -1274,8 +1274,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "Extra ₹6,000 a year for Maharashtra farmers, paid on top of PM-KISAN",
-      "hi": null,
-      "mr": null
+      "hi": "महाराष्ट्र के किसानों के लिए पीएम-किसान के साथ अतिरिक्त ₹6,000 प्रति वर्ष",
+      "mr": "महाराष्ट्रातील शेतकऱ्यांसाठी पीएम-किसानच्या जोडीला अतिरिक्त ₹6,000 दरवर्षी"
     },
     "eligibility": {
       "minAge": 18,
@@ -1309,8 +1309,8 @@
     "id": "mjpjay",
     "name": {
       "en": "Mahatma Jyotiba Phule Jan Arogya Yojana",
-      "hi": null,
-      "mr": null
+      "hi": "महात्मा ज्योतिबा फुले जन आरोग्य योजना",
+      "mr": "महात्मा ज्योतिबा फुले जन आरोग्य योजना"
     },
     "category": "health",
     "level": "state",
@@ -1319,8 +1319,8 @@
     "frequency": "yearly",
     "benefitSummary": {
       "en": "Cashless treatment up to ₹5 lakh per family at empanelled hospitals in Maharashtra",
-      "hi": null,
-      "mr": null
+      "hi": "महाराष्ट्र के सूचीबद्ध अस्पतालों में प्रति परिवार ₹5 लाख तक का कैशलेस इलाज",
+      "mr": "महाराष्ट्रातील सूचीबद्ध रुग्णालयांत प्रति कुटुंब ₹5 लाखांपर्यंत कॅशलेस उपचार"
     },
     "eligibility": {
       "minAge": null,

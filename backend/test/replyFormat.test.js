@@ -53,3 +53,16 @@ test('most specific schemes are listed first (student sees student schemes befor
   const firstLine = msg.split('\n').find((l) => l.startsWith('•'));
   assert.match(firstLine, /Scholarship|Post-Matric/i);
 });
+
+test('Hindi and Marathi replies use translated scheme names, English falls back', () => {
+  const store = require('../services/schemeStore');
+  process.env.INCLUDE_UNVERIFIED = 'true';
+  const kisan = schemes.find((s) => s.id === 'pm-kisan');
+  assert.match(formatMatches([kisan], 'hi', store.t), /किसान सम्मान निधि/);
+  assert.match(formatMatches([kisan], 'mr', store.t), /सन्मान निधी/);
+  assert.match(formatMatches([kisan], 'en', store.t), /Kisan Samman Nidhi/);
+  // every scheme has hi and mr text
+  for (const s of schemes) {
+    assert.ok(s.name.hi && s.name.mr && s.benefitSummary.hi && s.benefitSummary.mr, s.id + ' needs hi/mr text');
+  }
+});

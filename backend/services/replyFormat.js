@@ -71,7 +71,7 @@ function formatMatches(matches, lang, t, limit = 5) {
   const c = COPY[lang] || COPY.en;
   if (!matches.length) return `${c.none}\n\n${c.foot}`;
   matches = [...matches].sort((a, b) => specificity(b) - specificity(a));
-  const lines = matches.slice(0, limit).map((s) => `• ${t(s.name)} — ${t(s.benefitSummary)}`);
+  const lines = matches.slice(0, limit).map((s) => `• ${t(s.name, lang)} — ${t(s.benefitSummary, lang)}`);
   const extra = matches.length > limit ? `\n${c.more(matches.length - limit)}` : '';
   return `${c.head(matches.length)}\n\n${lines.join('\n')}${extra}\n\n${c.foot}`;
 }

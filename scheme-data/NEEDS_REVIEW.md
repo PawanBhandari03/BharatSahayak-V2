@@ -47,3 +47,6 @@ Only constraints I was fairly sure of are filled in; the rest are null. Check ea
 | shravan-bal | Amount null; age 65+ and BPL/income rule to confirm. |
 | namo-shetkari | `requiresLand` true; amount 6000/yr to confirm; depends on PM-KISAN enrolment. |
 | mjpjay | Income/ration-card conditions not modelled (left open to all). Cover amount to confirm. |
+
+## Hindi and Marathi text
+All 30 schemes now have `name` and `benefitSummary` in Hindi and Marathi. They were written by Claude (an AI), not by a native speaker or the departments. Official scheme names in each language, and the wording of the benefit lines, need a native-speaker check before the demo is called "verified". `documents` and `howToApply` are still English only.
