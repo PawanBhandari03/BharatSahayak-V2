@@ -2,8 +2,10 @@
 
 *Team Binary Builders (PawanSingh Jagdish Bhandari, Rahul H. Bramhankar) · Catalyst Hack 2026*
 
-This document explains the whole project in simple words: what it does, how it works, how to run it, and what is still missing.
-The diagrams are written in Mermaid and show up automatically on GitHub.
+**Live project:** https://d21lokneek591y.cloudfront.net  ·  **Source code:** https://github.com/PawanBhandari03/BharatSahayak-Catalyst
+
+This document explains the whole project in simple words: what it does, how it works, how to run it, how it is deployed on AWS, and what is still missing.
+The diagrams are written in Mermaid.
 
 ---
 
@@ -18,7 +20,7 @@ A person can use it in three ways:
 |---|---|---|
 | **Website** | Fill a 3-step form, see matching schemes at once | Working |
 | **WhatsApp bot** | Chat with the bot, it asks the questions and lists schemes | Working (Twilio sandbox) |
-| **Phone call** | Call a number, hear a greeting, get answers | Greeting and answers work; speech recognition not built |
+| **Phone call** | Call a number, hear a greeting, get answers | Future scope. The code exists but is not live |
 
 **Our example person:** Savitribai, 52, a widow and farmer in Osmanabad, Maharashtra, with a basic phone.
 
@@ -438,7 +440,55 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 
 ---
 
-## 17. Simple glossary
+## 17. AWS deployment
+
+The whole app runs on AWS, using services from the free tier and the account's free credits.
+
+| Item | Value |
+|---|---|
+| Region | Asia Pacific (Sydney), `ap-southeast-2` |
+| Compute | **Amazon EC2** `t3.micro`, Amazon Linux 2023. Node.js runs the Express API **and** serves the built React website, kept alive by `pm2` |
+| HTTPS and CDN | **Amazon CloudFront** distribution in front of the EC2 instance (origin: HTTP port 5000, caching disabled so the API always answers live) |
+| Network | EC2 security group: SSH (22) and the app port (5000) |
+| Cost control | AWS Budgets alert (zero-spend template) |
+| Live link | https://d21lokneek591y.cloudfront.net |
+
+```mermaid
+flowchart LR
+    U[Citizen browser or WhatsApp] -->|HTTPS| CF[Amazon CloudFront]
+    CF -->|HTTP :5000| EC2[Amazon EC2 t3.micro<br/>Node.js + Express + pm2<br/>serves React build and API]
+    EC2 --> SB[(Supabase PostgreSQL)]
+    EC2 --> MI[Mistral AI]
+    TW[Twilio WhatsApp] -->|webhook| CF
+```
+
+**How it was deployed**
+
+1. Launched the EC2 instance and opened port 5000 in its security group.
+2. Ran `deploy/setup-ec2.sh` once: installs Node.js 20, git and pm2, adds swap, and clones the repository.
+3. Put the keys in `backend/.env` on the server (never in git).
+4. Ran `deploy/update.sh`: pulls the latest code, builds the React app, and (re)starts the server with pm2.
+5. Created the CloudFront distribution so the site is served over HTTPS (Twilio and browsers need HTTPS).
+
+To release an update, push to `main`, then run `bash BharatSahayak-Catalyst/deploy/update.sh` on the instance.
+
+---
+
+## 18. Screenshots
+
+Captured from the working project. The demo data is the "Savitribai" persona.
+
+| | |
+|---|---|
+| **Home page**<br>![Home page](screenshots/01-home.png) | **Home page in Hindi**<br>![Home page in Hindi](screenshots/02-home-hindi.png) |
+| **WhatsApp bot: scan the QR code**<br>![WhatsApp QR](screenshots/03-whatsapp-qr.png) | **Form, step 1 (Fill demo data)**<br>![Form step 1](screenshots/04-form-step1.png) |
+| **Form, step 2**<br>![Form step 2](screenshots/05-form-step2.png) | **Benefit dashboard with the AI summary**<br>![Dashboard](screenshots/06-dashboard.png) |
+| **Dashboard: matched schemes**<br>![Dashboard schemes](screenshots/07-dashboard-schemes.png) | **All schemes, with filters**<br>![Schemes](screenshots/08-schemes.png) |
+| **Journey page**<br>![Journey](screenshots/09-journey.png) | **About the team**<br>![About](screenshots/10-about.png) |
+
+---
+
+## 19. Simple glossary
 
 | Word | Meaning |
 |---|---|
