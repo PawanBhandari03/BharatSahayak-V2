@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check, Minus, Plus, Loader2, Phone, ShieldCheck } from 'lucide-react';
 import axios from 'axios';
@@ -6,6 +6,7 @@ import { useUser } from '../context/UserContext';
 import { useSchemes } from '../context/SchemesContext';
 import { matchSchemesForUser } from '../utils/schemeMatcher';
 import { PERSONAS } from '../demo/personas';
+import { translate } from '../i18n/register';
 
 // ───────────────────────── options ─────────────────────────
 const STATES = [
@@ -62,24 +63,30 @@ const STEPS = [
   { title: 'Your family', hint: 'Optional — skip anything you like' },
 ];
 
+// The chosen language is shared with every part of the form; shown text is translated, values stay English.
+const LangCtx = createContext('en');
+const useT = () => { const lang = useContext(LangCtx); return (text) => translate(lang, text); };
+
 // ───────────────────────── small UI pieces ─────────────────────────
 function Field({ label, required, hint, error, children }) {
+  const t = useT();
   return (
     <div className="mb-6">
       <div className="flex items-baseline justify-between gap-3 mb-2">
         <label className="text-[15px] font-semibold text-ink">
-          {label}
-          {required ? <span className="text-saffron-deep ml-1" aria-hidden="true">*</span> : <span className="ml-2 text-xs font-normal text-ink/45">optional</span>}
+          {t(label)}
+          {required ? <span className="text-saffron-deep ml-1" aria-hidden="true">*</span> : <span className="ml-2 text-xs font-normal text-ink/45">{t('optional')}</span>}
         </label>
-        {hint && <span className="text-xs text-ink/50 text-right">{hint}</span>}
+        {hint && <span className="text-xs text-ink/50 text-right">{t(hint)}</span>}
       </div>
       {children}
-      {error && <p role="alert" className="mt-2 text-sm font-medium text-red-700">{error}</p>}
+      {error && <p role="alert" className="mt-2 text-sm font-medium text-red-700">{t(error)}</p>}
     </div>
   );
 }
 
 function Chips({ options, value, onChange, cols = 'flex flex-wrap', label }) {
+  const t = useT();
   return (
     <div className={`${cols} gap-2`} role="radiogroup" aria-label={label}>
       {options.map((opt) => {
@@ -97,7 +104,7 @@ function Chips({ options, value, onChange, cols = 'flex flex-wrap', label }) {
               focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 focus-visible:ring-offset-paper
               ${on ? 'bg-ink border-ink text-white font-semibold' : 'bg-white border-paper-line text-ink hover:border-ink/50'}`}
           >
-            {text}
+            {t(text)}
           </button>
         );
       })}
@@ -110,12 +117,13 @@ const inputCls = `w-full min-h-[48px] px-4 rounded-lg bg-white border border-pap
 
 // ───────────────────────── steps ─────────────────────────
 function StepAbout({ f, set, errors }) {
+  const t = useT();
   return (
     <>
       <Field label="Your age" required error={errors.age}>
         <input
           type="number" inputMode="numeric" min="1" max="110" className={`${inputCls} max-w-[160px]`}
-          placeholder="e.g. 52" value={f.age} onChange={(e) => set({ age: e.target.value })}
+          placeholder={t('e.g. 52')} value={f.age} onChange={(e) => set({ age: e.target.value })}
         />
       </Field>
       <Field label="Gender" required error={errors.gender}>
@@ -123,23 +131,23 @@ function StepAbout({ f, set, errors }) {
       </Field>
       <Field label="State" required error={errors.state}>
         <select className={inputCls} value={f.state} onChange={(e) => set({ state: e.target.value })}>
-          <option value="">Choose your state</option>
-          {STATES.map((s) => <option key={s}>{s}</option>)}
+          <option value="">{t('Choose your state')}</option>
+          {STATES.map((s) => <option key={s} value={s}>{t(s)}</option>)}
         </select>
       </Field>
       <div className="grid sm:grid-cols-2 gap-x-4">
         <Field label="District or town">
-          <input className={inputCls} placeholder="e.g. Osmanabad" value={f.district} onChange={(e) => set({ district: e.target.value })} />
+          <input className={inputCls} placeholder={t('e.g. Osmanabad')} value={f.district} onChange={(e) => set({ district: e.target.value })} />
         </Field>
         <Field label="Your name" hint="Only to greet you">
-          <input className={inputCls} placeholder="e.g. Savitribai" value={f.name} onChange={(e) => set({ name: e.target.value })} />
+          <input className={inputCls} placeholder={t('e.g. Savitribai')} value={f.name} onChange={(e) => set({ name: e.target.value })} />
         </Field>
       </div>
       <Field label="Mobile number" hint="Only if you want reminders. No OTP.">
         <div className="flex items-stretch max-w-[320px]">
           <span className="flex items-center px-3 rounded-l-lg border border-r-0 border-paper-line bg-paper text-ink/60 text-[15px]">+91</span>
           <input
-            type="tel" inputMode="numeric" maxLength={10} className={`${inputCls} rounded-l-none`} placeholder="10-digit number"
+            type="tel" inputMode="numeric" maxLength={10} className={`${inputCls} rounded-l-none`} placeholder={t('10-digit number')}
             value={f.mobile} onChange={(e) => set({ mobile: e.target.value.replace(/\D/g, '') })}
           />
         </div>
@@ -149,6 +157,7 @@ function StepAbout({ f, set, errors }) {
 }
 
 function StepWork({ f, set, errors }) {
+  const t = useT();
   const isFarmer = /farmer/i.test(f.occupation);
   const inOther = OTHER_JOBS.includes(f.occupation);
   return (
@@ -159,8 +168,8 @@ function StepWork({ f, set, errors }) {
           className={`${inputCls} mt-3`} aria-label="Other occupation"
           value={inOther ? f.occupation : ''} onChange={(e) => set({ occupation: e.target.value, hasLand: '' })}
         >
-          <option value="">Something else…</option>
-          {OTHER_JOBS.map((o) => <option key={o}>{o}</option>)}
+          <option value="">{t('Something else…')}</option>
+          {OTHER_JOBS.map((o) => <option key={o} value={o}>{t(o)}</option>)}
         </select>
       </Field>
 
@@ -215,7 +224,8 @@ function StepFamily({ f, set }) {
 export default function Register() {
   const navigate = useNavigate();
   const { saveUser } = useUser();
-  const { schemes, loading: schemesLoading } = useSchemes();
+  const { schemes, loading: schemesLoading, language } = useSchemes();
+  const t = (text) => translate(language, text);
   const [params] = useSearchParams();
   const demo = params.get('demo') === '1';
 
@@ -300,6 +310,7 @@ export default function Register() {
   const last = step === STEPS.length - 1;
 
   return (
+    <LangCtx.Provider value={language}>
     <div className="fixed inset-0 z-50 overflow-y-auto bg-paper text-ink font-sans">
       {/* tricolour rule */}
       <div className="h-1.5 flex" aria-hidden="true">
@@ -314,38 +325,38 @@ export default function Register() {
           </Link>
           <div className="mt-8 lg:mt-auto lg:mb-auto">
             <h1 className="font-display text-[32px] leading-[1.15] lg:text-[44px] font-semibold">
-              Find the benefits you are already owed.
+              {t('Find the benefits you are already owed.')}
             </h1>
             <p className="mt-4 text-white/70 text-[16px] leading-relaxed max-w-md">
-              Answer a few simple questions. We check them against government schemes and show you what you can apply for.
+              {t('Answer a few simple questions. We check them against government schemes and show you what you can apply for.')}
             </p>
             <ul className="mt-8 hidden sm:block space-y-3 text-[15px] text-white/85">
-              {['Only 5 answers are required', 'No Aadhaar number, no OTP, no password', 'Free, in Hindi, Marathi and English'].map((t) => (
-                <li key={t} className="flex items-start gap-3"><Check size={18} className="mt-0.5 text-saffron shrink-0" />{t}</li>
+              {['Only 5 answers are required', 'No Aadhaar number, no OTP, no password', 'Free, in Hindi, Marathi and English'].map((line) => (
+                <li key={line} className="flex items-start gap-3"><Check size={18} className="mt-0.5 text-saffron shrink-0" />{t(line)}</li>
               ))}
             </ul>
           </div>
-          <p className="hidden lg:flex items-center gap-2 text-xs text-white/50 mt-8"><ShieldCheck size={14} /> Your answers stay on your device until you ask for reminders.</p>
+          <p className="hidden lg:flex items-center gap-2 text-xs text-white/50 mt-8"><ShieldCheck size={14} /> {t('Your answers stay on your device until you ask for reminders.')}</p>
         </aside>
 
         {/* right: wizard */}
         <main className="px-5 py-8 sm:px-10 lg:px-16 lg:py-14 pb-28">
           <div className="max-w-xl mx-auto">
             <div className="flex items-center justify-between text-sm text-ink/60 mb-2">
-              <span>Step {step + 1} of {STEPS.length}</span>
-              <span>{STEPS[step].hint}</span>
+              <span>{t('Step')} {step + 1} / {STEPS.length}</span>
+              <span>{t(STEPS[step].hint)}</span>
             </div>
             <div className="h-1.5 rounded-full bg-paper-line overflow-hidden" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)}>
               <div className="h-full bg-saffron transition-all duration-300" style={{ width: `${progress}%` }} />
             </div>
-            <h2 className="font-display text-[28px] font-semibold mt-5 mb-4">{STEPS[step].title}</h2>
+            <h2 className="font-display text-[28px] font-semibold mt-5 mb-4">{t(STEPS[step].title)}</h2>
 
             <div className="mb-7 flex flex-wrap items-center gap-2 rounded-lg border border-dashed border-saffron-deep/60 bg-saffron/10 px-3 py-2">
               <button type="button" onClick={fillStep}
                 className="min-h-[40px] px-4 rounded-lg bg-ink text-white text-sm font-semibold hover:bg-ink/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron">
-                Fill demo data
+                {t('Fill demo data')}
               </button>
-              <span className="text-xs text-ink/60">as</span>
+              <span className="text-xs text-ink/60">{t('as')}</span>
               {PERSONAS.map((p) => (
                 <button key={p.key} type="button" title={p.blurb} onClick={() => setPersonaKey(p.key)}
                   aria-pressed={personaKey === p.key}
@@ -359,24 +370,24 @@ export default function Register() {
             {step === 0 && <StepAbout f={form} set={set} errors={errors} />}
             {step === 1 && <StepWork f={form} set={set} errors={errors} />}
             {step === 2 && <StepFamily f={form} set={set} />}
-            {errors.mobile && <p role="alert" className="-mt-3 mb-4 text-sm font-medium text-red-700">{errors.mobile}</p>}
-            {errors.submit && <p role="alert" className="mb-4 text-sm font-medium text-red-700">{errors.submit}</p>}
+            {errors.mobile && <p role="alert" className="-mt-3 mb-4 text-sm font-medium text-red-700">{t(errors.mobile)}</p>}
+            {errors.submit && <p role="alert" className="mb-4 text-sm font-medium text-red-700">{t(errors.submit)}</p>}
 
             <div className="flex items-center gap-3 pt-2">
               {step > 0 && (
                 <button type="button" onClick={back}
                   className="min-h-[48px] px-5 rounded-lg border border-paper-line bg-white text-ink font-medium inline-flex items-center gap-2 hover:border-ink/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron">
-                  <ArrowLeft size={16} /> Back
+                  <ArrowLeft size={16} /> {t('Back')}
                 </button>
               )}
               <button type="button" onClick={last ? submit : next} disabled={busy}
                 className="min-h-[48px] px-7 rounded-lg bg-saffron text-ink font-semibold inline-flex items-center gap-2 hover:brightness-95 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
-                {busy ? <><Loader2 size={16} className="animate-spin" /> Finding schemes…</> : last ? <>See my benefits <ArrowRight size={16} /></> : <>Continue <ArrowRight size={16} /></>}
+                {busy ? <><Loader2 size={16} className="animate-spin" /> {t('Finding schemes…')}</> : last ? <>{t('See my benefits')} <ArrowRight size={16} /></> : <>{t('Continue')} <ArrowRight size={16} /></>}
               </button>
-              {last && !busy && <span className="text-sm text-ink/50 hidden sm:inline">You can skip these</span>}
+              {last && !busy && <span className="text-sm text-ink/50 hidden sm:inline">{t('You can skip these')}</span>}
             </div>
 
-            <p className="mt-10 text-xs text-ink/50 flex items-center gap-2"><Phone size={13} /> Prefer a call or WhatsApp? Those work too — no form needed.</p>
+            <p className="mt-10 text-xs text-ink/50 flex items-center gap-2"><Phone size={13} /> {t('Prefer a call or WhatsApp? Those work too — no form needed.')}</p>
           </div>
         </main>
       </div>
@@ -399,5 +410,6 @@ export default function Register() {
         </div>
       )}
     </div>
+    </LangCtx.Provider>
   );
 }
