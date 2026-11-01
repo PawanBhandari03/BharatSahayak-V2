@@ -297,7 +297,7 @@ export default function Register() {
 
     const API_URL = (import.meta.env.VITE_API_URL ?? 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
     axios
-      .post(`${API_URL}/api/ai-recommend`, { profile, matchedSchemes: all.filter((s) => s.isMatched) }, { timeout: 25000 })
+      .post(`${API_URL}/api/ai-recommend`, { profile, matchedSchemes: all.filter((s) => s.isMatched), language }, { timeout: 25000 })
       .then((res) => saveUser(profile, all, res.data))
       .catch((err) => console.warn('AI summary skipped:', err?.message));
 

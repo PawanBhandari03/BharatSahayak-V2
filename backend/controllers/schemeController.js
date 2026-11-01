@@ -168,8 +168,15 @@ const matchSchemes = async (req, res) => {
   }
 };
 
+// Languages the AI summary can be written in (the site's language switcher values).
+const AI_LANGUAGES = { en: 'simple English', hi: 'simple Hindi (Devanagari script)', mr: 'simple Marathi (Devanagari script)' };
+
+// The model sometimes returns **bold** markers; the page shows plain text, so remove them.
+const stripMarkdown = (v) => (typeof v === 'string' ? v.replace(/\*+/g, '').replace(/^#+\s*/gm, '').trim() : v);
+
 const aiRecommend = async (req, res) => {
   const { profile, matchedSchemes } = req.body;
+  const language = AI_LANGUAGES[req.body.language] ? req.body.language : 'en';
 
   if (!profile || !matchedSchemes) {
     return res.status(400).json({ message: 'Missing profile or matchedSchemes' });
@@ -190,7 +197,9 @@ const aiRecommend = async (req, res) => {
     const systemPrompt = `You are BharatSahayak AI, an expert advisor for Indian government schemes.
 Given a user profile and a list of schemes they are eligible for, you must provide:
 1. The top 3 priority schemes (from the provided list) that give the highest impact/value to this user, along with a short reason why.
-2. A single personalized, encouraging message in a mix of simple Hindi (transliterated or Devanagari) and English.
+2. A single personalized, encouraging message of 2 to 3 sentences.
+
+Write every text field (reasons and message) in ${AI_LANGUAGES[language]}. Use plain text only: no markdown, no asterisks. Mention only schemes and amounts from the provided list; do not invent schemes, amounts or deadlines.
 3. A consolidated list of missing documents they should arrange based on the top 3 schemes.
 
 You must respond ONLY with a valid JSON object in the following exact format without any markdown wrappers or extra text:
@@ -223,6 +232,9 @@ You must respond ONLY with a valid JSON object in the following exact format wit
     }
 
     const parsedData = JSON.parse(jsonMatch[0]);
+    parsedData.personalizedMessage = stripMarkdown(parsedData.personalizedMessage);
+    parsedData.topSchemes = (parsedData.topSchemes || []).map((s) => ({ ...s, name: stripMarkdown(s.name), reason: stripMarkdown(s.reason) }));
+    parsedData.documentsToArrange = (parsedData.documentsToArrange || []).map(stripMarkdown);
 
     // Update the Supabase record with the actual AI response
     await saveToSupabase(profile, matchedSchemes, parsedData);
