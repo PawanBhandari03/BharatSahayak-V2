@@ -300,7 +300,8 @@ export default function Dashboard() {
         {/* Main grid */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* LEFT */}
-          <div className="xl:col-span-1 space-y-6">
+          {/* Sticky on wide screens so the column stays in view while the longer right column scrolls */}
+          <div className="xl:col-span-1 space-y-6 xl:sticky xl:top-24 xl:self-start xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto scrollbar-hide">
             <ProfileCard user={user} wallet={wallet} lang={language} />
             <VoiceCallCard user={user} lang={language} />
 
