@@ -162,10 +162,10 @@ export default function Timeline() {
         {/* Steps */}
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden md:block absolute top-10 left-[7%] right-[7%] h-0.5 z-0 pointer-events-none opacity-60"
+          <div className="hidden md:block absolute top-10 left-[10%] right-[10%] h-0.5 z-0 pointer-events-none opacity-60"
             style={{ background: 'linear-gradient(90deg, #1B1740, #2A2562, #2196F3, #25D366, #FF9933, #C2610A, #138808)' }} />
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4 md:gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-4">
             {JOURNEY_STEPS.map((step, i) => (
               <motion.div
                 key={step.step}
@@ -184,7 +184,7 @@ export default function Timeline() {
                   <span className="text-xs font-bold" style={{ color: step.color }}>0{step.step}</span>
                 </motion.div>
                 <h4 className="text-ink font-semibold text-xs md:text-sm leading-tight mb-1">{t(step.title)}</h4>
-                <p className="text-ink/50 text-xs leading-relaxed hidden md:block">{t(step.description).slice(0, 48)}...</p>
+                <p className="text-ink/55 text-xs leading-relaxed hidden md:block px-1">{t(step.detail)}</p>
               </motion.div>
             ))}
           </div>
