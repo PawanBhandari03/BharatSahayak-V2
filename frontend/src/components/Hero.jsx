@@ -172,18 +172,6 @@ export default function Hero({ language = 'en' }) {
 
       {/* Floating scheme badges - Vibrant, moving background elements */}
       <div className="absolute inset-0 max-w-7xl mx-auto pointer-events-none z-0 overflow-hidden">
-        {/* Top Right: Ayushman Bharat */}
-        <FloatingBadge 
-          icon="🏥" 
-          title="Ayushman Bharat" 
-          amount="₹5 Lakh Cover" 
-          className="hidden md:flex top-36 right-4 xl:right-2 text-sky-400" 
-          delay={0.8} 
-          duration={6.2}
-          floatY={16}
-          borderGlow="rgba(56, 189, 248, 0.45)"
-        />
-
         {/* Center-Top / Upper Center Gap: PM Ujjwala */}
         <FloatingBadge 
           icon="🔥" 
