@@ -182,7 +182,7 @@ backend/
 shared/              eligibility.mjs, used by both frontend and backend
 scheme-data/         schemes.json and its JSON schema
 scripts/             validate, draft and re-check scripts for scheme data
-docs/                Full project documentation (including the WhatsApp setup)
+docs/                BharatSahayak_Documentation.pdf (full project documentation, including the WhatsApp setup)
 ```
 
 **API**
@@ -244,7 +244,7 @@ npm run dev                   # http://localhost:5173
 3. See the matched schemes on the dashboard.
 4. For WhatsApp, click **Try on WhatsApp**, scan the QR code, send `join spent-opinion`, then say `Hi`.
 
-**WhatsApp setup:** see "WhatsApp setup (Twilio sandbox)" in [`docs/PROJECT_DOCUMENTATION.md`](docs/PROJECT_DOCUMENTATION.md). The Twilio sandbox needs the webhook set to `https://<your-backend>/api/whatsapp/webhook`, and testers have to re-send the join message about every 3 days.
+**WhatsApp setup:** see "WhatsApp setup (Twilio sandbox)" in the project documentation, [`docs/BharatSahayak_Documentation.pdf`](docs/BharatSahayak_Documentation.pdf). The Twilio sandbox needs the webhook set to `https://<your-backend>/api/whatsapp/webhook`, and testers have to re-send the join message about every 3 days.
 
 **Adding or checking schemes**
 
