@@ -1,0 +1,45 @@
+# Target scheme list (names only, to be drafted and verified)
+
+Names and the official site I expect. Nothing here has been opened or verified; eligibility numbers are deliberately NOT listed.
+Use `npm run draft:scheme -- <url> --id <id>` then verify by hand.
+
+## Already in schemes.json (unverified)
+- [ ] PM-KISAN, Sanjay Gandhi Niradhar, IGNWPS, Ayushman Bharat PM-JAY, PM Ujjwala 2.0, PMAY-Gramin, PMJJBY, PMSBY, MahaDBT Shetkari, Mudra, PMKVY, Startup India, PMSSS, Atal Pension
+
+## Central (to add)
+- [ ] PMAY-Urban (pmaymis.gov.in)
+- [ ] Sukanya Samriddhi Yojana (indiapost.gov.in / nsiindia.gov.in)
+- [ ] PM Matru Vandana Yojana (wcd.nic.in)
+- [ ] Stand-Up India (standupmitra.in)
+- [ ] National Scholarship Portal schemes (scholarships.gov.in)
+- [ ] PM SVANidhi (pmsvanidhi.mohua.gov.in)
+- [ ] PM Vishwakarma (pmvishwakarma.gov.in)
+- [ ] PM Jan Dhan Yojana (pmjdy.gov.in)
+- [ ] IGNOAPS old-age pension (nsap.nic.in)
+- [ ] IGNDPS disability pension (nsap.nic.in)
+- [ ] MGNREGA (nrega.nic.in)
+- [ ] PM Fasal Bima Yojana (pmfby.gov.in)
+- [ ] Kisan Credit Card (pmkisan.gov.in / banks)
+- [ ] PM Shram Yogi Maandhan (maandhan.in)
+- [ ] National Family Benefit Scheme (nsap.nic.in)
+- [ ] Beti Bachao Beti Padhao (wcd.nic.in)
+- [ ] PM POSHAN (pmposhan.education.gov.in)
+- [ ] PM-SYM / e-Shram (eshram.gov.in)
+- [ ] Post-Matric Scholarship for SC/ST/OBC (scholarships.gov.in)
+- [ ] PM-JAY Vay Vandana (senior citizens) (pmjay.gov.in)
+
+## Maharashtra (to add)
+- [ ] Majhi Ladki Bahin Yojana (ladakibahin.maharashtra.gov.in)
+- [ ] Shravan Bal Seva Rajya Nivruttivetan Yojana (sjsa.maharashtra.gov.in)
+- [ ] Sanjay Gandhi Niradhar (already listed)
+- [ ] MahaDBT scholarships (mahadbt.maharashtra.gov.in)
+- [ ] Mahatma Jyotiba Phule Jan Arogya Yojana (jeevandayee.gov.in)
+- [ ] Lek Ladki Yojana (maharashtra.gov.in)
+- [ ] Rajarshi Shahu Maharaj Shikshan Shulkh Pratipurti (mahadbt.maharashtra.gov.in)
+- [ ] Mukhyamantri Saur Krishi Vahini / solar pump schemes (mahadiscom.in)
+- [ ] Namo Shetkari Mahasanman Nidhi (maharashtra.gov.in)
+- [ ] Ramai Awas Yojana (sjsa.maharashtra.gov.in)
+- [ ] Shabari Adivasi Gharkul Yojana (tribal.maharashtra.gov.in)
+- [ ] Annasaheb Patil Mahamandal loans (apmm.maharashtra.gov.in)
+
+(Domains are my expectation from memory, unopened. Count: 14 existing + 20 central + 11 new Maharashtra = 45; add ~5 more to reach 50.)

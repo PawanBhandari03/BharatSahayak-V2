@@ -1,208 +1,432 @@
 [
   {
     "id": "pm-kisan",
-    "name": "Pradhan Mantri Kisan Samman Nidhi",
+    "name": {
+      "en": "Pradhan Mantri Kisan Samman Nidhi",
+      "hi": null,
+      "mr": null
+    },
+    "category": "agriculture",
+    "level": "central",
+    "state": "all",
     "amount": 6000,
-    "documentsRequired": [
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "₹6,000/year",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "farmer / kisan",
+        "agricultural labourer"
+      ],
+      "maxAnnualIncome": 500000,
+      "requiresLand": true,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Land ownership records (7/12 or Khatauni)",
       "Aadhaar-linked bank account passbook",
       "Mobile number"
     ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": null,
-      "gender": "any",
-      "category": ["any"],
-      "occupation": ["farmer / kisan", "agricultural labourer"],
-      "maxAnnualIncome": 500000,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Visit pmkisan.gov.in → New Farmer Registration → Enter Aadhaar → Fill land details → Verify e-KYC at nearest CSC.",
+    "officialUrl": "https://pmkisan.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "sanjay-gandhi-niradhar",
-    "name": "Sanjay Gandhi Niradhar Yojana",
+    "name": {
+      "en": "Sanjay Gandhi Niradhar Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "social-welfare",
+    "level": "state",
+    "state": "maharashtra",
     "amount": 18000,
-    "documentsRequired": [
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "₹1,500/month",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 65,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": 100000,
+      "requiresLand": null,
+      "maritalStatus": "widow / widower",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Husband's Death Certificate",
       "Income Certificate from Tehsildar (≤ ₹21,000/year)",
       "Maharashtra Domicile Certificate",
       "Aadhaar-linked Bank Passbook"
     ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": 65,
-      "gender": "female",
-      "category": ["any"],
-      "occupation": ["any"],
-      "maxAnnualIncome": 100000,
-      "state": "maharashtra",
-      "maritalStatus": "widow / widower"
-    }
+    "deadline": null,
+    "howToApply": "Apply online at sas.mahait.org OR submit form at Tehsildar / District Collector's office / Aaple Sarkar Seva Kendra.",
+    "officialUrl": "https://sas.mahait.org",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "ignwps",
-    "name": "Indira Gandhi National Widow Pension Scheme",
+    "name": {
+      "en": "Indira Gandhi National Widow Pension Scheme",
+      "hi": null,
+      "mr": null
+    },
+    "category": "social-welfare",
+    "level": "central",
+    "state": "all",
     "amount": 3600,
-    "documentsRequired": [
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "₹300–₹500/month + state top-up",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 40,
+      "maxAge": 79,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": 100000,
+      "requiresLand": null,
+      "maritalStatus": "widow / widower",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Death Certificate of husband",
       "BPL Ration Card",
       "Bank Passbook"
     ],
-    "eligibility": {
-      "minAge": 40,
-      "maxAge": 79,
-      "gender": "female",
-      "category": ["any"],
-      "occupation": ["any"],
-      "maxAnnualIncome": 100000,
-      "state": "all",
-      "maritalStatus": "widow / widower"
-    }
+    "deadline": null,
+    "howToApply": "Apply at Gram Panchayat office (rural) or Municipal office (urban) with documents → Submitted to District Social Welfare Officer → Verified → Pension disbursed via DBT.",
+    "officialUrl": "https://nsap.nic.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "ayushman-bharat",
-    "name": "Ayushman Bharat PM-JAY",
+    "name": {
+      "en": "Ayushman Bharat PM-JAY",
+      "hi": null,
+      "mr": null
+    },
+    "category": "health",
+    "level": "central",
+    "state": "all",
     "amount": 500000,
-    "documentsRequired": [
-      "Aadhaar Card",
-      "Ration Card or PM/CM letter",
-      "Proof of age (for senior citizens)"
-    ],
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "₹5 Lakh/year Health Cover",
+      "hi": null,
+      "mr": null
+    },
     "eligibility": {
       "minAge": 0,
       "maxAge": null,
       "gender": "any",
-      "category": ["any"],
-      "occupation": ["any"],
+      "occupations": [
+        "any"
+      ],
       "maxAnnualIncome": 200000,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Ration Card or PM/CM letter",
+      "Proof of age (for senior citizens)"
+    ],
+    "deadline": null,
+    "howToApply": "Check eligibility at mera.pmjay.gov.in or Ayushman App → Visit nearest CSC or empanelled hospital for Ayushman card generation.",
+    "officialUrl": "https://pmjay.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "pmuy",
-    "name": "PM Ujjwala Yojana 2.0",
+    "name": {
+      "en": "PM Ujjwala Yojana 2.0",
+      "hi": null,
+      "mr": null
+    },
+    "category": "energy",
+    "level": "central",
+    "state": "all",
     "amount": 1200,
-    "documentsRequired": [
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Free LPG + ₹300/cylinder subsidy (4/year)",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": 200000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Ration Card",
       "Aadhaar-linked Bank Passbook",
       "14-point Deprivation Declaration form"
     ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": null,
-      "gender": "female",
-      "category": ["any"],
-      "occupation": ["any"],
-      "maxAnnualIncome": 200000,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Visit nearest LPG distributor (HP/BP/Indane) with documents OR apply online at pmuy.gov.in.",
+    "officialUrl": "https://pmuy.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "pmay-g",
-    "name": "PMAY-Gramin",
+    "name": {
+      "en": "PMAY-Gramin",
+      "hi": null,
+      "mr": null
+    },
+    "category": "housing",
+    "level": "central",
+    "state": "all",
     "amount": 120000,
-    "documentsRequired": [
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "₹1.20 Lakh Grant + extras",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": 200000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Aadhaar-linked Bank Account",
       "MGNREGA Job Card",
       "Voter ID / Ration Card",
       "Affidavit declaring no pucca house ownership"
     ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": null,
-      "gender": "any",
-      "category": ["any"],
-      "occupation": ["any"],
-      "maxAnnualIncome": 200000,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Selection is based on SECC 2011 / Awaas+ list — NOT by direct application. Contact Gram Panchayat or Block Development Office (BDO) to verify your name on the PWL.",
+    "officialUrl": "https://pmayg.nic.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "pmjjby",
-    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+    "name": {
+      "en": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "insurance",
+    "level": "central",
+    "state": "all",
     "amount": 200000,
-    "documentsRequired": [
-      "Aadhaar Card",
-      "Bank Passbook",
-      "Consent form for Auto-Debit"
-    ],
+    "frequency": null,
+    "benefitSummary": {
+      "en": "₹2 Lakh life cover @ ₹436/year",
+      "hi": null,
+      "mr": null
+    },
     "eligibility": {
       "minAge": 18,
       "maxAge": 50,
       "gender": "any",
-      "category": ["any"],
-      "occupation": ["any"],
+      "occupations": [
+        "any"
+      ],
       "maxAnnualIncome": null,
-      "state": "all",
-      "maritalStatus": "any"
-    }
-  },
-  {
-    "id": "pmsby",
-    "name": "Pradhan Mantri Suraksha Bima Yojana",
-    "amount": 200000,
-    "documentsRequired": [
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Bank Passbook",
       "Consent form for Auto-Debit"
     ],
+    "deadline": null,
+    "howToApply": "Contact your bank branch OR apply via net banking / mobile banking app → Search PMJJBY → Give auto-debit consent.",
+    "officialUrl": "https://jansuraksha.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pmsby",
+    "name": {
+      "en": "Pradhan Mantri Suraksha Bima Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "insurance",
+    "level": "central",
+    "state": "all",
+    "amount": 200000,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "₹2 Lakh accident cover @ ₹20/year",
+      "hi": null,
+      "mr": null
+    },
     "eligibility": {
       "minAge": 18,
       "maxAge": 70,
       "gender": "any",
-      "category": ["any"],
-      "occupation": ["any"],
+      "occupations": [
+        "any"
+      ],
       "maxAnnualIncome": null,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Bank Passbook",
+      "Consent form for Auto-Debit"
+    ],
+    "deadline": null,
+    "howToApply": "Contact your bank branch OR apply via net banking → Search PMSBY → Give auto-debit consent.",
+    "officialUrl": "https://jansuraksha.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "mahadbt-shetkari",
-    "name": "MahaDBT Shetkari Schemes",
+    "name": {
+      "en": "MahaDBT Shetkari Schemes",
+      "hi": null,
+      "mr": null
+    },
+    "category": "agriculture",
+    "level": "state",
+    "state": "maharashtra",
     "amount": 50000,
-    "documentsRequired": [
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Up to 50% subsidy (≤₹2.4 Lakh)",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "farmer / kisan",
+        "agricultural labourer"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "7/12 extract and 8A holding details",
       "Bank Passbook",
       "Mobile number linked with Aadhaar"
     ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": null,
-      "gender": "any",
-      "category": ["any"],
-      "occupation": ["farmer / kisan", "agricultural labourer"],
-      "maxAnnualIncome": null,
-      "state": "maharashtra",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Register at mahadbt.maharashtra.gov.in → Get Farmer ID → Login → Agriculture Dept. → Select scheme component → Upload documents → Submit (First-Come-First-Served).",
+    "officialUrl": "https://mahadbt.maharashtra.gov.in/Farmer",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "mudra-loan",
-    "name": "Mudra Loan",
+    "name": {
+      "en": "Mudra Loan",
+      "hi": null,
+      "mr": null
+    },
+    "category": "entrepreneurship",
+    "level": "central",
+    "state": "all",
     "amount": 100000,
-    "documentsRequired": [
-      "Aadhaar Card",
-      "Identity Proof / Business Address Proof",
-      "Machinery/equipment quotation or business plan",
-      "Passport size photographs"
-    ],
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Up to ₹10 Lakh loan (no collateral)",
+      "hi": null,
+      "mr": null
+    },
     "eligibility": {
       "minAge": 18,
       "maxAge": null,
       "gender": "any",
-      "category": ["any"],
-      "occupation": [
+      "occupations": [
         "farmer / kisan",
         "street vendor / small trader",
         "self-employed (small business)",
@@ -210,91 +434,205 @@
         "other"
       ],
       "maxAnnualIncome": null,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Identity Proof / Business Address Proof",
+      "Machinery/equipment quotation or business plan",
+      "Passport size photographs"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at any bank, NBFC, or MFI branch. Also available on Udyamimitra portal (udyamimitra.in). Select loan category and submit business plan.",
+    "officialUrl": "https://www.mudra.org.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "pmkvy",
-    "name": "Pradhan Mantri Kaushal Vikas Yojana",
+    "name": {
+      "en": "Pradhan Mantri Kaushal Vikas Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "skill-development",
+    "level": "central",
+    "state": "all",
     "amount": 8000,
-    "documentsRequired": [
+    "frequency": null,
+    "benefitSummary": {
+      "en": "₹8,000 avg reward + certification",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 15,
+      "maxAge": 45,
+      "gender": "any",
+      "occupations": [
+        "student",
+        "other"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Educational qualification certificates",
       "Bank Account details",
       "Passport size photos"
     ],
-    "eligibility": {
-      "minAge": 15,
-      "maxAge": 45,
-      "gender": "any",
-      "category": ["any"],
-      "occupation": ["student", "other"],
-      "maxAnnualIncome": null,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Visit skillindiadigital.gov.in → Register → Select course → Choose nearest training centre → Enroll → Complete training → Appear for assessment.",
+    "officialUrl": "https://skillindiadigital.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "startup-india",
-    "name": "Startup India Initiative",
+    "name": {
+      "en": "Startup India Initiative",
+      "hi": null,
+      "mr": null
+    },
+    "category": "entrepreneurship",
+    "level": "central",
+    "state": "all",
     "amount": 500000,
-    "documentsRequired": [
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Up to ₹20 Lakh seed fund",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "self-employed (small business)",
+        "other"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "DPIIT Recognition Certificate",
       "Business Plan / Pitch Deck",
       "Incorporation/Registration Certificate",
       "Brief write-up on the innovative nature of business"
     ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": null,
-      "gender": "any",
-      "category": ["any"],
-      "occupation": ["self-employed (small business)", "other"],
-      "maxAnnualIncome": null,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Apply at seedfund.startupindia.gov.in → Select registered incubator → Submit application → Incubator evaluates → Funds disbursed in tranches.",
+    "officialUrl": "https://seedfund.startupindia.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "pmsss",
-    "name": "Prime Minister's Special Scholarship Scheme",
+    "name": {
+      "en": "Prime Minister's Special Scholarship Scheme",
+      "hi": null,
+      "mr": null
+    },
+    "category": "education",
+    "level": "central",
+    "state": "all",
     "amount": 150000,
-    "documentsRequired": [
+    "frequency": null,
+    "benefitSummary": {
+      "en": "₹30,000/year + maintenance",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 17,
+      "maxAge": 25,
+      "gender": "any",
+      "occupations": [
+        "student"
+      ],
+      "maxAnnualIncome": 800000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
       "Aadhaar Card",
       "Domicile Certificate of J&K / Ladakh",
       "Class 10th & 12th Marksheet",
       "Income Certificate (family income ≤ ₹8 Lakh/year)"
     ],
-    "eligibility": {
-      "minAge": 17,
-      "maxAge": 25,
-      "gender": "any",
-      "category": ["any"],
-      "occupation": ["student"],
-      "maxAnnualIncome": 800000,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+    "deadline": null,
+    "howToApply": "Apply online at aicte-india.org during application window → Upload documents → Verification by AICTE → Scholarship credited via DBT.",
+    "officialUrl": "https://www.aicte-india.org/bureaus/jk",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   },
   {
     "id": "atal-pension",
-    "name": "Atal Pension Yojana",
+    "name": {
+      "en": "Atal Pension Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "social-welfare",
+    "level": "central",
+    "state": "all",
     "amount": 5000,
-    "documentsRequired": [
-      "Aadhaar Card",
-      "Active Mobile number",
-      "Savings Bank account with auto-debit consent"
-    ],
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "₹1K–₹5K/month guaranteed pension",
+      "hi": null,
+      "mr": null
+    },
     "eligibility": {
       "minAge": 18,
       "maxAge": 40,
       "gender": "any",
-      "category": ["any"],
-      "occupation": ["any"],
+      "occupations": [
+        "any"
+      ],
       "maxAnnualIncome": 500000,
-      "state": "all",
-      "maritalStatus": "any"
-    }
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar Card",
+      "Active Mobile number",
+      "Savings Bank account with auto-debit consent"
+    ],
+    "deadline": null,
+    "howToApply": "Visit your bank / post office branch or apply via net banking → Fill APY form → Choose pension amount → Start monthly auto-debit.",
+    "officialUrl": "https://npscra.nsdl.co.in/scheme-apy.php",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   }
 ]

@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bharatsahayak/scheme.schema.json",
+  "title": "BharatSahayak scheme record",
+  "description": "Single source of truth for one government scheme. null means 'no limit' / 'unknown' (see NEEDS_REVIEW.md). Languages: en, hi, mr.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "name", "category", "level", "state", "amount", "frequency",
+    "benefitSummary", "eligibility", "documents", "deadline", "howToApply",
+    "officialUrl", "sourceUrl", "verified", "lastVerified"
+  ],
+  "definitions": {
+    "i18nRequired": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "hi", "mr"],
+      "properties": {
+        "en": { "type": "string", "minLength": 1 },
+        "hi": { "type": ["string", "null"] },
+        "mr": { "type": ["string", "null"] }
+      }
+    },
+    "i18nOptional": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["en", "hi", "mr"],
+      "properties": {
+        "en": { "type": ["string", "null"] },
+        "hi": { "type": ["string", "null"] },
+        "mr": { "type": ["string", "null"] }
+      }
+    },
+    "nullableBool": { "type": ["boolean", "null"] },
+    "nullableInt": { "type": ["integer", "null"], "minimum": 0 }
+  },
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "name": { "$ref": "#/definitions/i18nRequired" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "agriculture", "health", "energy", "housing", "insurance", "pension",
+        "social-welfare", "entrepreneurship", "skill-development", "education",
+        "women-child", "other"
+      ]
+    },
+    "level": { "type": "string", "enum": ["central", "state"] },
+    "state": { "type": "string", "minLength": 1, "description": "'all' for pan-India, otherwise lowercase state name e.g. 'maharashtra'" },
+    "amount": { "type": ["number", "null"], "minimum": 0, "description": "Rupees. null = not a fixed amount / unknown" },
+    "frequency": { "type": ["string", "null"], "enum": ["one-time", "monthly", "yearly", "per-cylinder", "other", null] },
+    "benefitSummary": { "$ref": "#/definitions/i18nRequired" },
+    "eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minAge", "maxAge", "gender", "occupations", "maxAnnualIncome",
+        "requiresLand", "maritalStatus", "categories", "requiresBPL"
+      ],
+      "properties": {
+        "minAge": { "$ref": "#/definitions/nullableInt" },
+        "maxAge": { "$ref": "#/definitions/nullableInt" },
+        "gender": { "type": "string", "enum": ["any", "female", "male"] },
+        "occupations": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "description": "['any'] = no restriction. Values match the registration form options." },
+        "maxAnnualIncome": { "type": ["number", "null"], "minimum": 0 },
+        "requiresLand": { "$ref": "#/definitions/nullableBool" },
+        "maritalStatus": { "type": "string", "minLength": 1, "description": "'any' = no restriction" },
+        "categories": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "description": "['any'] = no restriction (General/SC/ST/OBC otherwise)" },
+        "requiresBPL": { "$ref": "#/definitions/nullableBool" }
+      }
+    },
+    "documents": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "deadline": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "ISO date, or null when there is no fixed deadline / unknown" },
+    "howToApply": { "type": ["string", "null"] },
+    "officialUrl": { "type": "string", "pattern": "^https?://" },
+    "sourceUrl": { "type": ["string", "null"], "pattern": "^https?://", "description": "Page the record was checked against (e.g. myscheme.gov.in). Required before verified:true" },
+    "verified": { "type": "boolean", "description": "Only a human flips this to true, after comparing with the official page" },
+    "lastVerified": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+  }
+}
