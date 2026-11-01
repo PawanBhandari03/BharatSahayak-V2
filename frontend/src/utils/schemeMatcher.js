@@ -32,7 +32,9 @@ export function writeTracking(map) { try { localStorage.setItem(TRACK_KEY, JSON.
 // the rest are counted in `unknownAmount` so nothing is invented.
 export function computeWallet(cards, tracking = {}, profile = {}) {
   const matched = cards.filter((c) => c.isMatched);
-  const sum = (list) => list.reduce((a, c) => a + (c.benefitAmount || 0), 0);
+  // Health and insurance "cover" (e.g. ₹5 lakh of treatment) is not money paid to the person, so it is left out of rupee totals.
+  const isCover = (c) => ['health', 'insurance'].includes(c._record?.category);
+  const sum = (list) => list.reduce((a, c) => a + (isCover(c) ? 0 : (c.benefitAmount || 0)), 0);
 
   const received = sum(matched.filter((c) => tracking[c.id] === 'received'));
   const pending = sum(matched.filter((c) => tracking[c.id] === 'applied'));

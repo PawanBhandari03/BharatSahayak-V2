@@ -80,19 +80,19 @@ export function alertParts(lang, w) {
     return [
       `${w.confirmed} योजनाएं आपके लिए उपयुक्त हैं${maybe ? `, ${maybe} और हो सकती हैं` : ''}.`,
       'इनके बताए गए लाभ कुल मिलाकर ',
-      `(केवल निश्चित राशि वाली योजनाएं गिनी गई हैं${unk ? `; ${unk} की कोई निश्चित राशि नहीं है` : ''})। हर योजना की पुष्टि उसके आधिकारिक पोर्टल पर करें।`,
+      `(केवल निश्चित राशि वाली योजनाएं गिनी गई हैं; स्वास्थ्य और बीमा कवर नहीं${unk ? `; ${unk} की कोई निश्चित राशि नहीं है` : ''})। हर योजना की पुष्टि उसके आधिकारिक पोर्टल पर करें।`,
     ];
   }
   if (lang === 'mr') {
     return [
       `${w.confirmed} योजना तुम्हाला लागू होतात${maybe ? `, आणखी ${maybe} लागू होऊ शकतात` : ''}.`,
       'त्यांचे नमूद लाभ एकूण ',
-      `(फक्त निश्चित रक्कम असलेल्या योजना मोजल्या आहेत${unk ? `; ${unk} योजनांना निश्चित रक्कम नाही` : ''}). प्रत्येक योजनेची खात्री तिच्या अधिकृत पोर्टलवर करा.`,
+      `(फक्त निश्चित रक्कम असलेल्या योजना मोजल्या आहेत; आरोग्य आणि विमा कव्हर नाही${unk ? `; ${unk} योजनांना निश्चित रक्कम नाही` : ''}). प्रत्येक योजनेची खात्री तिच्या अधिकृत पोर्टलवर करा.`,
     ];
   }
   return [
     `${w.confirmed} scheme${w.confirmed !== 1 ? 's' : ''} fit you${maybe ? `, ${maybe} more may` : ''}.`,
     'Their stated benefits add up to ',
-    `(only schemes with a fixed amount are counted${unk ? `; ${unk} have no fixed amount` : ''}). Confirm each one on its official portal.`,
+    `(only schemes with a fixed amount are counted; health and insurance cover are not${unk ? `; ${unk} have no fixed amount` : ''}). Confirm each one on its official portal.`,
   ];
 }
