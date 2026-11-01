@@ -1,8 +1,8 @@
-# BharatSahayak 🇮🇳
+# BharatSahayak
 
 **An AI companion that tells Indian citizens which government schemes they qualify for, on the web and on WhatsApp, in Hindi, Marathi and English.**
 
-Built for **Catalyst Hack 2026** by Team **Binary-Builders** (Generative AI).
+Built for **Catalyst Hack 2026** by Team **Binary Builders** (Generative AI).
 
 | | |
 |---|---|
@@ -310,7 +310,7 @@ Captured from the working project (live link in section 7). The demo data is the
 
 ## 10. Team
 
-**Binary-Builders**: Pawansingh Jagdish Bhandari and Rahul H. Bramhankar. Domain: Generative AI.
+**Binary Builders**: Pawansingh Jagdish Bhandari and Rahul H. Bramhankar. Domain: Generative AI.
 
 ## License
 
