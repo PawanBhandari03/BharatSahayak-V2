@@ -132,11 +132,13 @@ const ROLE_CLASS = {
   ink: 'text-ink',
 };
 
+const SMALL_AMOUNT = 'gradient-text-secondary rupee text-4xl sm:text-5xl md:text-6xl lg:text-7xl';
+
 const T = {
   subheadLead: { en: 'BharatSahayak makes sure', hi: 'भारतसहायक सुनिश्चित करता है कि', mr: 'भारतसहाय्यक खात्री करतो की' },
   subheadBold: { en: 'yours reaches you.', hi: 'आपका हक़ आप तक पहुंचे.', mr: 'तुमचा हक्क तुमच्यापर्यंत पोहोचेल.' },
   tagline: {
-    en: 'AI that brings government schemes to your doorstep — no internet, no hassle',
+    en: 'AI जो सरकारी योजनाएं आपके दरवाज़े तक पहुंचाए — बिना इंटरनेट, बिना झंझट',
     hi: 'AI जो सरकारी योजनाएं आपके दरवाज़े तक पहुंचाए — बिना इंटरनेट, बिना झंझट',
     mr: 'AI जो सरकारी योजना तुमच्या दारापर्यंत आणतो — इंटरनेटशिवाय, त्रासाशिवाय',
   },
@@ -170,18 +172,6 @@ export default function Hero({ language = 'en' }) {
 
       {/* Floating scheme badges - Vibrant, moving background elements */}
       <div className="absolute inset-0 max-w-7xl mx-auto pointer-events-none z-0 overflow-hidden">
-        {/* Top Left: PM-KISAN */}
-        <FloatingBadge 
-          icon="🌽" 
-          title="PM-KISAN" 
-          amount="₹6,000 / year" 
-          className="hidden md:flex top-24 left-4 xl:left-2 text-emerald-400" 
-          delay={0.4} 
-          duration={5.5}
-          floatY={14}
-          borderGlow="rgba(19, 136, 8, 0.45)"
-        />
-        
         {/* Top Right: Ayushman Bharat */}
         <FloatingBadge 
           icon="🏥" 
@@ -204,18 +194,6 @@ export default function Hero({ language = 'en' }) {
           duration={5.8}
           floatY={12}
           borderGlow="rgba(245, 158, 11, 0.45)"
-        />
-
-        {/* Middle Center (Between text and mockup): MahaDBT Grant */}
-        <FloatingBadge 
-          icon="💰" 
-          title="MahaDBT Grant" 
-          amount="₹25,000 Benefit" 
-          className="hidden xl:flex top-1/2 left-[56%] -translate-y-1/2 text-primary-300" 
-          delay={1.5} 
-          duration={6.5}
-          floatY={18}
-          borderGlow="rgba(168, 85, 247, 0.45)"
         />
 
         {/* Bottom Left: PMAY */}
@@ -261,11 +239,11 @@ export default function Hero({ language = 'en' }) {
             </motion.div>
 
             {/* Word-by-word headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-balance">
+            <h1 className={`font-black text-balance ${lang === 'en' ? 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight' : 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug'}`}>
               {words.map(([word, role], i) => (
                 <motion.span
                   key={`${lang}-${i}`}
-                  className={`inline-block mr-2.5 sm:mr-3 mb-1.5 sm:mb-2 ${ROLE_CLASS[role]}`}
+                  className={`inline-block mr-2.5 sm:mr-3 mb-1.5 sm:mb-2 ${role === 'amount' && lang !== 'en' ? SMALL_AMOUNT : ROLE_CLASS[role]}`}
                   initial={{ opacity: 0, y: 40, rotateX: -40 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: 'easeOut' }}
@@ -286,15 +264,17 @@ export default function Hero({ language = 'en' }) {
               <span className="text-ink font-semibold">{T.subheadBold[lang]}</span>
             </motion.p>
 
-            {/* Tagline, in the chosen language */}
-            <motion.p
-              className="hindi text-base sm:text-lg text-ink/62 max-w-xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.3 }}
-            >
-              {T.tagline[lang]}
-            </motion.p>
+            {/* Hindi tagline on the English page only; Hindi and Marathi pages already read in their language */}
+            {lang === 'en' && (
+              <motion.p
+                className="hindi text-base sm:text-lg text-ink/62 max-w-xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.3 }}
+              >
+                {T.tagline[lang]}
+              </motion.p>
+            )}
 
             {/* CTAs */}
             <motion.div
