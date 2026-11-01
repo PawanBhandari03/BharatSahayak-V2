@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Github, Linkedin, Twitter, Code2, Database, MessageSquare, ShieldCheck, Cpu, Zap, Target, Heart, ArrowRight, ExternalLink, Star } from 'lucide-react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/about';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -58,6 +60,8 @@ const PROBLEM_STATS = [
 ];
 
 function TeamCard({ member, index }) {
+  const { language } = useSchemes();
+  const t = (x) => translate(language, x);
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -81,7 +85,7 @@ function TeamCard({ member, index }) {
         </div>
 
         <h3 className="text-ink font-bold text-xl mb-0.5">{member.name}</h3>
-        <p className="font-medium text-sm mb-1" style={{ color: member.color }}>{member.role}</p>
+        <p className="font-medium text-sm mb-1" style={{ color: member.color }}>{t(member.role)}</p>
         <p className="text-ink/50 text-xs mb-4">@{member.username}</p>
 
         {/* Skills */}
@@ -93,7 +97,7 @@ function TeamCard({ member, index }) {
           ))}
         </div>
 
-        <p className="text-ink/70 text-sm leading-relaxed mb-5">{member.contribution}</p>
+        <p className="text-ink/70 text-sm leading-relaxed mb-5">{t(member.contribution)}</p>
 
         {/* Social links */}
         <div className="flex gap-2">
@@ -113,6 +117,9 @@ function TeamCard({ member, index }) {
 
 function ProblemStat({ stat, index }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
+  const { language } = useSchemes();
+  const t = (x) => translate(language, x);
+
 
   return (
     <motion.div
@@ -131,12 +138,14 @@ function ProblemStat({ stat, index }) {
         ) : '0'}
         {stat.suffix && <span>{stat.suffix}</span>}
       </div>
-      <div className="text-ink/75 text-sm">{stat.label}</div>
+      <div className="text-ink/75 text-sm">{t(stat.label)}</div>
     </motion.div>
   );
 }
 
 export default function About() {
+  const { language } = useSchemes();
+  const t = (x) => translate(language, x);
   return (
     <motion.div
       variants={pageVariants}
@@ -165,8 +174,8 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Building AI for{' '}
-            <span className="gradient-text-secondary">Bharat's Bottom Billion</span>
+            {t('Building AI for')}{' '}
+            <span className="gradient-text-secondary">{t("Bharat's Bottom Billion")}</span>
           </motion.h1>
           <motion.p
             className="text-ink/70 text-xl max-w-2xl mx-auto leading-relaxed"
@@ -174,8 +183,7 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            We're two engineers who believe technology should solve real problems —
-            not just for those with smartphones, but for every Indian citizen.
+            {t("We're two engineers who believe technology should solve real problems — not just for those with smartphones, but for every Indian citizen.")}
           </motion.p>
 
           {/* Hackathon badge */}
@@ -200,9 +208,9 @@ export default function About() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Meet the Team
+            {t('Meet the Team')}
           </motion.h2>
-          <p className="text-ink/60 text-center mb-10">Two builders. One mission. Zero compromises.</p>
+          <p className="text-ink/60 text-center mb-10">{t('Two builders. One mission. Zero compromises.')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {TEAM.map((member, i) => (
               <TeamCard key={member.name} member={member} index={i} />
@@ -219,13 +227,13 @@ export default function About() {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <p className="section-label">The Problem</p>
+              <p className="section-label">{t('The Problem')}</p>
               <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">
-                India's Biggest{' '}
-                <span className="gradient-text-primary">Welfare Failure</span>
+                {t("India's Biggest")}{' '}
+                <span className="gradient-text-primary">{t('Welfare Failure')}</span>
               </h2>
               <p className="text-ink/70 text-lg max-w-2xl mx-auto">
-                The Indian government spends ₹15+ lakh crore annually on welfare. Yet, less than 5% of eligible citizens know about all the schemes they qualify for.
+                {t('The Indian government spends ₹15+ lakh crore annually on welfare. Yet, less than 5% of eligible citizens know about all the schemes they qualify for.')}
               </p>
             </motion.div>
 
@@ -248,8 +256,8 @@ export default function About() {
                   style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}
                 >
                   <div className="text-3xl mb-3">{item.icon}</div>
-                  <h4 className="text-ink font-bold mb-2">{item.title}</h4>
-                  <p className="text-ink/65 text-sm leading-relaxed">{item.text}</p>
+                  <h4 className="text-ink font-bold mb-2">{t(item.title)}</h4>
+                  <p className="text-ink/65 text-sm leading-relaxed">{t(item.text)}</p>
                 </motion.div>
               ))}
             </div>
@@ -264,7 +272,7 @@ export default function About() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Our <span className="gradient-text-primary">Tech Stack</span>
+            {t('Our')} <span className="gradient-text-primary">{t('Tech Stack')}</span>
           </motion.h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {TECH_STACK.map((tech, i) => {
@@ -285,7 +293,7 @@ export default function About() {
                   </div>
                   <div>
                     <div className="text-ink font-semibold text-sm">{tech.label}</div>
-                    <div className="text-ink/55 text-xs">{tech.category}</div>
+                    <div className="text-ink/55 text-xs">{t(tech.category)}</div>
                   </div>
                 </motion.div>
               );
@@ -303,23 +311,21 @@ export default function About() {
             style={{ background: 'linear-gradient(135deg, rgba(27, 23, 64, 0.12), rgba(19, 136, 8, 0.08))', borderColor: 'rgba(27, 23, 64, 0.3)' }}
           >
             <div className="text-5xl mb-4">🎯</div>
-            <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">Our Mission</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-ink mb-4">{t('Our Mission')}</h2>
             <blockquote className="text-xl text-ink/80 italic max-w-2xl mx-auto leading-relaxed mb-6">
-              "AI that finds what the government owes you —<br/>
-              before you even know to ask."
+              "{t('AI that finds what the government owes you — before you even know to ask.')}"
             </blockquote>
             <p className="text-ink/62 text-sm mb-8 max-w-xl mx-auto">
-              We believe every Indian citizen deserves to access every benefit they're entitled to —
-              regardless of education, language, or internet access. BharatSahayak is our answer.
+              {t("We believe every Indian citizen deserves to access every benefit they're entitled to — regardless of education, language, or internet access. BharatSahayak is our answer.")}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/dashboard" className="btn-secondary">
-                View Demo Dashboard
+                {t('View Demo Dashboard')}
                 <ArrowRight size={16} />
               </Link>
               <Link to="/schemes" className="btn-ghost">
-                Explore All Schemes
+                {t('Explore All Schemes')}
               </Link>
             </div>
           </motion.div>
