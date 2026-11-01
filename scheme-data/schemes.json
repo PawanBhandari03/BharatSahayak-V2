@@ -634,5 +634,719 @@
     "sourceUrl": null,
     "verified": false,
     "lastVerified": null
+  },
+  {
+    "id": "sukanya-samriddhi",
+    "name": {
+      "en": "Sukanya Samriddhi Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "women-child",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "High-interest savings account for a girl child",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": 10,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Girl's birth certificate",
+      "Parent/guardian Aadhaar and PAN",
+      "Address proof"
+    ],
+    "deadline": null,
+    "howToApply": "Open an account at a post office or authorised bank",
+    "officialUrl": "https://www.nsiindia.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-matru-vandana",
+    "name": {
+      "en": "Pradhan Mantri Matru Vandana Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "women-child",
+    "level": "central",
+    "state": "all",
+    "amount": 5000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "₹5,000 cash support for a first living child",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 19,
+      "maxAge": null,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Mother and Child Protection (MCP) card",
+      "Bank or post office account"
+    ],
+    "deadline": null,
+    "howToApply": "Register at the nearest Anganwadi centre or health facility",
+    "officialUrl": "https://pmmvy.wcd.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-svanidhi",
+    "name": {
+      "en": "PM SVANidhi (street vendor loan)",
+      "hi": null,
+      "mr": null
+    },
+    "category": "entrepreneurship",
+    "level": "central",
+    "state": "all",
+    "amount": 10000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Collateral-free working-capital loan of ₹10,000 for street vendors",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Street Vendor / Small Trader"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Certificate of Vending or letter of recommendation",
+      "Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the PM SVANidhi portal or at a bank / CSC",
+    "officialUrl": "https://pmsvanidhi.mohua.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-vishwakarma",
+    "name": {
+      "en": "PM Vishwakarma",
+      "hi": null,
+      "mr": null
+    },
+    "category": "skill-development",
+    "level": "central",
+    "state": "all",
+    "amount": 15000,
+    "frequency": "one-time",
+    "benefitSummary": {
+      "en": "Toolkit support, skill training and loans for traditional artisans",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Artisan / Craftsperson"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Mobile number linked to Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Register at a Common Service Centre",
+    "officialUrl": "https://pmvishwakarma.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pmjdy",
+    "name": {
+      "en": "Pradhan Mantri Jan Dhan Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "other",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Zero-balance bank account with RuPay card and accident insurance",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 10,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar or other ID",
+      "Passport-size photo"
+    ],
+    "deadline": null,
+    "howToApply": "Open an account at any bank branch or via a bank correspondent",
+    "officialUrl": "https://pmjdy.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "ignoaps",
+    "name": {
+      "en": "Indira Gandhi National Old Age Pension Scheme",
+      "hi": null,
+      "mr": null
+    },
+    "category": "pension",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "Monthly pension for elderly people from BPL households",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 60,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": true
+    },
+    "documents": [
+      "Aadhaar",
+      "Age proof",
+      "BPL certificate or ration card",
+      "Bank passbook"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the Gram Panchayat / municipal office",
+    "officialUrl": "https://nsap.nic.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "igndps",
+    "name": {
+      "en": "Indira Gandhi National Disability Pension Scheme",
+      "hi": null,
+      "mr": null
+    },
+    "category": "pension",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "Monthly pension for persons with severe disability from BPL households",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 79,
+      "gender": "any",
+      "occupations": [
+        "Person with Disability"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": true
+    },
+    "documents": [
+      "Aadhaar",
+      "Disability certificate",
+      "BPL certificate or ration card",
+      "Bank passbook"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the Gram Panchayat / municipal office",
+    "officialUrl": "https://nsap.nic.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-jay-vay-vandana",
+    "name": {
+      "en": "Ayushman Vay Vandana (PM-JAY, age 70+)",
+      "hi": null,
+      "mr": null
+    },
+    "category": "health",
+    "level": "central",
+    "state": "all",
+    "amount": 500000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "₹5 lakh yearly health cover for citizens aged 70 and above",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 70,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Age proof"
+    ],
+    "deadline": null,
+    "howToApply": "Enrol through the Ayushman app or at an empanelled hospital",
+    "officialUrl": "https://pmjay.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pmfby",
+    "name": {
+      "en": "Pradhan Mantri Fasal Bima Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "agriculture",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Crop insurance against yield loss from natural calamities, pests and disease",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Farmer / Kisan"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Land record or sowing certificate",
+      "Bank passbook"
+    ],
+    "deadline": null,
+    "howToApply": "Enrol through your bank, CSC or the crop insurance portal before the cut-off date",
+    "officialUrl": "https://pmfby.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "pm-sym",
+    "name": {
+      "en": "PM Shram Yogi Maandhan",
+      "hi": null,
+      "mr": null
+    },
+    "category": "pension",
+    "level": "central",
+    "state": "all",
+    "amount": 36000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Assured monthly pension for unorganised workers after age 60",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "gender": "any",
+      "occupations": [
+        "Daily Wage Worker",
+        "Domestic Worker",
+        "Construction Worker",
+        "Street Vendor / Small Trader",
+        "Agricultural Labourer",
+        "Artisan / Craftsperson"
+      ],
+      "maxAnnualIncome": 180000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Savings bank account / IFSC",
+      "Mobile number"
+    ],
+    "deadline": null,
+    "howToApply": "Enrol at a Common Service Centre",
+    "officialUrl": "https://maandhan.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "mgnrega",
+    "name": {
+      "en": "MGNREGA (rural employment guarantee)",
+      "hi": null,
+      "mr": null
+    },
+    "category": "social-welfare",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": null,
+    "benefitSummary": {
+      "en": "Up to 100 days of paid unskilled work a year for rural households",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Job card application",
+      "Aadhaar",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply to the Gram Panchayat for a job card",
+    "officialUrl": "https://nrega.nic.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "post-matric-sc",
+    "name": {
+      "en": "Post-Matric Scholarship for SC students",
+      "hi": null,
+      "mr": null
+    },
+    "category": "education",
+    "level": "central",
+    "state": "all",
+    "amount": null,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Scholarship for Scheduled Caste students studying after Class 10",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Student"
+      ],
+      "maxAnnualIncome": 250000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "SC"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Caste certificate",
+      "Income certificate",
+      "Marksheets",
+      "Bank account"
+    ],
+    "deadline": null,
+    "howToApply": "Apply on the National Scholarship Portal",
+    "officialUrl": "https://scholarships.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "majhi-ladki-bahin",
+    "name": {
+      "en": "Mukhyamantri Majhi Ladki Bahin Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "women-child",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": 18000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "₹1,500 a month for eligible women in Maharashtra",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 21,
+      "maxAge": 65,
+      "gender": "female",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": 250000,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Maharashtra domicile or ration card",
+      "Income proof",
+      "Bank account linked to Aadhaar"
+    ],
+    "deadline": null,
+    "howToApply": "Apply through the Nari Shakti Doot app or Anganwadi / ward office",
+    "officialUrl": "https://ladakibahin.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "shravan-bal",
+    "name": {
+      "en": "Shravan Bal Seva Rajya Nivrutti Vetan Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "pension",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": null,
+    "frequency": "monthly",
+    "benefitSummary": {
+      "en": "Monthly pension for senior citizens in Maharashtra from low-income families",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 65,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": true
+    },
+    "documents": [
+      "Aadhaar",
+      "Age proof",
+      "Income or BPL certificate",
+      "Maharashtra domicile",
+      "Bank passbook"
+    ],
+    "deadline": null,
+    "howToApply": "Apply at the Tehsildar office or Aaple Sarkar Seva Kendra",
+    "officialUrl": "https://sjsa.maharashtra.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "namo-shetkari",
+    "name": {
+      "en": "Namo Shetkari Mahasanman Nidhi",
+      "hi": null,
+      "mr": null
+    },
+    "category": "agriculture",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": 6000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Extra ₹6,000 a year for Maharashtra farmers, paid on top of PM-KISAN",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "Farmer / Kisan"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": true,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Land record (7/12)",
+      "Bank passbook",
+      "PM-KISAN registration"
+    ],
+    "deadline": null,
+    "howToApply": "Automatically linked to PM-KISAN beneficiaries; check with the Agriculture office",
+    "officialUrl": "https://nsmny.mahait.org",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
+  },
+  {
+    "id": "mjpjay",
+    "name": {
+      "en": "Mahatma Jyotiba Phule Jan Arogya Yojana",
+      "hi": null,
+      "mr": null
+    },
+    "category": "health",
+    "level": "state",
+    "state": "maharashtra",
+    "amount": 500000,
+    "frequency": "yearly",
+    "benefitSummary": {
+      "en": "Cashless treatment up to ₹5 lakh per family at empanelled hospitals in Maharashtra",
+      "hi": null,
+      "mr": null
+    },
+    "eligibility": {
+      "minAge": null,
+      "maxAge": null,
+      "gender": "any",
+      "occupations": [
+        "any"
+      ],
+      "maxAnnualIncome": null,
+      "requiresLand": null,
+      "maritalStatus": "any",
+      "categories": [
+        "any"
+      ],
+      "requiresBPL": null
+    },
+    "documents": [
+      "Aadhaar",
+      "Ration card",
+      "Photo ID"
+    ],
+    "deadline": null,
+    "howToApply": "Visit an empanelled hospital Arogyamitra desk",
+    "officialUrl": "https://www.jeevandayee.gov.in",
+    "sourceUrl": null,
+    "verified": false,
+    "lastVerified": null
   }
 ]
