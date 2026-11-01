@@ -6,7 +6,7 @@ Built for **Catalyst Hack 2026** by Team **Binary-Builders** (Generative AI).
 
 | | |
 |---|---|
-| **Live project** | _AWS link: to be added after deployment_ |
+| **Live project** | https://d21lokneek591y.cloudfront.net (hosted on AWS) |
 | **Repository** | https://github.com/PawanBhandari03/BharatSahayak-Catalyst |
 | **WhatsApp bot** | Send `join spent-opinion` to **+1 415 523 8886** (Twilio sandbox), then say `Hi` |
 | **Team** | Pawansingh Jagdish Bhandari · Rahul H. Bramhankar |
@@ -261,14 +261,35 @@ npm run recheck:schemes    # compare stored records with the official pages
 
 ## 7. AWS deployment
 
-_This section is filled in after deployment._
+The whole app runs on AWS, using services from the free tier and the account's free credits.
 
 | Item | Value |
 |---|---|
-| Region | _to be added_ |
-| Frontend | _to be added_ |
-| Backend | _to be added_ |
-| Live link | _to be added_ |
+| Region | Asia Pacific (Sydney), `ap-southeast-2` |
+| Compute | **Amazon EC2** `t3.micro`, Amazon Linux 2023. Node.js runs the Express API **and** serves the built React website, kept alive by `pm2` |
+| HTTPS and CDN | **Amazon CloudFront** distribution in front of the EC2 instance (origin: HTTP port 5000, caching disabled so the API always answers live) |
+| Network | EC2 security group: SSH (22) and the app port (5000) |
+| Cost control | AWS Budgets alert (zero-spend template) |
+| Live link | https://d21lokneek591y.cloudfront.net |
+
+```mermaid
+flowchart LR
+    U[Citizen browser or WhatsApp] -->|HTTPS| CF[Amazon CloudFront]
+    CF -->|HTTP :5000| EC2[Amazon EC2 t3.micro<br/>Node.js + Express + pm2<br/>serves React build and API]
+    EC2 --> SB[(Supabase PostgreSQL)]
+    EC2 --> MI[Mistral AI]
+    TW[Twilio WhatsApp] -->|webhook| CF
+```
+
+**How it was deployed**
+
+1. Launched the EC2 instance and opened port 5000 in its security group.
+2. Ran [`deploy/setup-ec2.sh`](deploy/setup-ec2.sh) once: installs Node.js 20, git and pm2, adds swap, and clones this repository.
+3. Put the keys in `backend/.env` on the server (never in git).
+4. Ran [`deploy/update.sh`](deploy/update.sh): pulls the latest code, builds the React app, and (re)starts the server with pm2.
+5. Created the CloudFront distribution so the site is served over HTTPS (Twilio and browsers need HTTPS).
+
+To release an update, push to `main`, then run `bash BharatSahayak-Catalyst/deploy/update.sh` on the instance.
 
 ## 8. Screenshots
 
