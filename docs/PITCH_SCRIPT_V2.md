@@ -1,6 +1,6 @@
 # Pitch script V2 (matches the build as of 1 Nov 2026): about 4:30
 
-Two speakers: **P** = PawanSingh, **R** = Rahul. This replaces `handoff/07_SCRIPT_UNDER_5_MIN.md`, which claimed features we have not built.
+Two speakers: **P** = PawanSingh, **R** = Rahul. It only claims what the build can show.
 Everything said below can be shown live. If a line starts with **[SHOW]**, do it on screen while saying it.
 
 ---
@@ -64,8 +64,11 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 - **Why not just a chatbot?** Chatbots invent schemes. Ours only suggests what a rules engine finds in the dataset (see the WhatsApp section above).
 - **Is the data correct?** Not yet verified by a person: say so. Every scheme links to its official page, and a weekly re-check flags changes.
 - **Privacy?** The form collects no Aadhaar and no OTP, and the matching runs in the browser. To write the short AI summary, the answers are sent to our server and on to our AI provider (Mistral). We do not store them in a database today; a database would come with reminders, and only with consent.
-- **Revenue?** See `handoff/06_REVENUE_FUTURE_QA.md` (citizen is free; departments, CSC operators, CSR, providers).
-- **Which "three-word term" did the teacher ask about?** Ask her. The candidates (USP, TAM/SAM/SOM, CAC/LTV) are answered in `handoff/06_REVENUE_FUTURE_QA.md`.
+- **Revenue?** The citizen is always free. We earn from state departments, CSC operators, CSR sponsors and loan/training providers (full table in `PROJECT_DOCUMENTATION.md`, section 14).
+- **If a mentor asks for a "three-word term"** (ask which one if unclear):
+  - **USP:** the rules, not the AI, decide eligibility, so it cannot invent schemes; it works on WhatsApp in three languages with no app and no Aadhaar.
+  - **TAM / SAM / SOM:** only quote numbers you can source. Say "we will size this in the pilot" if you cannot.
+  - **KPI:** schemes discovered per user, applications started and completed, claim-rate increase per district.
 
 ## Timing
 
