@@ -295,7 +295,15 @@ To release an update, push to `main`, then run `bash BharatSahayak-Catalyst/depl
 
 ## 8. Screenshots
 
-_Screenshots of the working project are added in `docs/screenshots/` and listed here after deployment._
+Captured from the working project (live link in section 7). The demo data is the "Savitribai" persona.
+
+| | |
+|---|---|
+| **Home page**<br>![Home page](docs/screenshots/01-home.png) | **Home page in Hindi**<br>![Home page in Hindi](docs/screenshots/02-home-hindi.png) |
+| **WhatsApp bot: scan the QR code**<br>![WhatsApp QR](docs/screenshots/03-whatsapp-qr.png) | **Form, step 1 (Fill demo data)**<br>![Form step 1](docs/screenshots/04-form-step1.png) |
+| **Form, step 2**<br>![Form step 2](docs/screenshots/05-form-step2.png) | **Benefit dashboard with the AI summary**<br>![Dashboard](docs/screenshots/06-dashboard.png) |
+| **Dashboard: matched schemes**<br>![Dashboard schemes](docs/screenshots/07-dashboard-schemes.png) | **All schemes, with filters**<br>![Schemes](docs/screenshots/08-schemes.png) |
+| **Journey page**<br>![Journey](docs/screenshots/09-journey.png) | **About the team**<br>![About](docs/screenshots/10-about.png) |
 
 ## 9. Future scope
 
