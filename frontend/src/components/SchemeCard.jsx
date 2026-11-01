@@ -129,10 +129,10 @@ export default function SchemeCard({ scheme, compact = false, status, onTrack })
         {!compact && (
           <>
             {/* Full scheme name */}
-            <p className="text-ink/55 text-xs italic mb-2 line-clamp-1">{scheme.fullName}</p>
+            <p className="text-ink/55 text-xs italic mb-2 line-clamp-1 min-h-[1rem]">{scheme.fullName !== scheme.name ? scheme.fullName : ((scheme.eligibility || [])[0] || '')}</p>
 
             {/* Description */}
-            <p className="text-ink/70 text-xs leading-relaxed mb-3 line-clamp-3 min-h-[3.7rem]">{scheme.description}</p>
+            <p className="text-ink/70 text-xs leading-relaxed mb-3 line-clamp-3 min-h-[3.7rem]">{scheme.description !== scheme.benefitLabel ? scheme.description : (scheme.eligibility || []).slice(1, 4).join(' · ')}</p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 mb-3">

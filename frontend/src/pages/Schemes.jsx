@@ -248,7 +248,7 @@ export default function Schemes() {
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder={t("Search schemes by name, category... (e.g. 'kisan', 'widow', 'health')")}
-              className="w-full pl-12 pr-24 py-4 rounded-2xl text-ink placeholder-white/25 border outline-none focus:border-primary/60 transition-colors text-sm"
+              className="w-full pl-12 pr-24 py-4 rounded-2xl text-ink placeholder:text-ink/40 border outline-none focus:border-primary/60 transition-colors text-sm"
               style={{ background: '#F5EFE3', borderColor: '#E8DFCF' }}
             />
             <div className="absolute right-3 flex gap-2">

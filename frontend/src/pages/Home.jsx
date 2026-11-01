@@ -213,20 +213,20 @@ export default function Home({ language = 'en' }) {
                 </div>
 
                 {/* Twilio Sandbox Info Details */}
-                <div className="p-3.5 rounded-2xl bg-black/40 border border-ink/10 text-xs space-y-2 text-left">
+                <div className="p-3.5 rounded-2xl bg-paper border border-paper-line text-xs space-y-2 text-left">
                   <div className="flex items-center justify-between border-b border-ink/10 pb-2">
                     <span className="text-ink/65 font-semibold text-[11px]">Twilio WhatsApp Sandbox</span>
-                    <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> {t('Live Bot')}
+                    <span className="inline-flex items-center gap-1 text-[10px] text-emerald-700 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-600/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" /> {t('Live Bot')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-ink font-mono bg-ink/5 px-3 py-1.5 rounded-xl border border-ink/5">
                     <span className="text-ink/65 text-[11px]">{t('Number:')}</span>
-                    <span className="text-emerald-400 font-bold text-xs">+1 415 523 8886</span>
+                    <span className="text-emerald-700 font-bold text-xs">+1 415 523 8886</span>
                   </div>
                   <div className="flex items-center justify-between text-ink font-mono bg-ink/5 px-3 py-1.5 rounded-xl border border-ink/5">
                     <span className="text-ink/65 text-[11px]">{t('Send code:')}</span>
-                    <span className="text-amber-300 font-bold text-xs">join spent-opinion</span>
+                    <span className="text-amber-800 font-bold text-xs">join spent-opinion</span>
                   </div>
                 </div>
 
