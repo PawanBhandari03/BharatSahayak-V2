@@ -29,6 +29,8 @@ India runs hundreds of welfare schemes, but a large share of eligible people nev
 | AI recommendations: top schemes, a personal message, documents checklist (Mistral AI) | Working |
 | WhatsApp bot: language choice, conversational questions, matched schemes in chat | Working |
 | Profiles and recommendations saved in a database (Supabase PostgreSQL) | Working |
+| Website in English, Hindi and Marathi (interface text written with AI; scheme descriptions are mostly English) | Working |
+| Live on AWS (EC2 + CloudFront, HTTPS) | Working |
 | One shared eligibility engine used by the web app and the WhatsApp bot | Working |
 | Scheme data layer: JSON schema, validator, AI-drafting script and re-check job | Built, needs human verification of records |
 | Demo mode: a **Fill demo data** button on every form step (3 personas) | Working |
@@ -185,7 +187,7 @@ backend/
 shared/              eligibility.mjs, used by both frontend and backend
 scheme-data/         schemes.json, JSON schema, review checklist
 scripts/             validate, draft and re-check scripts for scheme data
-docs/                Twilio setup guide, handoff notes
+docs/                Full project documentation and the Twilio setup guide
 ```
 
 **API**
@@ -206,7 +208,7 @@ docs/                Twilio setup guide, handoff notes
 - **Free-tier friendly.** The default AI model, the database and the hosting plan all fit free plans.
 - **No secrets in the repository.** Keys live in `.env` files, which are ignored by git. See `.env.example`.
 
-**Tests:** `cd backend && npm test` runs 28 tests covering the eligibility engine, the scheme store, the re-check job, the WhatsApp reply formatting and the Twilio message cap.
+**Tests:** `cd backend && npm test` runs 31 tests covering the eligibility engine, the scheme store, the re-check job, the WhatsApp reply formatting and the Twilio message cap.
 
 ## 6. Setup and usage
 

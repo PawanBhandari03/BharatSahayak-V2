@@ -40,7 +40,11 @@ Honesty first. Please read this before the demo.
 | Weekly re-check of verified schemes against official pages | Built; **not yet proven on live government sites** (see section 10) |
 | Reminders and deadline alerts | **Not built** |
 | Speech recognition on phone calls | **Not built** |
-| Saving profiles in a database (Supabase) | Code and table schema exist; only active when keys are set; **not tested end to end by us** (see section 13) |
+| Saving profiles in a database (Supabase) | Working: a profile and a recommendation were saved and read back from Supabase (see section 13) |
+| Website in English, Hindi and Marathi | Working; interface text was written with AI and needs a native-speaker check; most scheme descriptions are still English |
+| Demo mode (a **Fill demo data** button on every form step, 3 personas) | Working |
+| Deployed on AWS (EC2 server + CloudFront HTTPS link) | Working (see the README, section 7) |
+| Voice helpline (phone calls) | **Not live, future scope.** The website has a spoken *simulation* only |
 
 ---
 
@@ -230,8 +234,7 @@ BharatSahayak-Catalyst/
 ├── README.md                    short overview
 ├── docs/
 │   ├── PROJECT_DOCUMENTATION.md this file
-│   ├── TWILIO_SETUP.md          step-by-step Twilio sandbox setup
-│   └── PITCH_SCRIPT_V2.md       presentation script and demo checklist
+│   └── TWILIO_SETUP.md          step-by-step Twilio sandbox setup
 ├── backend/                     Node.js + Express server
 │   ├── server.js                starts the server, mounts the routes
 │   ├── routes/                  whatsapp.js, call.js, schemes.js
@@ -289,8 +292,9 @@ Website pages: `/` Home · `/register` form · `/dashboard` results · `/schemes
 | Backend | Node.js 22 (20.19 or newer also works), Express 5 |
 | AI | Mistral AI (free tier model `open-mistral-nemo`; a paid plan can use `mistral-large-latest`) |
 | WhatsApp and voice | Twilio (WhatsApp sandbox, voice) |
-| Public link to a local server | ngrok |
-| Optional database | Supabase (PostgreSQL), not required |
+| Hosting | AWS: EC2 (Node.js + pm2) behind CloudFront |
+| Public link for local testing | ngrok (only for testing WhatsApp from a laptop) |
+| Database | Supabase (PostgreSQL) |
 | Tests | Node's built-in test runner |
 
 ---
@@ -371,13 +375,13 @@ What was **not** measured: page speed scores (Lighthouse), phone-width layout ch
 
 ---
 
-## 13. Optional database (Supabase)
+## 13. Database (Supabase)
 
-Not needed for the demo. A database is needed to:
+The live site saves each profile and its AI summary here. A database is also needed to:
 - send **reminders** (we must remember the person's number and schemes), or
 - let a person see the same results on another device.
 
-What exists: `backend/db/schema.sql` creates two tables (`profiles`, `user_recommendations`), and the backend saves to them **only when** `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` are set. We have not tested this end to end here.
+What exists: `backend/db/schema.sql` creates two tables (`profiles`, `user_recommendations`), and the backend saves to them when `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` are set. We tested it end to end: a profile and a recommendation were saved and read back.
 Cleanup still to do: the `profiles` table keeps two old columns (`aadhaar_last_4`, `pin_hash`) from the removed PIN flow. We no longer ask for Aadhaar or a PIN, so those columns should be dropped.
 Storing phone numbers and incomes requires clear consent.
 
@@ -418,7 +422,7 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 2. Hindi and Marathi text was written by AI.
 3. The free AI model can write wrong sentences in the AI summary and in general chat; the scheme *list* itself comes from the rules.
 4. WhatsApp runs on Twilio's **sandbox** (every tester must send a "join" message first; sessions expire after a few days).
-5. The free ngrok link works only while the developer's computer and tunnel are running.
+5. For local testing, the ngrok link works only while the developer's computer and tunnel are running. The AWS site does not depend on it.
 6. Voice calls do not understand speech yet.
 7. There is no reminder system.
 

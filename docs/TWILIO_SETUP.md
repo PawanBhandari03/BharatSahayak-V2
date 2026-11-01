@@ -26,7 +26,7 @@ ngrok http 5000 --url=sharpie-disown-backshift.ngrok-free.dev               # pr
 
 Check it works: open `https://sharpie-disown-backshift.ngrok-free.dev/health`; it should show `{"ok":true}`.
 The ngrok URL changes every time you restart ngrok (free plan), so repeat step 3 then.
-For a permanent URL, deploy the backend (Render) and use that URL instead.
+For a permanent URL, use the AWS link: `https://d21lokneek591y.cloudfront.net/api/whatsapp/webhook`.
 
 ## 3. Point the sandbox at the webhook
 
