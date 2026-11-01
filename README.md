@@ -35,7 +35,7 @@ India runs hundreds of welfare schemes, but a large share of eligible people nev
 | Voice call (Twilio Voice) | Code exists, **not live** (it needs a paid Twilio plan) |
 | Proactive deadline alerts | **Planned**, not built |
 
-> Honest note on the data: the dataset has **50 schemes** (central and Maharashtra), of which **7 are verified** against their official pages (see `scheme-data/NEEDS_REVIEW.md`). The other 43 are drafted and still need a person to check them (checklist: `scheme-data/VERIFICATION_CHECKLIST.md`) before they are marked `verified: true`. See [`scheme-data/NEEDS_REVIEW.md`](scheme-data/NEEDS_REVIEW.md).
+> Honest note on the data: the dataset has **50 schemes** (central and Maharashtra), of which **11 are verified** against their official pages (see `scheme-data/NEEDS_REVIEW.md`). The other 39 are drafted and still need a person to check them (checklist: `scheme-data/VERIFICATION_CHECKLIST.md`) before they are marked `verified: true`. See [`scheme-data/NEEDS_REVIEW.md`](scheme-data/NEEDS_REVIEW.md).
 
 ## 3. Technology stack
 
