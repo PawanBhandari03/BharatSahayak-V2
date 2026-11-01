@@ -7,6 +7,7 @@ import UserPersona from '../components/UserPersona';
 import FeatureCard from '../components/FeatureCard';
 import WhatsAppDemo from '../components/WhatsAppDemo';
 import Timeline from '../components/Timeline';
+import { translate } from '../i18n/home';
 
 const FEATURES = [
   {
@@ -60,6 +61,7 @@ const pageVariants = {
 };
 
 export default function Home({ language = 'en' }) {
+  const t = (s) => translate(language, s);
   return (
     <motion.div
       variants={pageVariants}
@@ -82,7 +84,7 @@ export default function Home({ language = 'en' }) {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-              Key Features
+              {t('Key Features')}
             </motion.p>
             <motion.h2
               className="text-4xl md:text-5xl font-black text-ink mb-4"
@@ -90,14 +92,14 @@ export default function Home({ language = 'en' }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              5 Ways BharatSahayak{' '}
-              <span className="gradient-text-primary">Changes Everything</span>
+              {t('5 Ways BharatSahayak')}{' '}
+              <span className="gradient-text-primary">{t('Changes Everything')}</span>
             </motion.h2>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             {FEATURES.map((f, i) => (
               <div key={f.title} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm flex">
-                <FeatureCard {...f} index={i} className="w-full" />
+                <FeatureCard {...f} title={t(f.title)} description={t(f.description)} badge={t(f.badge)} index={i} className="w-full" />
               </div>
             ))}
           </div>
@@ -119,7 +121,7 @@ export default function Home({ language = 'en' }) {
             {/* Left: content */}
             <div>
               <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                WhatsApp Bot Demo
+                {t('WhatsApp Bot Demo')}
               </motion.p>
               <motion.h2
                 className="text-4xl md:text-5xl font-black text-ink mb-6 leading-tight"
@@ -127,9 +129,9 @@ export default function Home({ language = 'en' }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                Savitribai Discovers{' '}
+                {t('Savitribai Discovers')}{' '}
                 <span className="gradient-text-secondary">₹1,37,000</span>{' '}
-                in 2 Minutes
+                {t('in 2 Minutes')}
               </motion.h2>
               <motion.p
                 className="text-ink/70 text-lg leading-relaxed mb-8"
@@ -138,8 +140,7 @@ export default function Home({ language = 'en' }) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                Savitribai — 52-year-old widow farmer from Osmanabad — sends one WhatsApp message.
-                Our AI finds 9 schemes worth ₹1.37 lakh she's eligible for. All in her language.
+                {t("Savitribai — 52-year-old widow farmer from Osmanabad — sends one WhatsApp message. Our AI finds 9 schemes worth ₹1.37 lakh she's eligible for. All in her language.")}
               </motion.p>
 
               <div className="space-y-4 mb-8">
@@ -157,14 +158,14 @@ export default function Home({ language = 'en' }) {
                     className="flex items-center gap-3"
                   >
                     <span className="text-xl w-8">{item.icon}</span>
-                    <span className="text-ink/80 text-sm">{item.text}</span>
+                    <span className="text-ink/80 text-sm">{t(item.text)}</span>
                     <span className="text-secondary ml-auto text-xs font-bold">✓</span>
                   </motion.div>
                 ))}
               </div>
 
               <Link to="/journey" className="btn-secondary inline-flex">
-                Try Live Simulator
+                {t('Try Live Simulator')}
                 <ArrowRight size={16} />
               </Link>
             </div>
@@ -194,7 +195,7 @@ export default function Home({ language = 'en' }) {
             {/* Left: 4-step process */}
             <div className="lg:col-span-7 space-y-6">
               <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                100% Offline Access
+                {t('100% Offline Access')}
               </motion.p>
               <motion.h2
                 className="text-3xl md:text-5xl font-black text-ink leading-tight"
@@ -202,7 +203,7 @@ export default function Home({ language = 'en' }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                No Smartphone? <span className="text-accent">No Problem.</span>
+                {t('No Smartphone?')} <span className="text-accent">{t('No Problem.')}</span>
               </motion.h2>
               <motion.p
                 className="text-ink/65 text-lg leading-relaxed"
@@ -210,7 +211,7 @@ export default function Home({ language = 'en' }) {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                We believe that public welfare shouldn't require expensive technology. You can access all AI capabilities of BharatSahayak by dialing a toll-free number from any basic keypad phone.
+                {t("We believe that public welfare shouldn't require expensive technology. You can access all AI capabilities of BharatSahayak by dialing a toll-free number from any basic keypad phone.")}
               </motion.p>
 
               {/* 4-step process timeline */}
@@ -234,8 +235,8 @@ export default function Home({ language = 'en' }) {
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="text-ink font-bold text-sm mb-1">{item.title}</h4>
-                      <p className="text-ink/60 text-xs leading-relaxed">{item.desc}</p>
+                      <h4 className="text-ink font-bold text-sm mb-1">{t(item.title)}</h4>
+                      <p className="text-ink/60 text-xs leading-relaxed">{t(item.desc)}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -256,22 +257,22 @@ export default function Home({ language = 'en' }) {
                 </div>
                 
                 <div>
-                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">Toll-Free Helpline</p>
+                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">{t('Toll-Free Helpline')}</p>
                   <a href="tel:+14244965091" className="text-2xl sm:text-3xl font-black text-ink hover:text-accent transition-colors">
                     +1 424 496 5091
                   </a>
                 </div>
 
                 <div className="p-4 rounded-xl text-left bg-dark/30 border border-dark-border/50 text-xs space-y-2">
-                  <span className="text-yellow-400 font-bold">⭐ SUCCESS STORY</span>
+                  <span className="text-yellow-400 font-bold">⭐ {t('SUCCESS STORY')}</span>
                   <p className="text-ink/80 leading-relaxed italic">
-                    "Ramdas Patil, 68, from a remote village in Maharashtra recovered ₹28,000 in unclaimed agricultural subsidies using just his basic Nokia keypad phone."
+                    {t('"Ramdas Patil, 68, from a remote village in Maharashtra recovered ₹28,000 in unclaimed agricultural subsidies using just his basic Nokia keypad phone."')}
                   </p>
                 </div>
 
                 <a href="tel:+14244965091" className="btn-primary w-full justify-center" style={{ background: 'linear-gradient(135deg, #C2610A, #FF9933)', boxShadow: '0 4px 16px rgba(194, 97, 10, 0.35)' }}>
                   <Phone size={15} />
-                  Call Helpline Now
+                  {t('Call Helpline Now')}
                 </a>
               </motion.div>
             </div>
@@ -313,15 +314,15 @@ export default function Home({ language = 'en' }) {
                   <div className="flex items-center justify-between border-b border-ink/10 pb-2">
                     <span className="text-ink/65 font-semibold text-[11px]">Twilio WhatsApp Sandbox</span>
                     <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live Bot
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> {t('Live Bot')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-ink font-mono bg-ink/5 px-3 py-1.5 rounded-xl border border-ink/5">
-                    <span className="text-ink/65 text-[11px]">Number:</span>
+                    <span className="text-ink/65 text-[11px]">{t('Number:')}</span>
                     <span className="text-emerald-400 font-bold text-xs">+1 415 523 8886</span>
                   </div>
                   <div className="flex items-center justify-between text-ink font-mono bg-ink/5 px-3 py-1.5 rounded-xl border border-ink/5">
-                    <span className="text-ink/65 text-[11px]">Send code:</span>
+                    <span className="text-ink/65 text-[11px]">{t('Send code:')}</span>
                     <span className="text-amber-300 font-bold text-xs">join spent-opinion</span>
                   </div>
                 </div>
@@ -333,7 +334,7 @@ export default function Home({ language = 'en' }) {
                   className="btn-secondary w-full justify-center text-sm font-bold py-3.5 shadow-glow-secondary/30"
                 >
                   <MessageSquare size={18} />
-                  Open Twilio WhatsApp
+                  {t('Open Twilio WhatsApp')}
                 </a>
               </motion.div>
             </div>
@@ -341,7 +342,7 @@ export default function Home({ language = 'en' }) {
             {/* Right: Info steps */}
             <div className="lg:col-span-7 space-y-6">
               <motion.p className="section-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                WhatsApp Sync
+                {t('WhatsApp Sync')}
               </motion.p>
               <motion.h2
                 className="text-3xl md:text-5xl font-black text-ink leading-tight"
@@ -349,7 +350,7 @@ export default function Home({ language = 'en' }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                Get Schemes Directly on <span className="gradient-text-secondary">WhatsApp</span>
+                {t('Get Schemes Directly on')} <span className="gradient-text-secondary">{language === 'en' ? 'WhatsApp' : t('WhatsApp (heading)')}</span>
               </motion.h2>
               <motion.p
                 className="text-ink/75 text-lg leading-relaxed"
@@ -357,7 +358,7 @@ export default function Home({ language = 'en' }) {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                No websites to navigate, no complex credentials. Our certified WhatsApp AI Bot connected to Twilio lets you manage your government benefits through simple chat messages.
+                {t('No websites to navigate, no complex credentials. Our WhatsApp AI bot, connected to Twilio, lets you manage your government benefits through simple chat messages.')}
               </motion.p>
 
               <div className="space-y-4 pt-4">
@@ -378,8 +379,8 @@ export default function Home({ language = 'en' }) {
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="text-ink font-bold text-sm mb-0.5">{item.title}</h4>
-                      <p className="text-ink/75 text-xs leading-relaxed">{item.text}</p>
+                      <h4 className="text-ink font-bold text-sm mb-0.5">{t(item.title)}</h4>
+                      <p className="text-ink/75 text-xs leading-relaxed">{t(item.text)}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -412,24 +413,24 @@ export default function Home({ language = 'en' }) {
                 <Star size={12} className="fill-accent" /> Catalyst Hack 2026
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-ink mb-3">
-                Built to close the{' '}
-                <span className="gradient-text-secondary">benefits gap</span>
+                {t('Built to close the')}{' '}
+                <span className="gradient-text-secondary">{t('benefits gap')}</span>
               </h2>
               <p className="text-ink/70 text-lg mb-8 max-w-xl mx-auto">
-                Team Binary Builders — PawanSingh Bhandari & Rahul Bramhankar — solving one of India's biggest public welfare gaps.
+                {t("Team Binary Builders — PawanSingh Bhandari & Rahul Bramhankar — solving one of India's biggest public welfare gaps.")}
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
                 {IMPACT_STATS.map(stat => (
                   <div key={stat.label} className="text-center">
                     <div className="font-black text-xl gradient-text-primary">{stat.value}</div>
-                    <div className="text-ink/60 text-xs mt-1">{stat.label}</div>
+                    <div className="text-ink/60 text-xs mt-1">{t(stat.label)}</div>
                   </div>
                 ))}
               </div>
 
               <Link to="/about" className="btn-primary inline-flex">
-                Meet Team Binary Builders
+                {t('Meet Team Binary Builders')}
                 <ArrowRight size={16} />
               </Link>
             </div>

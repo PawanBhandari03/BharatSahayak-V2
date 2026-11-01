@@ -1,6 +1,8 @@
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
+import { useSchemes } from '../context/SchemesContext';
+import { translate } from '../i18n/home';
 
 const STATS = [
   {
@@ -41,6 +43,8 @@ const STATS = [
 
 function StatCard({ stat, index }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
 
   return (
     <motion.div
@@ -78,8 +82,8 @@ function StatCard({ stat, index }) {
         {stat.suffix && <span>{stat.suffix}</span>}
       </div>
 
-      <div className="text-ink font-semibold text-lg mb-1">{stat.label}</div>
-      <div className="text-ink/60 text-sm">{stat.sublabel}</div>
+      <div className="text-ink font-semibold text-lg mb-1">{t(stat.label)}</div>
+      <div className="text-ink/60 text-sm">{t(stat.sublabel)}</div>
 
       {/* Bottom accent */}
       <div
@@ -91,6 +95,8 @@ function StatCard({ stat, index }) {
 }
 
 export default function StatsCounter() {
+  const { language } = useSchemes();
+  const t = (s) => translate(language, s);
   return (
     <section className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
@@ -102,7 +108,7 @@ export default function StatsCounter() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            The Problem We Solve
+            {t('The Problem We Solve')}
           </motion.p>
           <motion.h2
             className="text-4xl md:text-5xl font-black text-ink mb-4"
@@ -110,8 +116,8 @@ export default function StatsCounter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            The Numbers Are{' '}
-            <span className="gradient-text-primary">Staggering</span>
+            {t('The Numbers Are')}{' '}
+            <span className="gradient-text-primary">{t('Staggering')}</span>
           </motion.h2>
           <motion.p
             className="text-ink/65 text-lg max-w-2xl mx-auto"
@@ -120,8 +126,7 @@ export default function StatsCounter() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Every year, billions of rupees in benefits go unclaimed — not because people don't deserve them,
-            but because they don't know they exist.
+            {t("Every year, billions of rupees in benefits go unclaimed — not because people don't deserve them, but because they don't know they exist.")}
           </motion.p>
         </div>
 
@@ -141,11 +146,11 @@ export default function StatsCounter() {
           className="mt-12 p-8 rounded-2xl text-center border"
           style={{ background: 'rgba(194, 97, 10, 0.06)', borderColor: 'rgba(194, 97, 10, 0.3)' }}
         >
-          <p className="text-ink/75 text-sm uppercase tracking-wider mb-3">Total unclaimed benefits annually</p>
+          <p className="text-ink/75 text-sm uppercase tracking-wider mb-3">{t('Total unclaimed benefits annually')}</p>
           <div className="text-5xl md:text-7xl font-black rupee gradient-text-secondary mb-2">
-            ₹2,60,000 Crore
+            {t('₹2,60,000 Crore')}
           </div>
-          <p className="text-ink/60 text-sm">That's India's entire health budget — going to waste.</p>
+          <p className="text-ink/60 text-sm">{t("That's India's entire health budget — going to waste.")}</p>
         </motion.div>
       </div>
     </section>
