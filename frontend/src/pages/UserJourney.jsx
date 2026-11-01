@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Volume2, VolumeX, Play, Pause } from 'lucide-react';
+import { Phone, Volume2, VolumeX } from 'lucide-react';
 import WhatsAppDemo from '../components/WhatsAppDemo';
 import { VerticalTimeline } from '../components/Timeline';
 import toast from 'react-hot-toast';
@@ -13,47 +13,91 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 },
 };
 
-const AUDIO_SCRIPT_HINDI = `Namaste! Main BharatSahayak AI hoon.
+// What the simulated call says, in each site language. Spoken with the browser's own speech voice.
+const SCRIPTS = {
+  en: 'Hello! I am BharatSahayak AI. I have found 9 government schemes for Savitribai Patil. First, the Widow Pension scheme: you may receive 1,500 rupees every month. Second, PM-KISAN: farming families receive 6,000 rupees a year in three instalments. Third, MahaDBT: Maharashtra farmers get a subsidy on farm equipment. Would you like the full list of documents on WhatsApp?',
+  hi: 'नमस्ते! मैं भारतसहायक AI हूँ। सावित्रीबाई पाटिल जी के लिए मैं 9 सरकारी योजनाओं की जानकारी लेकर आया हूँ। सबसे पहले, विधवा पेंशन योजना। आपको हर महीने पंद्रह सौ रुपये मिल सकते हैं। दूसरी योजना, पीएम किसान सम्मान निधि। किसान परिवारों को हर साल छह हज़ार रुपये, तीन किस्तों में मिलते हैं। तीसरी योजना, महाडीबीटी, जिसमें महाराष्ट्र के किसानों को कृषि उपकरणों पर अनुदान मिलता है। क्या आप चाहेंगी कि मैं दस्तावेज़ों की पूरी सूची व्हाट्सऐप पर भेजूँ?',
+  mr: 'नमस्कार! मी भारतसहाय्यक AI आहे. सावित्रीबाई पाटील यांच्यासाठी मी 9 सरकारी योजनांची माहिती घेऊन आलो आहे. सर्वात आधी, विधवा निवृत्तीवेतन योजना. तुम्हाला दर महिन्याला पंधराशे रुपये मिळू शकतात. दुसरी योजना, पीएम किसान सन्मान निधी. शेतकरी कुटुंबांना दरवर्षी सहा हजार रुपये, तीन हप्त्यांमध्ये मिळतात. तिसरी योजना, महाडीबीटी, ज्यात महाराष्ट्रातील शेतकऱ्यांना शेती उपकरणांसाठी अनुदान मिळते. तुम्हाला कागदपत्रांची संपूर्ण यादी व्हॉट्सॲपवर पाठवू का?',
+};
+const SPEECH_LANG = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' };
 
-Savitribai Patil ji ke liye 9 sarkari yojanaon ki jaankari leke aaya hoon.
-
-Sabse pehle — Vidhwa Pension Yojana. Aapko pratik maah paanch sau rupaye milenge. Is yojana mein apply karne ki last date 31 March hai. Documents mein Aadhaar card, pati ka death certificate aur BPL card chahiye.
-
-Doosri yojana — PM-KISAN Samman Nidhi. Kisan parivaron ko pratik varsh chheh hazar rupaye teen installments mein milte hain.
-
-Teesri yojana — MahaDBT Shetkari Grant. Maharashtra ke kisanon ko paanch hazar rupaye tak ka grant milta hai.
-
-Kya aapko documents ki puri list WhatsApp par bhejun? Reply karo 1 for Haan.`;
+const toastStyle = { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' };
 
 function VoiceCallSimulator() {
   const { language } = useSchemes();
   const t = (x) => translate(language, x);
+  const script = SCRIPTS[language] || SCRIPTS.en;
+
   const [playing, setPlaying] = useState(false);
+  const [done, setDone] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [callActive, setCallActive] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const run = useRef(0); // bumps on every start/stop so stale speech callbacks are ignored
+  const timer = useRef(null);
+
+  const stop = () => {
+    run.current += 1;
+    clearInterval(timer.current);
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    setPlaying(false);
+  };
+
+  // Stop speaking if the page is left or the language is switched mid-call.
+  useEffect(() => stop, [language]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const pickVoice = (code) => {
+    const voices = window.speechSynthesis.getVoices();
+    const base = code.slice(0, 2);
+    // Marathi voices are rare; a Hindi voice reads Devanagari well enough.
+    return voices.find((v) => v.lang.replace('_', '-').startsWith(code))
+      || voices.find((v) => v.lang.startsWith(base))
+      || (base === 'mr' ? voices.find((v) => v.lang.startsWith('hi')) : null);
+  };
 
   const startCall = () => {
-    setCallActive(true);
-    toast.success(t('📞 Simulating AI voice call in Hindi...'), {
-      style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
-    });
+    stop();
+    const id = run.current;
+    setDone(false);
+    setProgress(0);
+    setSeconds(0);
     setPlaying(true);
+    toast.success(t('📞 Starting the voice demo...'), { style: toastStyle });
 
-    // Simulate playback progress
-    let p = 0;
-    const interval = setInterval(() => {
-      p += 100 / 180; // 3 minute call
-      setProgress(Math.min(p, 100));
-      if (p >= 100) {
-        clearInterval(interval);
+    timer.current = setInterval(() => setSeconds((s) => s + 1), 1000);
+
+    if (!('speechSynthesis' in window)) {
+      toast(t('Your browser cannot speak, so only the text is shown.'), { duration: 4000 });
+      return;
+    }
+
+    // Long utterances get cut off in some browsers, so speak one sentence at a time.
+    const sentences = script.match(/[^।.?!]+[।.?!]?/g).map((x) => x.trim()).filter(Boolean);
+    const total = sentences.reduce((n, x) => n + x.length, 0);
+    const voice = pickVoice(SPEECH_LANG[language] || 'en-IN');
+    let spoken = 0;
+
+    const next = (i) => {
+      if (id !== run.current) return;
+      if (i >= sentences.length) {
+        clearInterval(timer.current);
         setPlaying(false);
-        setProgress(0);
-        toast.success(t('✅ Simulation finished.'), {
-          style: { background: '#FFFFFF', color: '#1B1740', border: '1px solid #138808' }
-        });
+        setDone(true);
+        setProgress(100);
+        toast.success(t('✅ Simulation finished.'), { style: toastStyle });
+        return;
       }
-    }, 1000);
+      const u = new SpeechSynthesisUtterance(sentences[i]);
+      u.lang = SPEECH_LANG[language] || 'en-IN';
+      if (voice) u.voice = voice;
+      u.rate = 0.95;
+      u.onend = () => { spoken += sentences[i].length; setProgress(Math.round((spoken / total) * 100)); next(i + 1); };
+      u.onerror = () => { if (id === run.current) next(i + 1); };
+      window.speechSynthesis.speak(u);
+    };
+    next(0);
   };
+
+  const mm = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 
   return (
     <div className="rounded-2xl border overflow-hidden" style={{ background: '#FFFFFF', borderColor: '#E8DFCF' }}>
@@ -66,39 +110,31 @@ function VoiceCallSimulator() {
         <p className="text-ink/60 text-xs mt-0.5">{t('A demo of how an AI voice call would sound (simulation only)')}</p>
       </div>
 
-      {/* Phone mockup */}
       <div className="p-6">
         <div
           className="rounded-2xl p-6 text-center mb-6"
-          style={{ background: callActive ? 'rgba(19, 136, 8, 0.1)' : '#FBF7F0', border: '1px solid ' + (callActive ? 'rgba(19, 136, 8, 0.3)' : '#E8DFCF') }}
+          style={{ background: playing ? 'rgba(19, 136, 8, 0.1)' : '#FBF7F0', border: '1px solid ' + (playing ? 'rgba(19, 136, 8, 0.3)' : '#E8DFCF') }}
         >
-          {/* Avatar */}
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-secondary/30 to-primary/30 flex items-center justify-center text-3xl mx-auto mb-3">
             🤖
           </div>
           <div className="text-ink font-bold mb-0.5">BharatSahayak AI</div>
-          <div className={`text-sm ${callActive ? 'text-secondary' : 'text-ink/60'}`}>
-            {callActive ? (playing ? t('● Calling Savitribai...') : t('✓ Call Ended')) : t('AI Voice Bot — Hindi/Marathi')}
+          <div className={`text-sm ${playing || done ? 'text-secondary' : 'text-ink/60'}`}>
+            {playing ? t('● Calling Savitribai...') : done ? t('✓ Call Ended') : t('AI Voice Bot — Hindi/Marathi')}
           </div>
 
-          {/* Progress bar */}
-          {callActive && (
+          {(playing || done) && (
             <div className="mt-4 mb-2">
               <div className="w-full h-1 bg-dark-border rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full"
-                  style={{ background: '#138808', width: `${progress}%` }}
-                  transition={{ duration: 0.5 }}
-                />
+                <div className="h-full rounded-full transition-all duration-500" style={{ background: '#138808', width: `${progress}%` }} />
               </div>
               <div className="flex justify-between text-xs text-ink/50 mt-1">
-                <span>{Math.floor(progress * 180 / 100 / 60)}:{String(Math.floor(progress * 180 / 100 % 60)).padStart(2, '0')}</span>
-                <span>3:00</span>
+                <span>{mm}</span>
+                <span>{progress}%</span>
               </div>
             </div>
           )}
 
-          {/* Audio waves */}
           {playing && (
             <div className="flex items-center justify-center gap-1 mt-3">
               {Array.from({ length: 8 }).map((_, i) => (
@@ -114,35 +150,33 @@ function VoiceCallSimulator() {
           )}
         </div>
 
-        {/* Hindi script preview */}
+        {/* What the voice says */}
         <div
           className="rounded-xl p-4 mb-5 text-xs leading-relaxed hindi text-ink/75 max-h-32 overflow-y-auto scrollbar-hide"
           style={{ background: '#FFFFFF', border: '1px solid #E8DFCF' }}
         >
-          {AUDIO_SCRIPT_HINDI}
+          {script}
         </div>
 
-        {/* Call button */}
-        <button
-          onClick={startCall}
-          disabled={playing}
-          className={`w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-3 transition-all ${
-            playing ? 'opacity-60 cursor-not-allowed' : 'hover:scale-[1.02]'
-          }`}
-          style={{ background: playing ? '#E8DFCF' : 'linear-gradient(135deg, #138808, #1E9E12)' }}
-        >
-          {playing ? (
-            <>
-              <Volume2 size={20} className="animate-pulse" />
-              {t('Playing AI Voice Call...')}
-            </>
-          ) : (
-            <>
-              <Play size={20} />
-              {t('Simulate AI Voice Call (Hindi)')}
-            </>
-          )}
-        </button>
+        {playing ? (
+          <button
+            onClick={stop}
+            className="w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-3 transition-all hover:scale-[1.02]"
+            style={{ background: 'linear-gradient(135deg, #C2610A, #E07B1F)' }}
+          >
+            <VolumeX size={20} />
+            {t('Stop')}
+          </button>
+        ) : (
+          <button
+            onClick={startCall}
+            className="w-full py-4 rounded-xl font-bold text-white flex items-center justify-center gap-3 transition-all hover:scale-[1.02]"
+            style={{ background: 'linear-gradient(135deg, #138808, #1E9E12)' }}
+          >
+            <Volume2 size={20} />
+            {t('Play voice demo')}
+          </button>
+        )}
       </div>
     </div>
   );
