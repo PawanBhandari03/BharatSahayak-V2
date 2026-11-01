@@ -121,13 +121,10 @@ router.post('/keypress', async (req, res) => {
             await client.messages.create({
                 from: process.env.TWILIO_WHATSAPP_FROM,
                 to: `whatsapp:${from}`,
-                body: `🇮🇳 *BharatSahayak — Aapki Schemes*\n\n` +
-                    `✅ PM-KISAN — ₹6,000/saal\n` +
-                    `✅ Ayushman Bharat — ₹5L health cover\n` +
-                    `✅ PMKVY — ₹8,000 skill training\n` +
-                    `✅ Mudra Loan — ₹10L tak\n` +
-                    `✅ PM Awas Yojana — ₹2.5L housing\n\n` +
-                    `🌐 https://bharatsahayak.vercel.app\n\n` +
+                body: `🇮🇳 *BharatSahayak — Yojanayein*\n\n` +
+                    schemeStore.getAll().slice(0, 5)
+                        .map((s) => `✅ ${schemeStore.t(s.name)} — ${schemeStore.t(s.benefitSummary)}`).join('\n') +
+                    `\n\n🌐 https://bharatsahayak.vercel.app\n\n` +
                     `Apni details bhejein personalized list ke liye!`
             });
 

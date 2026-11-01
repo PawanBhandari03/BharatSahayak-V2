@@ -15,7 +15,8 @@ app.use('/api/whatsapp', require('./routes/whatsapp'));
 app.use('/api/call', require('./routes/call'));
 app.use('/api', require('./routes/schemes'));
 
-// Health check
+// Health checks (also used to keep a sleeping host awake)
+app.get('/health', (req, res) => res.json({ ok: true }));
 app.get('/', (req, res) => {
   res.json({ status: 'BharatSahayak Backend running ✅', port: PORT });
 });
