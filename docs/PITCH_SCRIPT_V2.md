@@ -38,7 +38,7 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 
 **[3:00-3:40: How it is built and kept honest]**
 **R:** One shared scheme dataset and one eligibility engine feed the website, WhatsApp and the phone line. Fifty schemes today, each with an official link.
-**P:** To be clear: these fifty are **not yet human-verified**. We built the process for it: an AI drafts each record from the official page, a person approves it, and a weekly re-check job flags any change. It never edits the data by itself.
+**P:** To be clear: **7 of these fifty are verified** against their official pages; the other 43 are not yet. We built the process for it: an AI drafts each record from the official page, a person approves it, and a weekly re-check job flags any change. It never edits the data by itself.
 
 **[3:40-4:15: What is next, and the ask]**
 **R:** Next: reminders before deadlines, speech recognition on the phone line, and reviewed scheme data for more states.
@@ -54,7 +54,7 @@ Everything said below can be shown live. If a line starts with **[SHOW]**, do it
 | "Deadline alerts and reminders" | "Reminders are our next step." (not built) |
 | "Voice PIN / Aadhaar login" | Nothing: removed on purpose; no Aadhaar or OTP is collected |
 | "Our AI call bot understands speech" | "The phone line greets and answers from our scheme list; speech recognition is next." (not tested end to end) |
-| "Verified schemes" | "Fifty schemes with official links, human verification in progress (a verify tool and checklist are ready)" |
+| "Verified schemes" | "Fifty schemes with official links; 7 verified against their official pages, the rest in progress (a verify tool and checklist are ready)" |
 | "We found the user 1.37 lakh rupees" | Use the dashboard numbers, and say they are the schemes' stated benefits |
 | "We use the myScheme API" | "A curated dataset with official links. We would apply for data access to scale." |
 | "Works offline / zero internet" | "Works on basic WhatsApp; no app to install" (voice needs a call, which is not demoed) |

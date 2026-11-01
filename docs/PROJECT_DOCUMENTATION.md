@@ -31,7 +31,7 @@ Honesty first. Please read this before the demo.
 | Part | Status |
 |---|---|
 | 3-step registration form, only 5 required answers (no Aadhaar, no OTP, no password) | Working |
-| 50 schemes (central + Maharashtra) shared by website, WhatsApp and voice | Working, but **none is checked by a human against official pages yet** (a verify tool and checklist are ready) |
+| 50 schemes (central + Maharashtra) shared by website, WhatsApp and voice | Working. **7 are verified against their official pages; 43 are not yet** (a verify tool and checklist are ready) |
 | One eligibility engine with answers "yes", "maybe" or "no" and the reason | Working, tested |
 | Hindi, Marathi, English names and benefit lines for every scheme | Working, **written by AI, needs a native-speaker check** |
 | Benefit Wallet (received, available, pending, future) from real data | Working |
@@ -202,7 +202,7 @@ flowchart LR
 ```
 
 Rules we follow:
-- Only records with `verified: true` are served to users. (For the demo we set `INCLUDE_UNVERIFIED=true`, because **none of the 50 are verified yet**.)
+- Only records with `verified: true` are served to users. (For the demo we set `INCLUDE_UNVERIFIED=true`, because **only 7 of the 50 are verified so far**.)
 - The re-check job **never edits the scheme file**. It only writes a report.
 - Unknown values are `null`, never guessed. Doubtful records are listed in `scheme-data/NEEDS_REVIEW.md`.
 
@@ -414,7 +414,7 @@ Cost per user is small because matching is rules-based (free to compute); AI, Wh
 
 ## 16. Known limits
 
-1. None of the 50 schemes is verified by a human yet (the official scheme portal cannot be read by scripts, so a person must check each page in a browser); some amounts and rules in `NEEDS_REVIEW.md` are doubtful.
+1. Only 7 of the 50 schemes are verified (on 2026-11-01, from their official pages). Many official sites could not be read by a script (certificate errors, pages that need a browser), so a person must check the other 43 in a browser; some amounts and rules in `NEEDS_REVIEW.md` are doubtful.
 2. Hindi and Marathi text was written by AI.
 3. The free AI model can write wrong sentences in the AI summary and in general chat; the scheme *list* itself comes from the rules.
 4. WhatsApp runs on Twilio's **sandbox** (every tester must send a "join" message first; sessions expire after a few days).
