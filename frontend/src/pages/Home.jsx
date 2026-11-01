@@ -217,7 +217,7 @@ export default function Home({ language = 'en' }) {
               {/* 4-step process timeline */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {[
-                  { step: '1', title: 'Dial Toll-Free', desc: 'Call +1 424 496 5091 from your phone.' },
+                  { step: '1', title: 'Dial Toll-Free', desc: 'The helpline number will be shown here once voice calls go live.' },
                   { step: '2', title: 'Choose Language', desc: 'Listen & interact in Hindi or Marathi.' },
                   { step: '3', title: 'Speak to AI', desc: 'Answer simple profile questions.' },
                   { step: '4', title: 'Get SMS Alerts', desc: 'Receive schemes checklist via SMS.' }
@@ -257,23 +257,23 @@ export default function Home({ language = 'en' }) {
                 </div>
                 
                 <div>
-                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">{t('Toll-Free Helpline')}</p>
-                  <a href="tel:+14244965091" className="text-2xl sm:text-3xl font-black text-ink hover:text-accent transition-colors">
-                    +1 424 496 5091
-                  </a>
+                  <p className="text-ink/60 text-xs uppercase tracking-wider mb-1">{t('Voice Helpline')}</p>
+                  <span className="text-2xl sm:text-3xl font-black text-ink">
+                    {t('Coming soon')}
+                  </span>
                 </div>
 
                 <div className="p-4 rounded-xl text-left bg-dark/30 border border-dark-border/50 text-xs space-y-2">
-                  <span className="text-yellow-400 font-bold">⭐ {t('SUCCESS STORY')}</span>
+                  <span className="text-yellow-400 font-bold">⭐ {t('ILLUSTRATIVE EXAMPLE')}</span>
                   <p className="text-ink/80 leading-relaxed italic">
                     {t('"Ramdas Patil, 68, from a remote village in Maharashtra recovered ₹28,000 in unclaimed agricultural subsidies using just his basic Nokia keypad phone."')}
                   </p>
                 </div>
 
-                <a href="tel:+14244965091" className="btn-primary w-full justify-center" style={{ background: 'linear-gradient(135deg, #C2610A, #FF9933)', boxShadow: '0 4px 16px rgba(194, 97, 10, 0.35)' }}>
+                <div className="btn-primary w-full justify-center opacity-60 cursor-not-allowed" style={{ background: 'linear-gradient(135deg, #C2610A, #FF9933)' }} aria-disabled="true">
                   <Phone size={15} />
-                  {t('Call Helpline Now')}
-                </a>
+                  {t('Voice calls coming soon')}
+                </div>
               </motion.div>
             </div>
           </div>
