@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 import { SchemesProvider } from './context/SchemesContext';
 
 // Lazy load pages
@@ -73,6 +74,8 @@ export default function App() {
           },
         }}
       />
+
+      <FloatingWhatsApp />
 
       {/* Navbar */}
       <Navbar

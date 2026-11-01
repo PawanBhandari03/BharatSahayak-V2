@@ -280,7 +280,7 @@ export default function Home() {
       </section>
 
       {/* WhatsApp Integration Section */}
-      <section className="py-24 px-4 relative overflow-hidden">
+      <section id="whatsapp" className="py-24 px-4 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Chat info & Scanner */}
