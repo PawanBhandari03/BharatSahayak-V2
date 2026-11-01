@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check, Minus, Plus, Loader2, Phone, ShieldCheck } from 'lucide-react';
 import axios from 'axios';
 import { useUser } from '../context/UserContext';
+import { useSchemes } from '../context/SchemesContext';
 import { matchSchemesForUser } from '../utils/schemeMatcher';
 import { PERSONAS } from '../demo/personas';
 
@@ -32,6 +33,11 @@ const INCOME_UPPER = [50000, 100000, 150000, 200000, 300000, 500000, 999999];
 const incomeToNumber = (range) => {
   const i = INCOMES.indexOf(range);
   return i >= 0 ? INCOME_UPPER[i] : 0;
+};
+const INCOME_LOWER = [0, 50001, 100001, 150001, 200001, 300001, 500001];
+const incomeLowerBound = (range) => {
+  const i = INCOMES.indexOf(range);
+  return i >= 0 ? INCOME_LOWER[i] : undefined;
 };
 const CATEGORIES = ['General', 'OBC', 'SC', 'ST', 'EWS'];
 const MARITAL = ['Single', 'Married', 'Widow / Widower', 'Divorced / Separated'];
@@ -202,6 +208,7 @@ function StepFamily({ f, set }) {
 export default function Register() {
   const navigate = useNavigate();
   const { saveUser } = useUser();
+  const { schemes, loading: schemesLoading } = useSchemes();
   const [params] = useSearchParams();
   const demo = params.get('demo') === '1';
 
@@ -249,9 +256,16 @@ export default function Register() {
 
   // Results come from the local rules immediately; the AI summary and database save happen afterwards.
   const finish = (data) => {
+    if (!schemes.length) {
+      setErrors({ submit: schemesLoading ? 'Still loading the scheme list, please try again in a moment.' : 'Could not load the scheme list. Check your connection and that the backend is running.' });
+      return;
+    }
     setBusy(true);
-    const profile = { ...data, name: data.name.trim() || 'Friend', annualIncome: incomeToNumber(data.income) };
-    const all = matchSchemesForUser(profile);
+    const profile = {
+      ...data, name: data.name.trim() || 'Friend',
+      annualIncome: incomeToNumber(data.income), annualIncomeMin: incomeLowerBound(data.income),
+    };
+    const all = matchSchemesForUser(profile, schemes);
     saveUser(profile, all, null);
     try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
@@ -314,6 +328,7 @@ export default function Register() {
             {step === 1 && <StepWork f={form} set={set} errors={errors} />}
             {step === 2 && <StepFamily f={form} set={set} />}
             {errors.mobile && <p role="alert" className="-mt-3 mb-4 text-sm font-medium text-red-700">{errors.mobile}</p>}
+            {errors.submit && <p role="alert" className="mb-4 text-sm font-medium text-red-700">{errors.submit}</p>}
 
             <div className="flex items-center gap-3 pt-2">
               {step > 0 && (

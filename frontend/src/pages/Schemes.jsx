@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, X, Mic, ChevronDown, SlidersHorizontal, UserCheck } from 'lucide-react';
 import SchemeCard from '../components/SchemeCard';
-import schemeService, { SCHEMES_DATA } from '../services/schemeService';
+import { useSchemes } from '../context/SchemesContext';
 import toast from 'react-hot-toast';
 import { useUser } from '../context/UserContext';
 import { matchSchemesForUser } from '../utils/schemeMatcher';
@@ -13,7 +13,6 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 },
 };
 
-const CATEGORIES = ['All', 'Agriculture', 'Social Welfare', 'Housing', 'Health', 'Insurance', 'Energy', 'Entrepreneurship', 'Skill Development', 'Education'];
 const FILTER_TABS = ['All Schemes', 'For You ✨'];
 const STATES_FILTER = ['All India', 'Maharashtra', 'Uttar Pradesh', 'Bihar', 'Rajasthan', 'Tamil Nadu', 'Karnataka', 'West Bengal', 'Gujarat', 'J&K / Ladakh'];
 const AGE_GROUPS = ['Any Age', '18-30', '31-50', '51-60', '60+'];
@@ -114,10 +113,13 @@ function SchemeCardSkeleton() {
 }
 
 export default function Schemes() {
-  const { user, matchedSchemes } = useUser();
+  const { user } = useUser();
+  const { schemes: allSchemes, loading: schemesLoading, error: schemesError } = useSchemes();
+  const forYouCount = useMemo(() => (user ? matchSchemesForUser(user, allSchemes).filter((s) => s.isMatched).length : 0), [user, allSchemes]);
+  const categories = useMemo(() => ['All', ...new Set(allSchemes.map((s) => s.category))], [allSchemes]);
   const [schemes, setSchemes] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const loading = schemesLoading && allSchemes.length === 0;
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(FILTER_TABS[0]);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -128,13 +130,13 @@ export default function Schemes() {
   const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    // Use real-time matched schemes if user is on "For You" tab, otherwise use all schemes
-    const baseSchemes = (activeTab === FILTER_TABS[1] && user) ? matchedSchemes : SCHEMES_DATA;
+    // "For You" re-runs the shared eligibility engine on the full list; otherwise show everything
+    const baseSchemes = (activeTab === FILTER_TABS[1] && user)
+      ? matchSchemesForUser(user, allSchemes).filter((s) => s.isMatched)
+      : allSchemes;
     setSchemes(baseSchemes);
     setFiltered(baseSchemes);
-    setLoading(false);
-  }, [activeTab, user, matchedSchemes]);
+  }, [activeTab, user, allSchemes]);
 
   useEffect(() => {
     let result = [...schemes];
@@ -152,6 +154,25 @@ export default function Schemes() {
     }
     if (state !== 'All India') {
       result = result.filter(s => s.state === state || s.state === 'All India');
+    }
+    // Age / income / occupation filters read the scheme's own rules (null = no limit)
+    const rule = (s) => s._record?.eligibility || {};
+    if (age !== 'Any Age') {
+      const [lo, hi] = age === '60+' ? [60, 120] : age.split('-').map(Number);
+      result = result.filter(s => (rule(s).minAge ?? 0) <= hi && (rule(s).maxAge ?? 200) >= lo);
+    }
+    if (income !== 'Any Income') {
+      const floor = { 'Up to ₹1L': 0, '₹1L-₹2L': 100000, '₹2L-₹5L': 200000, '₹5L+': 500000 }[income];
+      result = result.filter(s => rule(s).maxAnnualIncome == null || rule(s).maxAnnualIncome >= floor);
+    }
+    if (occupation !== 'Any') {
+      const key = { Farmer: 'farmer', Student: 'student', Business: 'self-employed', Labor: 'labour', Widow: 'widow', 'Senior Citizen': '' }[occupation];
+      result = result.filter(s => {
+        const occ = rule(s).occupations || ['any'];
+        if (occupation === 'Widow') return /widow/i.test(rule(s).maritalStatus || '') || occ.some(o => /widow/i.test(o));
+        if (occupation === 'Senior Citizen') return (rule(s).minAge ?? 0) >= 60;
+        return occ.includes('any') || occ.some(o => o.toLowerCase().includes(key));
+      });
     }
     setFiltered(result);
   }, [search, activeCategory, state, age, income, occupation, schemes]);
@@ -186,7 +207,7 @@ export default function Schemes() {
         {/* Header */}
         <div className="mb-8">
           <motion.p className="section-label" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            14 Schemes
+            {allSchemes.length} Schemes
           </motion.p>
           <motion.h1
             className="text-3xl md:text-4xl font-black text-ink mb-2"
@@ -284,13 +305,13 @@ export default function Schemes() {
                     : 'bg-[#F5EFE3] text-ink/65 border-dark-border hover:text-ink'
                 }`}
               >
-                {tab === FILTER_TABS[1] && user ? `For You (${matchedSchemes.filter(s => s.isMatched).length}) ✨` : tab}
+                {tab === FILTER_TABS[1] && user ? `For You (${forYouCount}) ✨` : tab}
               </button>
             ))}
           </div>
 
           <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
-            {CATEGORIES.map(cat => (
+            {categories.map(cat => (
               <FilterChip
                 key={cat}
                 label={cat}

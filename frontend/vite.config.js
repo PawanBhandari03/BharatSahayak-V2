@@ -12,5 +12,7 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
+    // the shared eligibility engine lives in ../shared (used by the backend too)
+    fs: { allow: ['..'] },
   },
 })

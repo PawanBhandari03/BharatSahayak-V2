@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import { SchemesProvider } from './context/SchemesContext';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -41,19 +42,21 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguageState] = useState(() => localStorage.getItem('bs_lang') || 'en');
+  const setLanguage = (l) => { setLanguageState(l); try { localStorage.setItem('bs_lang', l); } catch { /* ignore */ } };
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
-  // Initial loader
+  // Short branded splash (kept brief so the first screen is not delayed)
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => setLoading(false), 600);
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) return <Loader />;
 
   return (
+    <SchemesProvider language={language}>
     <div className="min-h-screen flex flex-col bg-dark-bg text-ink">
       <ScrollToTop />
       {/* Toast notifications */}
@@ -105,5 +108,6 @@ export default function App() {
       {/* Footer */}
       <Footer />
     </div>
+    </SchemesProvider>
   );
 }
