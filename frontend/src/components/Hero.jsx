@@ -177,7 +177,7 @@ export default function Hero({ language = 'en' }) {
           icon="🏥" 
           title="Ayushman Bharat" 
           amount="₹5 Lakh Cover" 
-          className="hidden md:flex top-24 right-4 xl:right-2 text-sky-400" 
+          className="hidden md:flex top-36 right-4 xl:right-2 text-sky-400" 
           delay={0.8} 
           duration={6.2}
           floatY={16}
@@ -189,23 +189,11 @@ export default function Hero({ language = 'en' }) {
           icon="🔥" 
           title="Free LPG PMUY" 
           amount="₹1,600 Subsidy" 
-          className="hidden lg:flex top-20 left-1/2 -translate-x-1/2 text-amber-400" 
+          className="hidden lg:flex top-32 left-1/2 -translate-x-1/2 text-amber-400" 
           delay={1.2} 
           duration={5.8}
           floatY={12}
           borderGlow="rgba(245, 158, 11, 0.45)"
-        />
-
-        {/* Bottom Left: PMAY */}
-        <FloatingBadge 
-          icon="🏠" 
-          title="PMAY Housing" 
-          amount="₹1.30 Lakh" 
-          className="hidden md:flex bottom-16 left-4 xl:left-4 text-orange-400" 
-          delay={1.8} 
-          duration={5.2}
-          floatY={15}
-          borderGlow="rgba(194, 97, 10, 0.45)"
         />
 
         {/* Bottom Center / Right: Widow Pension */}
@@ -213,7 +201,7 @@ export default function Hero({ language = 'en' }) {
           icon="👵" 
           title="Widow Pension" 
           amount="₹1,500 / month" 
-          className="hidden lg:flex bottom-14 right-1/3 text-teal-300" 
+          className="hidden lg:flex bottom-20 right-1/3 text-teal-300" 
           delay={2.1} 
           duration={6.0}
           floatY={13}

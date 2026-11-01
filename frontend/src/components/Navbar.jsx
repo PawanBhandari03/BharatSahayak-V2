@@ -42,13 +42,11 @@ export default function Navbar({ language, setLanguage }) {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled
-            ? 'py-3 backdrop-blur-xl border-b border-dark-border/50 shadow-glow-primary/10'
-            : 'py-5'
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 backdrop-blur-xl border-b border-dark-border/60 ${
+          scrolled ? 'py-3 shadow-md' : 'py-4 shadow-sm'
         }`}
         style={{
-          background: scrolled ? 'rgba(251, 247, 240, 0.94)' : 'transparent',
+          background: 'rgba(251, 247, 240, 0.97)',
         }}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
