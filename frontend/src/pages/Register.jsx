@@ -285,7 +285,7 @@ export default function Register() {
     saveUser(profile, all, null);
     try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
-    const API_URL = (import.meta.env.VITE_API_URL || 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
+    const API_URL = (import.meta.env.VITE_API_URL ?? 'https://bharatsahayak.onrender.com').replace(/\/api\/?$/, '');
     axios
       .post(`${API_URL}/api/ai-recommend`, { profile, matchedSchemes: all.filter((s) => s.isMatched) }, { timeout: 25000 })
       .then((res) => saveUser(profile, all, res.data))
