@@ -1,8 +1,10 @@
-# BharatSahayak
+# BharatSahayak V2
 
 **An AI companion that tells Indian citizens which government schemes they qualify for, on the web and on WhatsApp, in Hindi, Marathi and English.**
 
 Built for **Catalyst Hack 2026** by Team **Binary Builders** (Generative AI).
+
+This is **V2**, the rebuilt version of the original BharatSahayak (V1). V2 adds the shared matching rules, the 50-scheme dataset, the WhatsApp bot, Hindi and Marathi support and AWS deployment.
 
 | | |
 |---|---|
